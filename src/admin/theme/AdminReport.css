@@ -1,0 +1,22 @@
+.css-atk7c4-MuiTableCell-root {
+    
+    border-bottom: 1px solid rgba(241, 243, 244, 1); 
+     text-align: center; 
+     padding: 0;
+    color: #212B36;
+
+    background-color: #F4F6F8;
+}
+.css-kf5vx2-MuiTableCell-root {
+ 
+    vertical-align: inherit;
+    border-bottom: 1px solid rgba(241, 243, 244, 1);
+    text-align: center;
+    padding: 16px;
+    color: #212B36;
+    background-color: #F4F6F8;}
+
+   
+    .css-11lq3yg-MuiGrid-root {
+        justify-content: center;
+    }
