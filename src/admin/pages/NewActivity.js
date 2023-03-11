@@ -201,7 +201,16 @@ export default function NewActivity() {
               variant="standard"
             />
           </Grid>
-
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="placeholder"
+              name="placeholder"
+              label="Enter Placeholder "
+              fullWidth
+              variant="standard"
+            />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
