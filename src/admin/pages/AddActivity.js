@@ -23,7 +23,6 @@ const rows = [
     name: " ",
     title: " ",
     city: " ",
-
     amount: " ",
     hours: " ",
     mediaCoverage: " ",
