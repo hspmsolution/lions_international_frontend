@@ -6,7 +6,7 @@ import {
   Button,
   Paper,
   Divider,
-  Typography,
+  Typography,Icon ,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import StepOneForm from '../Forms/StepOneForm';
@@ -14,6 +14,7 @@ import StepTwoForm from '../Forms/StepTwoForm';
 import StepThreeForm from '../Forms/StepThreeForm';
 import StepFourForm from '../Forms/StepFourForm';
 import SelectMonth from '../Forms/SelectMonth';
+import { Star } from '@mui/icons-material';
 
 
 
@@ -60,6 +61,19 @@ const useStyles = makeStyles({
     padding: '16px',
     borderRadius: '4px',
   },
+  totalPoints: {
+    marginRight: '8px',
+    display: 'flex',
+    alignItems: 'baseline',
+    alignContent:'center',
+    justifyContent: 'center'
+  },
+  header:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent:'center',
+  }
+  
 });
 
 const steps = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
@@ -104,6 +118,25 @@ export default function FormWizard() {
   return (
     <>
     <Typography variant="h6" style={{ fontWeight: 'bold', fontSize: '24px' }}> Admin Reporting </Typography>
+
+    
+    <div className={classes.header}>
+      <Typography variant="h6" className={classes.totalPoints}>
+        Total Admin Points 208 
+        <Icon className={classes.starIcon}>
+          <Star color="primary" />
+        </Icon>
+      </Typography>
+      <Typography variant="h6" style={{ margin: '0 8px' }}>
+        |
+      </Typography>
+      <Typography variant="h6" className={classes.totalPoints}>
+        Total Activity Points
+        <Icon className={classes.starIcon}>
+          <Star color="primary" />
+        </Icon>
+      </Typography> 
+    </div>
     <SelectMonth/>
  
     <div className={classes.root}>

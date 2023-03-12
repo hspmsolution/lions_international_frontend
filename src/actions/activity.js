@@ -1,9 +1,9 @@
-import { ADDPRODUCT,  CLIENT_MSG } from "../constants/actionTypes";
+import {   CLIENT_MSG } from "../constants/actionTypes";
 import * as api from "../api";
 
-export const addProduct = (formData, navigate) => async (dispatch) => {
+export const getActivity = (navigate) => async (dispatch) => {
     try {
-      const { data, status } = await api.addProduct(formData);
+      const { data, status } = await api.getActivity(formdata);
       dispatch({
         type: CLIENT_MSG,
         message: { info: data.successMessage, status },
