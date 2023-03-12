@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Box, MenuItem, Button, Divider } from "@mui/material";
-
 const activities = [
   {
     value: "a",
@@ -86,13 +85,14 @@ export default function NewActivity() {
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
+ 
   return (
-    <>
-    <form autoComplete="off" noValidate>
+    
     <Box bgcolor="white" p={3} borderRadius={4} 
     component="form"
     noValidate
     autoComplete="off"
+   
     >
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
@@ -142,6 +142,7 @@ export default function NewActivity() {
               id="activityType"
               select
               fullWidth
+              name="type"
               label=" Select Activity Type "
               value={category}
               onChange={handleChange}
@@ -158,7 +159,8 @@ export default function NewActivity() {
               id="activitySubType"
               select
               fullWidth
-              label=" Activity Subype "
+              name='subtype'
+              label=" Activity Subtype "
               value={category}
               onChange={handleChange}
             >
@@ -169,11 +171,12 @@ export default function NewActivity() {
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={12} sm={6} spacing={3}>
+          <Grid item xs={12} sm={6} >
             <TextField
               id="activityCategory"
               select
               fullWidth
+              name='category'
               label="Activity Category Type "
               value={category}
               onChange={handleChange}
@@ -299,7 +302,6 @@ export default function NewActivity() {
         </Grid>
       </React.Fragment>
     </Box>
-    </form>
-    </>
+  
   );
 }
