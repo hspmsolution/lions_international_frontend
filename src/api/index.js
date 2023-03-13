@@ -14,23 +14,9 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-// // export const fetchOrders = () => API.get("/order");
-// // export const placeOrder = (newOrder) => API.post("/order", newOrder);
-
-// // export const updateOrder = (id, updatedOrder) =>
-// //   API.patch(`/order/${id}`, updatedOrder);
-
-// // export const deleteOrder = (id) => API.delete(`/order/${id}`);
-
-// // export const signIn = (formData) => API.post("/admin/signin", formData);
-
-// // export const signUp = (formData) => API.post("/admin/signup", formData);
-
-// // export const resetPassword = (formData) =>
-// //   API.post("/users/resetpassword", formData);
-
-export const activity = () => API.post("/admin/activity");
-
-
+export const addActivity = (formData) => API.post("/addactivity",formData);
+export const getActivity=()=>API.get("/type");
+export const getSubtype=()=>API.get("/subtype");
+export const getCategory=()=>API.get("/category");
 
 

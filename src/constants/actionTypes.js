@@ -6,4 +6,4 @@ export const AUTH='AUTH';
 export const LOGOUT='LOGOUT';
 export const CLIENT_MSG='CLIENT_MSG';
 export const ADMIN='ADMIN';
-export const ADDPRODUCT='ADDPRODUCT';
+export const ADDACTIVITY='ADDACTIVITY';

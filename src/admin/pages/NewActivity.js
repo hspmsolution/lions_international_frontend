@@ -1,97 +1,90 @@
-import * as React from "react";
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Box, MenuItem, Button, Divider } from "@mui/material";
-const activities = [
-  {
-    value: "a",
-    label: "INTERNATONAL ACTIVITIES",
-  },
-  {
-    value: "b",
-    label: "DISTRICT ACTIVITIES",
-  },
-  {
-    value: "c",
-    label: "MEDICAL ACTIVITIES",
-  },
-  {
-    value: "d",
-    label: "OTHER IMPORTANT",
-  },
-  {
-    value: "e",
-    label: "PERMANENT PROJECTS",
-  },
-];
-const subActivities = [
-  {
-    value: "a",
-    label: "INTERNATONAL ACTIVITIES",
-  },
-  {
-    value: "b",
-    label: "DISTRICT ACTIVITIES",
-  },
-  {
-    value: "c",
-    label: "MEDICAL ACTIVITIES",
-  },
-  {
-    value: "d",
-    label: "OTHER IMPORTANT",
-  },
-  {
-    value: "e",
-    label: "PERMANENT PROJECTS",
-  },
-];
-const activitytye = [
-  {
-    value: "a",
-    label: "INTERNATONAL ACTIVITIES",
-  },
-  {
-    value: "b",
-    label: "DISTRICT ACTIVITIES",
-  },
-  {
-    value: "c",
-    label: "MEDICAL ACTIVITIES",
-  },
-  {
-    value: "d",
-    label: "OTHER IMPORTANT",
-  },
-  {
-    value: "e",
-    label: "PERMANENT PROJECTS",
-  },
-];
-const media = [
-  {
-    value: "a",
-    label: "True/Yes",
-  },
-  {
-    value: "b",
-    label: "False/No",
-  },
-];
-export default function NewActivity() {
-  const [category, setCategory] = React.useState("");
+import { addActivity } from "../../actions/activity";
+import { CLIENT_MSG } from '../../constants/actionTypes';
 
-  const handleChange = (event) => {
-    setCategory(event.target.value);
+
+const media={
+  id:1,name:'True',
+  id:2,name:'False',
+}
+const activityDetail={amount:'',
+  activityTitle:'',
+  city:'',
+  date:'',
+  cabinetOfficers:'',
+  description:'',
+  lionHours:'',
+  mediaCoverage:'',
+  peopleServed:'',
+  activityType:'',
+  activitySubType:'',
+  activityCategory:'',
+  place:''}
+export default function NewActivity() {
+  const [type,setType]=useState([]);
+  const[subType,setSubType]=useState([]);
+  const[category,setCategory]=useState([]);
+  const [activity, setActivity] = useState(activityDetail);
+  const [file, setFile] = useState(null);
+  const [error, setError] = useState('');
+
+  const dispatch = useDispatch();
+
+
+  useEffect(()=>{
+    const getType=async()=>{
+      const resType=await fetch("http://localhost:5000/api/activity/type");
+      const res=await resType.json();
+      setType(await res)
+    }
+  })
+  useEffect(()=>{
+    const getSubtype=async()=>{
+      const resSubType=await fetch(`http://localhost:5000/api/activity/subtype?type=${type}`);
+      const res=await resSubType.json();
+      setType(await res)
+    }
+  })
+  useEffect(()=>{
+    const getCategory=async()=>{
+      const resCategory=await fetch(`http://localhost:5000/api/activity/subtype?type=${subType}`);
+      const res=await resCategory.json();
+      setType(await res)
+    }
+  })
+  const handleChange = (e) => {
+    setActivity({
+      ...activity,
+      [e.target.name]: e.target.value,
+    });
   };
- 
+
+  const submitDetails = (e) => {
+    e.preventDefault();
+    if (!activity.activityTitle || !activity.city || !activity.date || !activity.cabinetOfficers||!activity.lionHours ||
+      !activity.mediaCoverage || !activity.peopleServed || !activity.activityType || !activity.activitySubType||!activity.activityCategory ||activity.place) {
+      dispatch({
+        type: CLIENT_MSG,
+        message: { info: "All Fields are required"},
+      });
+      return;
+    }
+    dispatch(addActivity(activity));
+    setActivity(activityDetail);
+    setFile(null);
+  };
   return (
     
     <Box bgcolor="white" p={3} borderRadius={4} 
     component="form"
     noValidate
     autoComplete="off"
+    onSubmit={submitDetails}
    
     >
       <React.Fragment>
@@ -102,11 +95,14 @@ export default function NewActivity() {
           <Grid item xs={12} sm={6}>
             <TextField
               required
+          
               id="activityTitle"
+              value={activity.activityTitle}
               name="activityTitle"
               label="Enter Activity Title"
               fullWidth
               autoComplete="given-name"
+              onChange={handleChange}
               variant="standard"
             />
           </Grid>
@@ -115,9 +111,11 @@ export default function NewActivity() {
             <TextField
               required
               id="cabinetOfficers"
+              value={activity.cabinetOfficers}
               name="cabinetOfficers"
               label="Enter Cabinet Officer Name"
               fullWidth
+              onChange={handleChange}
               variant="standard"
             />
           </Grid>
@@ -126,11 +124,13 @@ export default function NewActivity() {
             <TextField
               required
               id="date"
+              value={activity.date}
               name="date"
               label="Select Activity Date"
               fullWidth
               variant="standard"
               type="date"
+              onChange={handleChange}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -140,16 +140,17 @@ export default function NewActivity() {
           <Grid item xs={12} sm={6}>
             <TextField
               id="activityType"
+              value={activity.cabinetOfficers}
               select
               fullWidth
-              name="type"
+              name="activityType"
               label=" Select Activity Type "
-              value={category}
+           
               onChange={handleChange}
             >
-              {activitytye.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {type.map((getType,index) => (
+                <MenuItem key={index} value={getType.id}>
+                  {getType.type}
                 </MenuItem>
               ))}
             </TextField>
@@ -159,14 +160,14 @@ export default function NewActivity() {
               id="activitySubType"
               select
               fullWidth
-              name='subtype'
+              name='activitySubType'
               label=" Activity Subtype "
-              value={category}
+              value={activity.activitySubType}
               onChange={handleChange}
             >
-              {subActivities.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {subType.map((getSubtype,index) => (
+                <MenuItem key={index} value={getSubtype.subType}>
+                  {getSubtype.subType}
                 </MenuItem>
               ))}
             </TextField>
@@ -176,14 +177,14 @@ export default function NewActivity() {
               id="activityCategory"
               select
               fullWidth
-              name='category'
+              name='activityCategory'
               label="Activity Category Type "
-              value={category}
+              value={activity.activityCategory}
               onChange={handleChange}
             >
-              {activities.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {category.map((getCategory,index) => (
+                <MenuItem key={index} value={getCategory.category}>
+                  {getCategory.category}
                 </MenuItem>
               ))}
             </TextField>
@@ -199,9 +200,11 @@ export default function NewActivity() {
               required
               id="place"
               name="place"
+              value={activity.place}
               label="Enter Activity Place"
               fullWidth
               variant="standard"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -212,6 +215,7 @@ export default function NewActivity() {
               label="Enter Placeholder "
               fullWidth
               variant="standard"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -219,9 +223,11 @@ export default function NewActivity() {
               required
               id="city"
               name="city"
+              value={activity.city}
               label="Enter Activity Placed City"
               fullWidth
               variant="standard"
+              onChange={handleChange}
             />
           </Grid>
 
@@ -230,9 +236,11 @@ export default function NewActivity() {
               required
               id="amount"
               name="amount"
+              value={activity.amount}
               label="Enter Amount Spent"
               fullWidth
               variant="standard"
+              onChange={handleChange}
             />
           </Grid>
           <Grid item xs={12}>
@@ -240,8 +248,10 @@ export default function NewActivity() {
               required
               id="lionHours"
               name="lionHours"
+              value={activity.lionHours}
               label="Enter Lion Hours"
               fullWidth
+              onChange={handleChange}
               variant="standard"
             />
           </Grid>
@@ -250,13 +260,13 @@ export default function NewActivity() {
               id="mediaCoverage"
               select
               label=" Media Coverage"
-              value={media}
+              value={activity.mediaCoverage}
               fullWidth
               onChange={handleChange}
             >
               {media.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                <MenuItem key={option.id} value={option.name}>
+                  {option.name}
                 </MenuItem>
               ))}
             </TextField>
@@ -268,6 +278,8 @@ export default function NewActivity() {
               name="description"
               label="Description"
               variant="standard"
+              value={activity.description}
+              onChange={handleChange}
               fullWidth
             />
           </Grid>
