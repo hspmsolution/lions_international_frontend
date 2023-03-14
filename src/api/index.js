@@ -14,10 +14,10 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const addActivity = (formData) => API.post("/addactivity",formData);
-export const getActivity=()=>API.get("/type");
-export const getSubtype=()=>API.get("/subtype");
-export const getCategory=()=>API.get("/category");
-export const getPlaceholder=()=>API.get("/placeholder")
+export const addActivity = (formData) => API.post("activity/addactivity",formData);
+export const getActivity=()=>API.get("activity/type");
+export const getSubtype = (type) => API.get(`activity/subtype?type=${type}`);
+export const getCategory=(subtype)=>API.get(`activity/category?subtype=${subtype}`);
+export const getPlaceHolder=(Category)=>API.get(`activity/placeholder?category=${Category}`);
 
 

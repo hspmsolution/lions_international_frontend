@@ -12,9 +12,7 @@ import Login from "./admin/pages/login";
 
 export default function Router() {
   const route = [
-    {path:'/',
-  element:<Home/>},
-    
+    { path: "/", element: <Home /> },
     {
       path: "/dashboard",
       element: <DashboardLayout />,

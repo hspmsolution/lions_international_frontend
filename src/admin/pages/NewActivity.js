@@ -1,91 +1,108 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Box, MenuItem, Button, Divider } from "@mui/material";
-import { addActivity } from "../../actions/activity";
-import { CLIENT_MSG } from '../../constants/actionTypes';
+import {
+  addActivity,
+  getActivity,
+  getCategory,
+  getPlaceHolder,
+  getSubtype,
+} from "../../actions/activity";
+import { CLIENT_MSG ,ACTIVITY_PLACEHOLDER} from "../../constants/actionTypes";
 
-
-const media={
-  id:1,name:'True',
-  id:2,name:'False',
-}
-const activityDetail={amount:'',
-  activityTitle:'',
-  city:'',
-  date:'',
-  cabinetOfficers:'',
-  description:'',
-  lionHours:'',
-  mediaCoverage:'',
-  peopleServed:'',
-  activityType:'',
-  activitySubType:'',
-  activityCategory:'',
-  place:''}
+const media = [
+  {
+    id: 1,
+    name: "True",
+  },
+  { id: 2, name: "False" },
+];
+const activityDetail = {
+  amount: "",
+  activityTitle: "",
+  city: "",
+  date: "",
+  cabinetOfficers: "",
+  description: "",
+  lionHours: "",
+  mediaCoverage: "",
+  peopleServed: "",
+  activityType: "",
+  activitySubType: "",
+  activityCategory: "",
+  placeHolderValue:"",
+  place: "",
+  image:"",
+};
 export default function NewActivity() {
-  const [type,setType]=useState([]);
-  const[subType,setSubType]=useState([]);
-  const[category,setCategory]=useState([]);
   const [activity, setActivity] = useState(activityDetail);
   const [file, setFile] = useState(null);
-  const [error, setError] = useState('');
-
+  const [error, setError] = useState("");
+  const type = useSelector((state) => state.activity.type);
+  const subType = useSelector((state) => state.activity.subType);
+  const category = useSelector((state) => state.activity.category);
+  const placeHolder = useSelector((state)=>state.activity.placeHolder);
   const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getActivity());
+  }, []);
 
-
-  useEffect(()=>{
-    const getType=async()=>{
-      const resType=await fetch("http://localhost:5000/api/activity/type");
-      const res=await resType.json();
-      setType(await res)
-    }
-  })
-  useEffect(()=>{
-    const getSubtype=async()=>{
-      const resSubType=await fetch(`http://localhost:5000/api/activity/subtype?type=${type}`);
-      const res=await resSubType.json();
-      setType(await res)
-    }
-  })
-  useEffect(()=>{
-    const getCategory=async()=>{
-      const resCategory=await fetch(`http://localhost:5000/api/activity/subtype?type=${subType}`);
-      const res=await resCategory.json();
-      setType(await res)
-    }
-  })
   const handleChange = (e) => {
-    setActivity({
-      ...activity,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    setActivity((prevData) => {
+      const newData = { ...prevData, [name]: value };
+      if (name === "activityType") {
+        newData.activityCategory = "";
+        newData.activitySubType = "";
+        newData.placeHolderValue="";
+        dispatch({type:ACTIVITY_PLACEHOLDER,payload:''})
+      }
+      if (name === "activitySubType") {
+        newData.placeHolderValue="";
+        dispatch({type:ACTIVITY_PLACEHOLDER,payload:''})
+      }
+      return newData;
     });
   };
 
   const submitDetails = (e) => {
     e.preventDefault();
-    if (!activity.activityTitle || !activity.city || !activity.date || !activity.cabinetOfficers||!activity.lionHours ||
-      !activity.mediaCoverage || !activity.peopleServed || !activity.activityType || !activity.activitySubType||!activity.activityCategory ||activity.place) {
-      dispatch({
-        type: CLIENT_MSG,
-        message: { info: "All Fields are required"},
-      });
-      return;
-    }
+    // if (
+    //   !activity.activityTitle ||
+    //   !activity.city ||
+    //   !activity.date ||
+    //   !activity.cabinetOfficers ||
+    //   !activity.lionHours ||
+    //   !activity.mediaCoverage ||
+    //   !activity.peopleServed ||
+    //   !activity.activityType ||
+    //   !activity.activitySubType ||
+    //   !activity.activityCategory ||
+    //   activity.place
+    // ) {
+    //   dispatch({
+    //     type: CLIENT_MSG,
+    //     message: { info: "All Fields are required" },
+    //   });
+    //   return;
+    // }
     dispatch(addActivity(activity));
     setActivity(activityDetail);
     setFile(null);
   };
   return (
-    
-    <Box bgcolor="white" p={3} borderRadius={4} 
-    component="form"
-    noValidate
-    autoComplete="off"
-    onSubmit={submitDetails}
-   
+    <Box
+      bgcolor="white"
+      p={3}
+      borderRadius={4}
+      component="form"
+      noValidate
+      autoComplete="off"
+      onSubmit={submitDetails}
     >
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
@@ -95,7 +112,6 @@ export default function NewActivity() {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-          
               id="activityTitle"
               value={activity.activityTitle}
               name="activityTitle"
@@ -140,16 +156,18 @@ export default function NewActivity() {
           <Grid item xs={12} sm={6}>
             <TextField
               id="activityType"
-              value={activity.cabinetOfficers}
+              value={activity.activityType}
               select
               fullWidth
               name="activityType"
               label=" Select Activity Type "
-           
-              onChange={handleChange}
+              onChange={(e) => {
+                dispatch(getSubtype(e.target.value));
+                handleChange(e);
+              }}
             >
-              {type.map((getType,index) => (
-                <MenuItem key={index} value={getType.id}>
+              {type.map((getType, index) => (
+                <MenuItem key={index} value={getType.type}>
                   {getType.type}
                 </MenuItem>
               ))}
@@ -160,31 +178,37 @@ export default function NewActivity() {
               id="activitySubType"
               select
               fullWidth
-              name='activitySubType'
+              name="activitySubType"
               label=" Activity Subtype "
               value={activity.activitySubType}
-              onChange={handleChange}
+              onChange={(e) => {
+                dispatch(getCategory(e.target.value));
+                handleChange(e);
+              }}
             >
-              {subType.map((getSubtype,index) => (
-                <MenuItem key={index} value={getSubtype.subType}>
-                  {getSubtype.subType}
+              {subType.map((type, index) => (
+                <MenuItem key={index} value={type.subtype}>
+                  {type.subtype}
                 </MenuItem>
               ))}
             </TextField>
           </Grid>
-          <Grid item xs={12} sm={6} >
+          <Grid item xs={12} sm={6}>
             <TextField
               id="activityCategory"
               select
               fullWidth
-              name='activityCategory'
+              name="activityCategory"
               label="Activity Category Type "
               value={activity.activityCategory}
-              onChange={handleChange}
+              onChange={(e)=>{
+                handleChange(e);
+                dispatch(getPlaceHolder(e.target.value));
+              }}
             >
-              {category.map((getCategory,index) => (
-                <MenuItem key={index} value={getCategory.category}>
-                  {getCategory.category}
+              {category.map((cat, index) => (
+                <MenuItem key={index} value={cat.category}>
+                  {cat.category}
                 </MenuItem>
               ))}
             </TextField>
@@ -211,9 +235,12 @@ export default function NewActivity() {
             <TextField
               required
               id="placeholder"
-              name="placeholder"
-              label="Enter Placeholder "
+              name="placeHolderValue"
+              label={placeHolder}
               fullWidth
+              type="number"
+              disabled={!placeHolder}
+              value={activity.placeHolderValue}
               variant="standard"
               onChange={handleChange}
             />
@@ -262,16 +289,28 @@ export default function NewActivity() {
               label=" Media Coverage"
               value={activity.mediaCoverage}
               fullWidth
+              name="mediaCoverage"
               onChange={handleChange}
             >
-              {media.map((option) => (
+              {media?.map((option) => (
                 <MenuItem key={option.id} value={option.name}>
                   {option.name}
                 </MenuItem>
               ))}
             </TextField>
           </Grid>
-
+                <Grid item xs={12}>
+            <TextField
+              required
+              id="peopleServed"
+              name="peopleServed"
+              value={activity.peopleServed}
+              label="Enter People Served "
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="description"
@@ -314,6 +353,5 @@ export default function NewActivity() {
         </Grid>
       </React.Fragment>
     </Box>
-  
   );
 }
