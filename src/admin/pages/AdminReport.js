@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     '& .MuiStepIcon-root': {
       color: '#0077C0',
     },
-    padding: '16px',
+    padding: '10px 30px 10px 30px',
     borderRadius: '4px',
   },
   inactiveStep: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
     '& .MuiStepIcon-root': {
       color: '#49A5FF',
     },
-    padding: '16px',
+    padding: '10px 30px 10px 30px',
     borderRadius: '4px',
   },
   totalPoints: {
@@ -177,4 +177,5 @@ export default function FormWizard() {
     </>
   );
 }
+
 

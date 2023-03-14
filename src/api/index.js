@@ -18,5 +18,6 @@ export const addActivity = (formData) => API.post("/addactivity",formData);
 export const getActivity=()=>API.get("/type");
 export const getSubtype=()=>API.get("/subtype");
 export const getCategory=()=>API.get("/category");
+export const getPlaceholder=()=>API.get("/placeholder")
 
 

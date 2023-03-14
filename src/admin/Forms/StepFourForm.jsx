@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@mui/styles';
+import React, { useState } from "react";
+import { makeStyles } from "@mui/styles";
 import {
   TableContainer,
   Paper,
@@ -11,9 +11,11 @@ import {
   Typography,
   Checkbox,
   TextField,
-} from '@mui/material';
-
-const useStyles = makeStyles(theme => ({
+  IconButton,
+  FormControl,
+} from "@mui/material";
+import { ArrowDropUp, ArrowDropDown } from "@mui/icons-material";
+const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: theme.spacing(2),
     maxHeight: 400,
@@ -25,30 +27,32 @@ const useStyles = makeStyles(theme => ({
 
 const StepFourForm = () => {
   const classes = useStyles();
+
   const [fieldData, setFieldData] = useState([
-    { id: 1, title: 'Field 1', count: 0, selected: false },
-    { id: 2, title: 'Field 2', count: 1, selected: false },
-    { id: 3, title: 'Field 3', count: 0, selected: false },
-    { id: 4, title: 'Field 4', count: 1, selected: false },
-    { id: 5, title: 'Field 5', count: 0, selected: false },
+    { id: 1, title: "Field 1", count: 0, selected: false },
+    { id: 2, title: "Field 2", count: 1, selected: false },
+    { id: 3, title: "Field 3", count: 0, selected: false },
+    { id: 4, title: "Field 4", count: 1, selected: false },
+    { id: 5, title: "Field 5", count: 0, selected: false },
   ]);
-  const handleCheckboxChange = index => {
+
+  const handleCheckboxChange = (index) => {
     const updatedFieldData = [...fieldData];
     updatedFieldData[index].selected = !updatedFieldData[index].selected;
     setFieldData(updatedFieldData);
-    };
-    
-    const handleCountChange = (index, value) => {
+  };
+
+  const handleCountChange = (index, value) => {
     const updatedFieldData = [...fieldData];
     updatedFieldData[index].count = value;
     setFieldData(updatedFieldData);
-    };
+  };
+
   return (
     <div>
       <Typography variant="h5" gutterBottom>
         Step One
       </Typography>
-
 
       <TableContainer component={Paper} className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -66,25 +70,47 @@ const StepFourForm = () => {
               <TableRow key={id}>
                 <TableCell>{id}</TableCell>
                 <TableCell>{title}</TableCell>
-                <TableCell><TextField
-                disabled={count !== 1}
-                type="number"
-                value={count === 1 ? index + 1 : 0}
-                onChange={event =>
-                  handleCountChange(index, parseInt(event.target.value))
-                }
-              /></TableCell>
+
+                <TableCell>
+                  <TextField
+                  id="coount"
+                    type="number"
+                    InputProps={{
+                      inputProps: {
+                        pattern: "[0-9]*",
+                        inputMode: "numeric",
+                       
+                      },
+                    }}
+                   
+                  />
+                </TableCell>
+                {/* <TextField
+                    disabled={fieldData[index].count !== 1}
+                    type="number"
+                    inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    value={fieldData[index].count === 1 ? index + 1 : 0}
+                    onChange={(event) =>
+                      handleCountChange(index, parseInt(event.target.value))
+                    }
+                  /> */}
+               
+
                 <TableCell className={classes.checkbox}>
-                <Checkbox
-                checked={selected}
-                onChange={() => handleCheckboxChange(index)}
-              />
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-</div>);
-}
+                  <Checkbox
+                    checked={selected}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
 export default StepFourForm;

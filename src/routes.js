@@ -8,11 +8,13 @@ import { useRoutes } from "react-router-dom";
 
 import React from "react";
 import Home from "./components/Home";
+import Login from "./admin/pages/login";
 
 export default function Router() {
   const route = [
     {path:'/',
   element:<Home/>},
+    
     {
       path: "/dashboard",
       element: <DashboardLayout />,
