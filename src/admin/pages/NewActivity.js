@@ -91,7 +91,7 @@ export default function NewActivity() {
     //   return;
     // }
     dispatch(addActivity(activity));
-    setActivity(activityDetail);
+   // setActivity(activityDetail);
     setFile(null);
   };
   return (
@@ -251,7 +251,7 @@ export default function NewActivity() {
               id="city"
               name="city"
               value={activity.city}
-              label="Enter Activity Placed City"
+              label="Enter Activity Place City"
               fullWidth
               variant="standard"
               onChange={handleChange}

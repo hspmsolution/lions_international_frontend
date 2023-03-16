@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -17,28 +17,27 @@ import {
   Grid,
 } from "@mui/material";
 import { Edit, Delete, Search } from "@mui/icons-material";
-
-const rows = [
-  {
-    name: " ",
-    title: " ",
-    city: " ",
-    amount: " ",
-    hours: " ",
-    mediaCoverage: " ",
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getReportedActivity } from "../../actions/activity";
 
 const AddActivity = () => {
+  const dispatch = useDispatch();
+  const reportedActivity = useSelector(
+    (state) => state.activity.reportedActivity
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearchInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredRows = rows.filter((row) =>
-    row.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredRows = reportedActivity.filter((row) =>
+    row.activityType.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  useEffect(() => {
+    dispatch(getReportedActivity());
+  }, []);
+
   return (
     <Box bgcolor={"white"} p={3} borderRadius={4}>
       <Grid container justifyContent="space-between" spacing={3}>
@@ -55,11 +54,16 @@ const AddActivity = () => {
           </Box>
         </Grid>
       </Grid>
-      <Grid container justifyContent="space-between" spacing={3} style={{ marginTop: "16px" }}>
+      <Grid
+        container
+        justifyContent="space-between"
+        spacing={3}
+        style={{ marginTop: "16px" }}
+      >
         <Grid item xs={6} style={{ textAlign: "left" }}>
           <TextField
             id="search"
-            label="Search"
+            label="Search by Activity Type"
             variant="outlined"
             size="small"
             onChange={handleSearchInputChange}
@@ -71,7 +75,7 @@ const AddActivity = () => {
           <TableHead>
             <TableRow>
               <TableCell align="center">Sr No</TableCell>
-              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">Activity</TableCell>
               <TableCell align="left">Title</TableCell>
               <TableCell align="left">City</TableCell>
               <TableCell align="right">Amount</TableCell>
@@ -86,14 +90,14 @@ const AddActivity = () => {
                 <TableCell align="center" component="th" scope="row">
                   {index + 1}
                 </TableCell>
-                <TableCell align="left">{row.name}</TableCell>
-                <TableCell align="left">{row.title}</TableCell>
+                <TableCell align="left">{row.activityType}</TableCell>
+                <TableCell align="left">{row.activityTitle}</TableCell>
                 <TableCell align="left">{row.city}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
-                <TableCell align="right">{row.hours}</TableCell>
+                <TableCell align="right">{row.lionHours}</TableCell>
                 <TableCell align="left">{row.mediaCoverage}</TableCell>
                 <TableCell align="center">
-                  <IconButton aria-label="edit" color='primary'>
+                  <IconButton aria-label="edit" color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton aria-label="delete" color="error">
