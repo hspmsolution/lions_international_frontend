@@ -14,6 +14,7 @@ import Scrollbar from '../../../components/scrollbar';
 import NavSection from '../../../components/nav-section';
 //
 import navConfig from './config';
+import { useSelector } from 'react-redux';
 
 // ----------------------------------------------------------------------
 
@@ -36,16 +37,14 @@ Nav.propTypes = {
 
 export default function Nav({ openNav, onCloseNav }) {
   const { pathname } = useLocation();
-
+  const memberData=useSelector((state)=>state.auth.authData);
   const isDesktop = useResponsive('up', 'lg');
-
   useEffect(() => {
     if (openNav) {
       onCloseNav();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
-
   const renderContent = (
     <Scrollbar
       sx={{
@@ -60,15 +59,19 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar src={account.photoURL} alt={memberData?.firstName.charAt(0)} />
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                {memberData?.firstName+" "+memberData?.lastName}
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                {memberData?.title}
+              </Typography>
+
+              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                {memberData?.clubName}
               </Typography>
             </Box>
           </StyledAccount>

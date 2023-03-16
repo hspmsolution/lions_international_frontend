@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
@@ -31,7 +31,7 @@ export default function AccountPopover() {
   const [open, setOpen] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const memberData=useSelector((state)=>state.auth.authData);
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };
@@ -59,7 +59,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt="photoURL" />
+        <Avatar src={account.photoURL} alt={memberData?.firstName.charAt(0)} />
       </IconButton>
 
       <Popover
@@ -83,10 +83,10 @@ export default function AccountPopover() {
       >
         <Box sx={{ my: 1.5, px: 2.5 }}>
           <Typography variant="subtitle2" noWrap>
-            {account.displayName}
+          {memberData?.firstName+" "+memberData?.lastName}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-            {account.email}
+            {memberData?.clubName}
           </Typography>
         </Box>
 
