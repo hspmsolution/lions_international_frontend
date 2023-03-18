@@ -20,3 +20,6 @@ export const getCategory = (subtype) =>
 export const getPlaceHolder = (Category) =>
   API.get(`activity/placeholder?category=${Category}`);
 export const getReportedActivity=()=>API.get("activity/reportedactivity");
+export const getAdminReports=(month)=>API.get(`adminreporting/reports?month=${month}`);
+export const getPoints=()=>API.get("adminreporting/points");
+export const addReport=(data)=>API.post("adminreporting/addreport",data);

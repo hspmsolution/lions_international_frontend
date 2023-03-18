@@ -16,19 +16,18 @@ const authReducer = (
       localStorage.removeItem("profile");
       return { ...state, authData: null, admin: false };
 
-  
-      case ADMIN: {
-        if(state.admin)return state;
-        const token = localStorage.getItem('profile');
-        if(!token) return state;
-        const decoded = decodeJWT(token);
-        if (decoded.exp * 1000 < new Date().getTime()) {
-          localStorage.removeItem('profile');
-          return { ...state, authData: null, admin: false };
-        }
-        if (token) return { ...state, authData: decoded, admin: true };
-        return state;
+    case ADMIN: {
+      if (state.admin) return state;
+      const token = localStorage.getItem("profile");
+      if (!token) return state;
+      const decoded = decodeJWT(token);
+      if (decoded.exp * 1000 < new Date().getTime()) {
+        localStorage.removeItem("profile");
+        return { ...state, authData: null, admin: false };
       }
+      if (token) return { ...state, authData: decoded, admin: true };
+      return state;
+    }
 
     case CLIENT_MSG:
       return { ...state, message: action.message };
