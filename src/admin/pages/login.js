@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { signin } from '../../actions/auth';
+import { signIn } from '../../actions/auth';
 import { ADMIN } from '../../constants/actionTypes';
 
 const Login = () => {
@@ -17,16 +17,16 @@ const Login = () => {
   const [disabled, setDisabled] = useState(false);
   const formik = useFormik({
     initialValues: {
-      email: '',
+      memberId: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      memberId: Yup.number().integer('Must be an integer').required('Member Id is required'),
       password: Yup.string().max(255).required('Password is required'),
     }),
     onSubmit: (data) => {
       setTimeout(() => {
-        dispatch(signin(data, navigate));
+       dispatch(signIn(data, navigate));
       }, 500);
 
       setDisabled(true);
@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch({ type: ADMIN });
-   if(isAdmin)navigate('/dashboard')
+   if(isAdmin)navigate('/dashboard/app')
   }, [isAdmin]);
 
   useEffect(() => {
@@ -70,19 +70,19 @@ const Login = () => {
               }}
             >
               <Typography align="center" color="textSecondary" variant="body1">
-                login with email address
+                login with Member Id
               </Typography>
             </Box>
             <TextField
-              error={Boolean(formik.touched.email && formik.errors.email)}
+              error={Boolean(formik.touched.memberId && formik.errors.memberId)}
               fullWidth
-              helperText={formik.touched.email && formik.errors.email}
-              label="Email Address"
+              helperText={formik.touched.memberId && formik.errors.memberId}
+              label="Member Id"
               margin="normal"
-              name="email"
+              name="memberId"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="email"
+              type="number"
               value={formik.values.email}
               variant="outlined"
             />
@@ -101,15 +101,9 @@ const Login = () => {
             />
             <Box sx={{ py: 2 }}>
               <Button color="primary" disabled={disabled} fullWidth size="large" type="submit" variant="contained">
-                Sign In Now
+                Login In Now
               </Button>
             </Box>
-            <Typography color="textSecondary" variant="body2">
-              Don&apos;t have an account?{' '}
-              <Link to="/register">
-                <Button component="a">SignUp</Button>
-              </Link>
-            </Typography>
           </form>
         </Container>
       </Box>
