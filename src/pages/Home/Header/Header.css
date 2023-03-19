@@ -1,0 +1,47 @@
+.head-dist-h {
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff00;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  .head-dist-h .logoImg{
+    width: 280px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  
+  .head-lions-i{
+    color: #fff;
+    font-weight: 700;
+  }
+  
+  .head-dist-num{
+    color: #fff;
+    font-weight: 700;
+  }
+  
+  .head-dist-h > a > img {
+    height: 100%;
+    
+  }
+  .imgSlide{
+    position: relative;
+  }
+  
+  .head-dist-h > div {
+    min-width: 60vw;
+  }
+  
+  .head-lions-i {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .head-dist-num {
+    font-size: 1.5rem;
+    font-weight: 550;
+  }

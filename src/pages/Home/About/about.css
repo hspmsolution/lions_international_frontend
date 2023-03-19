@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+.about-cnr {
+    margin-top:0;
+    /* background-color: #232a34; */
+    background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(17,46,87,1) 98%);
+    padding: 5rem;
+}
+
+.about-card {
+    padding: 1rem;
+    background-color: rgba(222, 213, 213, 0.227);
+    border-radius: 3rem;
+    box-shadow: 0 4px 20px #00000089;
+    color: #fff;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding: auto;
+    display: flex;
+    align-items: center;
+}
+
+.about-card img {
+    height: 30%;
+    width: 30%;
+    max-height: 20rem;
+    max-width: 20rem;
+}
+
+.about-dist {
+    padding: 0 40px;
+    text-align: center;
+}
+
+.about-dist h1 {
+    font-size: 42px;
+    font-family: 'Aboreto', cursive;
+    font-weight: bolder;
+    margin: 2rem 0;
+    border-bottom: 5px solid #084f9d;
+    border-radius: 5px;
+    padding: 1rem 0;
+    white-space: nowrap;
+}
+
+.about-dist > p {
+    margin-top: 0;
+    margin-bottom: 4rem;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    letter-spacing: 1px;
+}
+
+.col-lg-12 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* .row {
+    display: flex;
+} */
+
+.col-md-3 {
+    width: 25%;
+    padding: 0 10px;
+    /* display: flex; */
+    align-items: center;
+}
+
+.col-md-3 img{
+    width: 100%;
+    padding: auto;
+}
+
+.col-md-9 {
+    width: 75%;
+    padding-top: 40px !important;
+}
+
+
+#audio {
+    text-align: center;
+    margin: auto;
+}
+
+.playIcon, .pauseIcon {
+    display:inline-block;
+    margin: 15px;
+    transform: scale(2);
+    transition: transform .3s ease-in-out;
+    color: white;
+}
+
+.playIcon:hover, .pauseIcon:hover {
+    display:inline-block;
+    transform: scale(3);
+}
+
+@media screen and (max-width: 600px) {
+    .about-cnr {
+        padding: 0.8rem !important;
+    }
+    .about-dist {
+        padding: 0;
+    }
+    .about-dist-h {
+        margin: 1rem 0 !important;
+        font-size: 20px !important;
+    }
+    .about-dist > p {
+        letter-spacing: normal;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-cnr {
+        padding: 2rem;
+    }
+    .about-card h1 {
+        font-size: 30px;
+        white-space:normal;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+  .about-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+
+}

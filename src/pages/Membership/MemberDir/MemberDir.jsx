@@ -1,0 +1,84 @@
+import MUIDataTable from "mui-datatables";
+import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import { Container } from "@mui/material";
+
+const muiCache = createCache({
+  key: "mui-datatables",
+  prepend: true
+});
+
+export default function MemberDir() {
+  const responsive = "simple";
+  const tableBodyHeight = "400px";
+  const tableBodyMaxHeight = "";
+  const searchBtn = true;
+  const downloadBtn = true;
+  const printBtn = false;
+  const viewColumnBtn = false;
+  const filterBtn = true;
+
+  const columns = [
+    "Sr No.",
+    "Title",
+    { name: "Full Name", options: { filterOptions: { fullWidth: true } } },
+    "Club Name",
+    "Occupation"
+  ];
+
+  const options = {
+    search: searchBtn,
+    download: downloadBtn,
+    print: printBtn,
+    viewColumns: viewColumnBtn,
+    filter: filterBtn,
+    filterType: "dropdown",
+    responsive,
+    selectableRows: 'none', // Disable the checkbox column
+    tableBodyHeight,
+    tableBodyMaxHeight,
+    onTableChange: (action, state) => {
+      console.log(action);
+      console.dir(state);
+    }
+  };
+
+  const data = [
+    [1,"Lion Member", "Gabby George", "himym", "Business Analyst"],
+    [
+      2,
+      "Past District Governor",
+      "Aiden Lloyd",
+      "PUNE SUPREME",
+      "CEO of Tony's Burger Palace"
+    ],
+    [3, "Club Administrator", "Jaden Collins", "PUNE SUPREME", "CA"],
+    [4, "Club Director", "Franky Rees", "VADGAON", "Business Analyst"],
+    [5, "Club Treasurer", "Aaren Rose", "Toledo", "Business Analyst"],
+    [6, "Lion Member", "Joe Jones", "POONA SARASBAUG", "Computer Programmer"],
+    [7, "Club Director", "Johnny Jones", "St. Petersburg", "Business Analyst"],
+    [8, "Lion Member", "Jimmy Johns", "Baltimore", "Business Analyst"],
+    [9, "Lion Member", "Jacky Jackson", "Baltimore", "Business Consultant"],
+    [10, "Club Director	", "Jack Jackson", "El Paso", "Business Analyst"],
+    [11, "Lion Member", "Jo Jo", "Washington DC", "Software Developer"],
+    [12, "Lion Member", "Donna Marie", "Annapolis", "Business Manager"]
+  ];
+
+  return (
+    <Container sx={{ my: '3rem' }}>
+      <CacheProvider value={muiCache}>
+        <ThemeProvider theme={createTheme()}>
+          <MUIDataTable
+            title={"Member Directory"}
+            data={data}
+            columns={columns}
+            options={options}
+          />
+        </ThemeProvider>
+      </CacheProvider>
+    </Container>
+  );
+}
