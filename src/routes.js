@@ -5,6 +5,7 @@ import DashboardAppPage from "./admin/pages/DashboardAppPage";
 import AdminReport from "./admin/pages/AdminReport";
 import AddActivity from "./admin/pages/AddActivity";
 import Login from "./admin/pages/login";
+import Profile from "./admin/pages/Profile";
 import Page404 from "./admin/pages/Page404";
 import DashboardLayout from "./admin/layouts/dashboard";
 import React from "react";
@@ -35,7 +36,7 @@ export default function Router() {
       ],
     },
     { path: "/login", element: <Login /> },
-
+    {path:'/profile',element:<Profile/>},
     {
       path: "/404",
       element: <Page404 />,
