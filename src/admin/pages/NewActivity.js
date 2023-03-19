@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   heading:{
       width:"25%",
       borderBottom:"2px solid",
+      color:"#003895",
     
   },
   grid:{
