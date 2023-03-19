@@ -1,0 +1,55 @@
+.aboutGov {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  min-height: calc(100vh - var(--vh-offset, 0px));
+
+  overflow-x: hidden;
+  font-weight: 400;
+  top: 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.025em;
+  margin-bottom: 7rem !important;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.677), rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.934)), url(/public/assets/img/woodenBoard.jpg) no-repeat center center/cover;
+  background-size: cover;
+  padding-top: 3rem;
+}
+
+.dist-governer {
+  /* flex-direction: column; */
+  justify-content: center;
+  color: #fff;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+.header-design {
+  background-color: #a4508b;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  height: 120px;
+  text-align: center;
+}
+
+header .footer-wave {
+  max-width: 102%;
+  width: 100%;
+  height: 187.8px;
+  left: 0;
+  z-index: 1;
+  bottom: -67px;
+  background: url(https://1.bp.blogspot.com/-NYl6L8pz8B4/XoIVXwfhlNI/AAAAAAAAU3k/nxJKiLT706Mb7jUFiM5vdCsOSNnFAh0yQCLcBGAsYHQ/s1600/hero-wave.png) repeat-x;
+  animation: wave 10s cubic-bezier(0.44, 0.66, 0.67, 0.37) infinite;
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position: 1440px;
+  }
+}

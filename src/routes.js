@@ -7,14 +7,33 @@ import AddActivity from "./admin/pages/AddActivity";
 import Login from "./admin/pages/login";
 import Page404 from "./admin/pages/Page404";
 import DashboardLayout from "./admin/layouts/dashboard";
-
-
 import React from "react";
-import Home from "./components/Home";
+import Home from "./pages/Home/Home";
+import UserLayout from './components/UserLayout'
+import About from "./pages/About/About";
+import DGTeam from "./pages/About/dgTeam/DGTeam";
+import District from "./pages/About/district/District";
+import OrgChart from "./pages/About/orgChart/OrgChart";
+import Events from "./pages/Events/Events";
+import MemberDir from "./pages/Membership/MemberDir/MemberDir"
+import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir"
 
 export default function Router() {
   const route = [
-    { path: "/", element: <Home /> },
+    {
+      path: "/",
+      element: <UserLayout />,
+      children: [
+        { path: "", element: <Home /> },
+        { path: "/about/governor", element: <About /> },
+        { path: "/about/dgteam", element: <DGTeam /> },
+        { path: "/about/aboutdistrict317F", element: <District /> },
+        { path: "/about/organizationchart", element: <OrgChart /> },
+        { path: "/events", element: <Events /> },
+        { path: "/membership/memberdirectory", element: <MemberDir /> },
+        { path: "/membership/businessdirectory", element: <BusinessDir /> },
+      ],
+    },
     { path: "/login", element: <Login /> },
 
     {
