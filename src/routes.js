@@ -11,13 +11,14 @@ import DashboardLayout from "./admin/layouts/dashboard";
 
 import React from "react";
 import Home from "./components/Home";
-import Login from "./admin/pages/login";
+import Profile from "./admin/pages/Profile";
+
 
 export default function Router() {
   const route = [
     { path: "/", element: <Home /> },
     { path: "/login", element: <Login /> },
-
+    {path:'/profile',element:<Profile/>},
     {
       path: "/404",
       element: <Page404 />,
