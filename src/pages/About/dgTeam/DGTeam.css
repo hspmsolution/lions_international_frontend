@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
+.dgTeam {
+    margin-top: 7rem;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.gov, .vcGov1, .vcGov2 {
+    margin: auto !important;
+}
+
+.gov > .item, .vcGov1 > .item, .vcGov2 > .item {
+    padding: 3rem;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
