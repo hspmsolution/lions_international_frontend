@@ -14,4 +14,9 @@ table {
   th {
     background-color: #f2f2f2;
   }
-  
+  .css-1g3e3gh-MuiTableCell-root{
+      text-align: center;
+  }
+  .css-kf5vx2-MuiTableCell-root{
+    text-align: center;
+  }
