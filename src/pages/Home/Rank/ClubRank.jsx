@@ -29,7 +29,8 @@ export default function OppositeContentTimeline() {
 
   return (
     <>
-      <Typography variant='h2' className='team-h'>Top 10 Clubs</Typography>
+      <Typography variant='h2' className='team-h'>Top 10 District Clubs Rank</Typography>
+      <Typography variant='h4' className={classes.teamSubH}>By ACTIVITIES</Typography>
       <div className={classes.rankRow}>
         <div className={classes.rankColumn}>
           <Timeline

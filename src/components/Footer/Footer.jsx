@@ -42,9 +42,9 @@ function Footer() {
             <Typography variant="h6" sx={{ pt: '2rem', pl: '0.8rem' }}>Quick Links</Typography>
             <List disablePadding>
               {quickLinks.map((item, i) => (
-                <ListItem disablePadding>
+                <ListItem disablePadding key={i}>
                   <ListItemButton sx={{ py: '5px' }} disablePadding>
-                    <ListItemText primary={item} key={i} />
+                    <ListItemText primary={item} />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -54,9 +54,9 @@ function Footer() {
             <Typography variant="h6" sx={{ pt: '2rem', pl: '0.8rem' }}>Contact</Typography>
             <List disablePadding>
               {contact.map((item, i) => (
-                <ListItem disablePadding>
+                <ListItem disablePadding key={i}>
                   <ListItemButton>
-                    <ListItemText primary={item} key={i} />
+                    <ListItemText primary={item} />
                   </ListItemButton>
                 </ListItem>
               ))}
