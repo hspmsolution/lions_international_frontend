@@ -11,12 +11,16 @@ export const signIn = (formData, navigate) => async (dispatch) => {
       message: { info: data.successMessage, status },
     });
     const decoded = decodeJWT(data.token);
-    if (!decoded.detailsRequired) {
+    if (decoded.detailsRequired) {
       dispatch({
         type: CLIENT_MSG,
-        message: { info: "Complete your Profile", status: 200 },
+        message: {
+          info: "Complete your basic details in profile section",
+          status: 200,
+        },
       });
-      navigate("/profile");
+      navigate("/dashboard/app");
+      // navigate("/profile");
     } else {
       navigate("/dashboard/app");
     }
