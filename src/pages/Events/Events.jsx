@@ -36,7 +36,7 @@ function ResponsiveDialog() {
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="responsive-dialog-title"
-                // sx={{ display: 'flex', justifyContent: 'center' }}
+            // sx={{ display: 'flex', justifyContent: 'center' }}
             >
                 <DialogTitle id="responsive-dialog-title">
                     {"Past/Upcoming Event by Club"}
@@ -45,18 +45,13 @@ function ResponsiveDialog() {
                     <img src="/assets/img/helpingLions.jpg" alt='helping' style={{ width: '100%' }} />
                 </Paper>
                 <DialogContent>
-                    <DialogContentText sx={{ display: 'flex', alignItems: 'center' }}>
-
-                    </DialogContentText>
-                    <DialogContentText sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Typography variant='h6' sx={{ mr: '1rem' }}>Event Details : </Typography><Typography variant='subtitle1'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magni soluta quis adipisci similique eaque voluptates velit, reiciendis eum aspernatur excepturi aliquam obcaecati deserunt error, quia pariatur expedita! Quibusdam, dicta.
-                        </Typography>
-                    </DialogContentText>
                     <table>
                         <tbody>
                             <tr>
-                                <th style={{ display: 'flex', alignItems: 'center' }}><Typography variant='h6' sx={{ mr: '1rem' }}>Event Name : </Typography><Typography variant='subtitle1'>Food Donation</Typography></th>
+                                <th style={{ display: 'flex' }}><Typography variant='subtitle1' sx={{ mr: '1rem' }}>Event Name : </Typography><Typography variant='subtitle1'>Food Donation</Typography></th>
+                            </tr>
+                            <tr>
+                                <th style={{ display: 'flex' }}><Typography variant='subtitle1' sx={{ mr: '1rem' }}>Event Details : </Typography><Typography variant='subtitle1' sx={{ width: '24rem', textAlign: 'justify' }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magni soluta quis adipisci similique eaque voluptates velit, reiciendis eum aspernatur excepturi aliquam obcaecati deserunt error, quia pariatur expedita! Quibusdam, dicta.</Typography></th>
                             </tr>
                         </tbody>
                     </table>
@@ -74,13 +69,14 @@ function ResponsiveDialog() {
     );
 }
 
-function BasicCard(title,bgImage) {
+function BasicCard(title, bgImage) {
     const classes = useStyles();
-    
+
     return (
         <Card sx={{ minWidth: 275, maxWidth: 520 }}>
             <CardContent className={classes.eventCard}>
-                <Box sx={{ width: '100%', height: '15rem', mb: '1rem', backgroundImage: "url('https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')" }}>
+                <Box sx={{ width: '100%', height: '15rem', mb: '3rem' }}>
+                    <img src='/assets/img/helpingLions.jpg' />
                 </Box>
                 <ResponsiveDialog />
             </CardContent>

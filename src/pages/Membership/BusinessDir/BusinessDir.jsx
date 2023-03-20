@@ -34,7 +34,7 @@ const BusinessDir = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
         <Container className={classes.profileContainer} maxWidth="xl">
           {busiMan.map((member, index) => (
             <ProfileCard 
