@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
   profileContainer: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     minHeight: '80vh',
     alignItems:'center',
@@ -19,7 +20,17 @@ export default makeStyles((theme) => ({
     gap:'0.5em',
   },
   avatar:{
-    width: '130px',
-    height: '130px',
-  }
+    width: '100px',
+    height: '100px',
+  },
+  socialIcons: {
+    textAlign: 'center',
+    '& a': {
+        color: '#3d4750',
+        margin: '10px',
+        padding: '5px',
+        backgroundColor: '#cdcdcd',
+        borderRadius: '5px'
+    }
+}
 }));

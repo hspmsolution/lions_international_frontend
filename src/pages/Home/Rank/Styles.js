@@ -6,5 +6,11 @@ export default makeStyles((theme) => ({
     },
     rankColumn: {
         minWidth: '50%'
+    },
+    teamSubH: {
+        fontSize: '35px',
+        fontFamily: "'Aboreto', cursive",
+        fontWeight: 'bolder',
+        textAlign: 'center',
     }
 }))

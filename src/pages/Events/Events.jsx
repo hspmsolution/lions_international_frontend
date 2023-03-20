@@ -13,22 +13,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import useStyles from './Styles';
 
-function BasicCard(title,bgImage) {
-    const classes = useStyles();
-    
-    return (
-        <Card sx={{ minWidth: 275, maxWidth: 320 }}>
-            <CardContent className={classes.eventCard}>
-                <Typography variant='body1'>title</Typography>
-                <Box sx={{ width: '100%', height: '10rem', my: '1rem', backgroundImage: "url('https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')" }}>
-                </Box>
-                <ResponsiveDialog />
-            </CardContent>
-        </Card>
-    );
-}
-
-
 function ResponsiveDialog() {
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
@@ -57,14 +41,25 @@ function ResponsiveDialog() {
                 <DialogTitle id="responsive-dialog-title">
                     {"Past/Upcoming Event by Club"}
                 </DialogTitle>
-                <Paper variant="outlined" sx={{ width: '200px', padding: '0.5rem', margin: 'auto' }}>
+                <Paper variant="outlined" sx={{ width: '30vw', padding: '0rem', margin: 'auto' }}>
                     <img src="/assets/img/helpingLions.jpg" alt='helping' style={{ width: '100%' }} />
                 </Paper>
                 <DialogContent>
-                    <DialogContentText>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto vel id magnam eum ipsam accusantium sint deserunt similique nobis laudantium, nisi ipsa dolor natus quos vero totam nihil facilis. At sunt delectus doloribus quam, dolorum, nihil sit, libero repellat aspernatur praesentium assumenda ipsum nostrum ducimus numquam rerum mollitia dolore quis. Labore, nam, perspiciatis dolores asperiores et impedit ex autem alias provident incidunt voluptate perferendis dicta tempora earum quasi, laborum natus nihil soluta sunt quisquam iste blanditiis at expedita. Libero est sapiente molestiae optio eveniet ea minus hic recusandae animi voluptatibus reiciendis nobis voluptatum laudantium, quaerat non quae praesentium. Culpa, eaque!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto vel id magnam eum ipsam accusantium sint deserunt similique nobis laudantium, nisi ipsa dolor natus quos vero totam nihil facilis. At sunt delectus doloribus quam, dolorum, nihil sit, libero repellat aspernatur praesentium assumenda ipsum nostrum ducimus numquam rerum mollitia dolore quis. Labore, nam, perspiciatis dolores asperiores et impedit ex autem alias provident incidunt voluptate perferendis dicta tempora earum quasi, laborum natus nihil soluta sunt quisquam iste blanditiis at expedita. Libero est sapiente molestiae optio eveniet ea minus hic recusandae animi voluptatibus reiciendis nobis voluptatum laudantium, quaerat non quae praesentium. Culpa, eaque!
+                    <DialogContentText sx={{ display: 'flex', alignItems: 'center' }}>
+
                     </DialogContentText>
+                    <DialogContentText sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Typography variant='h6' sx={{ mr: '1rem' }}>Event Details : </Typography><Typography variant='subtitle1'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem magni soluta quis adipisci similique eaque voluptates velit, reiciendis eum aspernatur excepturi aliquam obcaecati deserunt error, quia pariatur expedita! Quibusdam, dicta.
+                        </Typography>
+                    </DialogContentText>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th style={{ display: 'flex', alignItems: 'center' }}><Typography variant='h6' sx={{ mr: '1rem' }}>Event Name : </Typography><Typography variant='subtitle1'>Food Donation</Typography></th>
+                            </tr>
+                        </tbody>
+                    </table>
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleClose}>
@@ -79,6 +74,19 @@ function ResponsiveDialog() {
     );
 }
 
+function BasicCard(title,bgImage) {
+    const classes = useStyles();
+    
+    return (
+        <Card sx={{ minWidth: 275, maxWidth: 520 }}>
+            <CardContent className={classes.eventCard}>
+                <Box sx={{ width: '100%', height: '15rem', mb: '1rem', backgroundImage: "url('https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')" }}>
+                </Box>
+                <ResponsiveDialog />
+            </CardContent>
+        </Card>
+    );
+}
 
 export default function Events() {
     const filters = [

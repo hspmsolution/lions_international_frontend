@@ -4,7 +4,7 @@ import "./Team.css"
 function Team() {
     return (
         <Container>
-            <Typography variant='h2' className='team-h'>Our Team</Typography>
+            <Typography variant='h2' className='team-h'>Our District Team</Typography>
             <div className="main">
                 <div className="profile-card">
                     <div className="img">
