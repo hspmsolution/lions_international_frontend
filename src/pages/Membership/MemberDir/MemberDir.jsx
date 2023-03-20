@@ -5,6 +5,7 @@ import { createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 const muiCache = createCache({
   key: "mui-datatables",
@@ -68,6 +69,8 @@ export default function MemberDir() {
   ];
 
   return (
+    <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
+
     <Container sx={{ my: '3rem' }}>
       <CacheProvider value={muiCache}>
         <ThemeProvider theme={createTheme()}>
@@ -80,5 +83,6 @@ export default function MemberDir() {
         </ThemeProvider>
       </CacheProvider>
     </Container>
+    </Box>
   );
 }

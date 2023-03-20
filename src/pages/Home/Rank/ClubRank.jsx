@@ -10,7 +10,7 @@ import TimelineOppositeContent, {
   timelineOppositeContentClasses,
 } from '@mui/lab/TimelineOppositeContent';
 import useStyles from './Styles'
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 
 const clubRankings = [
@@ -29,6 +29,8 @@ export default function OppositeContentTimeline() {
 
   return (
     <>
+            <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')" }}>
+
       <Typography variant='h2' className='team-h'>Top 10 District Clubs Rank</Typography>
       <Typography variant='h4' className={classes.teamSubH}>By ACTIVITIES</Typography>
       <div className={classes.rankRow}>
@@ -83,7 +85,7 @@ export default function OppositeContentTimeline() {
           </Timeline>
         </div>
       </div>
-
+</Box>
 
 
     </>

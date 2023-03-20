@@ -1,12 +1,14 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 
 function District() {
     return (
         <>
-            <Container sx={{ marginTop: '8rem' }}>
+            <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
+
+            <Container sx={{ my: '5rem' }}>
                 <Paper sx={{ padding: '1rem 3rem', textAlign: 'justify' }}>
-                    <Typography variant="h5" gutterBottom sx={{ fontWeight: '700', textAlign: 'center', margin: '1rem' }}>
-                        WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 3234-D2.
+                    <Typography variant="h3" gutterBottom sx={{ fontWeight: '700', textAlign: 'center', margin: '3rem' }}>
+                        WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 3234-D2
                     </Typography>
                     Dear Members and Sevayatris, Greetings from District D3234D2!<br /><br />
 
@@ -31,6 +33,8 @@ function District() {
                     </Typography>
                 </Paper>
             </Container>
+            </Box>
+
         </>
     )
 }
