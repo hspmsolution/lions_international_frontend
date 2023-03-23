@@ -1,10 +1,11 @@
-import { Container, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
 import "./Team.css"
 function Team() {
     return (
+        <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", pb: '2rem' }}>
         <Container>
-            <Typography variant='h2' className='team-h'>Our Team</Typography>
+            <Typography variant='h2' className='team-h'>Our District Team</Typography>
             <div className="main">
                 <div className="profile-card">
                     <div className="img">
@@ -90,7 +91,7 @@ function Team() {
                 </div>
             </div>
         </Container>
-
+        </Box>
     )
 }
 

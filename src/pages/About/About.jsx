@@ -1,6 +1,6 @@
 import React from "react";
 import './about.css'
-import { Container, Typography } from "@mui/material";
+import { Avatar, Container, Typography } from "@mui/material";
 
 const About = () => {
     return (
@@ -17,7 +17,7 @@ const About = () => {
                     </div>
                     <div className="dist-governer d-flex">
                         <div>
-                            <img src={'/assets/img/logo.png'} alt="our district governer" style={{ margin: 'auto' }} />
+                            <Avatar src={'/assets/img/7.jpg'} alt="our district governer" style={{ margin: 'auto', width: '200px', height: '200px' }} />
                         </div>
                         <p style={{ textAlign: 'justify' }}>
                             <br /><br />

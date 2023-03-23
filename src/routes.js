@@ -19,6 +19,7 @@ import OrgChart from "./pages/About/orgChart/OrgChart";
 import Events from "./pages/Events/Events";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir"
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir"
+import MemberData from "./pages/Membership/MemberData/MemberData";
 
 export default function Router() {
   const route = [
@@ -34,6 +35,7 @@ export default function Router() {
         { path: "/events", element: <Events /> },
         { path: "/membership/memberdirectory", element: <MemberDir /> },
         { path: "/membership/businessdirectory", element: <BusinessDir /> },
+        { path: "/membership/downloadmemberdata", element: <MemberData /> },
       ],
     },
     { path: "/login", element: <Login /> },

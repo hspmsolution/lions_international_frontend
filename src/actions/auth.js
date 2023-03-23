@@ -1,15 +1,29 @@
-import { AUTH,  CLIENT_MSG } from "../constants/actionTypes";
+import { AUTH, CLIENT_MSG } from "../constants/actionTypes";
 import * as api from "../api";
+import decodeJWT from "../utils/jwtDecode";
 
 export const signIn = (formData, navigate) => async (dispatch) => {
   try {
     const { data, status } = await api.signIn(formData);
-    dispatch({ type: AUTH, payload:data });
+    dispatch({ type: AUTH, payload: data });
     dispatch({
       type: CLIENT_MSG,
       message: { info: data.successMessage, status },
     });
-    navigate("/dashboard");
+    const decoded = decodeJWT(data.token);
+    if (decoded.detailsRequired) {
+      dispatch({
+        type: CLIENT_MSG,
+        message: {
+          info: "Complete your basic details in profile section",
+          status: 200,
+        },
+      });
+      navigate("/dashboard/app");
+      // navigate("/profile");
+    } else {
+      navigate("/dashboard/app");
+    }
   } catch (error) {
     dispatch({
       type: CLIENT_MSG,

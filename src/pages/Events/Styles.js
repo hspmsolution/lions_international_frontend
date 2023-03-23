@@ -1,5 +1,8 @@
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
-    eventCard: {}
+    eventCard: {
+        padding: 0,
+        textAlign: 'center'
+    }
 }))
