@@ -7,6 +7,7 @@ import { Grid, Container, Typography, Icon } from '@mui/material';
 // components
 import Iconify from '../components/iconify';
 import {LocalActivity} from '@mui/icons-material';
+
 // sections
 import {
   AppTasks,
@@ -21,17 +22,21 @@ import {
 } from '../sections/@dashboard/app';
 
 // ----------------------------------------------------------------------
+
+
+
 export default function DashboardAppPage() {
+
   const theme = useTheme();
 
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Dashboard  </title>
       </Helmet>
 
-      <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
+      <Container maxWidth="xl" >
+        <Typography variant="h4" sx={{ mb: 5 }} >
           Dashboard
         </Typography>
 

@@ -123,8 +123,9 @@ export default function Nav({ openNav, onCloseNav }) {
           PaperProps={{
             sx: {
               width: NAV_WIDTH,
-              bgcolor: 'background.default',
+              backgroundColor:"#FFFFFF",
               borderRightStyle: 'dashed',
+              color:"#b4880b"
             },
           }}
         >

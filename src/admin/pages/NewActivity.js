@@ -13,13 +13,14 @@ import {
   getPlaceHolder,
   getSubtype,
 } from "../../actions/activity";
-import { CLIENT_MSG ,ACTIVITY_PLACEHOLDER} from "../../constants/actionTypes";
+import { ACTIVITY_PLACEHOLDER} from "../../constants/actionTypes";
 
 const useStyles = makeStyles({
   heading:{
       width:"25%",
-      borderBottom:"2px solid",
+      borderBottom:"2px solid #B4880B",
       color:"#003895",
+      
     
   },
   grid:{
@@ -33,10 +34,25 @@ const useStyles = makeStyles({
     alignContent: "flex-end",
     justifyContent: "flex-end",
     alignItems: "flex-end",
+    color:"#003895",
+    fontSize:'0.6em',
   },
   label:{
     "& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root":{
       fontSize:'1em',
+    }
+  },
+  btn:{
+    marginTop:"15px",
+    '& .css-12vebo6-MuiButtonBase-root-MuiButton-root':{
+      borderRadius: "0px 8px 0px 8px",
+    
+      padding: "10px 16px 10px 16px",
+    },
+    '& .css-731omg-MuiButtonBase-root-MuiButton-root':{
+      borderRadius: "0px 8px 0px 8px",
+      
+      padding: "10px 16px 10px 16px",
     }
   }
 });
@@ -133,7 +149,7 @@ export default function NewActivity() {
       onSubmit={submitDetails}
     >
       <React.Fragment>
-        <Typography variant="h6" gutterBottom className={classes.heading}>
+        <Typography variant="h5" gutterBottom className={classes.heading}>
           Basic Activity Information
         </Typography>
         <Grid container spacing={3} className={classes.grid}>
@@ -281,8 +297,8 @@ export default function NewActivity() {
           </Grid>
           </Grid>
 
-        <Divider style={{ marginTop: "16px" }} />
-        <Typography variant="h6" gutterBottom style={{ marginTop: "16px" }} className={classes.heading}>
+       
+        <Typography variant="h5" gutterBottom style={{ marginTop: "16px" }} className={classes.heading}>
           Detailed Activity Information
         </Typography>
 
@@ -449,15 +465,15 @@ export default function NewActivity() {
                
           
 
-        <Grid container justifyContent="center">
+        <Grid container justifyContent="center" >
           <Grid item xs={2}>
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" className={classes.btn} >
               Submit
             </Button>
           </Grid>
           <Grid item xs={2}>
             <Box marginLeft={1}>
-              <Button type="button" variant="outlined">
+              <Button type="button" variant="outlined" className={classes.btn} >
                 Cancel
               </Button>
             </Box>
