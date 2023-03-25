@@ -1,10 +1,10 @@
 import axios from "axios";
 
-//const API = axios.create({ baseURL: "http://localhost:5000/api" });
+const API = axios.create({ baseURL: "http://localhost:5000/api" });
 
-const API = axios.create({
-  baseURL: "https://lionsinternationalbackend-production.up.railway.app/api",
-});
+// const API = axios.create({
+//   baseURL: "https://lionsinternationalbackend-production.up.railway.app/api",
+// });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -27,3 +27,5 @@ export const getPoints=()=>API.get("adminreporting/points");
 export const addReport=(data)=>API.post("adminreporting/addreport",data);
 export const addUser=(formData)=>API.post("user/adduser",formData);
 export const Profiles=()=>API.get("user/profile");
+export const getReportedNews=()=>API.get("news/reportedNews");
+export const addNews=(formData)=>API.post("news/addNews",formData);

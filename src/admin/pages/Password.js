@@ -1,12 +1,12 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {TextField,Button, Box,Container, Paper, Typography} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { ClassNames } from '@emotion/react';
+import { signIn } from '../../actions/auth';
 
 const useStyles=makeStyles({
     root:{
@@ -32,21 +32,32 @@ const useStyles=makeStyles({
  })
 export default function Password() {
   const classes=useStyles();
+  const dispatch = useDispatch();
+    const message = useSelector((state) => state.auth.message?.info);
+  const isAdmin = useSelector((state) => state.auth.admin);
   const [disabled, setDisabled] = useState(false);
   const formik = useFormik({
     initialValues: {
-      memberId: '',
       password: '',
+      confirmPassword: '',
     },
     validationSchema: Yup.object({
       password: Yup.string().max(255).required('Password is required'),
-      confirmpassword: Yup.string().max(255).required('Confirm Password is required'),
+      confirmPassword: Yup.string().max(255).required('Confirm Password is required'),
     }),
     onSubmit: (data) => {
-      setDisabled(true);
-    },
+      setTimeout(() => {
+        dispatch(signIn(data));
+       }, 500);
+ 
+       setDisabled(true);
+     },
   });
+ 
 
+  useEffect(() => {
+    if (message) setDisabled(false);
+  }, [message]);
   return (
     <>
     <Helmet>
@@ -90,20 +101,20 @@ export default function Password() {
             variant="outlined"
           />
           <TextField
-            error={Boolean(formik.touched.confirmpassword && formik.errors.confirmpassword)}
+            error={Boolean(formik.touched.confirmPassword && formik.errors.confirmPassword)}
             fullWidth
-            helperText={formik.touched.confirmpassword && formik.errors.confirmpassword}
+            helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
             label="Confirm Password"
             margin="normal"
-            name="confirmpassword"
+            name="confirmPassword"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             type="password"
-            value={formik.values.confirmpassword}
+            value={formik.values.confirmPassword}
             variant="outlined"
           />
           <Box sx={{ py: 2 }}>
-            <Button color="primary" fullWidth size="large" type="submit" variant="contained">
+            <Button color="primary" disabled={disabled}  fullWidth size="large" type="submit" variant="contained">
               Update Password
             </Button>
           </Box>
