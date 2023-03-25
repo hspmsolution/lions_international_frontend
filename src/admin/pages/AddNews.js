@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -12,6 +12,8 @@ import {
   Box
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
+import { getReportedNews } from "../../actions/news";
 
 const rows = [
   {
@@ -24,7 +26,19 @@ const rows = [
   }
 ];
 
+
 const AddNews = () => {
+  const dispatch = useDispatch();
+  const reportedNews = useSelector((state) => state.news.reportedNews);
+  useEffect(() => {
+    dispatch(getReportedNews());
+  }, []);
+
+
+   
+
+   
+ 
   return (
     <Box bgcolor="white" p={3} borderRadius={4}>
     
@@ -44,11 +58,11 @@ Reported News
       </TableRow>
     </TableHead>
     <TableBody>
-      {rows.map((row) => (
-        <TableRow key={row.id}>
-          <TableCell component="th" scope="row">
-            {row.id}
-          </TableCell>
+    {reportedNews?.map((row, index) => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {index + 1}
+                </TableCell>
           <TableCell>{row.newsTitle}</TableCell>
           <TableCell>{row.description}</TableCell>
           <TableCell>{row.paperLink}</TableCell>

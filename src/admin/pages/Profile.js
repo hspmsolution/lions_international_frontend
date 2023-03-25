@@ -1,11 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
+import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Box, MenuItem, Button, Divider, InputAdornment } from "@mui/material";
-import "../theme/Profile.css";
 import { addUser } from "../../actions/user";
+
+const useStyles=makeStyles({
+  Btn:{
+    '& .css-12vebo6-MuiButtonBase-root-MuiButton-root':{
+      borderRadius: "0px 8px 0px 8px",
+      padding: "10px 16px 10px 16px",
+    },
+    '& .css-731omg-MuiButtonBase-root-MuiButton-root':{
+      borderRadius: "0px 8px 0px 8px",
+      padding: "10px 16px 10px 16px",
+    }
+  }
+})
+
 const gender = [
   { id: 1, name: "Male" },
   { id: 2, name: "Female" },
@@ -30,6 +44,7 @@ const userDetail = {
   gender: "",
 };
 export default function Profile() {
+  const classes=useStyles();
   const [user, setUser] = useState(userDetail);
   const dispatch=useDispatch();
 
@@ -68,7 +83,7 @@ export default function Profile() {
       borderRadius="5px"  
     >
       <Typography variant="h3">Profile</Typography>
-      <React.Fragment>
+      
         <Grid container spacing= {4}>
           <Grid item xs={12} sm= {4}>
             <TextField
@@ -189,12 +204,13 @@ export default function Profile() {
           
           <Grid item xs={12} sm= {4}>
             <TextField
-              required
+              
               id="city"
               name="city"
               value={user.city}
               label="Enter City"
               fullWidth
+              required
               variant="standard"
               onChange={handleChange}
             />
@@ -246,7 +262,7 @@ export default function Profile() {
           
         </Grid>
 
-        <Grid container justifyContent="center" marginTop={2}>
+        <Grid container justifyContent="center" marginTop={2} className={classes.Btn}>
           <Grid item xs={2}>
             <Button type="submit" variant="contained" color="primary">
               Submit
@@ -260,7 +276,6 @@ export default function Profile() {
             </Box>
           </Grid>
         </Grid>
-      </React.Fragment>
     </Box>
   );
 }

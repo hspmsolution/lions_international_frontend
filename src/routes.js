@@ -7,6 +7,7 @@ import AddActivity from "./admin/pages/AddActivity";
 import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
 import Page404 from "./admin/pages/Page404";
+import Password from "./admin/pages/Password";
 import DashboardLayout from "./admin/layouts/dashboard";
 import React from "react";
 import Home from "./pages/Home/Home";
@@ -38,6 +39,7 @@ export default function Router() {
       ],
     },
     { path: "/login", element: <Login /> },
+    {path:"/password",element:<Password/>},
     {path:'/profile',element:<Profile/>},
     {
       path: "/404",
