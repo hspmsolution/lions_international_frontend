@@ -64,14 +64,15 @@ const StepThreeForm = () => {
                         value={count}
                         name="counter"
                         onChange={(event) => {
-                          dispatch({
-                            type: UPDATE_REPORT,
-                            payload: {
-                              name: event.target.name,
-                              count: event.target.value,
-                              id,
-                            },
-                          });
+                          event.target.value >= 0 &&
+                            dispatch({
+                              type: UPDATE_REPORT,
+                              payload: {
+                                name: event.target.name,
+                                count: event.target.value,
+                                id,
+                              },
+                            });
                         }}
                       />
                     </TableCell>

@@ -13,48 +13,46 @@ import {
   getPlaceHolder,
   getSubtype,
 } from "../../actions/activity";
-import { ACTIVITY_PLACEHOLDER} from "../../constants/actionTypes";
+import { ACTIVITY_PLACEHOLDER } from "../../constants/actionTypes";
 
 const useStyles = makeStyles({
-  heading:{
-      width:"25%",
-      borderBottom:"2px solid #B4880B",
-      color:"#003895",
-      
-    
+  heading: {
+    width: "25%",
+    borderBottom: "2px solid #B4880B",
+    color: "#003895",
   },
-  grid:{
-    marginTop:"0px",
+  grid: {
+    marginTop: "0px",
     width: "80%",
   },
-  title:{
-    display:"flex",
+  title: {
+    display: "flex",
     flexDirection: "column",
     flexWrap: "nowrap",
     alignContent: "flex-end",
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    color:"#003895",
-    fontSize:'0.6em',
+    color: "#003895",
+    fontSize: "0.6em",
   },
-  label:{
-    "& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root":{
-      fontSize:'1em',
-    }
+  label: {
+    "& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root": {
+      fontSize: "1em",
+    },
   },
-  btn:{
-    marginTop:"15px",
-    '& .css-12vebo6-MuiButtonBase-root-MuiButton-root':{
+  btn: {
+    marginTop: "15px",
+    "& .css-12vebo6-MuiButtonBase-root-MuiButton-root": {
       borderRadius: "0px 8px 0px 8px",
-    
+
       padding: "10px 16px 10px 16px",
     },
-    '& .css-731omg-MuiButtonBase-root-MuiButton-root':{
+    "& .css-731omg-MuiButtonBase-root-MuiButton-root": {
       borderRadius: "0px 8px 0px 8px",
-      
+
       padding: "10px 16px 10px 16px",
-    }
-  }
+    },
+  },
 });
 const media = [
   {
@@ -75,9 +73,9 @@ const activityDetail = {
   activityType: "",
   activitySubType: "",
   activityCategory: "",
-  placeHolderValue:"",
+  placeHolderValue: "",
   place: "",
-  image:"",
+  image: "",
 };
 export default function NewActivity() {
   const classes = useStyles();
@@ -87,27 +85,26 @@ export default function NewActivity() {
   const type = useSelector((state) => state.activity.type);
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
-  const placeHolder = useSelector((state)=>state.activity.placeHolder);
+  const placeHolder = useSelector((state) => state.activity.placeHolder);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getActivity());
   }, []);
 
   const handleChange = (e) => {
-    
     const { name, value } = e.target;
     setActivity((prevData) => {
       const newData = { ...prevData, [name]: value };
       if (name === "activityType") {
         newData.activityCategory = "";
         newData.activitySubType = "";
-        newData.placeHolderValue="";
-        dispatch({type:ACTIVITY_PLACEHOLDER,payload:''})
+        newData.placeHolderValue = "";
+        dispatch({ type: ACTIVITY_PLACEHOLDER, payload: "" });
       }
       if (name === "activitySubType") {
-        newData.placeHolderValue="";
-        dispatch({type:ACTIVITY_PLACEHOLDER,payload:''})
+        newData.placeHolderValue = "";
+        dispatch({ type: ACTIVITY_PLACEHOLDER, payload: "" });
       }
       return newData;
     });
@@ -135,30 +132,23 @@ export default function NewActivity() {
     //   return;
     // }
     dispatch(addActivity(activity));
-   // setActivity(activityDetail);
+    // setActivity(activityDetail);
     setFile(null);
   };
   return (
-    <Box
-      bgcolor="white"
-      p={3}
-      borderRadius={4}
-      component="form"
-      noValidate
-      autoComplete="off"
-      onSubmit={submitDetails}
-    >
-      <React.Fragment>
+    <form onSubmit={submitDetails}>
+      <Box bgcolor="white" p={3} borderRadius={4}>
         <Typography variant="h5" gutterBottom className={classes.heading}>
           Basic Activity Information
         </Typography>
         <Grid container spacing={3} className={classes.grid}>
           <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Name </Typography>
+            <Typography>Activity Name </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} >
+          <Grid item xs={6} sm={6}>
             <TextField
               required
+              type="text"
               id="activityTitle"
               value={activity.activityTitle}
               name="activityTitle"
@@ -170,16 +160,16 @@ export default function NewActivity() {
               className={classes.label}
             />
           </Grid>
-          </Grid>
+        </Grid>
 
-
-          <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title} >
-          <Typography >Cabinet Officer Name</Typography>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Cabinet Officer Name</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
+              type="text"
               id="cabinetOfficers"
               value={activity.cabinetOfficers}
               name="cabinetOfficers"
@@ -190,11 +180,11 @@ export default function NewActivity() {
               className={classes.label}
             />
           </Grid>
-          </Grid>
+        </Grid>
 
-          <Grid container spacing={3} className={classes.grid} >
+        <Grid container spacing={3} className={classes.grid}>
           <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Date</Typography>
+            <Typography>Activity Date</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -213,12 +203,11 @@ export default function NewActivity() {
               className={classes.label}
             />
           </Grid>
-          </Grid>
+        </Grid>
 
-
-          <Grid container spacing={3} className={classes.grid}>
+        <Grid container spacing={3} className={classes.grid}>
           <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Type</Typography>
+            <Typography>Activity Type</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -241,11 +230,11 @@ export default function NewActivity() {
               ))}
             </TextField>
           </Grid>
-          </Grid>
+        </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
+        <Grid container spacing={3} className={classes.grid}>
           <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Subtype</Typography>
+            <Typography>Activity Subtype</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -268,11 +257,11 @@ export default function NewActivity() {
               ))}
             </TextField>
           </Grid>
-          </Grid>
+        </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
+        <Grid container spacing={3} className={classes.grid}>
           <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Category</Typography>
+            <Typography>Activity Category</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -282,7 +271,7 @@ export default function NewActivity() {
               name="activityCategory"
               label="Activity Category Type "
               value={activity.activityCategory}
-              onChange={(e)=>{
+              onChange={(e) => {
                 handleChange(e);
                 dispatch(getPlaceHolder(e.target.value));
               }}
@@ -295,22 +284,27 @@ export default function NewActivity() {
               ))}
             </TextField>
           </Grid>
-          </Grid>
+        </Grid>
 
-       
-        <Typography variant="h5" gutterBottom style={{ marginTop: "16px" }} className={classes.heading}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          style={{ marginTop: "16px" }}
+          className={classes.heading}
+        >
           Detailed Activity Information
         </Typography>
 
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Place</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Activity Place</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
               id="place"
               name="place"
+              type="text"
               value={activity.place}
               label="Enter Activity Place"
               fullWidth
@@ -322,10 +316,10 @@ export default function NewActivity() {
         </Grid>
 
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >People Served</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>People Served</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="placeholder"
@@ -343,15 +337,15 @@ export default function NewActivity() {
         </Grid>
 
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity City</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Activity City</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
-
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="city"
               name="city"
+              type="text"
               value={activity.city}
               label="Enter Activity Place City"
               fullWidth
@@ -363,14 +357,15 @@ export default function NewActivity() {
         </Grid>
 
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Amount Spent</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Amount Spent</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="amount"
               name="amount"
+              type="number"
               value={activity.amount}
               label="Enter Amount Spent"
               fullWidth
@@ -381,14 +376,15 @@ export default function NewActivity() {
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Lion Hours</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Lion Hours</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="lionHours"
               name="lionHours"
+              type="number"
               value={activity.lionHours}
               label="Enter Lion Hours"
               fullWidth
@@ -398,15 +394,16 @@ export default function NewActivity() {
             />
           </Grid>
         </Grid>
-        
+
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Media Coverage</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Media Coverage</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="mediaCoverage"
               select
+              required
               label=" Media Coverage"
               value={activity.mediaCoverage}
               fullWidth
@@ -422,12 +419,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-          
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Activity Description</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Activity Description</Typography>
           </Grid>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="description"
               name="description"
@@ -441,8 +437,8 @@ export default function NewActivity() {
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.grid}>
-        <Grid item xs={6} sm={6} className={classes.title}>
-          <Typography >Upload Images</Typography>
+          <Grid item xs={6} sm={6} className={classes.title}>
+            <Typography>Upload Images</Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -451,6 +447,7 @@ export default function NewActivity() {
               name="image-upload"
               label="Upload an image"
               fullWidth
+              required
               margin="normal"
               InputLabelProps={{
                 shrink: true,
@@ -458,28 +455,23 @@ export default function NewActivity() {
               className={classes.label}
             />
           </Grid>
-
         </Grid>
-         
-          
-               
-          
 
-        <Grid container justifyContent="center" >
+        <Grid container justifyContent="center">
           <Grid item xs={2}>
-            <Button type="submit" variant="contained" className={classes.btn} >
+            <Button type="submit" variant="contained" className={classes.btn}>
               Submit
             </Button>
           </Grid>
           <Grid item xs={2}>
             <Box marginLeft={1}>
-              <Button type="button" variant="outlined" className={classes.btn} >
+              <Button type="button" variant="outlined" className={classes.btn}>
                 Cancel
               </Button>
             </Box>
           </Grid>
         </Grid>
-      </React.Fragment>
-    </Box>
+      </Box>
+    </form>
   );
 }

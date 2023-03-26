@@ -13,6 +13,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 export const signIn = (formData) => API.post("auth/login", formData);
+export const resetPass=(formData)=>API.post("auth/resetpass",formData);
 export const addActivity = (formData) =>
   API.post("activity/addactivity", formData);
 export const getActivity = () => API.get("activity/type");

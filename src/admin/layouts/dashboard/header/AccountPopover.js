@@ -14,7 +14,7 @@ import {
   Popover,
 } from "@mui/material";
 // mocks_
-import account from "../../../_mock/account";
+
 
 import { LOGOUT } from "../../../../constants/actionTypes";
 // ----------------------------------------------------------------------
@@ -73,7 +73,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt={memberData?.firstName.charAt(0)} />
+        <Avatar src={memberData?.photoURL ? memberData.photoURL:memberData?.firstName.charAt(0)} alt={memberData?.firstName.charAt(0)} />
       </IconButton>
 
       <Popover
