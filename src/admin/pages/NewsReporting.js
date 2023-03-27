@@ -1,18 +1,19 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Divider } from "@mui/material";
 import News from "./News";
-import { useDispatch } from "react-redux";
 import { CLIENT_MSG } from "../../constants/actionTypes";
+import { newsReporting } from "../../actions/news";
 
 const initialData = {
   newsTitle: "",
   newsPaperLink: "",
   date: "",
   description: "",
-  image: "",
+  image: { preview: "", data: "" },
 };
 export default function NewsReporting() {
   const dispatch = useDispatch();
@@ -23,19 +24,6 @@ export default function NewsReporting() {
     setNewsData({ ...newsData, [e.target.name]: e.target.value });
   };
 
-  // Function to convert file into base64 string
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   // Function to handle file read
   const handleFileRead = async (event) => {
@@ -60,13 +48,24 @@ export default function NewsReporting() {
       event.target.value = "";
       return;
     }
-    const base64 = await convertBase64(file);
-    setNewsData({ ...newsData, image: base64 });
+    const img = {
+      preview: URL.createObjectURL(event.target.files[0]),
+      data: event.target.files[0],
+    };
+    setNewsData({ ...newsData, image: img });
   };
 
   const submitDetails = (e) => {
     e.preventDefault();
-    console.log(newsData);
+
+    const formData = new FormData();
+    formData.append("newsTitle", newsData.newsTitle);
+    formData.append("newsPaperLink", newsData.newsPaperLink);
+    formData.append("date", newsData.date);
+    formData.append("description", newsData.description);
+    formData.append("image", newsData.image.data);
+
+    dispatch(newsReporting(formData));
     setNewsData(initialData);
   };
   return (
@@ -100,7 +99,7 @@ export default function NewsReporting() {
                 label="Select Date"
                 fullWidth
                 variant="standard"
-                type="date"
+                type="datetime-local"
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -152,6 +151,9 @@ export default function NewsReporting() {
                 onChange={handleFileRead}
                 onClick={() => fileUploadRef.current.click()}
               />
+              {newsData.image.preview && (
+                <img src={newsData.image.preview} width="100" height="100" />
+              )}
             </Grid>
           </Grid>
           <Grid container justifyContent="center" spacing={2}>

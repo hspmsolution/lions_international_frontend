@@ -43,20 +43,9 @@ const Members = () => {
             autoFocus
             half
           />
-          <Input
-            name="lastName"
-            label="Last Name"
-            handleChange={handleChange}
-            half
-          />
+         
         </>
 
-        <Input
-          name="email"
-          label="Email Address"
-          handleChange={handleChange}
-          type="email"
-        />
       </Grid>
 
       <Button

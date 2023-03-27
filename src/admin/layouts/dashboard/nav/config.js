@@ -37,8 +37,18 @@ const navConfig = [
     icon: icon('ic_cart'),
   },
   {
-    title: 'Treasurer',
-    path: '/dashboard/Treasurer',
+    title: 'Expense Manager',
+    path: '/dashboard/manage-expense',
+    icon: icon('ic_lock'),
+  },
+  {
+    title: 'Zone',
+    path: '/dashboard/zone',
+    icon: icon('ic_lock'),
+  },
+  {
+    title: 'Region',
+    path: '/dashboard/region',
     icon: icon('ic_lock'),
   },
 

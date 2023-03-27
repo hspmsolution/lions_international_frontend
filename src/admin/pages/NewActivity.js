@@ -104,6 +104,7 @@ export default function NewActivity() {
       }
       if (name === "activitySubType") {
         newData.placeHolderValue = "";
+        newData.activityCategory = "";
         dispatch({ type: ACTIVITY_PLACEHOLDER, payload: "" });
       }
       return newData;
@@ -112,27 +113,7 @@ export default function NewActivity() {
 
   const submitDetails = (e) => {
     e.preventDefault();
-    // if (
-    //   !activity.activityTitle ||
-    //   !activity.city ||
-    //   !activity.date ||
-    //   !activity.cabinetOfficers ||
-    //   !activity.lionHours ||
-    //   !activity.mediaCoverage ||
-    //   !activity.peopleServed ||
-    //   !activity.activityType ||
-    //   !activity.activitySubType ||
-    //   !activity.activityCategory ||
-    //   activity.place
-    // ) {
-    //   dispatch({
-    //     type: CLIENT_MSG,
-    //     message: { info: "All Fields are required" },
-    //   });
-    //   return;
-    // }
     dispatch(addActivity(activity));
-    // setActivity(activityDetail);
     setFile(null);
   };
   return (

@@ -15,15 +15,6 @@ import { Edit, Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { getReportedNews } from "../../actions/news";
 
-const rows = [
-  {
-    id: 1,
-    newsTitle: "News Title 1",
-    description: "Description 1",
-    paperLink: "Paper Link 1",
-    date: "01/01/2022",
-  },
-];
 
 const News = () => {
   const dispatch = useDispatch();
@@ -57,7 +48,20 @@ const News = () => {
                 </TableCell>
                 <TableCell>{row.newsTitle}</TableCell>
                 <TableCell>{row.description}</TableCell>
-                <TableCell>{row.paperLink}</TableCell>
+                <TableCell>
+                  <a
+                    href={row.newsPaperLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "inherit",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {row.newsPaperLink}
+                  </a>
+                </TableCell>
+
                 <TableCell>{row.date}</TableCell>
                 <TableCell>
                   <IconButton aria-label="edit" color="primary">

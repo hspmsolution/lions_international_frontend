@@ -74,7 +74,7 @@ export default function Router() {
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 {path:"members",element:<Members/>},
-                {path:"treasurer",element:<Treasurer/>}
+                {path:"manage-expense",element:<Treasurer/>}
               ],
             },
           ]
