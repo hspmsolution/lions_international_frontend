@@ -36,7 +36,7 @@ const Login = () => {
   useEffect(() => {
     dispatch({ type: ADMIN });
    if(isAdmin)navigate('/dashboard/app')
-  }, [isAdmin]);
+  }, []);
 
   useEffect(() => {
     if (message) setDisabled(false);

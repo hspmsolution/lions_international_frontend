@@ -4,9 +4,9 @@ import {
   } from "../constants/actionTypes";
   import * as api from "../api";
 
-export const addNews = (formData) => async (dispatch) => {
+export const newsReporting = (formData) => async (dispatch) => {
     try {
-      const { data, status } = await api.addNews(formData);
+      const { data, status } = await api.newsReporting(formData);
       dispatch({
         type: CLIENT_MSG,
         message: { info: data.successMessage, status },

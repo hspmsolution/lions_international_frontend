@@ -11,11 +11,6 @@ const navConfig = [
     path: '/dashboard/app',
     icon: icon('ic_analytics'),
   },
-  // {
-  //   title: 'user',
-  //   path: '/dashboard/user',
-  //   icon: icon('ic_user'),
-  // },
   {
     title: 'Activities',
     path: '/dashboard/activity',
@@ -41,22 +36,27 @@ const navConfig = [
     path: '/dashboard/news',
     icon: icon('ic_cart'),
   },
+  {
+    title: 'Expense Manager',
+    path: '/dashboard/manage-expense',
+    icon: icon('ic_lock'),
+  },
+  {
+    title: 'Zone',
+    path: '/dashboard/zone',
+    icon: icon('ic_lock'),
+  },
+  {
+    title: 'Region',
+    path: '/dashboard/region',
+    icon: icon('ic_lock'),
+  },
 
   {
     title: 'Members',
-    path: '/dashboard/member',
+    path: '/dashboard/members',
     icon: icon('ic_lock'),
   },
-  // {
-  //   title: 'Not found',
-  //   path: '/404',
-  //   icon: icon('ic_disabled'),
-  // },
-  // {
-  //   title: 'register',
-  //   path: '/register',
-  //   icon: icon('ic_disabled'),
-  // },
 ];
 
 export default navConfig;

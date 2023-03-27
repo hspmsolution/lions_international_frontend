@@ -12,15 +12,17 @@ export const signIn = (formData, navigate) => async (dispatch) => {
     });
     const decoded = decodeJWT(data.token);
     if (decoded.detailsRequired) {
-      dispatch({
-        type: CLIENT_MSG,
-        message: {
-          info: "Complete your basic details in profile section",
-          status: 200,
-        },
-      });
-      navigate("/dashboard/app");
-      // navigate("/profile");
+      setTimeout(() => {
+        dispatch({
+          type: CLIENT_MSG,
+          message: {
+            info: "Reset Your Password",
+            status: 200,
+          },
+        });
+      }, 0);
+
+      navigate("/password");
     } else {
       navigate("/dashboard/app");
     }
@@ -36,45 +38,32 @@ export const signIn = (formData, navigate) => async (dispatch) => {
   }
 };
 
-// export const signup = (formData, navigate) => async (dispatch) => {
-//   try {
-//     const { data, status } = await api.signUp(formData);
-//     dispatch({
-//       type: CLIENT_MSG,
-//       message: { info: data.successMessage, status },
-//     });
-//     if (data.successMessage === "Account created Successfully") {
-//       dispatch({ type: AUTH, data });
-//       navigate("/login");
-//     }
-//   } catch (error) {
-//     dispatch({
-//       type: CLIENT_MSG,
-//       message: {
-//         info: error.response.data?.message,
-//         status: error.response.status,
-//       },
-//     });
-//     console.log(error);
-//   }
-// };
+export const resetPass = (formData, navigate) => async (dispatch) => {
+  try {
+    const { data, status } = await api.resetPass(formData);
 
-// export const resetPassword = (formData, navigate) => async (dispatch) => {
-//   try {
-//     const { data, status } = await api.resetPassword(formData);
-
-//     dispatch({
-//       type: CLIENT_MSG,
-//       message: { info: data.successMessage, status },
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: CLIENT_MSG,
-//       message: {
-//         info: error.response.data?.message,
-//         status: error.response.status,
-//       },
-//     });
-//     console.log(error);
-//   }
-// };
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+    navigate("/profile");
+    setTimeout(() => {
+      dispatch({
+        type: CLIENT_MSG,
+        message: {
+          info: "Complete your basic details in profile section",
+          status: 200,
+        },
+      });
+    }, 0);
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
