@@ -17,7 +17,7 @@ export default function ProfileCard(props) {
     ];
 
     return (
-            <Card sx={{ minWidth: 275, height: 500, maxWidth: 300, margin: '10px' }}>
+            <Card sx={{ minWidth: 275, height: 480, maxWidth: 300, margin: '10px' }}>
                 <CardContent className={classes.cardContent}>
                     <div className={classes.cardHeaders}>
                         <Avatar
@@ -29,9 +29,6 @@ export default function ProfileCard(props) {
                         </Avatar>
                         <Typography variant="h5" color="text.secondary" component="div" className={classes.content}>
                             {name}
-                        </Typography>
-                        <Typography variant='subtitle' color="text.secondary" gutterBottom className={classes.content}>
-                            example@gmail.com
                         </Typography>
                     </div>
                     <Box

@@ -2,8 +2,11 @@
   width: 100% !important;
 }
 
-.imgSlider > .dPuulS{
+.imgSlider > article {
   width:100% !important
+}
+.imgSlider > svg {
+  color: #fff !important;
 }
 
 .imgSlider > article > .epKbGN >
@@ -21,6 +24,10 @@
 
 .epKbGN {
   top: 50% !important;
+}
+
+.imgSlide {
+  height: -webkit-fill-available;
 }
 
 .imgSlide:before{
