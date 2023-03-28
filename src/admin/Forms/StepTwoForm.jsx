@@ -29,7 +29,7 @@ const StepTwoForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const reports = useSelector((state) => state.adminReporting.adminReports);
- 
+
   return (
     <div>
       <Typography variant="h5" gutterBottom>
@@ -63,14 +63,15 @@ const StepTwoForm = () => {
                         value={count}
                         name="counter"
                         onChange={(event) => {
-                          dispatch({
-                            type: UPDATE_REPORT,
-                            payload: {
-                              name: event.target.name,
-                              count: event.target.value,
-                              id,
-                            },
-                          });
+                          event.target.value >= 0 &&
+                            dispatch({
+                              type: UPDATE_REPORT,
+                              payload: {
+                                name: event.target.name,
+                                count: event.target.value,
+                                id,
+                              },
+                            });
                         }}
                       />
                     </TableCell>

@@ -28,7 +28,7 @@ const myNav = [
     title: "About",
     menuItems: [ 'Governor', 'DG Team', 'About District 317F', 'Organization Chart' ]
   },
-  { title: "Events" },
+  { title: "Activities" },
   {
     title: "Membership",
     menuItems: [ 'Member Directory', 'Business Directory', 'Download Member Data' ]

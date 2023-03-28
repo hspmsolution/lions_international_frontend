@@ -20,6 +20,7 @@
 .counters > div > div {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .count, .count h3 {

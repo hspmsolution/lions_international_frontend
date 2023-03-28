@@ -1,10 +1,16 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000/api" });
+const ROOT_URL = window.location.href;
+const rootUrlRegex = /http:\/\/localhost:3000\/*/gm;
 
-// const API = axios.create({
-//   baseURL: "https://lionsinternationalbackend-production.up.railway.app/api",
-// });
+let API_URL;
+if (rootUrlRegex.test(ROOT_URL)) {
+  API_URL = "http://localhost:5000/api" ;
+} else {
+  API_URL = "https://lionsinternationalbackend-production.up.railway.app/api";
+}
+
+const API = axios.create({ baseURL:API_URL });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -13,6 +19,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 export const signIn = (formData) => API.post("auth/login", formData);
+export const resetPass=(formData)=>API.post("auth/resetpass",formData);
 export const addActivity = (formData) =>
   API.post("activity/addactivity", formData);
 export const getActivity = () => API.get("activity/type");
@@ -28,4 +35,4 @@ export const addReport=(data)=>API.post("adminreporting/addreport",data);
 export const addUser=(formData)=>API.post("user/adduser",formData);
 export const Profiles=()=>API.get("user/profile");
 export const getReportedNews=()=>API.get("news/reportedNews");
-export const addNews=(formData)=>API.post("news/addNews",formData);
+export const newsReporting=(formData)=>API.post("news/newsReporting",formData);

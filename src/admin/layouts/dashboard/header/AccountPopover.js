@@ -14,7 +14,7 @@ import {
   Popover,
 } from "@mui/material";
 // mocks_
-import account from "../../../_mock/account";
+
 
 import { LOGOUT } from "../../../../constants/actionTypes";
 // ----------------------------------------------------------------------
@@ -37,19 +37,14 @@ export default function AccountPopover() {
 
   const MENU_OPTIONS = [
     {
-      label: 'Home',
-      icon: 'eva:home-fill',
-      nav: handleClose
-    },
-    {
       label: 'Profile',
       icon: 'eva:person-fill',
       nav: () => navigate('/profile'),
     },
     {
-      label: 'Settings',
+      label: 'Change Password',
       icon: 'eva:settings-2-fill',
-      nav: handleClose
+      nav:() => navigate('/password')
     },
   ];
   
@@ -73,7 +68,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={account.photoURL} alt={memberData?.firstName.charAt(0)} />
+        <Avatar src={memberData?.photoURL ? memberData.photoURL:memberData?.firstName.charAt(0)} alt={memberData?.firstName.charAt(0)} />
       </IconButton>
 
       <Popover

@@ -47,49 +47,53 @@ const StepFourForm = () => {
           </TableHead>
 
           <TableBody>
-            {reports.map(({ id, title, multiple, selected, count }, index) => (
+            {reports.map(
+              ({ id, title, multiple, selected, count }, index) =>
                 index + 1 > 30 &&
-                index + 1 <= 40 && <TableRow key={id}>
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{title}</TableCell>
+                index + 1 <= 40 && (
+                  <TableRow key={id}>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{title}</TableCell>
 
-                <TableCell>
-                  <TextField
-                    disabled={multiple === 0}
-                    type="number"
-                    value={count}
-                    name="counter"
-                    onChange={(event) => {
-                      dispatch({
-                        type: UPDATE_REPORT,
-                        payload: {
-                          name: event.target.name,
-                          count: event.target.value,
-                          id,
-                        },
-                      });
-                    }}
-                  />
-                </TableCell>
+                    <TableCell>
+                      <TextField
+                        disabled={multiple === 0}
+                        type="number"
+                        value={count}
+                        name="counter"
+                        onChange={(event) => {
+                          event.target.value >= 0 &&
+                            dispatch({
+                              type: UPDATE_REPORT,
+                              payload: {
+                                name: event.target.name,
+                                count: event.target.value,
+                                id,
+                              },
+                            });
+                        }}
+                      />
+                    </TableCell>
 
-                <TableCell className={classes.checkbox}>
-                  <Checkbox
-                    checked={selected}
-                    name="checkbox"
-                    onChange={(event) => {
-                      dispatch({
-                        type: UPDATE_REPORT,
-                        payload: {
-                          name: event.target.name,
-                          selected: event.target.checked,
-                          id,
-                        },
-                      });
-                    }}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
+                    <TableCell className={classes.checkbox}>
+                      <Checkbox
+                        checked={selected}
+                        name="checkbox"
+                        onChange={(event) => {
+                          dispatch({
+                            type: UPDATE_REPORT,
+                            payload: {
+                              name: event.target.name,
+                              selected: event.target.checked,
+                              id,
+                            },
+                          });
+                        }}
+                      />
+                    </TableCell>
+                  </TableRow>
+                )
+            )}
           </TableBody>
         </Table>
       </TableContainer>

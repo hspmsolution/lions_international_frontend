@@ -6,6 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { Container } from "@mui/material";
 import { Box } from "@mui/material";
+import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 
 const muiCache = createCache({
   key: "mui-datatables",
@@ -14,10 +15,9 @@ const muiCache = createCache({
 
 export default function MemberDir() {
   const responsive = "simple";
-  const tableBodyHeight = "400px";
   const tableBodyMaxHeight = "";
   const searchBtn = true;
-  const downloadBtn = true;
+  const downloadBtn = false;
   const printBtn = false;
   const viewColumnBtn = false;
   const filterBtn = true;
@@ -39,7 +39,6 @@ export default function MemberDir() {
     filterType: "dropdown",
     responsive,
     selectableRows: 'none', // Disable the checkbox column
-    tableBodyHeight,
     tableBodyMaxHeight,
     onTableChange: (action, state) => {
       console.log(action);
@@ -48,7 +47,7 @@ export default function MemberDir() {
   };
 
   const data = [
-    [1,"Lion Member", "Gabby George", "himym", "Business Analyst"],
+    [1, "Lion Member", "Gabby George", "himym", "Business Analyst"],
     [
       2,
       "Past District Governor",
@@ -69,20 +68,22 @@ export default function MemberDir() {
   ];
 
   return (
-    <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
-
-    <Container sx={{ my: '3rem' }}>
-      <CacheProvider value={muiCache}>
-        <ThemeProvider theme={createTheme()}>
-          <MUIDataTable
-            title={"Member Directory"}
-            data={data}
-            columns={columns}
-            options={options}
-          />
-        </ThemeProvider>
-      </CacheProvider>
-    </Container>
-    </Box>
+    <div className="memberTable">
+      <Box sx={{ background: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', py: '1rem' }}>
+        <CustomizedBreadcrumbs />
+        <Container sx={{ my: '3rem' }}>
+          <CacheProvider value={muiCache}>
+            <ThemeProvider theme={createTheme()}>
+              <MUIDataTable
+                // title={"Member Directory"}
+                data={data}
+                columns={columns}
+                options={options}
+              />
+            </ThemeProvider>
+          </CacheProvider>
+        </Container>
+      </Box>
+    </div>
   );
 }
