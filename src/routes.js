@@ -8,6 +8,8 @@ import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
+import Treasurer from "./admin/pages/Treasurer";
+
 import DashboardLayout from "./admin/layouts/dashboard";
 import React from "react";
 import Home from "./pages/Home/Home";
@@ -20,7 +22,6 @@ import Events from "./pages/Events/Events";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir"
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir"
 import MemberData from "./pages/Membership/MemberData/MemberData";
-
 export default function Router() {
   const route = [
     {
@@ -58,6 +59,9 @@ export default function Router() {
         { path: "news", element: <NewsReport /> },
         { path: "admin", element: <AdminReport /> },
         { path: "pastactivity", element: <AddActivity /> },
+        {path:"expenses",element:<Treasurer/>},
+        
+        
       ],
     },
   ];
