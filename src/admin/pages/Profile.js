@@ -1,13 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { Box, MenuItem, Button, Divider, InputAdornment } from "@mui/material";
+import { Box, MenuItem, Button } from "@mui/material";
 import { addUser } from "../../actions/user";
 
 const useStyles=makeStyles({
+ 
   Btn:{
     '& .css-12vebo6-MuiButtonBase-root-MuiButton-root':{
       borderRadius: "0px 8px 0px 8px",
@@ -17,6 +18,15 @@ const useStyles=makeStyles({
       borderRadius: "0px 8px 0px 8px",
       padding: "10px 16px 10px 16px",
     }
+  }
+  ,
+  box:{
+    margin:"5%",
+    backgroundImage:"url('assets/img/bg.avif')",
+    backgroundSize:"cover",
+    backgroundRepeat:"no-repeat",
+
+   
   }
 })
 
@@ -29,7 +39,6 @@ const gender = [
 
 const userDetail = {
   firstName: "",
-  middleName: "",
   lastName: "",
   address1: "",
   address2: "",
@@ -45,12 +54,37 @@ const userDetail = {
 };
 export default function Profile() {
   const classes=useStyles();
+  const [errors, setErrors] = useState({});
   const [user, setUser] = useState(userDetail);
   const dispatch=useDispatch();
 
+const validate=()=>{
+
+  let temp = {...errors};
+  if ('firstName' in userDetail)
+    temp.firstName = userDetail.firstName ? '' : 'This field is required.';
+  if ('lastName' in userDetail)
+    temp.lastName=userDetail.lastName ? '': 'This field is required.';
+
+    if ('email' in userDetail) {
+      temp.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userDetail.email)
+        ? ''
+        : 'Email is not valid.';
+    }
+
+  if ('phone' in userDetail)
+    temp.phone =
+    userDetail.phone.length > 6
+        ? ''
+        : 'Minimum 6 numbers required.';
+    setErrors(temp);
+   return Object.values(temp).every((x) => x === '');
+
+  };
+
   useEffect(()=>{
     dispatch(addUser);
-  },[])
+  },[dispatch,user])
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -59,12 +93,14 @@ export default function Profile() {
   };
   const submitDetails = (e) => {
     e.preventDefault();
-    dispatch(addUser(user));
-    setUser(userDetail);
+    if (validate()) {
+      dispatch(addUser(user));
+    }
   };
 
   return (
-    <Box
+   <div className={classes.root}>
+     <Box
       bgcolor="white"
       p= {4}
       component="form"
@@ -81,6 +117,7 @@ export default function Profile() {
       marginRight="5%"
       marginTop= "5%"
       borderRadius="5px"  
+      className={classes.box}
     >
       <Typography variant="h3">Profile</Typography>
       
@@ -96,6 +133,8 @@ export default function Profile() {
               autoComplete="given-name"
               onChange={handleChange}
               variant="standard"
+              error={!!errors.firstName}
+              helperText={errors.firstName}
             />
           </Grid>
           <Grid item xs={12} sm= {4}>
@@ -108,6 +147,8 @@ export default function Profile() {
               fullWidth
               onChange={handleChange}
               variant="standard"
+              error={!!errors.lastName}
+              helperText={errors.lastName}
             />
           </Grid>
           <Grid item xs={12} sm= {4}>
@@ -121,6 +162,8 @@ export default function Profile() {
               fullWidth
               onChange={handleChange}
               variant="standard"
+              error={!!errors.email}
+              helperText={errors.email}
             />
           </Grid>
           <Grid item xs={12} sm= {4}>
@@ -134,6 +177,8 @@ export default function Profile() {
               fullWidth
               variant="standard"
               onChange={handleChange}
+              error={!!errors.phone}
+              helperText={errors.phone}
             />
           </Grid>
           <Grid item xs={12} sm= {4}>
@@ -277,5 +322,6 @@ export default function Profile() {
           </Grid>
         </Grid>
     </Box>
+   </div>
   );
 }

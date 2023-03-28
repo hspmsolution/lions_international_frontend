@@ -7,6 +7,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import { makeStyles } from '@mui/styles';
 import {LocalActivity,AdminPanelSettings,Newspaper} from '@mui/icons-material';
+import RegionalView from "./RegionalView.js";
+import ZonalView from './ZonalView.js';
 // ----------------------------------------------------------------------
 
 const useStyles=makeStyles({
@@ -96,7 +98,8 @@ export default function DashboardAppPage() {
   
 
 
-    
+    <RegionalView/>
+    <ZonalView/>
     </>
   );
 }
