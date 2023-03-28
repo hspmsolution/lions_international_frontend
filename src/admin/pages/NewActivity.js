@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { Box, MenuItem, Button, Divider } from "@mui/material";
+import { CLIENT_MSG } from "../../constants/actionTypes";
+import { Box, MenuItem, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import {
@@ -75,13 +76,12 @@ const activityDetail = {
   activityCategory: "",
   placeHolderValue: "",
   place: "",
-  image: "",
+  image: { preview: "", data: "" },
 };
 export default function NewActivity() {
   const classes = useStyles();
+  const fileUploadRef = useRef();
   const [activity, setActivity] = useState(activityDetail);
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState("");
   const type = useSelector((state) => state.activity.type);
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
@@ -90,6 +90,7 @@ export default function NewActivity() {
 
   useEffect(() => {
     dispatch(getActivity());
+    // eslint-disable-next-line
   }, []);
 
   const handleChange = (e) => {
@@ -113,9 +114,56 @@ export default function NewActivity() {
 
   const submitDetails = (e) => {
     e.preventDefault();
-    dispatch(addActivity(activity));
-    setFile(null);
+
+    const formData = new FormData();
+    formData.append("amount", activity.amount);
+    formData.append("activityTitle", activity.activityTitle);
+    formData.append("city", activity.city);
+    formData.append("date", activity.date);
+    formData.append("cabinetOfficers", activity.cabinetOfficers);
+    formData.append("description", activity.description);
+    formData.append("lionHours", activity.lionHours);
+    formData.append("mediaCoverage", activity.mediaCoverage);
+    formData.append("activityType", activity.activityType);
+    formData.append("activitySubType", activity.activitySubType);
+    formData.append("activityCategory", activity.activityCategory);
+    formData.append("placeHolderValue", activity.placeHolderValue);
+    formData.append("place", activity.place);
+    formData.append("image", activity.image.data);
+
+    dispatch(addActivity(formData));
   };
+
+  // Function to handle file read
+  const handleFileRead = async (event) => {
+    const file = event.target.files[0];
+    // Check file size
+    if (file.size > 500000) {
+      dispatch({
+        type: CLIENT_MSG,
+        message: {
+          info: "Please choose a file smaller than 500kb",
+          status: 400,
+        },
+      });
+      event.target.value = "";
+      return;
+    }
+    if (file.type !== "application/pdf" && file.type !== "image/jpeg") {
+      dispatch({
+        type: CLIENT_MSG,
+        message: { info: "file type not supported", status: 400 },
+      });
+      event.target.value = "";
+      return;
+    }
+    const img = {
+      preview: URL.createObjectURL(event.target.files[0]),
+      data: event.target.files[0],
+    };
+    setActivity({ ...activity, image: img });
+  };
+
   return (
     <form onSubmit={submitDetails}>
       <Box bgcolor="white" p={3} borderRadius={4}>
@@ -423,18 +471,27 @@ export default function NewActivity() {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              ref={fileUploadRef}
               type="file"
               id="image-upload"
-              name="image-upload"
-              label="Upload an image"
+              name="image"
+              label="Upload Photo"
               fullWidth
               required
               margin="normal"
+              className={classes.label}
               InputLabelProps={{
                 shrink: true,
               }}
-              className={classes.label}
+              inputProps={{
+                accept: "image/jpeg,image/png",
+              }}
+              onChange={handleFileRead}
+              onClick={() => fileUploadRef.current.click()}
             />
+            {activity.image.preview && (
+              <img src={activity.image.preview} width="100" height="100" />
+            )}
           </Grid>
         </Grid>
 

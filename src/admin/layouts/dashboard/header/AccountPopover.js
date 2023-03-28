@@ -37,19 +37,14 @@ export default function AccountPopover() {
 
   const MENU_OPTIONS = [
     {
-      label: 'Home',
-      icon: 'eva:home-fill',
-      nav: handleClose
-    },
-    {
       label: 'Profile',
       icon: 'eva:person-fill',
       nav: () => navigate('/profile'),
     },
     {
-      label: 'Settings',
+      label: 'Change Password',
       icon: 'eva:settings-2-fill',
-      nav: handleClose
+      nav:() => navigate('/password')
     },
   ];
   
