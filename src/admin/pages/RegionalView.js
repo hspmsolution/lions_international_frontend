@@ -1,4 +1,5 @@
 import React from "react";
+import DashboardAppPage from './DashboardAppPage';
 import {
   Table,
   TableBody,
@@ -12,7 +13,7 @@ import {
   Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-// import { Check, Close } from "@mui/icons-material";
+
 
 const useStyles=makeStyles({
     title:{
@@ -31,6 +32,8 @@ const Rows = [
 export default function RegionalView() {
     const classes=useStyles();
   return (
+    <>
+    <DashboardAppPage/>
     <Box bgcolor="white" p={3} borderRadius={4} marginTop={10}>
         <Typography variant="h4"  className={classes.title} >Regional View</Typography>
       {[1, 2, 3, 4].map((zone) => (
@@ -65,5 +68,6 @@ export default function RegionalView() {
         </Box>
       ))}
     </Box>
+    </>
   );
 }
