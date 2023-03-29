@@ -46,7 +46,7 @@ export const resetPass = (formData, navigate) => async (dispatch) => {
       type: CLIENT_MSG,
       message: { info: data.successMessage, status },
     });
-    navigate("/profile");
+    navigate("/dashboard/edit-profile");
     setTimeout(() => {
       dispatch({
         type: CLIENT_MSG,

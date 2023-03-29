@@ -12,12 +12,12 @@ import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
-import Treasurer from "./admin/pages/Treasurer";
-
 import DashboardLayout from "./admin/layouts/dashboard";
 import Members from "./admin/pages/Members";
 import Treasurer from "./admin/pages/Treasurer";
-
+import News from "./admin/pages/News";
+import ZonalView from "./admin/pages/ZonalView";
+import RegionalView from "./admin/pages/RegionalView";
 
 
 import Home from "./pages/Home/Home";
@@ -30,15 +30,15 @@ import Events from "./pages/Events/Events";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir";
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
 import MemberData from "./pages/Membership/MemberData/MemberData";
+
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
-  const role = useSelector((state) => state.auth.authData?.title);
+  const role = useSelector((state) => state.auth.role);
   const [routes, setRoutes] = useState([]);
   useEffect(() => {
     setRoutes([
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
-      { path: "/profile", element: <Profile /> },
       {
         path: "/404",
         element: <Page404 />,
@@ -47,6 +47,17 @@ export default function Router() {
         path: "*",
         element: <Navigate to="/404" replace />,
       },
+      ...(isAdmin
+      ? [
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [
+              { path: "edit-profile", element: <Profile /> },
+            ],
+          },
+        ]
+      : []),
       {
         path: "/",
         element: <UserLayout />,
@@ -63,7 +74,7 @@ export default function Router() {
         ],
       },
 
-      ...(isAdmin
+      ...(role?.includes("Club Treasurer") || role?.includes("Club Secretary") || role?.includes("Club President")
         ? [
             {
               path: "/dashboard",
@@ -75,7 +86,45 @@ export default function Router() {
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 {path:"members",element:<Members/>},
-                {path:"manage-expense",element:<Treasurer/>}
+                role.includes("Club Treasurer") && {path:"manage-expense",element:<Treasurer/>}
+              ],
+            },
+          ]
+        : []),
+
+        ...(role?.includes("lion member") || isAdmin
+        ? [
+            {
+              path: "/dashboard",
+              element: <DashboardLayout />,
+              children: [
+                { path: "app", element: <DashboardAppPage /> },
+                { path: "pastactivity", element: <PastActivity /> },
+                { path: "news", element: <News/> }, 
+                {path:"members",element:<Members/>},
+                
+              ],
+            },
+          ]
+        : []),
+        ...(role?.includes("Region Chairperson")
+        ? [
+            {
+              path: "/dashboard",
+              element: <DashboardLayout />,
+              children: [
+                { path: "region", element: <RegionalView /> },  
+              ],
+            },
+          ]
+        : []),
+        ...(role?.includes("Zone Chairperson")
+        ? [
+            {
+              path: "/dashboard",
+              element: <DashboardLayout />,
+              children: [
+                { path: "zone", element: <ZonalView/> },  
               ],
             },
           ]

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../api";
 // @mui
 import { alpha } from "@mui/material/styles";
 import {
@@ -14,7 +15,6 @@ import {
   Popover,
 } from "@mui/material";
 // mocks_
-
 
 import { LOGOUT } from "../../../../constants/actionTypes";
 // ----------------------------------------------------------------------
@@ -34,20 +34,26 @@ export default function AccountPopover() {
     setOpen(null);
   };
 
-
   const MENU_OPTIONS = [
     {
-      label: 'Profile',
-      icon: 'eva:person-fill',
-      nav: () => navigate('/profile'),
+      label: "Profile",
+      icon: "eva:person-fill",
+      nav: () => {
+        navigate("/dashboard/edit-profile");
+        handleClose();
+      },
     },
     {
-      label: 'Change Password',
-      icon: 'eva:settings-2-fill',
-      nav:() => navigate('/password')
+      label: "Change Password",
+      icon: "eva:settings-2-fill",
+      nav: () => navigate("/password"),
+    },
+    {
+      label: "Back to Website",
+      icon: "eva:settings-2-fill",
+      nav: () => navigate("/"),
     },
   ];
-  
 
   return (
     <>
@@ -68,7 +74,14 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={memberData?.photoURL ? memberData.photoURL:memberData?.firstName.charAt(0)} alt={memberData?.firstName.charAt(0)} />
+        <Avatar
+          src={
+            memberData?.picture
+              ? API_URL + memberData.picture
+              : memberData?.firstName.charAt(0)
+          }
+          alt={memberData?.firstName.charAt(0)}
+        />
       </IconButton>
 
       <Popover

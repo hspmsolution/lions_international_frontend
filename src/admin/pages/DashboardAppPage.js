@@ -91,15 +91,6 @@ export default function DashboardAppPage() {
           </Paper>
           
         </Grid>
-
-      
- 
- 
-  
-
-
-    <RegionalView/>
-    <ZonalView/>
     </>
   );
 }
