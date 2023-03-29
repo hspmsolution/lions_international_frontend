@@ -1,105 +1,152 @@
-import { Helmet } from 'react-helmet-async';
-import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
-import {  Container, Typography, Icon } from '@mui/material';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
-import { makeStyles } from '@mui/styles';
-import {LocalActivity,AdminPanelSettings,Newspaper} from '@mui/icons-material';
+import { Helmet } from "react-helmet-async";
+import { styled } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+import { Container, Typography, Icon, CardHeader, Card } from "@mui/material";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Unstable_Grid2";
+import { makeStyles } from "@mui/styles";
+import {
+  LocalActivity,
+  AdminPanelSettings,
+  Newspaper,
+} from "@mui/icons-material";
 import RegionalView from "./RegionalView.js";
-import ZonalView from './ZonalView.js';
+import ZonalView from "./ZonalView.js";
 // ----------------------------------------------------------------------
 
-const useStyles=makeStyles({
-  root:{
-    display:"flex",
-    justifyContent:"space-around",
+const useStyles = makeStyles({
+  root: {
+    display: "flex",
+    justifyContent: "space-around",
   },
-  card:{
-   
-   minWidth:"10%",
-    minHeight:"10%",
-    display :"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    flexDirection:"row",
+  paper: {
+    margin: "20px",
+    width: "200px",
+    borderRadius: "50px 0",
   },
-  box:{
-    fontSize:"1em",
-    display:"flex",
-    flexDirection: "row-reverse",
+  box: {
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
     flexWrap: "wrap",
-    alignContent: "flex-start",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     alignItems: "center",
   },
-  paper:{
-    marginTop:"20px",
-    backgroundColor:"#6F42C1",
-    color:"#fff",
-  },
-  title:{
-    color:"#fff",
-
-  }
-})
-
+});
 
 export default function DashboardAppPage() {
-  const classes=useStyles();
+  const classes = useStyles();
   const theme = useTheme();
 
   return (
     <>
       <Helmet>
-        <title> Dashboard  </title>
+        <title> Dashboard </title>
       </Helmet>
-        <Typography variant="h4" sx={{ mb: 5 }} >
-          Dashboard
-        </Typography>
-       
-      <Grid container spacing={4} className={classes.root}>
-        
-          <Paper elevation={3} className={classes.paper}>
-          <Grid xs={6}   className={classes.card}>
-          <Icon> <LocalActivity/></Icon>
-             <Grid item xs={6}  className={classes.box}>
-               <Typography variant="h6" className={classes.title}>Activities Reporting</Typography>
-                <Typography variant="h6"  className={classes.title}>10</Typography>
-             </Grid>
-          </Grid>
-          </Paper>
+      <Typography variant="h4" sx={{ mb: 5 }}>
+        Dashboard
+      </Typography>
 
-          <Paper elevation={3} className={classes.paper}>
-          <Grid xs={6}   className={classes.card}>
-          <Icon> <AdminPanelSettings/></Icon>
-             <Grid item xs={6}  className={classes.box}>
-               <Typography variant="h6" className={classes.title}>Admin Reporting    </Typography>
-                <Typography variant="h6"  className={classes.title}>20</Typography>
-             </Grid>
-          </Grid>
-          </Paper>
-          <Paper elevation={3} className={classes.paper}>
-          <Grid xs={6}   className={classes.card}>
-          <Icon> <Newspaper/></Icon>
-             <Grid item xs={6}  className={classes.box}>
-               <Typography variant="h6" className={classes.title}>News Reporting   </Typography>
-                <Typography variant="h6"  className={classes.title}>8</Typography>
-             </Grid>
-          </Grid>
-          </Paper>
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Paper elevation={3} className={classes.paper}>
+          <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
+            {" "}
+            <LocalActivity
+              sx={{ width: "2em", height: "2em", color: "#05B0E9" }}
+            />
+          </Icon>
+          <Typography
+            variant="h6"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              color: "#05B0E9",
+            }}
+          >
+            Activty Reporting{" "}
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              backgroundColor: "#05B0E9",
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              borderRadius: "0 0 50px",
+            }}
+          >
+            8
+          </Typography>
+        </Paper>
+        <Paper elevation={3} className={classes.paper}>
+          <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
           
-        </Grid>
+            <AdminPanelSettings
+              sx={{ width: "2em", height: "2em", color: "#05B0E9" }}
+            />
+          </Icon>
+          <Typography
+            variant="h6"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              color: "#05B0E9",
+            }}
+          >
+            Admin Reporting{" "}
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              backgroundColor: "#05B0E9",
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              borderRadius: "0 0 50px",
+            }}
+          >
+            8
+          </Typography>
+        </Paper>
+        <Paper elevation={3} className={classes.paper}>
+          <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
+           
+            <Newspaper sx={{ width: "2em", height: "2em", color: "#05B0E9" }} />
+          </Icon>
+          <Typography
+            variant="h6"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              color: "#05B0E9",
+            }}
+          >
+            News Reporting{" "}
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              backgroundColor: "#05B0E9",
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              borderRadius: "0 0 50px",
+            }}
+          >
+            8
+          </Typography>
+        </Paper>
+      </Box>
 
-      
- 
- 
-  
-
-
-    <RegionalView/>
-    <ZonalView/>
+      <RegionalView />
+      <ZonalView />
     </>
   );
 }

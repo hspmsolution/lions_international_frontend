@@ -10,16 +10,12 @@ import AdminReport from "./admin/pages/AdminReport";
 import PastActivity from "./admin/pages/PastActivity";
 import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
+import UserData from './admin/pages/UserData';
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
-import Treasurer from "./admin/pages/Treasurer";
-
 import DashboardLayout from "./admin/layouts/dashboard";
 import Members from "./admin/pages/Members";
 import Treasurer from "./admin/pages/Treasurer";
-
-
-
 import Home from "./pages/Home/Home";
 import UserLayout from "./components/UserLayout";
 import About from "./pages/About/About";
@@ -30,6 +26,7 @@ import Events from "./pages/Events/Events";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir";
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
 import MemberData from "./pages/Membership/MemberData/MemberData";
+
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
   const role = useSelector((state) => state.auth.authData?.title);
@@ -39,6 +36,7 @@ export default function Router() {
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
       { path: "/profile", element: <Profile /> },
+      {path:"users",element:<UserData/>},
       {
         path: "/404",
         element: <Page404 />,
@@ -75,6 +73,7 @@ export default function Router() {
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 {path:"members",element:<Members/>},
+             
                 {path:"manage-expense",element:<Treasurer/>}
               ],
             },

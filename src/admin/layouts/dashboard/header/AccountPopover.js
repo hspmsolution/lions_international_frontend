@@ -39,7 +39,7 @@ export default function AccountPopover() {
     {
       label: 'Profile',
       icon: 'eva:person-fill',
-      nav: () => navigate('/profile'),
+      nav: () => navigate('/users'),
     },
     {
       label: 'Change Password',
