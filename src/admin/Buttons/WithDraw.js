@@ -11,7 +11,19 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { makeStyles } from '@mui/styles';
+
+const useStyles=makeStyles({
+  textField:{
+    '& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root':{
+      position:'relative',
+    },
+  }
+
+})
+
 export default function WithDraw() {
+  const classes=useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -33,14 +45,17 @@ export default function WithDraw() {
          <form>
 
          <TextField
-            autoFocus
+         className={classes.textField}
+            required
             id="date"
             label="Date Of Expence"
             type="date"
             fullWidth
             variant="outlined"
+            
           />
           <TextField
+          required
             autoFocus
             margin="dense"
             id="Amount"
@@ -50,6 +65,7 @@ export default function WithDraw() {
             variant="outlined"
           />
           <TextField
+          required
             autoFocus
             margin="dense"
             id="purpose"
@@ -69,13 +85,15 @@ export default function WithDraw() {
                 <FormControlLabel value="cheque" control={<Radio />} label="Cheque" />
             </RadioGroup>
             </FormControl>
-         </form>
+          
 
-        </DialogContent>
+    
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type='submit'>Submit</Button>
         </DialogActions>
+        </form>
+        </DialogContent>
       </Dialog>
     </div>
   );

@@ -36,6 +36,9 @@ export default function AccountPopover() {
 
   const MENU_OPTIONS = [
     {
+      label: 'Profile',
+      icon: 'eva:person-fill',
+      nav: () => navigate('/users'),
       label: "Profile",
       icon: "eva:person-fill",
       nav: () => {

@@ -58,13 +58,14 @@ export default function Deposite() {
             fullWidth
             variant="outlined"
           />
-         </form>
-          
-        </DialogContent>
+      
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type='submit'>Submit</Button>
         </DialogActions>
+        </form>
+          
+          </DialogContent>
       </Dialog>
     </div>
   );

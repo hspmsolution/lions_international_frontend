@@ -11,7 +11,16 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { makeStyles } from '@mui/styles';
+
+
+const useStyles=makeStyles({
+    Btn:{
+      margin:'10px',
+    }
+})
 export default function Expense() {
+  const classes=useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -24,7 +33,7 @@ export default function Expense() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen} className={classes.Btn}>
       Expense
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -69,13 +78,14 @@ export default function Expense() {
                 <FormControlLabel value="cheque" control={<Radio />} label="Cheque" />
             </RadioGroup>
             </FormControl>
-         </form>
-
-        </DialogContent>
+       
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type='submit'>Submit</Button>
         </DialogActions>
+        </form>
+
+</DialogContent>
       </Dialog>
     </div>
   );

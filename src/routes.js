@@ -10,6 +10,7 @@ import AdminReport from "./admin/pages/AdminReport";
 import PastActivity from "./admin/pages/PastActivity";
 import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
+import UserData from './admin/pages/UserData';
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
 import DashboardLayout from "./admin/layouts/dashboard";
@@ -31,6 +32,7 @@ import MemberDir from "./pages/Membership/MemberDir/MemberDir";
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
 import MemberData from "./pages/Membership/MemberData/MemberData";
 
+
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
   const role = useSelector((state) => state.auth.role);
@@ -39,6 +41,7 @@ export default function Router() {
     setRoutes([
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
+      {path:"users",element:<UserData/>},
       {
         path: "/404",
         element: <Page404 />,
@@ -86,6 +89,7 @@ export default function Router() {
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 {path:"members",element:<Members/>},
+             
                 role.includes("Club Treasurer") && {path:"manage-expense",element:<Treasurer/>}
               ],
             },
