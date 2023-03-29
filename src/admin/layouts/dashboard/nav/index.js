@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { API_URL } from "../../../../api";
 // @mui
 import { styled, alpha } from "@mui/material/styles";
 import {
@@ -22,7 +23,6 @@ import Logo from "../../../components/logo";
 import Scrollbar from "../../../components/scrollbar";
 import NavSection from "../../../components/nav-section";
 //
-
 
 // ----------------------------------------------------------------------
 
@@ -72,7 +72,11 @@ export default function Nav({ openNav, onCloseNav }) {
         <Link underline="none">
           <StyledAccount>
             <Avatar
-              src={memberData?.photoURL ?memberData.photoURL:memberData?.firstName.charAt(0)}
+              src={
+                memberData?.picture
+                  ? API_URL + memberData.picture
+                  : memberData?.firstName.charAt(0)
+              }
               alt={memberData?.firstName.charAt(0)}
             />
 

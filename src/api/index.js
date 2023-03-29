@@ -3,7 +3,7 @@ import axios from "axios";
 const ROOT_URL = window.location.href;
 const rootUrlRegex = /http:\/\/localhost:3000\/*/gm;
 
-let API_URL;
+export let API_URL;
 if (rootUrlRegex.test(ROOT_URL)) {
   API_URL = "http://localhost:5000/api" ;
 } else {
@@ -32,7 +32,7 @@ export const getReportedActivity=()=>API.get("activity/reportedactivity");
 export const getAdminReports=(month)=>API.get(`adminreporting/reports?month=${month}`);
 export const getPoints=()=>API.get("adminreporting/points");
 export const addReport=(data)=>API.post("adminreporting/addreport",data);
-export const addUser=(formData)=>API.post("user/adduser",formData);
-export const Profiles=()=>API.get("user/profile");
+export const updateMember=(formData)=>API.post("member/updateprofile",formData);
+export const memberProfile=()=>API.get("member/profile");
 export const getReportedNews=()=>API.get("news/reportedNews");
 export const newsReporting=(formData)=>API.post("news/newsReporting",formData);

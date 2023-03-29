@@ -1,4 +1,5 @@
 import React from 'react'
+import DashboardAppPage from './DashboardAppPage';
 import {
     Table,
     TableBody,
@@ -31,7 +32,8 @@ export default function ZonalView() {
     const classes=useStyles();
 
   return (
-
+    <>
+   <DashboardAppPage/>
    <Box bgcolor="white" p={3} borderRadius={4} marginTop={10}>
      <Typography variant="h4" gutterBottom className={classes.title}  >Zonal View</Typography>
      <TableContainer component={Paper}>
@@ -60,6 +62,6 @@ export default function ZonalView() {
     </Table>
   </TableContainer>
    </Box>
- 
+   </>
   )
 }

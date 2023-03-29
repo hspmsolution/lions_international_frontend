@@ -475,7 +475,7 @@ export default function NewActivity() {
               type="file"
               id="image-upload"
               name="image"
-              label="Upload Photo"
+              label="Upload Photo less than 500kb"
               fullWidth
               required
               margin="normal"
