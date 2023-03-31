@@ -46,13 +46,6 @@ const PastActivity = () => {
             Add New
           </Button>
         </Grid>
-        <Grid item xs={6} style={{ textAlign: "right" }}>
-          <Box>
-            <Button type="button" variant="outlined">
-              Print
-            </Button>
-          </Box>
-        </Grid>
       </Grid>
       <Grid
         container

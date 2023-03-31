@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { styled } from '@mui/material/styles';
+
 import {
   Table,
   TableBody,
@@ -11,10 +13,31 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { tableCellClasses } from '@mui/material/TableCell';
+
 import { Edit, Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { getReportedNews } from "../../actions/news";
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 const News = () => {
   const dispatch = useDispatch();
@@ -31,24 +54,24 @@ const News = () => {
       <TableContainer component={Paper}>
         <Table aria-label="news table">
           <TableHead>
-            <TableRow>
-              <TableCell>Sr No.</TableCell>
-              <TableCell>News Title</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Paper Link</TableCell>
-              <TableCell>Date</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
+            <StyledTableRow>
+              <StyledTableCell>Sr No.</StyledTableCell>
+              <StyledTableCell>News Title</StyledTableCell>
+              <StyledTableCell>Description</StyledTableCell>
+              <StyledTableCell>Paper Link</StyledTableCell>
+              <StyledTableCell>Date</StyledTableCell>
+              <StyledTableCell>Action</StyledTableCell>
+            </StyledTableRow>
           </TableHead>
           <TableBody>
             {reportedNews?.map((row, index) => (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
+              <StyledTableRow key={row.id}>
+                <StyledTableCell component="th" scope="row">
                   {index + 1}
-                </TableCell>
-                <TableCell>{row.newsTitle}</TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell>
+                </StyledTableCell>
+                <StyledTableCell>{row.newsTitle}</StyledTableCell>
+                <StyledTableCell>{row.description}</StyledTableCell>
+                <StyledTableCell>
                   <a
                     href={row.newsPaperLink}
                     target="_blank"
@@ -60,18 +83,18 @@ const News = () => {
                   >
                     {row.newsPaperLink}
                   </a>
-                </TableCell>
+                </StyledTableCell>
 
-                <TableCell>{row.date}</TableCell>
-                <TableCell>
+                <StyledTableCell>{row.date}</StyledTableCell>
+                <StyledTableCell>
                   <IconButton aria-label="edit" color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton aria-label="delete" color="error">
                     <Delete />
                   </IconButton>
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </StyledTableRow>
             ))}
           </TableBody>
         </Table>

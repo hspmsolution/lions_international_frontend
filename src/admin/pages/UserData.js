@@ -1,9 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
 
 import Typography from "@mui/material/Typography";
-import { Avatar, Icon ,Box,Paper,Grid} from "@mui/material";
+import { Avatar, Icon ,Box,Paper,Grid,Card,CardContent, Button, IconButton} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Groups,Email,Phone ,Event,LocationCity} from "@mui/icons-material";
+import { Groups,Email,Phone ,Event,LocationCity, PhoneAndroid, Group, NumbersRounded, PostAdd, Person, Edit} from "@mui/icons-material";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
 
 const useStyles = makeStyles({
   cardHeaders: {
@@ -36,8 +42,39 @@ const useStyles = makeStyles({
 });
 
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
+function createData(name, calories,icon) {
+  return { name, calories,icon };
+}
+
+const rows = [
+  createData('Name', 159,<Person/>),
+  createData('Email', 356,<Phone/>),
+  createData('Contact', 356,<PhoneAndroid/>),
+  createData('Club Name', 237,<Group/>),
+  createData('Club Id', 262,<NumbersRounded/>),
+  createData('Designation', 305,<PostAdd/>),
+  
+];
 
 export default function UserData() {
   const classes = useStyles();
@@ -55,60 +92,35 @@ export default function UserData() {
           >
           </Avatar>
         </div>
+        
+        <TableContainer component={Paper}>
         <Box dividers sx={{display: "flex",
     flexWrap:'wrap',
     alignItems: "center",
     justifyItems: "center",
     justifyContent: "flex-end",
     padding:'10px',}}>
-          <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Groups />
-            </Icon>
-            <Typography> Name </Typography>
-          </div>
-          <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Email />
-            </Icon>
-            <Typography>Email </Typography>
-          </div>
-          <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Phone />
-            </Icon>
-            <Typography>Contact </Typography>
-          </div>
+          <Button sx={{fontSize:'1.25rem'}}><Edit/>Edit Profile</Button>
         </Box>
-        <Box sx={{display:'flex'}}>
-        <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Event />
-            </Icon>
-            <Typography>Club Name </Typography>
-          </div>
-          <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Event />
-            </Icon>
-            <Typography>Designation </Typography>
-          </div>
-        <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <Event />
-            </Icon>
-            <Typography>Date Of Birth </Typography>
-          </div>
-          <div className={classes.subheading}>
-            <Icon className={classes.icon}>
-              <LocationCity />
-            </Icon>
-            <Typography>City</Typography>
-          </div>
-        </Box>
-
+  <Table sx={{ minWidth: 700 }} aria-label="customized table">
+    <TableBody>
+      {rows.map((row) => (
+        <StyledTableRow key={row.name}>
+          <StyledTableCell component="th" scope="row" display="flex" alignItems="center" justifyContent='flex-start'>
+            <div style={{ display: "flex", alignItems: "center",justifyContent:'flex-start',marginLeft: 'auto'
+    ,width:' 23% '}}>
+              {row.icon} 
+              <span style={{ marginLeft: "5px" }}>{row.name}</span>
+            </div>
+          </StyledTableCell>
+          <StyledTableCell width="50%" align="left">{row.calories}</StyledTableCell>
+        </StyledTableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
       </Paper>
-      <Box></Box>
+    
     </>
   );
 }

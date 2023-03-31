@@ -10,7 +10,7 @@ import AdminReport from "./admin/pages/AdminReport";
 import PastActivity from "./admin/pages/PastActivity";
 import Login from "./admin/pages/login";
 import Profile from "./admin/pages/Profile";
-import UserData from './admin/pages/UserData';
+ import UserData from './admin/pages/UserData';
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
 import DashboardLayout from "./admin/layouts/dashboard";
