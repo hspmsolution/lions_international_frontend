@@ -7,6 +7,47 @@ import { Box, Button, Divider } from "@mui/material";
 import News from "./News";
 import { CLIENT_MSG } from "../../constants/actionTypes";
 import { newsReporting } from "../../actions/news";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  heading: {
+    width: "25%",
+    borderBottom: "2px solid #B4880B",
+    color: "#003895",
+  },
+  grid: {
+    marginTop: "0px",
+    width: "80%",
+  },
+  title: {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "nowrap",
+    alignContent: "flex-end",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    color: "#003895",
+    fontSize: "0.6em",
+  },
+  label: {
+    "& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root": {
+      fontSize: "1em",
+    },
+  },
+  btn: {
+    marginTop: "15px",
+    "& .css-12vebo6-MuiButtonBase-root-MuiButton-root": {
+      borderRadius: "0px 8px 0px 8px",
+
+      padding: "10px 16px 10px 16px",
+    },
+    "& .css-731omg-MuiButtonBase-root-MuiButton-root": {
+      borderRadius: "0px 8px 0px 8px",
+
+      padding: "10px 16px 10px 16px",
+    },
+  },
+});
 
 const initialData = {
   newsTitle: "",
@@ -16,6 +57,7 @@ const initialData = {
   image: { preview: "", data: "" },
 };
 export default function NewsReporting() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const fileUploadRef = useRef();
   const [newsData, setNewsData] = useState(initialData);
@@ -23,7 +65,6 @@ export default function NewsReporting() {
   const handleChange = (e) => {
     setNewsData({ ...newsData, [e.target.name]: e.target.value });
   };
-
 
   // Function to handle file read
   const handleFileRead = async (event) => {
@@ -72,10 +113,13 @@ export default function NewsReporting() {
     <>
       <form onSubmit={submitDetails}>
         <Box bgcolor="white" p={3} borderRadius={4}>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom className={classes.heading}>
             News Information
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={6} sm={6} className={classes.title}>
+              <Typography>Title Of News</Typography>
+            </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 required
@@ -88,7 +132,14 @@ export default function NewsReporting() {
                 autoComplete="given-name"
                 variant="standard"
                 onChange={handleChange}
+                className={classes.label}
               />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={6} sm={6} className={classes.title}>
+              <Typography>Date Of News</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -104,7 +155,14 @@ export default function NewsReporting() {
                   shrink: true,
                 }}
                 onChange={handleChange}
+                className={classes.label}
               />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={6} sm={6} className={classes.title}>
+              <Typography>News Paper Link</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -117,7 +175,14 @@ export default function NewsReporting() {
                 fullWidth
                 variant="standard"
                 onChange={handleChange}
+                className={classes.label}
               />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={6} sm={6} className={classes.title}>
+              <Typography>Description of News</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -130,7 +195,14 @@ export default function NewsReporting() {
                 fullWidth
                 required
                 onChange={handleChange}
+                className={classes.label}
               />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={6} sm={6} className={classes.title}>
+              <Typography>Phographs of News</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -156,23 +228,23 @@ export default function NewsReporting() {
               )}
             </Grid>
           </Grid>
-          <Grid container justifyContent="center" spacing={2}>
-            <Grid item xs={3}>
-              <Button type="submit" variant="contained" color="primary">
-                Submit
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Box marginLeft={1}>
-                <Button type="button" variant="outlined">
-                  Cancel
-                </Button>
-              </Box>
-            </Grid>
+          <Grid container justifyContent="center">
+          <Grid item xs={2}>
+            <Button type="submit" variant="contained" className={classes.btn}>
+              Submit
+            </Button>
           </Grid>
+          <Grid item xs={2}>
+            <Box marginLeft={1}>
+              <Button type="button" variant="outlined" className={classes.btn}>
+                Cancel
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
         </Box>
       </form>
-      <Divider />
+   
       <News></News>
     </>
   );

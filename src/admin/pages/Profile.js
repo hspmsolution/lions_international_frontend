@@ -27,8 +27,8 @@ const useStyles = makeStyles({
     },
   },
   box: {
-    margin: "5%",
-    backgroundImage: "url('assets/img/bg.avif')",
+    margin: "1em",
+    backgroundImage: "url('/assets/img/bg.avif')",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   },
@@ -123,13 +123,16 @@ export default function Profile() {
           justifyContent="center"
           alignItems="center"
           mx="auto"
-          marginLeft="5%"
-          marginRight="5%"
-          marginTop="5%"
           borderRadius="5px"
           className={classes.box}
         >
-          <Card
+          <Typography varient='h6'sx={{
+              color: "#003895",
+              fontWeight:'700',
+              fontSize:'1.5em'
+
+          }} >Profile</Typography>
+          {/* <Card
             sx={{
               maxWidth: 345,
             }}
@@ -165,7 +168,7 @@ export default function Profile() {
             <CardActions>
               <Button size="small">Share</Button>
             </CardActions>
-          </Card>
+          </Card> */}
 
           <Grid container spacing={4}>
             <Grid item xs={12} sm={4}>
