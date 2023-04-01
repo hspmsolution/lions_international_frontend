@@ -1,4 +1,5 @@
-import * as React from "react";
+import  React,{useEffect} from "react";
+import { useSelector,useDispatch } from "react-redux";
 import {
   Table,
   TableBody,
@@ -11,6 +12,7 @@ import {
 } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
+import { getClubMembers } from "../../actions/member";
 
 const useStyles=makeStyles({
   Grid:{
@@ -66,6 +68,12 @@ const rows=[
 
 export default function Members() {
   const classes=useStyles();
+  const dispatch=useDispatch();
+  const clubMembers=useSelector((state)=>state.clubMembers.members)
+  useEffect(() => {
+    dispatch(getClubMembers());
+  }, [])
+  
   return (
     <Box bgcolor={"white"} p={3} borderRadius={4}>
       
@@ -81,15 +89,15 @@ export default function Members() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {clubMembers.map((row, index) => (
             <TableRow key={row.id}>
               <TableCell align="center" component="th" scope="row">
                 {index + 1}
               </TableCell>
               <TableCell align="left">{row.title}</TableCell>
-              <TableCell align="left">{row.FullName}</TableCell>
-              <TableCell align="left">{row.ClubName}</TableCell>
-              <TableCell align="left">{row.DOB}</TableCell>
+              <TableCell align="left">{row.firstName+" "+row.lastName}</TableCell>
+              <TableCell align="left">{row.clubName}</TableCell>
+              <TableCell align="left">{row.dob.substring(0,10)}</TableCell>
             </TableRow>
           ))}
         </TableBody>

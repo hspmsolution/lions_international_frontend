@@ -14,7 +14,6 @@ import UserData from './admin/pages/UserData';
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
 import DashboardLayout from "./admin/layouts/dashboard";
-import Members from "./admin/pages/Members";
 import Treasurer from "./admin/pages/Treasurer";
 import News from "./admin/pages/News";
 import ZonalView from "./admin/pages/ZonalView";
@@ -88,7 +87,7 @@ export default function Router() {
                 { path: "news", element: <NewsReporting /> },
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
-                {path:"members",element:<Members/>},
+              
              
                 role.includes("Club Treasurer") && {path:"manage-expense",element:<Treasurer/>}
               ],
@@ -105,7 +104,7 @@ export default function Router() {
                 { path: "app", element: <DashboardAppPage /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 { path: "news", element: <News/> }, 
-                {path:"members",element:<Members/>},
+               
                 
               ],
             },

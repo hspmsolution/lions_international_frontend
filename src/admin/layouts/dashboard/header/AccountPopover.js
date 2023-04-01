@@ -47,11 +47,6 @@ export default function AccountPopover() {
       },
     },
     {
-      label: "Change Password",
-      icon: "eva:settings-2-fill",
-      nav: () => navigate("/password"),
-    },
-    {
       label: "Back to Website",
       icon: "eva:settings-2-fill",
       nav: () => navigate("/"),

@@ -83,13 +83,6 @@ export default function NavSection({ ...other }) {
       icon: icon("ic_lock"),
       isClick: false,
     },
-
-    {
-      title: "Members",
-      path: "/dashboard/members",
-      icon: icon("ic_lock"),
-      isClick: false,
-    },
   ];
 
   const [navConfig, setNavConfig] = useState(config);

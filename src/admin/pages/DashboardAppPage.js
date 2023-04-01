@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import { Container, Typography, Icon, CardHeader, Card } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
+import Members from "./Members.js";
 import { makeStyles } from "@mui/styles";
 import {
   LocalActivity,
@@ -144,9 +144,7 @@ export default function DashboardAppPage() {
           </Typography>
         </Paper>
       </Box>
-
-      <RegionalView />
-      <ZonalView />
+      <Members/>
     </>
   );
 }
