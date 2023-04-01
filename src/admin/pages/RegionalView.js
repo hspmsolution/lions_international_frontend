@@ -1,5 +1,4 @@
 import React from "react";
-import DashboardAppPage from './DashboardAppPage';
 import {
   Table,
   TableBody,

@@ -10,8 +10,6 @@ import {
   AdminPanelSettings,
   Newspaper,
 } from "@mui/icons-material";
-import RegionalView from "./RegionalView.js";
-import ZonalView from "./ZonalView.js";
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles({
