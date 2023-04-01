@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import { styled } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
-import { Container, Typography, Icon, CardHeader, Card } from "@mui/material";
+import {  Typography, Icon, CardHeader, Card } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Members from "./Members.js";
