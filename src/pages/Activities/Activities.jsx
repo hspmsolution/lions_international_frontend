@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import useStyles from './Styles';
+import Register from './Register';
 
 function ResponsiveDialog() {
     const [open, setOpen] = React.useState(false);
@@ -22,14 +23,22 @@ function ResponsiveDialog() {
         setOpen(true);
     };
 
+    
+    const [showRegister, setShowRegister] = React.useState(false);
+    
+    const handleClick = () => {
+        setShowRegister(true);
+    };
+    
     const handleClose = () => {
         setOpen(false);
+        setShowRegister(false);
     };
 
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen}>
-                Open Event Details
+                Open Activity Details
             </Button>
             <Dialog
                 fullScreen={fullScreen}
@@ -39,7 +48,7 @@ function ResponsiveDialog() {
             // sx={{ display: 'flex', justifyContent: 'center' }}
             >
                 <DialogTitle id="responsive-dialog-title">
-                    {"Past/Upcoming Event by Club"}
+                    {"Past/Upcoming Activities by Club"}
                 </DialogTitle>
                 <Paper variant="outlined" sx={{ width: '30vw', padding: '0rem', margin: 'auto' }}>
                     <img src="/assets/img/helpingLions.jpg" alt='helping' style={{ width: '100%' }} />
@@ -60,9 +69,10 @@ function ResponsiveDialog() {
                     <Button autoFocus onClick={handleClose}>
                         Close
                     </Button>
-                    <Button onClick={handleClose} autoFocus>
+                    <Button onClick={handleClick} autoFocus>
                         Register
                     </Button>
+                    {showRegister && <Register />}
                 </DialogActions>
             </Dialog>
         </div>
@@ -73,10 +83,10 @@ function BasicCard(title, bgImage) {
     const classes = useStyles();
 
     return (
-        <Card sx={{ minWidth: 275, maxWidth: 520 }}>
+        <Card sx={{ minWidth: 275, maxWidth: 520, margin: 'auto' }}>
             <CardContent className={classes.eventCard}>
-                <Box sx={{ width: '100%', height: '15rem', mb: '3rem' }}>
-                    <img src='/assets/img/helpingLions.jpg' />
+                <Box sx={{ width: '100%', height: '16rem', mb: '1rem' }}>
+                    <img src='/assets/img/helpingLions.jpg' style={{ height: '100%', width: '100%' }} />
                 </Box>
                 <ResponsiveDialog />
             </CardContent>
@@ -104,7 +114,7 @@ export default function Events() {
         <>
             <Container sx={{ margin: '5rem auto' }}>
                 <Typography variant='h4' sx={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    Events
+                    Activities
                 </Typography>
 
                 <Grid container spacing={2}>

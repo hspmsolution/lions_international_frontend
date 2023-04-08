@@ -7,11 +7,11 @@ const About = () => {
         <>
             <div className="aboutGov">
                 <Container>
-                    <div style={{ textAlign: 'center'}}>
-                        <Typography variant="h3">
+                    <div style={{ textAlign: 'center' }}>
+                        <Typography variant="h4">
                             Ln. CA Abhay Shastri
                         </Typography>
-                        <Typography variant="h4">
+                        <Typography variant="h5">
                             District Governor
                         </Typography>
                     </div>
@@ -21,7 +21,7 @@ const About = () => {
                         </div>
                         <p style={{ textAlign: 'justify' }}>
                             <br /><br />
-                            <b>  Dear Members and Sevayatris,<br />
+                            <b> Dear Members and Sevayatris,<br />
                                 Greetings from District D3234D2!</b><br /><br />
 
                             Hearty welcome to this website, welcome from 6600 plus members, welcome from a Lions District
