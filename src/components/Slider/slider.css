@@ -30,6 +30,10 @@
   height: -webkit-fill-available;
 }
 
+.imgSlide > img {
+  object-fit: cover;
+}
+
 .imgSlide:before{
   background: rgba(0, 0, 0, .5);
   position: absolute;

@@ -9,7 +9,11 @@ export default makeStyles(() => ({
         backgroundAttachment: 'fixed',
         display: 'flex',
         color: 'white',
+        position: 'relative',
     },
     breadcrumb: {
+        position: 'absolute',
+        bottom: '15px',
+        right: '20px',
     }
 }))

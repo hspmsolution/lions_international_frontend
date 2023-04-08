@@ -5,6 +5,7 @@ import "./Footer.css";
 import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { faCube } from "@fortawesome/free-solid-svg-icons";
 
 const quickLinks = ["Events", "Privacy Policies", "Terms & Conditions"];
 const contact = ["123-456-7890", "example@gmail.com"];
@@ -77,7 +78,7 @@ function Footer() {
       </Container>
       <Container sx={{ textAlign: 'center',mb: '1.5rem' }}>
         <Typography variant='subtitle2'>Copyright 2023 ©  All rights reserved. |
-          Designe & Developed by <b>HSPM Solutions LLP.</b></Typography>
+          Designe & Developed by <FontAwesomeIcon icon={faCube} /> <b>HSPM Solutions LLP.</b></Typography>
       </Container>
     </Box>
   )

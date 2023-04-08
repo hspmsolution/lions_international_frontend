@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     minHeight: '80vh',
-    alignItems:'center',
+    alignItems: 'center',
   },
   cardContent: {
     display: 'grid',
@@ -17,20 +17,31 @@ export default makeStyles((theme) => ({
     display: 'grid',
     alignItems: 'center',
     justifyItems: 'center',
-    gap:'0.5em',
+    gap: '3.5em',
   },
-  avatar:{
+  avatar: {
     width: '100px',
     height: '100px',
   },
   socialIcons: {
     textAlign: 'center',
     '& a': {
-        color: '#3d4750',
-        margin: '10px',
-        padding: '5px',
-        backgroundColor: '#cdcdcd',
-        borderRadius: '5px'
+      color: '#3d4750',
+      margin: '10px',
+      padding: '5px',
+      backgroundColor: '#cdcdcd',
+      borderRadius: '5px'
     }
-}
+  },
+  avatarBg: {
+    height: '50%',
+    width: '100%',
+    backgroundImage: "url('https://unsplash.imgix.net/45/ZLSw0SXxThSrkXRIiCdT_DSC_0345.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=857f07b76abac23a7fb7161cc7b12a46')",
+    backgroundSize: 'cover',
+  },
+  contentList: {
+    '& .MuiListItem-root': {
+      padding: '0',
+    }
+  }
 }));
