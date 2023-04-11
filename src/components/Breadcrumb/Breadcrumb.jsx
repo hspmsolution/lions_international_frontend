@@ -32,13 +32,21 @@ function handleClick(event) {
     console.info('You clicked a breadcrumb.');
 }
 
-export default function CustomizedBreadcrumbs() {
+export default function CustomizedBreadcrumbs({label, subLabel}) {
     const classes = useStyles();
     const navigate = useNavigate();
 
     return (
         <div role="presentation" onClick={handleClick} className={classes.breadcrumbCont}>
-            <Typography variant='h4'>Member Directory</Typography>
+            <Typography 
+                variant='h4'
+                sx={{
+                    position: 'absolute',
+                    transform: 'translateX(-50%)',
+                    left: '50%',
+                    top: '2rem'
+                }}
+            >{subLabel}</Typography>
             <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumb}>
                 <StyledBreadcrumb
                     component="a"
@@ -47,8 +55,8 @@ export default function CustomizedBreadcrumbs() {
                     icon={<HomeIcon fontSize="small" />}
                     onClick={() => navigate('/')}
                 />
-                <StyledBreadcrumb component="a" href="#" label="Membership" />
-                <StyledBreadcrumb component="a" href="#" label="Member Directory" />
+                <StyledBreadcrumb component="a" href="#" label={label} />
+                <StyledBreadcrumb component="a" href="#" label={subLabel} />
             </Breadcrumbs>
         </div>
     );

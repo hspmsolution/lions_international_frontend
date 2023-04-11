@@ -69,9 +69,9 @@ export default function MemberDir() {
 
   return (
     <div className="memberTable">
-      <Box sx={{ background: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', py: '1rem' }}>
-        <CustomizedBreadcrumbs />
-        <Container sx={{ my: '3rem' }}>
+      <Box sx={{ background: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
+        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Member Directory'} />
+        <Container sx={{ py: '5rem' }}>
           <CacheProvider value={muiCache}>
             <ThemeProvider theme={createTheme()}>
               <MUIDataTable
