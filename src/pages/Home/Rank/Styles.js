@@ -26,6 +26,6 @@ export default makeStyles((theme) => ({
         textAlign: 'center',
         wordSpacing: '1px',
         letterSpacing: '2px',
-        color: '#c50000',    
+        color: '#c50000',
     }
 }))

@@ -45,8 +45,7 @@ export default function Activities() {
             gap: 1,
             minWidth: '50%',
             borderRadius: 'sm',
-            height: '60vh',
-            padding: '1rem'
+            padding: '2rem 2rem 4rem'
           }}
         >
           <Typography variant='h4' className={classes.activeH}>Past Activities</Typography>
@@ -63,7 +62,7 @@ export default function Activities() {
                           src={`${item.src}?w=120&fit=crop&auto=format`}
                           srcSet={`${item.src}?w=120&fit=crop&auto=format&dpr=2 2x`}
                           alt={item.title}
-                          style={{ width: '100%', height: '200px' }}
+                          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                         />
                       </Box>
                       <Typography variant='h6'>{item.title}</Typography>
@@ -84,8 +83,7 @@ export default function Activities() {
             gap: 1,
             minwidth: '50%',
             borderRadius: 'sm',
-            height: '60vh',
-            padding: '1rem'
+            padding: '2rem 2rem 4rem'
           }}
         >
           <Typography variant='h4' className={classes.activeH}>Upcoming Activities</Typography>
@@ -102,7 +100,7 @@ export default function Activities() {
                           src={`${item.src}?w=120&fit=crop&auto=format`}
                           srcSet={`${item.src}?w=120&fit=crop&auto=format&dpr=2 2x`}
                           alt={item.title}
-                          style={{ width: '100%', height: '200px' }}
+                          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                         />
                       </Box>
                       <Typography variant='h6'>{item.title}</Typography>

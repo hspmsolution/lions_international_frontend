@@ -12,9 +12,9 @@ const Item = styled(Paper)(({ theme }) => ({
 function DGTeam() {
     return (
         <>
-            <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
+            <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', py: '2rem' }}>
 
-            <div className='dgTeam' style={{ fontFamily: "'Aboreto', cursive" }}>DG Team</div>
+            <div className='dgTeam' style={{ fontFamily: "'Aboreto', cursive", color: '#c50000' }}>DG Team</div>
             <Grid container spacing={2}>
                 <Grid item xs={10} className='gov'>
                     <Item className='item'>

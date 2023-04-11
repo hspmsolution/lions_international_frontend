@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUniversalAccess, faHandHoldingDollar, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faUniversalAccess, faHandHoldingDollar, faCoins, faUsers } from '@fortawesome/free-solid-svg-icons'
 import CountUp from 'react-countup';
-import './counter.css'
+import './counter.css';
 
 function EventCounter({ event }) {
     return (
@@ -29,7 +29,7 @@ function EventCounter({ event }) {
 const events = [
     { name: "Total Activities", start: 100, end: 9590, icon:<FontAwesomeIcon icon={faUsers} /> },
     { name: "Amount Raised", start: 100000, end: 96783787, icon:<FontAwesomeIcon icon={faHandHoldingDollar} /> },
-    { name: "Amount Spent", start: 100000, end: 96783787, icon:<FontAwesomeIcon icon={faHandHoldingDollar} /> },
+    { name: "Amount Spent", start: 100000, end: 96783787, icon:<FontAwesomeIcon icon={faCoins} /> },
     { name: "Total Clubs", start: 10, end: 128, icon:<img src={'/assets/img/lion.ico'} alt="Lion Icon" style={{width: '60%'}} /> },
     { name: "Beneficiaries Served", start: 10000, end: 4210402, icon:<FontAwesomeIcon icon={faUniversalAccess} /> },
 ]

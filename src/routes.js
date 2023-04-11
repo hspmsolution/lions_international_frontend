@@ -26,10 +26,13 @@ import About from "./pages/About/About";
 import DGTeam from "./pages/About/dgTeam/DGTeam";
 import District from "./pages/About/district/District";
 import OrgChart from "./pages/About/orgChart/OrgChart";
-import Events from "./pages/Events/Events";
+import Activities from "./pages/Activities/Activities";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir";
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
 import MemberData from "./pages/Membership/MemberData/MemberData";
+import News from "./pages/Resources/News/News";
+import GalleryR from "./pages/Resources/Gallery/Gallery";
+import Priorities from "./pages/Resources/Priorities/Priorities";
 
 
 export default function Router() {
@@ -70,10 +73,13 @@ export default function Router() {
           { path: "/about/dgteam", element: <DGTeam /> },
           { path: "/about/aboutdistrict317F", element: <District /> },
           { path: "/about/organizationchart", element: <OrgChart /> },
-          { path: "/events", element: <Events /> },
+          { path: "/activities", element: <Activities /> },
           { path: "/membership/memberdirectory", element: <MemberDir /> },
           { path: "/membership/businessdirectory", element: <BusinessDir /> },
           { path: "/membership/downloadmemberdata", element: <MemberData /> },
+          { path: "/resources/news", element: <News /> },
+          { path: "/resources/gallery", element: <GalleryR /> },
+          { path: "/resources/globalpriorities", element: <Priorities /> },
         ],
       },
 
