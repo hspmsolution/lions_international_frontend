@@ -9,12 +9,11 @@ import DashboardAppPage from "./admin/pages/DashboardAppPage";
 import AdminReport from "./admin/pages/AdminReport";
 import PastActivity from "./admin/pages/PastActivity";
 import Login from "./admin/pages/login";
-import Profile from "./admin/pages/Profile";
- import UserData from './admin/pages/UserData';
+import EditProfile from "./admin/pages/EditProfile";
+ import Profile from './admin/pages/Profile';
 import Page404 from "./admin/pages/Page404";
 import Password from "./admin/pages/Password";
 import DashboardLayout from "./admin/layouts/dashboard";
-import Members from "./admin/pages/Members";
 import Treasurer from "./admin/pages/Treasurer";
 import News from "./admin/pages/News";
 import ZonalView from "./admin/pages/ZonalView";
@@ -44,7 +43,7 @@ export default function Router() {
     setRoutes([
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
-      {path:"users",element:<UserData/>},
+     
       {
         path: "/404",
         element: <Page404 />,
@@ -59,7 +58,8 @@ export default function Router() {
             path: "/dashboard",
             element: <DashboardLayout />,
             children: [
-              { path: "edit-profile", element: <Profile /> },
+              { path: "edit-profile", element: <EditProfile /> },
+              {path:"profile",element:<Profile/>},
             ],
           },
         ]
@@ -94,7 +94,7 @@ export default function Router() {
                 { path: "news", element: <NewsReporting /> },
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
-                {path:"members",element:<Members/>},
+              
              
                 role.includes("Club Treasurer") && {path:"manage-expense",element:<Treasurer/>}
               ],
@@ -111,7 +111,7 @@ export default function Router() {
                 { path: "app", element: <DashboardAppPage /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 { path: "news", element: <News/> }, 
-                {path:"members",element:<Members/>},
+               
                 
               ],
             },

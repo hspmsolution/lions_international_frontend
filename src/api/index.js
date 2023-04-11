@@ -36,3 +36,6 @@ export const updateMember=(formData)=>API.post("member/updateprofile",formData);
 export const memberProfile=()=>API.get("member/profile");
 export const getReportedNews=()=>API.get("news/reportedNews");
 export const newsReporting=(formData)=>API.post("news/newsReporting",formData);
+export const getClubMembers=()=>API.get("/member/clubmembers");
+export const getZone=()=>API.get("/clubs/zone");
+export const getRegion=()=>API.get("/clubs/region");

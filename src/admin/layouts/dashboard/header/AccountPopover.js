@@ -42,14 +42,9 @@ export default function AccountPopover() {
       label: "Profile",
       icon: "eva:person-fill",
       nav: () => {
-        navigate("/dashboard/edit-profile");
+        navigate("/dashboard/profile");
         handleClose();
       },
-    },
-    {
-      label: "Change Password",
-      icon: "eva:settings-2-fill",
-      nav: () => navigate("/password"),
     },
     {
       label: "Back to Website",

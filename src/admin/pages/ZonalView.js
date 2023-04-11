@@ -1,67 +1,78 @@
-import React from 'react'
-import DashboardAppPage from './DashboardAppPage';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,Typography,
-    Paper,
-    Box
-  } from "@mui/material";
-  import { makeStyles } from "@mui/styles";
-// import { Check, Close } from "@mui/icons-material";
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Box,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { getZone } from "../../actions/clubs";
 
-const useStyles=makeStyles({
-    title:{
-        alignItems:"center",
-        color:"#003895",
-    }
-})
-  const Rows = [
-    {
-      id: 1,
-      clubName: "News Title 1",
-      activitydate:"2023-27-03 ",
-      adminReport:"yes",
-    
-    }
-  ];
+const useStyles = makeStyles({
+  title: {
+    alignItems: "center",
+    color: "#003895",
+  },
+});
+
 export default function ZonalView() {
-    const classes=useStyles();
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const zoneData = useSelector((state) => state.clubs.zone);
+  console.log(zoneData);
+
+  useEffect(() => {
+    dispatch(getZone());
+  }, []);
 
   return (
     <>
-   <DashboardAppPage/>
-   <Box bgcolor="white" p={3} borderRadius={4} marginTop={10}>
-     <Typography variant="h4" gutterBottom className={classes.title}  >Zonal View</Typography>
-     <TableContainer component={Paper}>
-    <Table aria-label="news table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Sr No.</TableCell>
-          <TableCell>Club Name</TableCell>
-          <TableCell>Last Activity Report</TableCell>
-          <TableCell>Admin Report of Current Month</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-      {Rows?.map((row, index) => (
+      <Box bgcolor="white" p={3} borderRadius={4} marginTop={10}>
+        <Typography variant="h4" gutterBottom className={classes.title}>
+          Zonal View:{" "}
+        </Typography>
+        <Typography variant="h5" gutterBottom className={classes.title}>
+          {" "}
+          {zoneData[0]?.regionName},{zoneData[0]?.zoneName}
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table aria-label="news table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Sr No.</TableCell>
+                <TableCell>Club Name</TableCell>
+                <TableCell>Club Id</TableCell>
+                <TableCell>Last Activity Report</TableCell>
+                <TableCell>Admin Report of Current Month</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {zoneData?.map((row, index) => (
                 <TableRow key={row.id}>
                   <TableCell component="th" scope="row">
                     {index + 1}
                   </TableCell>
-            <TableCell>{row.clubName}</TableCell>
-            <TableCell>{row.activitydate}</TableCell>
-            <TableCell>{row.adminReport}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-   </Box>
-   </>
-  )
+                  <TableCell>{row.clubName}</TableCell>
+                  <TableCell>{row.clubId}</TableCell>
+                  <TableCell>
+                    {row?.latestActivity &&
+                      new Date(row?.latestActivity).toLocaleString()}
+                  </TableCell>
+                  <TableCell>
+                    {row?.currentAdminReport === 1 ? "yes" : "no"}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </>
+  );
 }

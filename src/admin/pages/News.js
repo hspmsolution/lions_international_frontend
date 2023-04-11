@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 
 import {
   Table,
@@ -13,7 +13,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { tableCellClasses } from '@mui/material/TableCell';
+import { tableCellClasses } from "@mui/material/TableCell";
 
 import { Edit, Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,11 +30,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
 }));
@@ -60,7 +60,7 @@ const News = () => {
               <StyledTableCell>Description</StyledTableCell>
               <StyledTableCell>Paper Link</StyledTableCell>
               <StyledTableCell>Date</StyledTableCell>
-              <StyledTableCell>Action</StyledTableCell>
+              {/* <StyledTableCell>Action</StyledTableCell> */}
             </StyledTableRow>
           </TableHead>
           <TableBody>
@@ -85,15 +85,15 @@ const News = () => {
                   </a>
                 </StyledTableCell>
 
-                <StyledTableCell>{row.date}</StyledTableCell>
-                <StyledTableCell>
+                <StyledTableCell>{row.date.slice(0, 10)}</StyledTableCell>
+                {/* <StyledTableCell>
                   <IconButton aria-label="edit" color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton aria-label="delete" color="error">
                     <Delete />
                   </IconButton>
-                </StyledTableCell>
+                </StyledTableCell> */}
               </StyledTableRow>
             ))}
           </TableBody>
