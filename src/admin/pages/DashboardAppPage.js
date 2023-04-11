@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useDispatch,useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import {  Typography, Icon, CardHeader, Card } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -10,6 +11,8 @@ import {
   AdminPanelSettings,
   Newspaper,
 } from "@mui/icons-material";
+import { useEffect } from "react";
+import { getPoints } from "../../actions/adminReports.js";
 // ----------------------------------------------------------------------
 
 const useStyles = makeStyles({
@@ -35,49 +38,24 @@ const useStyles = makeStyles({
 export default function DashboardAppPage() {
   const classes = useStyles();
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const adminPoints = useSelector((state) => state.adminReporting?.adminPoints);
+
+  useEffect(() => {
+    dispatch(getPoints());
+  }, []);
 
   return (
     <>
       <Helmet>
-        <title> Dashboard </title>
+        <title> Lions||Dashboard </title>
       </Helmet>
       <Typography variant="h4" sx={{ mb: 5 }}>
         Dashboard
       </Typography>
 
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Paper elevation={3} className={classes.paper}>
-          <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
-            {" "}
-            <LocalActivity
-              sx={{ width: "2em", height: "2em", color: "#05B0E9" }}
-            />
-          </Icon>
-          <Typography
-            variant="h6"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "10px",
-              color: "#05B0E9",
-            }}
-          >
-            Activty Reporting{" "}
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{
-              backgroundColor: "#05B0E9",
-              color: "white",
-              display: "flex",
-              justifyContent: "center",
-              padding: "10px",
-              borderRadius: "0 0 50px",
-            }}
-          >
-            8
-          </Typography>
-        </Paper>
+     
         <Paper elevation={3} className={classes.paper}>
           <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
           
@@ -94,7 +72,7 @@ export default function DashboardAppPage() {
               color: "#05B0E9",
             }}
           >
-            Admin Reporting{" "}
+            Admin Points{" "}
           </Typography>
           <Typography
             variant="h4"
@@ -107,7 +85,39 @@ export default function DashboardAppPage() {
               borderRadius: "0 0 50px",
             }}
           >
-            8
+            {adminPoints?.adminstars}
+          </Typography>
+        </Paper>
+        <Paper elevation={3} className={classes.paper}>
+          <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
+            {" "}
+            <LocalActivity
+              sx={{ width: "2em", height: "2em", color: "#05B0E9" }}
+            />
+          </Icon>
+          <Typography
+            variant="h6"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              color: "#05B0E9",
+            }}
+          >
+            Activty Points{" "}
+          </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              backgroundColor: "#05B0E9",
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              borderRadius: "0 0 50px",
+            }}
+          >
+           {adminPoints?.activityStar}
           </Typography>
         </Paper>
         <Paper elevation={3} className={classes.paper}>
@@ -137,7 +147,7 @@ export default function DashboardAppPage() {
               borderRadius: "0 0 50px",
             }}
           >
-            8
+            { adminPoints?.newsCount}
           </Typography>
         </Paper>
       </Box>

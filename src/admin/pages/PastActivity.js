@@ -40,13 +40,7 @@ const PastActivity = () => {
 
   return (
     <Box bgcolor={"white"} p={3} borderRadius={4}>
-      <Grid container justifyContent="space-between" spacing={3}>
-        <Grid item xs={6} style={{ textAlign: "left" }}>
-          <Button type="submit" variant="contained" color="primary">
-            Add New
-          </Button>
-        </Grid>
-      </Grid>
+     <Typography variant="h6">Past Activities</Typography>
       <Grid
         container
         justifyContent="space-between"
@@ -73,8 +67,8 @@ const PastActivity = () => {
               <TableCell align="left">City</TableCell>
               <TableCell align="right">Amount</TableCell>
               <TableCell align="right">Hours</TableCell>
-              <TableCell align="left">Media Coverage</TableCell>
-              <TableCell align="center">Action</TableCell>
+              <TableCell align="center">Media Coverage</TableCell>
+              {/* <TableCell align="center">Action</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -88,15 +82,15 @@ const PastActivity = () => {
                 <TableCell align="left">{row.city}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
                 <TableCell align="right">{row.lionHours}</TableCell>
-                <TableCell align="left">{row.mediaCoverage}</TableCell>
-                <TableCell align="center">
+                <TableCell align="center">{row.mediaCoverage}</TableCell>
+                {/* <TableCell align="center">
                   <IconButton aria-label="edit" color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton aria-label="delete" color="error">
                     <Delete />
                   </IconButton>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

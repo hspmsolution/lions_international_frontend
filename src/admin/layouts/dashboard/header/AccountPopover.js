@@ -42,7 +42,7 @@ export default function AccountPopover() {
       label: "Profile",
       icon: "eva:person-fill",
       nav: () => {
-        navigate("/dashboard/edit-profile");
+        navigate("/dashboard/profile");
         handleClose();
       },
     },

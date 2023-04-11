@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   Box,
+  Typography,
   
 } from "@mui/material";
 
@@ -76,7 +77,7 @@ export default function Members() {
   
   return (
     <Box bgcolor={"white"} p={3} borderRadius={4}>
-      
+      <Typography variant="h6">Members Details</Typography>
     <TableContainer style={{ marginTop: "16px" }}>
       <Table>
         <TableHead>
