@@ -94,14 +94,14 @@ function Navbar(props) {
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo.png"
-                sx={{ width: 80, height: 80 }}
+                sx={{ width: 80, height: 80, padding: '5px' }}
               />
             </Link>
             <Link to={'/'}>
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo2.png"
-                sx={{ width: 80, height: 80 }}
+                sx={{ width: 80, height: 80, padding: '5px' }}
                 className={classes.clubLogo}
               />
             </Link>
