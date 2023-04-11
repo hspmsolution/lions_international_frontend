@@ -43,12 +43,12 @@ export default function Activities() {
             flexDirection: 'column',
             justifyContent: 'center',
             gap: 1,
-            minWidth: '50%',
+            minwidth: '50%',
             borderRadius: 'sm',
             padding: '2rem 2rem 4rem'
           }}
         >
-          <Typography variant='h4' className={classes.activeH}>Past Activities</Typography>
+          <Typography variant='h4' className={classes.activeH}>Upcoming Activities</Typography>
           <List sx={{ py: 'var(--ListDivider-gap)' }}>
             <div className='imageSlider imageSliderX'>
               <ImageSlider>
@@ -81,12 +81,12 @@ export default function Activities() {
             flexDirection: 'column',
             justifyContent: 'center',
             gap: 1,
-            minwidth: '50%',
+            minWidth: '50%',
             borderRadius: 'sm',
             padding: '2rem 2rem 4rem'
           }}
         >
-          <Typography variant='h4' className={classes.activeH}>Upcoming Activities</Typography>
+          <Typography variant='h4' className={classes.activeH}>Past Activities</Typography>
           <List sx={{ py: 'var(--ListDivider-gap)' }}>
             <div className='imageSlider imageSliderX'>
               <ImageSlider>
