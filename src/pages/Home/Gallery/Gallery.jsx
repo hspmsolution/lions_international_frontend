@@ -21,9 +21,9 @@ export default class MasonryImageList extends React.Component {
         return (
             <div>
                 <Typography variant='h3' className='team-h'>Gallery</Typography>
-                <Box sx={{ height: 210, display: 'flex' }}>
-                    {images.map((item) => (
-                        <button type="button" onClick={() => this.setState({ isOpen: true })} className='itemButton'>
+                <Box sx={{ height: 210, display: 'flex', justifyContent: 'space-evenly', mb: '2rem' }}>
+                    {images.map((item, index) => (
+                        <button type="button" onClick={() => this.setState({ isOpen: true, photoIndex: index })} className='itemButton'>
                             <img
                                 src={`${item}?w=248&fit=crop&auto=format`}
                                 srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}

@@ -81,7 +81,7 @@ export default function NewsReporting() {
       event.target.value = "";
       return;
     }
-    if (file.type !== "application/pdf" && file.type !== "image/jpeg") {
+    if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg") {
       dispatch({
         type: CLIENT_MSG,
         message: { info: "file type not supported", status: 400 },
@@ -89,6 +89,7 @@ export default function NewsReporting() {
       event.target.value = "";
       return;
     }
+    
     const img = {
       preview: URL.createObjectURL(event.target.files[0]),
       data: event.target.files[0],

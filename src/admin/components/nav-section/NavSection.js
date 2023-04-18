@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { NavLink as RouterLink } from "react-router-dom";
@@ -26,73 +26,79 @@ NavSection.propTypes = {
 
 export default function NavSection({ ...other }) {
   const role = useSelector((state) => state.auth.role);
-  const config = [
-    {
-      title: "dashboard",
-      path: "/dashboard/app",
-      icon: icon("ic_dashboard"),
-      isClick: false,
-    },
-    {
-      title: "Activities",
-      path: null,
-      icon: icon("ic_activity"),
-      isClick: false,
-      subItems: [
-        {
-          title: "Report New Activity",
-          path: "/dashboard/activity",
-          icon: icon("ic_arrow"),
-        },
-        {
-          title: "Reported Activities",
-          path: "/dashboard/pastactivity",
-          icon: icon("ic_arrow"),
-        },
-      ],
-    },
+  const [navConfig, setNavConfig] = useState([]);
 
-    {
-      title: "Admin Reporting",
-      path: "/dashboard/admin",
-      icon: icon("ic_admin"),
-      isClick: false,
-    },
+  useEffect(()=>{
+    const config = [
+      {
+        title: "dashboard",
+        path: "/dashboard/app",
+        icon: icon("ic_analytics"),
+        isClick: false,
+      },
+      {
+        title: "Activities",
+        path: null,
+        icon: icon("ic_cart"),
+        isClick: false,
+        subItems: [
+          (role?.includes("Club Treasurer") ||
+            role?.includes("Club Secretary") ||
+            role?.includes("Club President")) && {
+            title: "Report New Activity",
+            path: "/dashboard/activity",
+            icon: icon("ic_analytics"),
+          },
+          {
+            title: "Reported Activities",
+            path: "/dashboard/pastactivity",
+            icon: icon("ic_blog"),
+          },
+        ].filter(Boolean),
+      },
+
+      (role?.includes("Club Treasurer") ||
+        role?.includes("Club Secretary") ||
+        role?.includes("Club President")) && {
+        title: "Admin Reporting",
+        path: "/dashboard/admin",
+        icon: icon("ic_cart"),
+        isClick: false,
+      },
 
     {
       title: "News Reporting",
       path: "/dashboard/news",
-      icon: icon("ic_news"),
+      icon: icon("ic_cart"),
       isClick: false,
     },
     {
       title: "Expense Manager",
       path: "/dashboard/manage-expense",
-      icon: icon("ic_expense"),
+      icon: icon("ic_lock"),
       isClick: false,
     },
     {
       title: "Zone",
       path: "/dashboard/zone",
-      icon: icon("ic_zone"),
+      icon: icon("ic_lock"),
       isClick: false,
     },
     {
       title: "Region",
       path: "/dashboard/region",
-      icon: icon("ic_region"),
+      icon: icon("ic_lock"),
       isClick: false,
     },
 
     {
       title: "Members",
       path: "/dashboard/members",
-      icon: icon("ic_member"),
+      icon: icon("ic_lock"),
       isClick: false,
     },
   ];
 
-  const [navConfig, setNavConfig] = useState(config);
 
   const handleClick = (title) => {
     setNavConfig((prevState) =>

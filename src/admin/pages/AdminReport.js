@@ -114,7 +114,6 @@ export default function FormWizard() {
   // Submit form
   const handleSubmit = () => {
     const selectedReports = reports.filter((report) => report.selected);
-   console.log(selectedReports)
     if (selectedReports.length===0) {
       dispatch({
         type: CLIENT_MSG,
