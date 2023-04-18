@@ -24,13 +24,15 @@ export default class MasonryImageList extends React.Component {
                 <Box sx={{ height: 210, display: 'flex', justifyContent: 'space-evenly', mb: '2rem' }}>
                     {images.map((item, index) => (
                         <button type="button" onClick={() => this.setState({ isOpen: true, photoIndex: index })} className='itemButton'>
-                            <img
-                                src={`${item}?w=248&fit=crop&auto=format`}
-                                srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                // alt={item.title}
-                                loading="lazy"
-                                style={{ height: '100%', margin: 'auto' }}
-                            />
+                            <Box sx={{ width: '100%', height: '100%' }}>
+                                <img
+                                    src={`${item}?w=248&fit=crop&auto=format`}
+                                    srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    // alt={item.title}
+                                    loading="lazy"
+                                    style={{ height: '100%', margin: 'auto' }}
+                                />
+                            </Box>
                         </button>
                     ))}
                 </Box>
@@ -52,6 +54,8 @@ export default class MasonryImageList extends React.Component {
                                 photoIndex: (photoIndex + 1) % images.length,
                             })
                         }
+                        imageTitle={'Image Title'}
+                        imageCaption={'Image Caption'}
                     />
                 )}
             </div>

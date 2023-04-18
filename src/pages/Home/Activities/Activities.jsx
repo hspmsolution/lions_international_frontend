@@ -1,16 +1,15 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import Card from '@mui/material/Card';
-import { Box, Container, Paper } from '@mui/material';
+import { Box, Paper } from '@mui/material';
 import ImageSlider, { Slide } from "react-auto-image-slider";
 import useStyles from './Styles';
 import helpingLions from "../../../components/Slider/img/helpingLions.jpg";
 import helpingLions1 from "../../../components/Slider/img/helpingLions(1).jpg";
 import helpingLions2 from "../../../components/Slider/img/helpingLions(2).jpeg";
 import './Activities.css';
+import ActivityCard from '../../../components/ActivityCard/ActivityCard';
 
 const data = [
   {
@@ -35,7 +34,7 @@ export default function Activities() {
 
   return (
     <>
-      <Paper className={classes.activitiesCont} sx={{ display: { xs: 'block', md: 'flex' } }}>
+      <Paper className={classes.activitiesCont} sx={{ display: { xs: 'block', md: 'flex', width: '100%' } }}>
         <Box
           variant="outlined"
           sx={{
@@ -43,7 +42,7 @@ export default function Activities() {
             flexDirection: 'column',
             justifyContent: 'center',
             gap: 1,
-            minwidth: '50%',
+            minWidth: '50%',
             borderRadius: 'sm',
             padding: '2rem 2rem 4rem'
           }}
@@ -54,7 +53,7 @@ export default function Activities() {
               <ImageSlider>
                 {data.map((item, index) => (
                   <Slide>
-                    <Card variant="outlined" sx={{ width: '60%', height: '300px' }}>
+                    {/* <Card variant="outlined" sx={{ width: '60%', height: '300px' }}>
                       <Box
                         sx={{ flexBasis: 120, borderRadius: 'sm' }}
                       >
@@ -67,7 +66,8 @@ export default function Activities() {
                       </Box>
                       <Typography variant='h6'>{item.title}</Typography>
                       <Typography>{item.description}</Typography>
-                    </Card>
+                    </Card> */}
+                    <ActivityCard key={index} item={item} />
                   </Slide>
                 ))}
               </ImageSlider>
@@ -92,7 +92,7 @@ export default function Activities() {
               <ImageSlider>
                 {data.map((item, index) => (
                   <Slide>
-                    <Card variant="outlined" sx={{ width: '60%', height: '300px' }}>
+                    {/* <Card variant="outlined" sx={{ width: '60%', height: '300px' }}>
                       <Box
                         sx={{ flexBasis: 120, borderRadius: 'sm' }}
                       >
@@ -105,7 +105,8 @@ export default function Activities() {
                       </Box>
                       <Typography variant='h6'>{item.title}</Typography>
                       <Typography>{item.description}</Typography>
-                    </Card>
+                    </Card> */}
+                    <ActivityCard key={index} item={item} />
                   </Slide>
                 ))}
               </ImageSlider>

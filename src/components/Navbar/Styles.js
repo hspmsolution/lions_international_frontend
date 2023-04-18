@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
         backgroundColor: '#fff',
         '& .MuiToolbar-root': {
             backgroundColor: '#fff',
+            height: '80px',
             '& .MuiBox-root': {
                 '& button': {
                     color: '#565656'

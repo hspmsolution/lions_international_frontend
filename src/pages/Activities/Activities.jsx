@@ -13,6 +13,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import useStyles from './Styles';
 import Register from './Register';
+import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
 function ResponsiveDialog() {
     const [open, setOpen] = React.useState(false);
@@ -23,13 +24,13 @@ function ResponsiveDialog() {
         setOpen(true);
     };
 
-    
+
     const [showRegister, setShowRegister] = React.useState(false);
-    
+
     const handleClick = () => {
         setShowRegister(true);
     };
-    
+
     const handleClose = () => {
         setOpen(false);
         setShowRegister(false);
@@ -112,31 +113,30 @@ export default function Events() {
 
     return (
         <>
-            <Container sx={{ margin: '5rem auto' }}>
-                <Typography variant='h4' sx={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    Activities
-                </Typography>
-
-                <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                        <Box
-                            sx={{
-                                p: 2,
-                                bgcolor: 'background.default',
-                                display: 'grid',
-                                gridTemplateColumns: { md: '4fr 4fr 4fr' },
-                                gap: 2,
-                            }}
-                        >
-                            {filters.map((filter, index) => (
-                                <Box key={index}>
-                                    <BasicCard title={filter.Title} bgImage={filter.bgImage} />
-                                </Box>
-                            ))}
-                        </Box>
+            <CustomizedBreadcrumbs label={'Activities'} />
+            <div style={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
+                <Container>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Box
+                                sx={{
+                                    m: 2,
+                                    bgcolor: 'background.default',
+                                    display: 'grid',
+                                    gridTemplateColumns: { md: '4fr 4fr 4fr' },
+                                    gap: 2,
+                                }}
+                            >
+                                {filters.map((filter, index) => (
+                                    <Box key={index}>
+                                        <BasicCard title={filter.Title} bgImage={filter.bgImage} />
+                                    </Box>
+                                ))}
+                            </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
+                </Container>
+            </div>
         </>
     )
 }

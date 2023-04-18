@@ -7,6 +7,7 @@ import createCache from "@emotion/cache";
 import { Container } from "@mui/material";
 import { Box } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
+import useStyles from './Styles';
 
 const muiCache = createCache({
   key: "mui-datatables",
@@ -21,6 +22,7 @@ export default function MemberDir() {
   const printBtn = false;
   const viewColumnBtn = false;
   const filterBtn = true;
+  const classes = useStyles();
 
   const columns = [
     "Sr No.",
@@ -71,7 +73,7 @@ export default function MemberDir() {
     <div className="memberTable">
       <Box sx={{ background: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
         <CustomizedBreadcrumbs label={'Membership'} subLabel={'Member Directory'} />
-        <Container sx={{ py: '5rem' }}>
+        <Container sx={{ py: '5rem' }} className={classes.muiTableContainer}>
           <CacheProvider value={muiCache}>
             <ThemeProvider theme={createTheme()}>
               <MUIDataTable

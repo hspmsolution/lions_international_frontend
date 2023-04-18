@@ -1,5 +1,6 @@
 import { Avatar, Box, Grid, Paper, styled, Typography } from '@mui/material';
 import './DGTeam.css';
+import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -12,9 +13,8 @@ const Item = styled(Paper)(({ theme }) => ({
 function DGTeam() {
     return (
         <>
+        <CustomizedBreadcrumbs label={'About'} subLabel={'DG Team'} />
             <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', py: '2rem' }}>
-
-            <div className='dgTeam' style={{ fontFamily: "'Aboreto', cursive", color: '#c50000' }}>DG Team</div>
             <Grid container spacing={2}>
                 <Grid item xs={10} className='gov'>
                     <Item className='item'>

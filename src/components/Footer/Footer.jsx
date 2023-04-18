@@ -33,12 +33,6 @@ function Footer() {
             width: '100%',
           }}
         >
-          <Avatar
-            alt="Remy Sharp"
-            src={'/assets/img/logo2.png'}
-            sx={{ width: 180, height: 180, borderRadius: '0', margin: '1rem 2rem' }}
-            className={classes.clubLogo}
-          />
           <nav aria-label="secondary mailbox folders">
             <Typography variant="h6" sx={{ pt: '2rem', pl: '0.8rem' }}>Quick Links</Typography>
             <List disablePadding>
@@ -51,6 +45,12 @@ function Footer() {
               ))}
             </List>
           </nav>
+          <Avatar
+            alt="Remy Sharp"
+            src={'/assets/img/logo2.png'}
+            sx={{ width: 180, height: 180, borderRadius: '0', margin: '1rem 2rem' }}
+            className={classes.clubLogo}
+          />
           <nav aria-label="secondary mailbox folders">
             <Typography variant="h6" sx={{ pt: '2rem', pl: '0.8rem' }}>Contact</Typography>
             <List disablePadding>
@@ -78,7 +78,7 @@ function Footer() {
       </Container>
       <Container sx={{ textAlign: 'center',mb: '1.5rem' }}>
         <Typography variant='subtitle2'>Copyright 2023 ©  All rights reserved. |
-          Designe & Developed by <FontAwesomeIcon icon={faCube} /> <b>HSPM Solutions LLP.</b></Typography>
+          Designed & Developed by <FontAwesomeIcon icon={faCube} /> <b>HSPM Solutions LLP.</b></Typography>
       </Container>
     </Box>
   )
