@@ -132,6 +132,7 @@ export default function NewActivity() {
     formData.append("image", activity.image.data);
 
     dispatch(addActivity(formData));
+    setActivity(activityDetail);
   };
 
   // Function to handle file read
@@ -149,7 +150,7 @@ export default function NewActivity() {
       event.target.value = "";
       return;
     }
-    if (file.type !== "application/pdf" && file.type !== "image/jpeg") {
+    if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg") {
       dispatch({
         type: CLIENT_MSG,
         message: { info: "file type not supported", status: 400 },
@@ -157,6 +158,7 @@ export default function NewActivity() {
       event.target.value = "";
       return;
     }
+    
     const img = {
       preview: URL.createObjectURL(event.target.files[0]),
       data: event.target.files[0],
