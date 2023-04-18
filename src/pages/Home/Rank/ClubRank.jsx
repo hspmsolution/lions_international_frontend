@@ -1,5 +1,6 @@
 // import { Timeline } from '@mui/icons-material';
 import * as React from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -11,6 +12,7 @@ import TimelineOppositeContent, {
 } from '@mui/lab/TimelineOppositeContent';
 import useStyles from './Styles'
 import { Box, Typography } from '@mui/material';
+import { topClubs } from '../../../actions/client';
 
 
 const clubRankings = [
@@ -73,11 +75,17 @@ const styles = {
 
 export default function OppositeContentTimeline() {
   const classes = useStyles();
+  const dispatch=useDispatch();
+  const clubs=useSelector((state)=>state.client.topClubs)
+
+  React.useEffect(()=>{
+    dispatch(topClubs());
+  },[])
 
   return (
     <>
       <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')" }}>
-        <Typography variant='h2' className={classes.clubRankH}>Top 10 District Clubs Rank</Typography>
+        <Typography variant='h2' className={classes.clubRankH}>Top 15 District Clubs Rank</Typography>
         <div className="six">
           <h1 style={styles.six}>
             <span style={styles.sixH1}>By Activities</span>
@@ -95,17 +103,17 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubRankings.map((ranking, index) => (
+              {clubs.map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
-                      {ranking.points}
+                      {ranking.adminstars}
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                       <StarsIcon sx={{ color: '#d4bc36' }} />
                       {index !== clubRankings.length - 1 && <TimelineConnector />}
                     </TimelineSeparator>
-                    <TimelineContent>{ranking.name}</TimelineContent>
+                    <TimelineContent>{ranking.clubName}</TimelineContent>
                   </TimelineItem>
                 </>
               ))}
@@ -120,17 +128,17 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubRankings.map((ranking, index) => (
+              {clubs.map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
-                      {ranking.points}
+                      {ranking.adminstars}
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                       <StarsIcon sx={{ color: '#d4bc36' }} />
                       {index !== clubRankings.length - 1 && <TimelineConnector />}
                     </TimelineSeparator>
-                    <TimelineContent>{ranking.name}</TimelineContent>
+                    <TimelineContent>{ranking.clubName}</TimelineContent>
                   </TimelineItem>
                 </>
               ))}
