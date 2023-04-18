@@ -1,5 +1,5 @@
 import {
-    CLIENT_MSG,MEMBER_PROFILE,AUTH
+    CLIENT_MSG,MEMBER_PROFILE,AUTH,CLUB_MEMBERS
   } from "../constants/actionTypes";
   import * as api from "../api";
 
@@ -36,6 +36,15 @@ export const updateMember = (formData,navigate) => async (dispatch) => {
           status: error.response.status,
         },
       });
+      console.log(error);
+    }
+  };
+
+  export const getClubMembers = () => async (dispatch) => {
+    try {
+      const { data} = await api.getClubMembers();
+       dispatch({type:CLUB_MEMBERS,payload:data})
+    } catch (error) {
       console.log(error);
     }
   };

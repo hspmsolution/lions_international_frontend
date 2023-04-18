@@ -25,14 +25,10 @@ const data = [
     },
 ];
 
-const item = {
-    src: helpingLions,
-    title: 'Hunger Relief Program',
-    description: 'As part of the District’s Hunger Relief Program, LCB Shikshana Food',
-}
 
 export default function ActivityCard({ item }) {
     const classes = useStyle();
+
 
     return (
         <Card variant="outlined" sx={{ width: '450px', minWidth: '250px', minheight: '320px' }}>
