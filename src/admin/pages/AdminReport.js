@@ -59,7 +59,7 @@ const useStyles = makeStyles({
     "& .MuiStepIcon-root": {
       color: "#49A5FF",
     },
-    padding: '16px',
+    padding: '10px 30px 10px 30px',
     borderRadius: '4px',
   },
   totalPoints: {

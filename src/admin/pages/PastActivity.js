@@ -40,13 +40,7 @@ const PastActivity = () => {
 
   return (
     <Box bgcolor={"white"} p={3} borderRadius={4}>
-      <Grid container justifyContent="space-between" spacing={3}>
-        <Grid item xs={6} style={{ textAlign: "left" }}>
-          <Button type="submit" variant="contained" color="primary">
-            Add New
-          </Button>
-        </Grid>
-      </Grid>
+
       <Grid
         container
         justifyContent="space-between"
