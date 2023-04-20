@@ -84,7 +84,7 @@ export default function OppositeContentTimeline() {
 
   return (
     <>
-      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')" }}>
+      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
         <Typography variant='h2' className={classes.clubRankH}>Top 15 District Clubs Rank</Typography>
         <div className="six">
           <h1 style={styles.six}>

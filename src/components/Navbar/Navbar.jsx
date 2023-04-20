@@ -26,16 +26,16 @@ const myNav = [
   { title: "Home" },
   {
     title: "About",
-    menuItems: [ 'Governor', 'DG Team', 'About District 317F', 'Organization Chart' ]
+    menuItems: ['Governor', 'DG Team', 'About District 317F', 'Organization Chart']
   },
   { title: "Activities" },
   {
     title: "Membership",
-    menuItems: [ 'Member Directory', 'Business Directory', 'Download Member Data' ]
+    menuItems: ['Member Directory', 'Business Directory', 'Download Member Data']
   },
   {
     title: "Resources",
-    menuItems: [ 'News', 'Gallery', 'Global Priorities', 'Download Resources' ]
+    menuItems: ['News', 'Gallery', 'Global Priorities', 'Download Resources']
   },
   { title: "Login" },
   { title: "My LCI" },
@@ -54,16 +54,17 @@ function Navbar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Avatar
         alt="Remy Sharp"
-        src={"/assets/user/logo.png"}
-        sx={{ width: 56, height: 56 }}
+        src={"/assets/img/logo2.png"}
+        sx={{ width: 56, height: 56, margin: '5px auto' }}
+        className={classes.clubLogo}
       />
-      <Divider />
+      <Divider variant='middle' />
       <List>
-        {navItems.map((item,index) => (
+        {myNav.map((item, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+            <Button key={index} sx={{ color: '#565656' }} className={classes.drawerButton}>
+              <PopupMenu title={item.title} menuItems={item.menuItems} />
+            </Button>
           </ListItem>
         ))}
       </List>
@@ -107,9 +108,8 @@ function Navbar(props) {
             </Link>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {myNav.map((item,index) => (
-              <Button key={index} sx={{ color: '#fff' }}>
-                {/* {item} */}
+            {myNav.map((item, index) => (
+              <Button key={index} sx={{ color: '#fff' }} className={classes.drawerButton}>
                 <PopupMenu title={item.title} menuItems={item.menuItems} />
               </Button>
             ))}

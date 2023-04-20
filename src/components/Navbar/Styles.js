@@ -16,5 +16,10 @@ export default makeStyles((theme) => ({
     },
     clubLogo: {
         borderRadius: '0%'
+    },
+    drawerButton: {
+        '& div': {
+            display: 'flex'
+        }
     }
 }))

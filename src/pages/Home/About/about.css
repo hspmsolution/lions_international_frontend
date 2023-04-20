@@ -25,9 +25,10 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(17,46,87,1) 98%);
 
 .about-card img {
     height: 30%;
-    width: 30%;
+    width: 20%;
     max-height: 20rem;
     max-width: 20rem;
+    margin: 4rem;
 }
 
 .about-dist {
@@ -87,6 +88,10 @@ background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(17,46,87,1) 98%);
 #audio {
     text-align: center;
     margin: auto;
+}
+
+#audio h4 {
+    font-size: 20px;
 }
 
 .playIcon, .pauseIcon {

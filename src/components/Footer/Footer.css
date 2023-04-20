@@ -27,13 +27,7 @@ footer {
 	clear: both;
 	display: table;
   }
-  
-  hr {
-	width: 50%;
-	border: none;
-	border-top: 0.1rem ridge rgba(100, 150, 173, 0.596);
-  }
-  
+
   @import url('https://fonts.googleapis.com/css2?family=Oregano&display=swap');
   
   .site-logo {
