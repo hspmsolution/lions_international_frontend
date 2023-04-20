@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import { toLower } from "lodash";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import { Box, Grid, MenuItem } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Popup.css';
 
 // tooltip function to show menu item on hover and on click
@@ -65,7 +66,7 @@ const PopupMenu = ({ title, menuItems }) => {
           }
         >
           <div id="" >
-            {title}
+            {title}<ExpandMoreIcon />
           </div>
         </HtmlTooltip>
       ) : (<div onClick={() => 

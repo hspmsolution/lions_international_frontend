@@ -1,22 +1,29 @@
 import { Box, Card, Typography } from "@mui/material";
+import useStyle from './Styles';
+import Chip from '@mui/material/Chip';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
+export default function ActivityCard({ item }) {
+    const classes = useStyle();
 
-export default function ActivityCard({item}) {
 
     return (
-        <Card variant="outlined" sx={{ width: '30%', height: '300px' }}>
+        <Card variant="outlined" sx={{ width: '450px', minWidth: '250px', minheight: '320px' }}>
             <Box
-                sx={{ flexBasis: 120, borderRadius: 'sm' }}
+                sx={{ flexBasis: 120, borderRadius: 'sm', height: '200px' }}
             >
                 <img
                     src={`${item.src}?w=120&fit=crop&auto=format`}
                     srcSet={`${item.src}?w=120&fit=crop&auto=format&dpr=2 2x`}
                     alt={item.title}
-                    style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                    className={classes.activityImage}
                 />
+                <Chip icon={<CalendarTodayIcon />} label={'dd/mm/yy'} className={classes.dateChip} />
             </Box>
-            <Typography variant='h6'>{item.title}</Typography>
-            <Typography>{item.description}</Typography>
+            <Box sx={{ padding: '1rem' }}>
+                <Typography variant='h6' className={classes.activityTitle}>{item.title}</Typography>
+                <Typography className={classes.activityDesc}>{item.description}</Typography>
+            </Box>
         </Card>
     )
 }

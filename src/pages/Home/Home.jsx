@@ -31,9 +31,9 @@ function Home() {
 
   return (
     <div className="App">
-      {scrollPosition > 650 ? (
+      {/* {scrollPosition > 650 ? (
         <Navbar />
-      ) : null}
+      ) : null} */}
       <Header />
       <Slider />
       <About />
