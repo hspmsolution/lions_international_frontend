@@ -6,7 +6,6 @@ import { API_URL } from "../../api";
 
 export default function ActivityCard({ item }) {
     const classes = useStyle();
-   console.log(item)
 
     return (
         <Card variant="outlined" sx={{ width: '450px', minWidth: '250px', minheight: '320px' }}>
@@ -19,7 +18,7 @@ export default function ActivityCard({ item }) {
                     alt={item.activityTitle}
                     className={classes.activityImage}
                 />
-                <Chip icon={<CalendarTodayIcon />} label={item?.date.slice(0,10)} className={classes.dateChip} />
+                <Chip icon={<CalendarTodayIcon />} label={item?.date?.slice(0,10)} className={classes.dateChip} />
             </Box>
             <Box sx={{ padding: '1rem' }}>
                 <Typography variant='h6' className={classes.activityTitle}>{item.activityTitle}</Typography>
