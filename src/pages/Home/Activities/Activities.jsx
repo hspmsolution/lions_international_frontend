@@ -14,7 +14,6 @@ export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const activities = useSelector((state) => state.client.events);
-
   React.useEffect(() => {
     dispatch(events());
   }, []);
@@ -39,7 +38,7 @@ export default function Activities() {
             }}
           >
             <Typography variant="h4" className={classes.activeH}>
-              Upcoming Activities
+              Past Activities
             </Typography>
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
@@ -66,7 +65,7 @@ export default function Activities() {
             }}
           >
             <Typography variant="h4" className={classes.activeH}>
-              Past Activities
+             Upcoming Activities
             </Typography>
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">

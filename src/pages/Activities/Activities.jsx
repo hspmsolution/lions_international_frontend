@@ -81,7 +81,7 @@ function ResponsiveDialog({ type, title, date, bgImage, description,activityId }
                   <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
                     Event Date :{" "}
                   </Typography>
-                  <Typography variant="subtitle1">{date.slice(0,10)}</Typography>
+                  <Typography variant="subtitle1">{date?.slice(0,10)}</Typography>
                 </th>
               </tr>
               <tr>
