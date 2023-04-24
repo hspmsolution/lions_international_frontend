@@ -1,8 +1,14 @@
 .aboutGov {
   background-color: #fff;
-  background: linear-gradient(90deg,rgba(0,0,0,.677),rgba(0,0,0,.77),rgba(0,0,0,.934)),url(/public/assets/img/woodenBoard.jpg) no-repeat;
+  background: linear-gradient(90deg,rgba(0,0,0,.677),rgba(0,0,0,.77),rgba(0,0,0,.934)), url(/public/assets/img/pexels-monstera.jpg) no-repeat;
   background-size: 100% 100%;
   background-attachment: fixed;
+  /* background-image: url(/public/assets/img/pexels-monstera.jpg);
+  padding: 108px 0 120px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
   color: #fff;
   font-size: 14px;
   font-weight: 400;
@@ -15,6 +21,18 @@
   padding-top: 3rem;
   width: 100%;
 }
+/* 
+.aboutGov:before {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  background-color: #68686895;
+  height: 100%;
+  width: 100%;
+} */
 
 .dist-governer {
   /* flex-direction: column; */

@@ -1,8 +1,10 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
+import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 
 function District() {
     return (
         <>
+        <CustomizedBreadcrumbs label={'About'} subLabel={'About District 317F'} />
             <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", py: '2rem' }}>
 
             <Container sx={{ my: '5rem' }}>

@@ -12,7 +12,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Santosh Sonar</h3>
+                            <h3>Lion's Name</h3>
                             <p>Cabinet Treasurer</p>
 
                         </div>
@@ -22,7 +22,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Vijay Sarda</h3>
+                            <h3>Lion's Name</h3>
                             <p>GAT Coordinator</p>
 
                         </div>
@@ -32,7 +32,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Sunita Chitnis</h3>
+                            <h3>Lion's Name</h3>
                             <p>GST Coordinator</p>
 
                         </div>
@@ -42,7 +42,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Shreyash Dixit</h3>
+                            <h3>Lion's Name</h3>
                             <p>GMT Coordinator</p>
 
                         </div>
@@ -54,7 +54,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Ravi Satpute</h3>
+                            <h3>Lion's Name</h3>
                             <p>GLT Coordinator</p>
 
                         </div>
@@ -64,7 +64,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Sunil Jadhav</h3>
+                            <h3>Lion's Name</h3>
                             <p>LCIF Coordinator</p>
 
                         </div>
@@ -74,7 +74,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Rajesh Agarwal</h3>
+                            <h3>Lion's Name</h3>
                             <p>PRO</p>
 
                         </div>
@@ -84,7 +84,7 @@ function Team() {
                             <img alt='' src="/assets/img/logo.png" />
                         </div>
                         <div className="caption">
-                            <h3>Sabina Arun</h3>
+                            <h3>Lion's Name</h3>
                             <p>Editor</p>
 
                         </div>

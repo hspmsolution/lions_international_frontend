@@ -1,10 +1,12 @@
 import React from "react";
 import './about.css'
 import { Avatar, Container, Typography } from "@mui/material";
+import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
 const About = () => {
     return (
         <>
+            <CustomizedBreadcrumbs label={'About'} subLabel={'Governor'} />
             <div className="aboutGov">
                 <Container>
                     <div style={{ textAlign: 'center' }}>

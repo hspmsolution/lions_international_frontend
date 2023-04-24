@@ -1,10 +1,9 @@
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
-    Checkbox: {
-        display: 'none'
-    },
-    memberTable: {
-        opacity: '0.2'
+    muiTableContainer: {
+        '& .MuiPaper-root': {
+            borderRadius: '25px',
+        }
     }
 }))
