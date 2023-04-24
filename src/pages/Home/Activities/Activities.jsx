@@ -1,5 +1,6 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import List from "@mui/material/List";
 import { Box, Button, Container, Paper } from "@mui/material";
@@ -7,12 +8,12 @@ import ImageSlider, { Slide } from "react-auto-image-slider";
 import useStyles from "./Styles";
 import "./Activities.css";
 import { events } from "../../../actions/client";
-import { API_URL } from "../../../api";
-import ActivityCard from '../../../components/ActivityCard/ActivityCard';
+import ActivityCard from "../../../components/ActivityCard/ActivityCard";
 
 export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const activities = useSelector((state) => state.client.events);
   React.useEffect(() => {
     dispatch(events());
@@ -20,10 +21,16 @@ export default function Activities() {
 
   return (
     <>
-      <Box sx={{ background: '#112E57', paddingBottom: '2rem', textAlign: 'center' }} >
+      <Box
+        sx={{
+          background: "#112E57",
+          paddingBottom: "2rem",
+          textAlign: "center",
+        }}
+      >
         <Paper
           className={classes.activitiesCont}
-          sx={{ display: { xs: "block", md: "flex", width: '100%' } }}
+          sx={{ display: { xs: "block", md: "flex", width: "100%" } }}
         >
           <Box
             variant="outlined"
@@ -65,7 +72,7 @@ export default function Activities() {
             }}
           >
             <Typography variant="h4" className={classes.activeH}>
-             Upcoming Activities
+              Upcoming Activities
             </Typography>
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
@@ -80,7 +87,12 @@ export default function Activities() {
             </List>
           </Box>
         </Paper>
-        <Button href="/activities" variant="outlined" size="medium" sx={{ color: 'white', borderColor: 'white' }}>
+        <Button
+         onClick={()=>{navigate("/activities")}}
+          variant="outlined"
+          size="medium"
+          sx={{ color: "white", borderColor: "white" }}
+        >
           View More
         </Button>
       </Box>
