@@ -33,6 +33,7 @@ import MemberData from "./pages/Membership/MemberData/MemberData";
 import NewsResource from "./pages/Resources/News/News";
 import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
+import LoginReq from "./pages/Membership/LoginRequired/LoginReq";
 
 
 export default function Router() {
@@ -43,7 +44,7 @@ export default function Router() {
     setRoutes([
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
-     
+      {path:"/loginReq",element:<LoginReq/>},
       {
         path: "/404",
         element: <Page404 />,

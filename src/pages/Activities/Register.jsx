@@ -8,23 +8,28 @@ import {
   Paper,
   TextField,
   Typography,
+  getNativeSelectUtilityClasses,
   useMediaQuery,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import React from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { registerActivity } from "../../actions/activity";
+
 
 export default function Register({ activityId }) {
   const [open, setOpen] = React.useState(true);
   const [isMember, setIsMember] = React.useState(false);
   const theme = useTheme();
+  const dispatch=useDispatch();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const initialData = { memberId: "", name: "", contact: "" };
+  const initialData = { memberId:null, name: "", contact: "" ,activityId:activityId};
   const [registrationData, setRegistrationData] = React.useState(initialData);
-
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -40,7 +45,7 @@ export default function Register({ activityId }) {
     e.preventDefault();
     setRegistrationData(initialData);
     handleClose();
-    console.log(registrationData);
+    dispatch(registerActivity(registrationData));
   };
 
   return (
@@ -79,12 +84,6 @@ export default function Register({ activityId }) {
                   mb: "1.5rem",
                 }}
               >
-                {/* <TextField
-                id="outlined-basic"
-                label="Enter Club Name"
-                variant="outlined"
-                required={isMember}
-              /> */}
                 <TextField
                   id="outlined-basic"
                   label="Enter Lion Member ID"

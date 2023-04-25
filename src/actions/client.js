@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { CLIENT_MSG, ACTIVITY_STATS,EVENTS,TOPCLUBS, SLIDER_IMAGES} from "../constants/actionTypes";
+import { CLIENT_MSG, ACTIVITY_STATS,EVENTS,TOPCLUBS, SLIDER_IMAGES,GALLARY_IMAGES} from "../constants/actionTypes";
 
 export const activityStats = () => async (dispatch) => {
   try {
@@ -33,6 +33,17 @@ export const slider = () => async (dispatch) => {
     try {
       const { data} = await api.slider();
        dispatch({type:SLIDER_IMAGES,payload:data})
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  export const gallery = () => async (dispatch) => {
+ 
+    try {
+      const {data} = await api.gallery();
+      dispatch({type:GALLARY_IMAGES,payload:data})
+   
     } catch (error) {
       console.log(error);
     }

@@ -45,3 +45,6 @@ export const activityStats=()=>API.get("activity/stats");
 export const events=()=>API.get("activity/events");
 export const topClubs=()=>API.get("adminreporting/topclubs");
 export const slider=()=>API.get("assets/slider");
+export const registerActivity=(formData)=>API.post("activity/register",formData);
+export const gallery=()=>API.get("assets/gallery");
+export const topNews=()=>API.get("news/topNews");

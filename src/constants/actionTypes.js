@@ -26,3 +26,5 @@ export const ACTIVITY_STATS="ACTIVITY_STATS";
 export const EVENTS="EVENTS";
 export const TOPCLUBS="TOPCLUBS";
 export const SLIDER_IMAGES="SLIDER_IMAGES";
+export const GALLARY_IMAGES="GALLARY_IMAGES";
+export const TOP_NEWS="TOP_NEWS";
