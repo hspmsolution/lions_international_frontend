@@ -84,7 +84,7 @@ export default function OppositeContentTimeline() {
 
   return (
     <>
-      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')" }}>
+      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
         <Typography variant='h2' className={classes.clubRankH}>Top 15 District Clubs Rank</Typography>
         <div className="six">
           <h1 style={styles.six}>
@@ -103,7 +103,7 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubs.map((ranking, index) => (
+              {clubs.slice(0,clubs.length/2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
@@ -128,7 +128,7 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubs.map((ranking, index) => (
+              {clubs.slice(clubs.length/2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">

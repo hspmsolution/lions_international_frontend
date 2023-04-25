@@ -11,7 +11,8 @@ export default makeStyles((theme) => ({
   cardContent: {
     display: 'grid',
     alignItems: 'center',
-    justifyItems: 'center'
+    justifyItems: 'center',
+    padding: '0',
   },
   cardHeaders: {
     display: 'grid',
@@ -41,7 +42,7 @@ export default makeStyles((theme) => ({
   },
   contentList: {
     '& .MuiListItem-root': {
-      padding: '0',
+      padding: '0 !important',
     }
   }
 }));

@@ -16,12 +16,13 @@ export default function ProfileCard(props) {
     ];
 
     return (
-        <Card sx={{ minWidth: 275, height: 480, maxWidth: 300, margin: '10px' }}>
+        <Card sx={{ minWidth: 275, minHeight: 480, maxWidth: 300, margin: '10px' }}>
             <CardContent className={classes.cardContent}>
                 <div className={classes.avatarBg}></div>
                 <div className={classes.cardHeaders}>
-                    <Box sx={{ position: 'absolute', height: '25%', width: '100%', top: 0 }}>
+                    <Box sx={{ position: 'absolute', height: '23%', width: '100%', top: 0 }}>
                         <img src='https://images.pexels.com/photos/1025469/pexels-photo-1025469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                            alt='avatar background'
                             style={{ height: '100%', width: '100%' }}
                         />
                     </Box>

@@ -1,6 +1,7 @@
 import { ACTIVITY_STATS,EVENTS,TOPCLUBS, SLIDER_IMAGES, GALLARY_IMAGES} from '../constants/actionTypes';
 
-const clientReducer = (state ={ activityStats:[],events:[],topClubs:[],sliderImages:[],galleryImages:[]} , action) => {
+
+const clientReducer = (state ={ activityStats:[],events:{past:[{image_path:""}],upcoming:[{image_path:""}]},topClubs:[],sliderImages:[{image:""}],galleryImages:[{image:""}]} , action) => {
   switch (action.type) {
     case ACTIVITY_STATS:
          return {...state,activityStats:action.payload}

@@ -32,21 +32,32 @@ function handleClick(event) {
     console.info('You clicked a breadcrumb.');
 }
 
-export default function CustomizedBreadcrumbs({label, subLabel}) {
+export default function CustomizedBreadcrumbs({ label, subLabel }) {
     const classes = useStyles();
     const navigate = useNavigate();
 
     return (
         <div role="presentation" onClick={handleClick} className={classes.breadcrumbCont}>
-            <Typography 
-                variant='h4'
-                sx={{
-                    position: 'absolute',
-                    transform: 'translateX(-50%)',
-                    left: '50%',
-                    top: '2rem'
-                }}
-            >{subLabel}</Typography>
+            {subLabel ?
+                <Typography
+                    variant='h3'
+                    sx={{
+                        position: 'absolute',
+                        transform: 'translateX(-50%)',
+                        left: '50%',
+                        top: '25%'
+                    }}
+                >{subLabel}</Typography> :
+                <Typography
+                    variant='h3'
+                    sx={{
+                        position: 'absolute',
+                        transform: 'translateX(-50%)',
+                        left: '50%',
+                        top: '25%'
+                    }}
+                >{label}</Typography>
+            }
             <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumb}>
                 <StyledBreadcrumb
                     component="a"
@@ -56,7 +67,9 @@ export default function CustomizedBreadcrumbs({label, subLabel}) {
                     onClick={() => navigate('/')}
                 />
                 <StyledBreadcrumb component="a" href="#" label={label} />
-                <StyledBreadcrumb component="a" href="#" label={subLabel} />
+                {subLabel ?
+                    <StyledBreadcrumb component="a" href="#" label={subLabel} />
+                    : null}
             </Breadcrumbs>
         </div>
     );

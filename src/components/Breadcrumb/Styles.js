@@ -10,6 +10,7 @@ export default makeStyles(() => ({
         display: 'flex',
         color: 'white',
         position: 'relative',
+        marginTop: '1rem',
     },
     breadcrumb: {
         position: 'absolute',

@@ -16,6 +16,7 @@ import useStyles from "./Styles";
 import Register from "./Register";
 import { events } from "../../actions/client";
 import { API_URL } from "../../api";
+import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
 function ResponsiveDialog({ type, title, date, bgImage, description,activityId }) {
   const [open, setOpen] = React.useState(false);
@@ -80,7 +81,7 @@ function ResponsiveDialog({ type, title, date, bgImage, description,activityId }
                   <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
                     Event Date :{" "}
                   </Typography>
-                  <Typography variant="subtitle1">{date.slice(0,10)}</Typography>
+                  <Typography variant="subtitle1">{date?.slice(0,10)}</Typography>
                 </th>
               </tr>
               <tr>

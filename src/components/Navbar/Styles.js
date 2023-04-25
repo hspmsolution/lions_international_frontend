@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
         backgroundColor: '#fff',
         '& .MuiToolbar-root': {
             backgroundColor: '#fff',
+            height: '80px',
             '& .MuiBox-root': {
                 '& button': {
                     color: '#565656'
@@ -15,5 +16,10 @@ export default makeStyles((theme) => ({
     },
     clubLogo: {
         borderRadius: '0%'
+    },
+    drawerButton: {
+        '& div': {
+            display: 'flex'
+        }
     }
 }))
