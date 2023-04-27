@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+.districtContainer {
+    background-image: url(https://images.pexels.com/photos/8428992/pexels-photo-8428992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-size: cover;
+}
+
+.districtContainer {
+    position: relative;
+}
+
+.districtContainer:before{
+    background: rgba(0, 0, 0, .5);
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+.districtPaper {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    padding: 1rem 3rem;
+    text-align: 'justify';
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}

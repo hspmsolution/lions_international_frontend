@@ -48,8 +48,7 @@ function Footer() {
           <Avatar
             alt="Remy Sharp"
             src={'/assets/img/logo2.png'}
-            sx={{ width: 180, height: 180, borderRadius: '0', margin: '1rem 2rem' }}
-            className={classes.clubLogo}
+            sx={{ width: 180, height: 180, borderRadius: '0', margin: '1rem 2rem', display: { xs : 'none', sm: 'block' } }}
           />
           <nav aria-label="secondary mailbox folders">
             <Typography variant="h6" sx={{ pt: '2rem', pl: '0.8rem' }}>Contact</Typography>
@@ -66,7 +65,7 @@ function Footer() {
         </Box>
       </Box>
       <Divider sx={{ width: '100%' }} />
-      <Container sx={{ display: 'flex', justifyContent: 'space-evenly', padding: '10px' }}>
+      <Container sx={{ display: { xs : 'block', sm: 'flex' }, justifyContent: 'space-evenly', padding: '10px' }}>
         <Typography variant="h5" gutterBottom>Get connected with us on social networks:</Typography>
         <Box className={classes.socialIcons}>
           {socialIcos.map((item, index) => (

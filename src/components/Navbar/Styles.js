@@ -3,13 +3,13 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
     mainNav: {
         position: 'fixed',
-        backgroundColor: '#fff',
+        backgroundColor: '#fff0',
         '& .MuiToolbar-root': {
-            backgroundColor: '#fff',
+            backgroundColor: '#ffffffab',
             height: '80px',
             '& .MuiBox-root': {
                 '& button': {
-                    color: '#565656'
+                    color: '#4b4b4b'
                 }
             }
         }

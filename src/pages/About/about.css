@@ -1,14 +1,7 @@
 .aboutGov {
-  background-color: #fff;
-  background: linear-gradient(90deg,rgba(0,0,0,.677),rgba(0,0,0,.77),rgba(0,0,0,.934)), url(/public/assets/img/pexels-monstera.jpg) no-repeat;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .85), rgba(0, 0, 0, .85), rgba(0, 0, 0, .85)), url(/public/assets/img/pexels-monstera.jpg) no-repeat;
   background-size: 100% 100%;
   background-attachment: fixed;
-  /* background-image: url(/public/assets/img/pexels-monstera.jpg);
-  padding: 108px 0 120px;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
   color: #fff;
   font-size: 14px;
   font-weight: 400;
@@ -18,55 +11,29 @@
   min-height: 100vh;
   min-height: calc(100vh - var(--vh-offset, 0px));
   overflow-x: hidden;
-  padding-top: 3rem;
   width: 100%;
+  padding-bottom: 3rem;
 }
-/* 
-.aboutGov:before {
-  content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  position: absolute;
-  background-color: #68686895;
-  height: 100%;
-  width: 100%;
-} */
+
+.aboutGovContainer {
+  display: block;
+  background: rgba(255, 255, 255, 0.11);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 .dist-governer {
-  /* flex-direction: column; */
+  display: flex;
   justify-content: center;
   color: #fff;
-  padding: 2rem;
-  gap: 2rem;
-  align-items: center;
+  gap: 7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
 }
 
-.header-design {
-  background-color: #a4508b;
-  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
-  height: 120px;
-  text-align: center;
-}
-
-header .footer-wave {
-  max-width: 102%;
-  width: 100%;
-  height: 187.8px;
-  left: 0;
-  z-index: 1;
-  bottom: -67px;
-  background: url(https://1.bp.blogspot.com/-NYl6L8pz8B4/XoIVXwfhlNI/AAAAAAAAU3k/nxJKiLT706Mb7jUFiM5vdCsOSNnFAh0yQCLcBGAsYHQ/s1600/hero-wave.png) repeat-x;
-  animation: wave 10s cubic-bezier(0.44, 0.66, 0.67, 0.37) infinite;
-}
-
-@keyframes wave {
-  0% {
-    background-position: 0;
-  }
-
-  100% {
-    background-position: 1440px;
-  }
+.dist-governer div {
+  margin-top: 3rem;
 }

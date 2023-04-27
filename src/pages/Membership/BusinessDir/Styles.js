@@ -5,7 +5,6 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    minHeight: '80vh',
     alignItems: 'center',
   },
   cardContent: {
@@ -41,6 +40,7 @@ export default makeStyles((theme) => ({
     backgroundSize: 'cover',
   },
   contentList: {
+    padding: 0,
     '& .MuiListItem-root': {
       padding: '0 !important',
     }
