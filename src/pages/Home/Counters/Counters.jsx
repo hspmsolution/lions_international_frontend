@@ -68,7 +68,7 @@ function Counters() {
       ),
     },
     {
-      name: "Beneficiaries Served",
+      name: "Beneficiaries",
       start: 0,
       end: stats?.beneficiariesServed,
       icon: <FontAwesomeIcon icon={faUniversalAccess} />,

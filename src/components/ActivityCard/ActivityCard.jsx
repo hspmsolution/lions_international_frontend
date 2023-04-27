@@ -8,7 +8,7 @@ export default function ActivityCard({ item }) {
 
 
     return (
-        <Card variant="outlined" sx={{ width: '450px', minWidth: '250px', minheight: '320px' }}>
+        <Card variant="outlined" sx={{ maxWidth: '450px', minWidth: '250px', minheight: '320px' }}>
             <Box
                 sx={{ flexBasis: 120, borderRadius: 'sm', height: '200px' }}
             >

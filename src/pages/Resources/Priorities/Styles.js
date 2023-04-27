@@ -5,8 +5,8 @@ export default makeStyles((theme) => ({
         '& .MuiPaper-root': {
             display: 'flex',
             alignItems: 'center',
-            height: '150px',
             textAlign: 'justify',
+            padding: '2rem',
         },
         '& .MuiBox-root': {
             justifyContent: 'center',

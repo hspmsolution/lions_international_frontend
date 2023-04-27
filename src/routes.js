@@ -33,6 +33,7 @@ import MemberData from "./pages/Membership/MemberData/MemberData";
 import NewsResource from "./pages/Resources/News/News";
 import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
+import Download from "./pages/Resources/Download/Download";
 
 
 export default function Router() {
@@ -80,6 +81,7 @@ export default function Router() {
           { path: "/resources/news", element: <NewsResource /> },
           { path: "/resources/gallery", element: <GalleryR /> },
           { path: "/resources/globalpriorities", element: <Priorities /> },
+          { path: "/resources/downloadresources", element: <Download /> },
         ],
       },
 

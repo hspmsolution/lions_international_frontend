@@ -5,7 +5,7 @@ import Chip from '@mui/material/Chip';
 import HomeIcon from '@mui/icons-material/Home';
 import useStyles from './Styles';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
     const backgroundColor =
@@ -38,39 +38,31 @@ export default function CustomizedBreadcrumbs({ label, subLabel }) {
 
     return (
         <div role="presentation" onClick={handleClick} className={classes.breadcrumbCont}>
-            {subLabel ?
-                <Typography
-                    variant='h3'
-                    sx={{
-                        position: 'absolute',
-                        transform: 'translateX(-50%)',
-                        left: '50%',
-                        top: '25%'
-                    }}
-                >{subLabel}</Typography> :
-                <Typography
-                    variant='h3'
-                    sx={{
-                        position: 'absolute',
-                        transform: 'translateX(-50%)',
-                        left: '50%',
-                        top: '25%'
-                    }}
-                >{label}</Typography>
-            }
-            <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumb}>
-                <StyledBreadcrumb
-                    component="a"
-                    href="#"
-                    label="Home"
-                    icon={<HomeIcon fontSize="small" />}
-                    onClick={() => navigate('/')}
-                />
-                <StyledBreadcrumb component="a" href="#" label={label} />
+            <Box sx={{ paddingTop: '2rem' }}>
                 {subLabel ?
-                    <StyledBreadcrumb component="a" href="#" label={subLabel} />
-                    : null}
-            </Breadcrumbs>
+                    <Typography
+                        variant='h3'
+                        sx={{ position: 'absolute', transform: 'translateX(-50%)', left: '50%', top: '58%' }}
+                    >{subLabel}</Typography> :
+                    <Typography
+                        variant='h3'
+                        sx={{ position: 'absolute', transform: 'translateX(-50%)', left: '50%', top: '58%' }}
+                    >{label}</Typography>
+                }
+                <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumb}>
+                    <StyledBreadcrumb
+                        component="a"
+                        href="#"
+                        label="Home"
+                        icon={<HomeIcon fontSize="small" />}
+                        onClick={() => navigate('/')}
+                    />
+                    <StyledBreadcrumb component="a" href="#" label={label} />
+                    {subLabel ?
+                        <StyledBreadcrumb component="a" href="#" label={subLabel} />
+                        : null}
+                </Breadcrumbs>
+            </Box>
         </div>
     );
 }

@@ -1,15 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Paper,
-  TextField,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Avatar, Box, Button, DialogActions, DialogContent, DialogTitle, Paper, TextField, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import React from "react";
@@ -50,7 +39,6 @@ export default function Register({ activityId }) {
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        // sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <DialogTitle id="responsive-dialog-title">
           {"Activity Registration"}
@@ -64,6 +52,7 @@ export default function Register({ activityId }) {
             onChange={() => {
               setIsMember(!isMember);
             }}
+            sx={{ mb: '1rem', gap: '1rem', alignItems: 'center' }}
           >
             Are You a Lion Member
             <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
@@ -79,12 +68,6 @@ export default function Register({ activityId }) {
                   mb: "1.5rem",
                 }}
               >
-                {/* <TextField
-                id="outlined-basic"
-                label="Enter Club Name"
-                variant="outlined"
-                required={isMember}
-              /> */}
                 <TextField
                   id="outlined-basic"
                   label="Enter Lion Member ID"

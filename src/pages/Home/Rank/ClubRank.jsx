@@ -88,7 +88,7 @@ export default function OppositeContentTimeline() {
         <Typography variant='h2' className={classes.clubRankH}>Top 15 District Clubs Rank</Typography>
         <div className="six">
           <h1 style={styles.six}>
-            <span style={styles.sixH1}>By Activities</span>
+            <span style={styles.sixH1}>By Admin Reporting</span>
             <div style={styles.sixH1Before}></div>
             <div style={styles.sixH1After}></div>
           </h1>
