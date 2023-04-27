@@ -103,7 +103,7 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubs.map((ranking, index) => (
+              {clubs.slice(0,clubs.length/2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
@@ -128,7 +128,7 @@ export default function OppositeContentTimeline() {
                 minWidth: '50%',
               }}
             >
-              {clubs.map((ranking, index) => (
+              {clubs.slice(clubs.length/2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
