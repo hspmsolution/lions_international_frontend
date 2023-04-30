@@ -13,8 +13,8 @@ export default function ActivityCard({ item }) {
                 sx={{ flexBasis: 120, borderRadius: 'sm', height: '200px' }}
             >
                 <img
-                    src={`${API_URL+ item?.image_path}?w=120&fit=crop&auto=format`}
-                    srcSet={`${item.src}?w=120&fit=crop&auto=format&dpr=2 2x`}
+                    src={`${API_URL+ item?.image_path}`}
+                    srcSet={`${API_URL+ item?.image_path}`}
                     alt={item.activityTitle}
                     className={classes.activityImage}
                 />

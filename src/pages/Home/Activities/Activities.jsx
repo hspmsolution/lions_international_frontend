@@ -49,13 +49,19 @@ export default function Activities() {
             </Typography>
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
-                <ImageSlider>
-                  {activities?.past?.map((item, index) => (
-                    <Slide>
-                      <ActivityCard key={index} item={item} />
-                    </Slide>
-                  ))}
-                </ImageSlider>
+                {activities?.past?.length === 0 ? (
+                  <Typography variant="h6" color="white">
+                    No Past Activity Found
+                  </Typography>
+                ) : (
+                  <ImageSlider>
+                    {activities?.past?.map((item, index) => (
+                      <Slide>
+                        <ActivityCard key={index} item={item} />
+                      </Slide>
+                    ))}
+                  </ImageSlider>
+                )}
               </div>
             </List>
           </Box>
@@ -76,19 +82,27 @@ export default function Activities() {
             </Typography>
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
-                <ImageSlider>
-                  {activities?.upcoming?.map((item, index) => (
-                    <Slide>
-                      <ActivityCard key={index} item={item} />
-                    </Slide>
-                  ))}
-                </ImageSlider>
+                {activities?.upcoming?.length === 0 ? (
+                  <Typography variant="h6" color="white">
+                    No Upcoming Activity Found
+                  </Typography>
+                ) : (
+                  <ImageSlider>
+                    {activities?.upcoming?.map((item, index) => (
+                      <Slide>
+                        <ActivityCard key={index} item={item} />
+                      </Slide>
+                    ))}
+                  </ImageSlider>
+                )}
               </div>
             </List>
           </Box>
         </Paper>
         <Button
-         onClick={()=>{navigate("/activities")}}
+          onClick={() => {
+            navigate("/activities");
+          }}
           variant="outlined"
           size="medium"
           sx={{ color: "white", borderColor: "white" }}

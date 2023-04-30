@@ -4,7 +4,6 @@ import { Typography } from '@mui/material';
 import { API_URL } from '../../../api';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import './Gallery.css';
 import { useSelector} from 'react-redux';
 
 
@@ -19,8 +18,8 @@ export default function MasonryImageList() {
                 {images?.map((path, index) => (
                     <button type="button" onClick={() => { setIsOpen(true); setPhotoIndex(index) }} className='itemButton'>
                         <img
-                            src={`${API_URL}${path?.image}?w=248&fit=crop&auto=format`}
-                            srcSet={`${API_URL}${path?.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                            src={`${API_URL}${path?.image}`}
+                            srcSet={`${API_URL}${path?.image}`}
                             alt={path?.title}
                             loading="lazy"
                             style={{ height: '100%', margin: 'auto' }}
