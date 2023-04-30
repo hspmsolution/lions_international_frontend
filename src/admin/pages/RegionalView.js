@@ -21,14 +21,6 @@ const useStyles = makeStyles({
     color: "#003895",
   },
 });
-const Rows = [
-  {
-    id: 1,
-    clubName: "News Title 1",
-    activitydate: "2023-27-03 ",
-    adminReport: "yes",
-  },
-];
 export default function RegionalView() {
   const classes = useStyles();
   const dispatch = useDispatch();

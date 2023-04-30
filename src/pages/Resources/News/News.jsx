@@ -1,50 +1,35 @@
-import React, { useEffect, useState, useMemo } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  TextField,
-  Typography,
-  Pagination,
-} from "@mui/material";
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Box, Container, Pagination } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
-import ActivityCard from "../../../components/ActivityCard/ActivityCard";
+import NewsCard from "../../../components/NewsCard/NewsCard";
 import { useDispatch, useSelector } from "react-redux";
 import { topNews } from "../../../actions/news";
 
 export default function News() {
-  const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [searchTerm, setSearchTerm] = useState("");
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const newsData = useSelector((state) => state.news.topNews?.data || []);
+  const totalPages = useSelector(
+    (state) => state.news.topNews?.totalPages || 1
+  );
+  const currentPage = useSelector(
+    (state) => state.news.topNews?.currentPage || 1
+  );
+
+  const queryParams = new URLSearchParams(location.search);
+  const page = parseInt(queryParams.get("page")) || currentPage;
+
+  const handleChangePage = (event, newPage) => {
+    queryParams.set("page", newPage);
+    navigate(`${location.pathname}?${queryParams.toString()}`);
+    dispatch(topNews(newPage));
+  };
 
   useEffect(() => {
-    dispatch(topNews());
-  }, [dispatch]);
-
-  const newsData = useSelector((state) => state.news.topNews?.data || []);
-
-//   const filteredData = newsData.filter((item) =>
-//   item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
-// );
-
-
-  const startIndex = (page - 1) * rowsPerPage;
-  const endIndex = startIndex + rowsPerPage;
-
-  const currentData = useMemo(() => {
-    return newsData.slice(startIndex, endIndex);
-  }, [newsData, startIndex, endIndex]);
-console.log(currentData);
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(1);
-  };
+    dispatch(topNews(page));
+  }, []);
 
   return (
     <>
@@ -63,20 +48,7 @@ console.log(currentData);
             alignItems: "center",
             justifyContent: "space-evenly",
           }}
-        >
-          {/* <Box sx={{ display: "inline-flex", gap: "2rem" }}>
-            <TextField
-              id="outlined-basic"
-              label="Search"
-              variant="outlined"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <Button variant="contained" onClick={() => setSearchTerm("")}>
-              Reset
-            </Button>
-          </Box> */}
-        </Container>
+        ></Container>
         <Box
           sx={{
             display: "flex",
@@ -85,18 +57,9 @@ console.log(currentData);
             flexWrap: "wrap",
           }}
         >
-          {/* {filteredData.length > 0 ? (
-            currentData.map((item, index) => (
-              <ActivityCard item={item} key={index} />
-            ))
-          ) : (
-            <Typography variant="h6">No matching results found.</Typography>
-          )} */}
-          {
-            currentData.map((item,index)=>(
-              <ActivityCard item ={item} key={index}/>
-            ))
-          }
+          {newsData.map((item, index) => (
+            <NewsCard item={item} key={index} />
+          ))}
         </Box>
         <Box
           sx={{
@@ -106,8 +69,8 @@ console.log(currentData);
           }}
         >
           <Pagination
-            count={Math.ceil(newsData.length / rowsPerPage)}
-            page={page}
+            count={totalPages}
+            page={currentPage}
             onChange={handleChangePage}
             showFirstButton
             showLastButton
