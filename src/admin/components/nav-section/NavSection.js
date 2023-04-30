@@ -33,13 +33,13 @@ export default function NavSection({ ...other }) {
       {
         title: "dashboard",
         path: "/dashboard/app",
-        icon: icon("ic_analytics"),
+        icon: icon("ic_dashboard"),
         isClick: false,
       },
       {
         title: "Activities",
         path: null,
-        icon: icon("ic_cart"),
+        icon: icon("ic_activity"),
         isClick: false,
         subItems: [
           (role?.includes("Club Treasurer") ||
@@ -47,12 +47,12 @@ export default function NavSection({ ...other }) {
             role?.includes("Club President")) && {
             title: "Report New Activity",
             path: "/dashboard/activity",
-            icon: icon("ic_analytics"),
+            icon: icon("ic_arrow"),
           },
           {
             title: "Reported Activities",
             path: "/dashboard/pastactivity",
-            icon: icon("ic_blog"),
+            icon: icon("ic_arrow"),
           },
         ].filter(Boolean),
       },
@@ -62,32 +62,32 @@ export default function NavSection({ ...other }) {
         role?.includes("Club President")) && {
         title: "Admin Reporting",
         path: "/dashboard/admin",
-        icon: icon("ic_cart"),
+        icon: icon("ic_admin"),
         isClick: false,
       },
 
       {
         title: "News Reporting",
         path: "/dashboard/news",
-        icon: icon("ic_cart"),
+        icon: icon("ic_news"),
         isClick: false,
       },
       role.includes("Club Treasurer") && {
         title: "Expense Manager",
         path: "/dashboard/manage-expense",
-        icon: icon("ic_lock"),
+        icon: icon("ic_expense"),
         isClick: false,
       },
       role.includes("Zone Chairperson") && {
         title: "Zone",
         path: "/dashboard/zone",
-        icon: icon("ic_lock"),
+        icon: icon("ic_zone"),
         isClick: false,
       },
       role.includes("Region Chairperson") && {
         title: "Region",
         path: "/dashboard/region",
-        icon: icon("ic_lock"),
+        icon: icon("ic_region"),
         isClick: false,
       },
     ].filter(Boolean);

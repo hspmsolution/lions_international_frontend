@@ -1,6 +1,7 @@
 import { Avatar, Box, Container, Divider, List, ListItem, ListItemButton, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import useStyles from './Styles';
+import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 import { faFacebookF, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +21,8 @@ const socialIcos = [
 
 function Footer() {
   const classes = useStyles();
-
+  const navigate=useNavigate();
+  const handleClick=()=>navigate('/login');
   return (
     <Box sx={{ bottom: 0, backgroundColor: '#041b3b', color: '#fff', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ backgroundColor: '#041b3b', color: '#fff', }} className={classes.footer}>
@@ -77,7 +79,7 @@ function Footer() {
       </Container>
       <Container sx={{ textAlign: 'center',mb: '1.5rem' }}>
         <Typography variant='subtitle2'>Copyright 2023 ©  All rights reserved. |
-          Designed & Developed by <FontAwesomeIcon icon={faCube} /> <b>HSPM Solutions LLP.</b></Typography>
+          Designed & Developed by <FontAwesomeIcon onClick={handleClick} icon={faCube} /> <b>HSPM Solutions LLP.</b></Typography>
       </Container>
     </Box>
   )

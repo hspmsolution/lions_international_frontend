@@ -6,7 +6,7 @@ import Router from './routes';
 
 // theme
 import ThemeProvider from './admin/theme';
-import { slider } from './actions/client';
+import { slider,gallery } from './actions/client';
 // components
 
 
@@ -15,6 +15,7 @@ import { slider } from './actions/client';
 export default function App() {
   const dispatch=useDispatch();
   dispatch(slider());
+  dispatch(gallery());
   dispatch({type:ADMIN});
   return (
     <ThemeProvider>

@@ -1,11 +1,11 @@
 import { Box, Card, Typography } from "@mui/material";
-import useStyle from './Styles';
-import Chip from '@mui/material/Chip';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import useStyle from "./Styles";
+import Chip from "@mui/material/Chip";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { API_URL } from "../../api";
 
 export default function ActivityCard({ item }) {
-    const classes = useStyle();
+  const classes = useStyle();
 
     return (
         <Card variant="outlined" sx={{ maxWidth: '450px', minWidth: '250px', minheight: '320px' }}>
