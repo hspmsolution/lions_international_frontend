@@ -6,23 +6,20 @@ import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 const About = () => {
     return (
         <>
-            <CustomizedBreadcrumbs label={'About'} subLabel={'Governor'} />
             <div className="aboutGov">
-                <Container>
-                    <div style={{ textAlign: 'center' }}>
-                        <Typography variant="h4">
+                <CustomizedBreadcrumbs label={'About'} subLabel={'Governor'} />
+                <Container className="aboutGovContainer">
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', margin: '2rem 0' }}>
+                        <Avatar src={'/assets/img/7.jpg'} alt="our district governer" sx={{ mt: '1rem', width: '200px', height: '200px' }} />
+                        <Typography variant="h4" className="itemTitle">
                             Ln. CA Abhay Shastri
                         </Typography>
                         <Typography variant="h5">
                             District Governor
                         </Typography>
                     </div>
-                    <div className="dist-governer d-flex">
-                        <div>
-                            <Avatar src={'/assets/img/7.jpg'} alt="our district governer" style={{ margin: 'auto', width: '200px', height: '200px' }} />
-                        </div>
+                    <div className="dist-governer">
                         <p style={{ textAlign: 'justify' }}>
-                            <br /><br />
                             <b> Dear Members and Sevayatris,<br />
                                 Greetings from District D3234D2!</b><br /><br />
 

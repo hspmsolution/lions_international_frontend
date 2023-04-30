@@ -16,7 +16,7 @@ export default function ProfileCard(props) {
     ];
 
     return (
-        <Card sx={{ minWidth: 275, minHeight: 480, maxWidth: 300, margin: '10px' }}>
+        <Card sx={{ minHeight: 360, width: 300, margin: '10px' }}>
             <CardContent className={classes.cardContent}>
                 <div className={classes.avatarBg}></div>
                 <div className={classes.cardHeaders}>
@@ -45,26 +45,27 @@ export default function ProfileCard(props) {
                             m: 1,
                             // width: 270,
                         },
+                        width: '100%',
                     }}
                 >
-                    <Paper elevation={0} >
-                        <List className='contentList'>
-                            <ListItem>
+                    <Paper elevation={0}  sx={{ width: '100%' }}>
+                        <List sx={{ p: 0 }} className='contentList'>
+                            <ListItem sx={{ py: 0 }}>
                                 <ListItemIcon>
                                     <PersonOutlineIcon />
                                 </ListItemIcon>
                                 <ListItemText id="switch-list-label-darkMode" primary={designation} />
                             </ListItem>
-                            <ListItem>
+                            <ListItem sx={{ py: 0 }}>
                                 <ListItemIcon>
                                     <GroupsIcon />
                                 </ListItemIcon>
                                 <ListItemText id="switch-list-label-language" primary={club} />
                             </ListItem>
-                            <ListItem sx={{ minHeight: 120 }}>
+                            <ListItem sx={{ minHeight: 80, py: 0 }}>
                                 <ListItemText sx={{ textAlign: 'justify' }} id="switch-list-label-setting" primary={description} />
                             </ListItem>
-                            <ListItem sx={{ justifyContent: 'center' }}>
+                            <ListItem sx={{ justifyContent: 'center', py: 0 }}>
                                 <Box className={classes.socialIcons}>
                                     {socialIcos.map((item, index) => (
                                         <Link key={index}>

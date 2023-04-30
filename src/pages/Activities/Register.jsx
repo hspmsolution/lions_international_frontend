@@ -55,7 +55,6 @@ export default function Register({ activityId }) {
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        // sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <DialogTitle id="responsive-dialog-title">
           {"Activity Registration"}
@@ -69,6 +68,7 @@ export default function Register({ activityId }) {
             onChange={() => {
               setIsMember(!isMember);
             }}
+            sx={{ mb: '1rem', gap: '1rem', alignItems: 'center' }}
           >
             Are You a Lion Member
             <FormControlLabel value="Yes" control={<Radio />} label="Yes" />

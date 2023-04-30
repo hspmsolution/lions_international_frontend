@@ -18,7 +18,7 @@ import { events } from "../../actions/client";
 import { API_URL } from "../../api";
 import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
-function ResponsiveDialog({ type, title, date, bgImage, description,activityId }) {
+function ResponsiveDialog({ type, title, date, bgImage, description, activityId }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -48,7 +48,7 @@ function ResponsiveDialog({ type, title, date, bgImage, description,activityId }
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        // sx={{ display: 'flex', justifyContent: 'center' }}
+      // sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
@@ -109,14 +109,14 @@ function ResponsiveDialog({ type, title, date, bgImage, description,activityId }
               Register
             </Button>
           )}
-          {showRegister && <Register activityId={activityId}/>}
+          {showRegister && <Register activityId={activityId} />}
         </DialogActions>
       </Dialog>
     </div>
   );
 }
 
-function BasicCard({ title, bgImage, type, date, description,activityId }) {
+function BasicCard({ title, bgImage, type, date, description, activityId }) {
   const classes = useStyles();
 
   return (
@@ -125,7 +125,7 @@ function BasicCard({ title, bgImage, type, date, description,activityId }) {
         <Box sx={{ width: "100%", height: "16rem", mb: "1rem" }}>
           <img
             src={API_URL + bgImage}
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "100%", width: "100%", objectFit: 'contain' }}
           />
         </Box>
         <ResponsiveDialog
@@ -144,6 +144,7 @@ function BasicCard({ title, bgImage, type, date, description,activityId }) {
 export default function Events() {
   const dispatch = useDispatch();
   const activities = useSelector((state) => state.client.events);
+  const classes = useStyles();
 
   React.useEffect(() => {
     dispatch(events());
@@ -151,76 +152,77 @@ export default function Events() {
 
   return (
     <>
-      <Container sx={{ margin: "5rem auto" }}>
-        <Typography
-          variant="h4"
-          sx={{ textAlign: "center", marginBottom: "2rem" }}
-        >
-          Upcoming Activities
-        </Typography>
+      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
+        <CustomizedBreadcrumbs label={'Activities'} />
+        <Container className={classes.activityContainer} sx={{ margin: "3rem auto" }}>
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", marginBottom: "2rem" }}
+          >
+            Upcoming Activities
+          </Typography>
 
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Box
-              sx={{
-                p: 2,
-                bgcolor: "background.default",
-                display: "grid",
-                gridTemplateColumns: { md: "4fr 4fr 4fr" },
-                gap: 2,
-              }}
-            >
-              {activities?.upcoming?.map((filter, index) => (
-                <Box key={index}>
-                  <BasicCard
-                    title={filter.activityTitle}
-                    bgImage={filter.image_path}
-                    date={filter.date}
-                    type="upcoming"
-                    description={filter.description}
-                    activityId={filter.activityId}
-                  />
-                </Box>
-              ))}
-            </Box>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Box
+                sx={{
+                  p: 2,
+                  display: "grid",
+                  gridTemplateColumns: { md: "4fr 4fr 4fr" },
+                  gap: 2,
+                }}
+              >
+                {activities?.upcoming?.map((filter, index) => (
+                  <Box key={index}>
+                    <BasicCard
+                      title={filter.activityTitle}
+                      bgImage={filter.image_path}
+                      date={filter.date}
+                      type="upcoming"
+                      description={filter.description}
+                      activityId={filter.activityId}
+                    />
+                  </Box>
+                ))}
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-      <Container sx={{ margin: "5rem auto" }}>
-        <Typography
-          variant="h4"
-          sx={{ textAlign: "center", marginBottom: "2rem" }}
-        >
-          Past Activities
-        </Typography>
+        </Container>
+        <Container sx={{ margin: "3rem auto" }}>
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", marginBottom: "2rem" }}
+          >
+            Past Activities
+          </Typography>
 
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Box
-              sx={{
-                p: 2,
-                bgcolor: "background.default",
-                display: "grid",
-                gridTemplateColumns: { md: "4fr 4fr 4fr" },
-                gap: 2,
-              }}
-            >
-              {activities?.past?.map((filter, index) => (
-                <Box key={index}>
-                  <BasicCard
-                    title={filter.activityTitle}
-                    bgImage={filter.image_path}
-                    date={filter.date}
-                    type="past"
-                    description={filter.description}
-                    activityId={filter.activityId}
-                  />
-                </Box>
-              ))}
-            </Box>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Box
+                sx={{
+                  p: 2,
+                  display: "grid",
+                  gridTemplateColumns: { md: "4fr 4fr 4fr" },
+                  gap: 2,
+                }}
+              >
+                {activities?.past?.map((filter, index) => (
+                  <Box key={index}>
+                    <BasicCard
+                      title={filter.activityTitle}
+                      bgImage={filter.image_path}
+                      date={filter.date}
+                      type="past"
+                      description={filter.description}
+                      activityId={filter.activityId}
+                    />
+                  </Box>
+                ))}
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
     </>
   );
 }

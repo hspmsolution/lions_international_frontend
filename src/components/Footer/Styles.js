@@ -9,9 +9,10 @@ export default makeStyles(() => ({
         width: '100%'
     },
     socialIcons: {
+        textAlign: 'center',
         '& a': {
             color: '#fff',
             margin: '10px'
         }
-    }
+    },
 }))
