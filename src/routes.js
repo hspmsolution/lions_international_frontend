@@ -76,14 +76,14 @@ export default function Router() {
           { path: "/activities", element: <Activities /> },
           {
             path: "/membership/memberdirectory",
-            element: isAdmin ? <MemberDir /> : <Navigate to="/login" replace />,
+            element: isAdmin ? <MemberDir /> : <Navigate to="/loginReq" replace />,
           },
           {
             path: "/membership/businessdirectory",
             element: isAdmin ? (
               <BusinessDir />
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate to="/loginReq" replace />
             ),
           },
           {
@@ -91,7 +91,7 @@ export default function Router() {
             element: isAdmin ? (
               <MemberData />
             ) : (
-              <Navigate to="/login" replace />
+              <Navigate to="/loginReq" replace />
             ),
           },
           { path: "/resources/news", element: <NewsResource /> },

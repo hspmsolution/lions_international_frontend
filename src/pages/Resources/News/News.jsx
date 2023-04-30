@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
   Box,
   Button,
@@ -9,42 +9,42 @@ import {
 } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import ActivityCard from "../../../components/ActivityCard/ActivityCard";
-
-const data = [
-  {
-    src: "",
-    title: "Hunger Relief Program",
-    description:
-      "As part of the District’s Hunger Relief Program, LCB Shikshana Food",
-  }
-];
+import { useDispatch, useSelector } from "react-redux";
+import { topNews } from "../../../actions/news";
 
 export default function News() {
   const [page, setPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(topNews());
+  }, [dispatch]);
+
+  const newsData = useSelector((state) => state.news.topNews?.data || []);
+
+//   const filteredData = newsData.filter((item) =>
+//   item.title && item.title.toLowerCase().includes(searchTerm.toLowerCase())
+// );
+
+
+  const startIndex = (page - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+
+  const currentData = useMemo(() => {
+    return newsData.slice(startIndex, endIndex);
+  }, [newsData, startIndex, endIndex]);
+console.log(currentData);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-  };
-
-  const handleSearchInputChange = (event) => {
-    setSearchTerm(event.target.value);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(1);
   };
-
-  const filteredData = data.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const startIndex = (page - 1) * rowsPerPage;
-  const endIndex = startIndex + rowsPerPage;
-
-  const currentData = filteredData.slice(startIndex, endIndex);
 
   return (
     <>
@@ -64,18 +64,18 @@ export default function News() {
             justifyContent: "space-evenly",
           }}
         >
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            sx={{ width: "30%", minWidth: "10rem" }}
-            value={searchTerm}
-            onChange={handleSearchInputChange}
-          />
-          <Box sx={{ display: "inline-flex", gap: "2rem" }}>
-            <Button variant="contained">Search</Button>
-            <Button variant="contained">Reset</Button>
-          </Box>
+          {/* <Box sx={{ display: "inline-flex", gap: "2rem" }}>
+            <TextField
+              id="outlined-basic"
+              label="Search"
+              variant="outlined"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Button variant="contained" onClick={() => setSearchTerm("")}>
+              Reset
+            </Button>
+          </Box> */}
         </Container>
         <Box
           sx={{
@@ -85,9 +85,18 @@ export default function News() {
             flexWrap: "wrap",
           }}
         >
-          {currentData.map((item, index) => (
-            <ActivityCard item={item} key={index} />
-          ))}
+          {/* {filteredData.length > 0 ? (
+            currentData.map((item, index) => (
+              <ActivityCard item={item} key={index} />
+            ))
+          ) : (
+            <Typography variant="h6">No matching results found.</Typography>
+          )} */}
+          {
+            currentData.map((item,index)=>(
+              <ActivityCard item ={item} key={index}/>
+            ))
+          }
         </Box>
         <Box
           sx={{
@@ -97,7 +106,7 @@ export default function News() {
           }}
         >
           <Pagination
-            count={Math.ceil(filteredData.length / rowsPerPage)}
+            count={Math.ceil(newsData.length / rowsPerPage)}
             page={page}
             onChange={handleChangePage}
             showFirstButton
@@ -105,7 +114,8 @@ export default function News() {
             variant="outlined"
             color="primary"
           />
-          </Box>
-          </Box>
-          </>
-  )};
+        </Box>
+      </Box>
+    </>
+  );
+}

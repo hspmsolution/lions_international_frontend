@@ -12,7 +12,6 @@ export default function MasonryImageList() {
     const [photoIndex, setPhotoIndex] = React.useState(0);
     const [isOpen, setIsOpen] = React.useState(false);
     const images = useSelector((state) => state.client.galleryImages);
-    console.log(images);
     return (
         <div>
             <Typography variant='h3' className='team-h'>Gallery</Typography>
