@@ -1,0 +1,93 @@
+.carouselContainer {
+    padding: 3.5rem;
+    width: 100%;
+    height: 600px;
+    margin-bottom: 5rem;
+}
+
+.carouselHeading {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.carouselBody {
+    width: 330px;
+    height: 350px;
+    background-color: white;
+    border-radius: 1rem;
+    margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /*box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;*/
+    position: relative;
+}
+
+.carouselBody h1 {
+    margin: 0;
+}
+
+.carouselBody img {
+    width: 330px;
+    height: 350px;
+    border-radius: 1rem;
+}
+
+.carouselBody h4 {
+    margin: 0;
+    padding: 0.5rem 0;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: white;
+    border-radius: 0 0 1rem 1rem;
+    background-color: transparent;
+    backdrop-filter: blur(7px);
+}
+
+.slick-active {
+    padding: 30px 0;
+}
+
+.slick-center {
+    transform: scale(1.2);
+}
+
+.slick-slide:not(.slick-active) {
+    margin: 30px 0;
+}
+
+.card-cont:not(.slick-active) {
+    cursor: pointer;
+}
+
+.card-cont.slick-active {
+    cursor: default;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #020e1e !important;
+    font-size: 50px !important;
+}
+
+
+@media screen and (max-width: 600px) {
+    .carouselContainer {
+        padding: 1.7rem;
+    }
+
+    .carouselBody {
+        width: 250px;
+        height: 300px;
+    }
+
+    .carouselBody img {
+        width: 250px;
+        height: 300px;
+    }
+
+    .slick-prev:before, .slick-next:before {
+        color: #020e1e !important;
+        font-size: 23px !important;
+    }
+}
+
