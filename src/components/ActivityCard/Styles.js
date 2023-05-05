@@ -12,7 +12,7 @@ export default makeStyles(() => ({
     activityImage: {
         width: '100%',
         height: '200px !important',
-        objectFit: 'cover',
+        objectFit: 'contain',
         position: 'absolute',
     }
 }))
