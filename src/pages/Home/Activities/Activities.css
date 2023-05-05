@@ -52,3 +52,37 @@
   .imageSliderX > article > div:last-child {
     margin-top: 1.5rem !important;
   }
+
+
+  /* New Activity */
+.activity-heading{
+  color: white;
+
+}
+
+.activity-des-past{
+  color: rgba(255, 0, 0, 0.8);
+  text-shadow:none;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+}
+
+.activity-des-upcoming{
+  color: rgba(0, 128, 0, 0.8);
+  text-shadow:none;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+}
+
+.activity-des-date{
+    text-shadow:none;
+    font-weight: normal;
+    font-size: 15px;
+    margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.2rem 1rem;
+}
