@@ -1,6 +1,6 @@
 import {
     CLIENT_MSG,
-    REPORTED_NEWS
+    REPORTED_NEWS,TOP_NEWS
   } from "../constants/actionTypes";
   import * as api from "../api";
 
@@ -27,11 +27,17 @@ export const newsReporting = (formData) => async (dispatch) => {
     console.log('text');
     try {
       const { data } = await api.getReportedNews();
-    
-
       dispatch({ type: REPORTED_NEWS, payload: data });
       
     } catch (error) {
       console.log(error);
     }
   };
+  export const topNews=(newPage)=>async(dispatch)=>{
+    try {
+      const { data } = await api.topNews(newPage);
+      dispatch({ type: TOP_NEWS, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  }
