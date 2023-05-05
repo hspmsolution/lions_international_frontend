@@ -1,5 +1,5 @@
 import React from "react";
-import './about.css'
+import "./about.css";
 import { Avatar, Box, Container, Typography } from "@mui/material";
 import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
