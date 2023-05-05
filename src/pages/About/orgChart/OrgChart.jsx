@@ -29,13 +29,14 @@ function OrgChart() {
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1bh-content"
                                 id="panel1bh-header"
+                                sx={{ display: { sm: 'block', md: 'flex' } }}
                             >
                                 <Typography variant="h4" sx={{ width: '33%', flexShrink: 0 }}>
                                     {region.name}
                                 </Typography>
                                 <Typography variant="h5" sx={{ color: 'text.secondary' }}>{region.chairPerson}</Typography>
                             </AccordionSummary>
-                            <AccordionDetails sx={{ display: 'flex', gap: '3rem' }}>
+                            <AccordionDetails sx={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
                                 {region.zones?.map((zone, i) => (
                                     <ZoneTable zone={zone} key={i} />
                                 ))}
