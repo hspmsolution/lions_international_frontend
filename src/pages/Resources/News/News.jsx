@@ -5,8 +5,10 @@ import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import NewsCard from "../../../components/NewsCard/NewsCard";
 import { useDispatch, useSelector } from "react-redux";
 import { topNews } from "../../../actions/news";
+import useStyles from './Styles';
 
 export default function News() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,30 +35,14 @@ export default function News() {
 
   return (
     <>
-      <CustomizedBreadcrumbs label={"Resources"} subLabel={"News"} />
       <Box
         sx={{
-          pt: "1rem",
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
         }}
       >
-        <Container
-          sx={{
-            my: "3rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-evenly",
-          }}
-        ></Container>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            py: "3rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <CustomizedBreadcrumbs label={"Resources"} subLabel={"News"} />
+        <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }} >
           {newsData.map((item, index) => (
             <NewsCard item={item} key={index} />
           ))}
@@ -65,7 +51,7 @@ export default function News() {
           sx={{
             display: "flex",
             justifyContent: "center",
-            mt: "2rem",
+            p: "2rem",
           }}
         >
           <Pagination
@@ -76,6 +62,7 @@ export default function News() {
             showLastButton
             variant="outlined"
             color="primary"
+            className={classes.newsPagination}
           />
         </Box>
       </Box>

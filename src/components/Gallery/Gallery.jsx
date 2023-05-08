@@ -13,7 +13,7 @@ export default function Gallery(props) {
 
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "space-evenly", pb: "2rem" }}>
+      <Box sx={{ display: "flex", p: "2rem 1rem", flexWrap: 'wrap' }}>
         {images.map((item, index) => (
           <button
             type="button"

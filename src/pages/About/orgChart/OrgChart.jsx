@@ -9,8 +9,7 @@ import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import ZoneTable from "./ZoneTable";
 import { districtData } from "../../../actions/client";
 
-
-function OrgChart() {
+export default function OrgChart() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.client.districtData);
   const [expanded, setExpanded] = React.useState(false);
@@ -42,7 +41,7 @@ function OrgChart() {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
-                                sx={{ display: { sm: 'block', md: 'flex' } }}
+                sx={{ display: { sm: 'block', md: 'flex' } }}
               >
                 <Typography variant="h4" sx={{ width: "33%", flexShrink: 0 }}>
                   {region.name}
@@ -51,7 +50,7 @@ function OrgChart() {
                   {region.chairPerson}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ display: "flex", flexWrap: 'wrap', gap: "3rem" }}>
+              <AccordionDetails sx={{ display: "flex", flexWrap: 'wrap', gap: "3rem", justifyContent: 'center' }}>
                 {region.zones?.map((zone, i) => (
                   <ZoneTable zone={zone} key={i} />
                 ))}
@@ -63,80 +62,3 @@ function OrgChart() {
     </>
   );
 }
-
-const district = [
-  {
-    name: "Region 1",
-    chairPerson: "RegionChairPerson 1",
-    zones: [
-      {
-        name: "Zone 1",
-        chairPerson: "ZoneChairPerson 1",
-        clubs: [
-          {
-            name: "club1",
-            id: 1,
-          },
-          {
-            name: "club2",
-            id: 2,
-          },
-          {
-            name: "club3",
-            id: 3,
-          },
-        ],
-      },
-      {
-        name: "Zone 2",
-        chairPerson: "ZoneChairPerson 2",
-        clubs: [
-          {
-            name: "club1",
-            id: 1,
-          },
-        ],
-      },
-      {
-        name: "Zone 3",
-        chairPerson: "ZoneChairPerson 3",
-        clubs: [
-          {
-            name: "club1",
-            id: 1,
-          },
-          {
-            name: "club2",
-            id: 2,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    name: "Region 2",
-    chairPerson: "RegionChairPerson 2",
-    zones: [
-      {
-        name: "Zone 1",
-        chairPerson: "ZoneChairPerson 1",
-      },
-      {
-        name: "Zone 2",
-        chairPerson: "ZoneChairPerson 2",
-      },
-    ],
-  },
-  {
-    name: "Region 2",
-    chairPerson: "RegionChairPerson 2",
-    zones: [
-      {
-        name: "Zone 1",
-        chairPerson: "ZoneChairPerson 1",
-      },
-    ],
-  },
-];
-
-export default OrgChart;

@@ -10,14 +10,14 @@ import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 export default function ResourcesTable({rows}) {
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 300, maxWidth: 650 }} aria-label="simple table">
+            <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Resources</TableCell>
                         <TableCell align="right">Download</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody sx={{ height: '350px', overflowY: 'scroll' }}>
                     {rows.map((row) => (
                         <TableRow
                             key={row.name}

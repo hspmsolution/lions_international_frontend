@@ -74,34 +74,24 @@ export default function MemberData() {
           label={"Membership"}
           subLabel={"Download Member Data"}
         />
-        <Container>
-          <Button
-            sx={{ marginRight: "auto", width: "20%" }}
-            variant="contained"
-            onClick={downloadData}
-          >
-            Download
-          </Button>
-          <Box sx={{ width: "100%", mb: "2rem" }}>
+        <Container sx={{ paddingX: { sm: '5rem' } }}>
+          <Box sx={{ width: "100%", pb: "4rem", textAlign: 'center' }}>
             <Grid
               container
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Item className={classes.checkItems}>
                   <Typography variant="h6">Select Clubs</Typography>
-                  <Box sx={{ display: "inline-flex", gap: "2rem" }}>
-                    <Button variant="contained" onClick={selectClubs}>
-                      {selectAllClubs ? "Deselect All" : "Select All"}
-                    </Button>
-                  </Box>
                   <Box
                     sx={{
                       border: "1px solid #c9c9c9",
                       margin: "1rem",
                       padding: "0.5rem",
                       borderRadius: "5px",
+                      height: '500px',
+                      overflowY: 'scroll',
                     }}
                   >
                     <FormGroup>
@@ -125,22 +115,24 @@ export default function MemberData() {
                       ))}
                     </FormGroup>
                   </Box>
-                </Item>
-              </Grid>
-              <Grid item xs={6}>
-                <Item className={classes.checkItems}>
-                  <Typography variant="h6">Select Positions</Typography>
                   <Box sx={{ display: "inline-flex", gap: "2rem" }}>
-                    <Button variant="contained" onClick={selectTitles}>
-                      {selectAllTitles ? "Deselect All" : "Select All"}
+                    <Button variant="contained" onClick={selectClubs}>
+                      {selectAllClubs ? "Deselect All" : "Select All"}
                     </Button>
                   </Box>
+                </Item>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Item className={classes.checkItems}>
+                  <Typography variant="h6">Select Positions</Typography>
                   <Box
                     sx={{
                       border: "1px solid #c9c9c9",
                       margin: "1rem",
                       padding: "0.5rem",
                       borderRadius: "5px",
+                      height: '500px',
+                      overflowY: 'scroll',
                     }}
                   >
                     <FormGroup>
@@ -164,9 +156,21 @@ export default function MemberData() {
                       ))}
                     </FormGroup>
                   </Box>
+                  <Box sx={{ display: "inline-flex", gap: "2rem" }}>
+                    <Button variant="contained" onClick={selectTitles}>
+                      {selectAllTitles ? "Deselect All" : "Select All"}
+                    </Button>
+                  </Box>
                 </Item>
               </Grid>
             </Grid>
+            <Button
+              sx={{ marginRight: "auto", mt: '2rem' }}
+              variant="contained"
+              onClick={downloadData}
+            >
+              Download
+            </Button>
           </Box>
         </Container>
       </Box>
