@@ -66,6 +66,7 @@ export default function News() {
             display: "flex",
             justifyContent: "center",
             mt: "2rem",
+            paddingBottom: "1rem",
           }}
         >
           <Pagination
