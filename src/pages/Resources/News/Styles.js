@@ -14,5 +14,10 @@ export default makeStyles(() => ({
         height: '200px !important',
         objectFit: 'cover',
         position: 'absolute',
+    },
+    newsPagination: {
+        '& ul': {
+            gap: '10px'
+        }
     }
 }))
