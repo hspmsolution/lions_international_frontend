@@ -1,10 +1,12 @@
 import Lightbox from "react-image-lightbox";
 import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import "react-image-lightbox/style.css";
 import "./Gallery.css";
 import React, { useState } from "react";
 import { API_URL } from "../../api";
+import { Paper, Typography } from "@mui/material";
 
 export default function Gallery(props) {
   const images = useSelector((state) => state.client.galleryImages);
@@ -13,33 +15,61 @@ export default function Gallery(props) {
 
   return (
     <>
-      <Box sx={{ display: "flex", p: "2rem 1rem", flexWrap: 'wrap' }}>
-        {images.map((item, index) => (
-          <button
-            type="button"
-            onClick={() => {
-              setIsOpen(true);
-              setPhotoIndex(index);
-            }}
-            className="itemButton"
-            key={index}
-          >
-            <Box sx={{ width: "100%", height: "100%" }}>
-              <img
-                src={`${API_URL+item.image}`}
-                loading="lazy"
-                style={{ height: "100%", margin: "auto" }}
-              />
-            </Box>
-          </button>
-        ))}
+      <Box>
+        <Grid
+          container
+          spacing={1}
+        >
+          {images.map((item, index) => (
+            <>
+              <Grid
+                xs={12}
+                lg={6}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: "1rem",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(true);
+                    setPhotoIndex(index);
+                  }}
+                  className="itemButton"
+                  key={index}
+                >
+                  <Paper elevation={3}>
+                    <img
+                      src={`${API_URL + item.image}`}
+                      loading="lazy"
+                      style={{
+                        width: "400px",
+                        height: "300px",
+                      }}
+                    />
+                    <Typography variant={2}>Heading</Typography>
+                    <br></br>
+                    <Typography variant={5}>Description</Typography>
+                  </Paper>
+                </button>
+              </Grid>
+            </>
+          ))}
+        </Grid>
       </Box>
 
       {isOpen && (
         <Lightbox
-          mainSrc={`${API_URL+images[photoIndex].image}`}
-          nextSrc={`${API_URL+images[(photoIndex + 1) % images.length]?.image}`}
-          prevSrc={`${API_URL+images[(photoIndex - 1) % images.length]?.image}`}
+          mainSrc={`${API_URL + images[photoIndex].image}`}
+          nextSrc={`${
+            API_URL + images[(photoIndex + 1) % images.length]?.image
+          }`}
+          prevSrc={`${
+            API_URL + images[(photoIndex - 1) % images.length]?.image
+          }`}
           onCloseRequest={() => setIsOpen(false)}
           onMovePrevRequest={() =>
             setPhotoIndex((photoIndex + images.length - 1) % images.length)

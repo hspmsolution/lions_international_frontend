@@ -18,6 +18,15 @@ export default makeStyles((theme) => ({
     },
     activityHeading:{
         color:'white'
+    },
+    activityDate:{
+        position:'absolute',
+        top:'6%',
+        right:'4%',
+        backgroundColor:'white',
+        padding:'0.2rem 0.6rem',
+        borderRadius:'1rem',
+        color:'red',
     }
 
 }))
