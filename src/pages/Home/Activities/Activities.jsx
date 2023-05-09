@@ -28,24 +28,28 @@ export default function Activities() {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://cdn.britannica.com/s:800x450,c:crop/35/204435-138-2F2B745A/Time-lapse-hyper-lapse-Isle-Skye-Scotland.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Palace_of_Fine_Arts_%2816794p%29.jpg/1200px-Palace_of_Fine_Arts_%2816794p%29.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
   ];
@@ -94,15 +98,21 @@ export default function Activities() {
             {activityData.map((item, index) => {
               return (
                 <>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    position={"relative"}
+                  >
                     <Item>
                       <img
                         src={item.image}
                         className={classes.activityImage}
                         alt=""
                       />
-                      <p>{item.date}</p>
+                      <h3>{item.heading}</h3>
                       <p>{item.description}</p>
+                      <p className={classes.activityDate}>{item.date}</p>
                     </Item>
                   </Grid>
                 </>
