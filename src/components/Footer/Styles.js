@@ -12,7 +12,15 @@ export default makeStyles(() => ({
         textAlign: 'center',
         '& a': {
             color: '#fff',
-            margin: '10px'
-        }
+            // margin: '10px',
+            fontSize:"1.5rem",
+        padding:'1rem',
+        borderRadius:"1rem",
+        },
+        
+
+        '& a:hover ': {
+            backgroundColor: 'rgba(4,27,59,0.6)',}
+
     },
 }))
