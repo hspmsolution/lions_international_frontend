@@ -6,16 +6,19 @@ import "react-image-lightbox/style.css";
 import "./Gallery.css";
 import React, { useState } from "react";
 import { API_URL } from "../../api";
-import { Paper, Typography } from "@mui/material";
+import Card from "../CommonCard/Card";
+import useStyles from "./GalleryStyles";
+import { Paper } from "@mui/material";
 
 export default function Gallery(props) {
+  const classes = useStyles();
   const images = useSelector((state) => state.client.galleryImages);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Box>
+      {/* <Box>
         <Grid
           container
           spacing={1}
@@ -42,19 +45,63 @@ export default function Gallery(props) {
                   key={index}
                 >
                   <Paper elevation={3}>
-                    <img
-                      src={`${API_URL + item.image}`}
-                      loading="lazy"
-                      style={{
-                        width: "400px",
-                        height: "300px",
-                      }}
-                    />
-                    <Typography variant={2}>Heading</Typography>
-                    <br></br>
-                    <Typography variant={5}>Description</Typography>
+                    <Box sx={{ height: "300px" }}>
+                      <img
+                        src={`${API_URL + item.image}`}
+                        loading="lazy"
+                      />
+                    </Box>
+                    <Box sx={{ padding: "1rem" }}>
+                      <Typography variant={2}>Heading</Typography>
+                      <br></br>
+                      <Typography variant={5}>Description</Typography>
+                    </Box>
                   </Paper>
                 </button>
+              </Grid>
+            </>
+          ))}
+        </Grid>
+      </Box> */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          // background: "#112E57",
+          padding: "1rem",
+          textAlign: "center",
+        }}
+      >
+        <Grid
+          container
+          spacing={5}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          {images.map((item, index) => (
+            <>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={4}
+                onClick={() => {
+                  setIsOpen(true);
+                  setPhotoIndex(index);
+                }}
+                key={index}
+              >
+                <Paper elevation={3}>
+                  <Card
+                    image={`${API_URL + item.image}`}
+                    heading="Heading"
+                    description="Description"
+                    date="02/03/2023"
+                  />
+                </Paper>
               </Grid>
             </>
           ))}

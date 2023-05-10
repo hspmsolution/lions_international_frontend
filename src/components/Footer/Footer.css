@@ -231,6 +231,17 @@ ul.list-links li {
         text-align: center;
     }
 
+    .footer-logo{
+        order: 1;
+    }
+    .footer-nav01{
+        order: 2;
+    }
+    .footer-nav02{
+        order: 3;
+    }
+    
+
 }
 
 
