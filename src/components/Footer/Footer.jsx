@@ -8,6 +8,7 @@ import {
   ListItemButton,
   ListItemText,
   Typography,
+  ListItemIcon,
 } from "@mui/material";
 import React from "react";
 import useStyles from "./Styles";
@@ -21,7 +22,13 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { faCube } from "@fortawesome/free-solid-svg-icons";
+import PhoneIcon from "@mui/icons-material/Phone";
+import {
+  faCube,
+  faPhone,
+  faEnvelope,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 
 const quickLinks = [
   "Events",
@@ -31,7 +38,21 @@ const quickLinks = [
   "Privacy Policies",
   "Terms & Conditions",
 ];
-const contact = ["123-456-7890", "example@gmail.com", "Address"];
+// const contact = ["123-456-7890", "example@gmail.com", "Address"];
+const contact = [
+  {
+    icon: <PhoneIcon />,
+    value: "123456789",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faEnvelope} />,
+    value: "example@gmail.com",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faLocationDot} />,
+    value: "Address",
+  },
+];
 const socialIcos = [
   <FontAwesomeIcon icon={faFacebookF} />,
   <FontAwesomeIcon icon={faTwitter} />,
@@ -128,7 +149,8 @@ function Footer() {
                   key={i}
                 >
                   <ListItemButton>
-                    <ListItemText primary={item} />
+                    <ListItemIcon sx={{minWidth:'30px',color:'white'}}>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.value} />
                   </ListItemButton>
                 </ListItem>
               ))}
