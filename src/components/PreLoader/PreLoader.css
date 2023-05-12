@@ -1,13 +1,59 @@
-.loader-container{
+/* .loader-container{
     position: absolute;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
+} */
 
-    background-color: transparent;
-    backdrop-filter: blur(25px);
+.hash-loader {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+@keyframes react-spinners-HashLoader-before {
+  0% {
+    width: 30px;
+    box-shadow: rgb(66, 133, 244) 60px -30px, rgb(66, 133, 244) -60px 30px;
+  }
+
+  35% {
+    width: 150px;
+    box-shadow: rgb(66, 133, 244) 0px -30px, rgb(66, 133, 244) 0px 30px;
+  }
+
+  70% {
+    width: 30px;
+    box-shadow: rgb(52, 168, 83) -60px -30px, rgba(52, 168, 83) 60px 30px;
+  }
+
+  100% {
+    box-shadow: rgb(52, 168, 83) 60px -30px, rgb(52, 168, 83) -60px 30px;
+  }
+}
+
+@keyframes react-spinners-HashLoader-after {
+  0% {
+    height: 30px;
+    box-shadow: rgb(251, 188, 5) 30px 60px, rgb(251, 188, 5) -30px -60px;
+  }
+
+  35% {
+    height: 150px;
+    box-shadow: rgb(251, 188, 5) 30px 0px, rgb(251, 188, 5) -30px 0px;
+  }
+
+  70% {
+    height: 30px;
+    box-shadow: rgb(234, 67, 53) 30px -60px, rgb(234, 67, 53) -30px 60px;
+  }
+
+  100% {
+    box-shadow: rgb(234, 67, 53) 30px 60px, rgb(234, 67, 53) -30px -60px;
+  }
 }

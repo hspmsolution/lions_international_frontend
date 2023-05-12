@@ -7,5 +7,11 @@ export default makeStyles(() => ({
     eventCard: {
         padding: 0,
         textAlign: 'center'
+    },
+    slider:{
+        height:'350px',
+        width:'350px',
     }
 }))
+
+

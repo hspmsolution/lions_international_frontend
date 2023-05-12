@@ -6,7 +6,7 @@ import "react-image-lightbox/style.css";
 import "./Gallery.css";
 import React, { useState } from "react";
 import { API_URL } from "../../api";
-import Card from "../CommonCard/Card";
+import CommonCard from "../CommonCard/CommonCard";
 import useStyles from "./GalleryStyles";
 import { Paper } from "@mui/material";
 
@@ -95,7 +95,7 @@ export default function Gallery(props) {
                 key={index}
               >
                 <Paper elevation={3}>
-                  <Card
+                  <CommonCard
                     image={`${API_URL + item.image}`}
                     heading="Heading"
                     description="Description"

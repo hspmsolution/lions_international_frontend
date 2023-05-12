@@ -17,6 +17,8 @@ import Register from "./Register";
 import { events } from "../../actions/client";
 import { API_URL } from "../../api";
 import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
+import CommonCard from "../.././components/CommonCard/CommonCard";
+import ImageSlider, { Slide } from "react-auto-image-slider";
 
 function ResponsiveDialog({
   type,
@@ -47,7 +49,10 @@ function ResponsiveDialog({
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+      >
         Open Activity Details
       </Button>
       <Dialog
@@ -77,7 +82,10 @@ function ResponsiveDialog({
             <tbody>
               <tr>
                 <th style={{ display: "flex" }}>
-                  <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ mr: "1rem" }}
+                  >
                     Event Name :{" "}
                   </Typography>
                   <Typography variant="subtitle1">{title}</Typography>
@@ -85,7 +93,10 @@ function ResponsiveDialog({
               </tr>
               <tr>
                 <th style={{ display: "flex" }}>
-                  <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ mr: "1rem" }}
+                  >
                     Event Date :{" "}
                   </Typography>
                   <Typography variant="subtitle1">
@@ -95,7 +106,10 @@ function ResponsiveDialog({
               </tr>
               <tr>
                 <th style={{ display: "flex" }}>
-                  <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ mr: "1rem" }}
+                  >
                     Event Details :{" "}
                   </Typography>
                   <Typography
@@ -110,11 +124,17 @@ function ResponsiveDialog({
           </table>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose}>
+          <Button
+            autoFocus
+            onClick={handleClose}
+          >
             Close
           </Button>
           {type === "upcoming" && (
-            <Button onClick={handleClick} autoFocus>
+            <Button
+              onClick={handleClick}
+              autoFocus
+            >
               Register
             </Button>
           )}
@@ -131,12 +151,24 @@ function BasicCard({ title, bgImage, type, date, description, activityId }) {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 520, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
-        <Box sx={{ width: "100%", height: "16rem", mb: "1rem" }}>
-          <img
+        <Box
+          sx={{
+            width: "100%",
+            height: "16rem",
+            mb: { xs: "1.5rem", lg: "4rem" },
+          }}
+        >
+          {/* <img
             src={API_URL + bgImage}
             style={{ height: "100%", width: "100%", objectFit: "contain" }}
+          /> */}
+
+          <CommonCard
+            image={API_URL + bgImage}
+            date={date?.slice(0, 10)}
           />
         </Box>
+
         <ResponsiveDialog
           type={type}
           title={title}
@@ -180,8 +212,14 @@ export default function Events() {
             Upcoming Activities
           </Typography>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
+          <Grid
+            container
+            spacing={2}
+          >
+            <Grid
+              item
+              xs={12}
+            >
               <Box
                 sx={{
                   p: 2,
@@ -191,7 +229,10 @@ export default function Events() {
                 }}
               >
                 {activities?.upcoming?.length === 0 ? (
-                  <Typography variant="h6" color="black">
+                  <Typography
+                    variant="h6"
+                    color="black"
+                  >
                     No Upcoming Activity Found
                   </Typography>
                 ) : (
@@ -220,8 +261,14 @@ export default function Events() {
             Past Activities
           </Typography>
 
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
+          <Grid
+            container
+            spacing={2}
+          >
+            <Grid
+              item
+              xs={12}
+            >
               <Box
                 sx={{
                   p: 2,
@@ -231,7 +278,10 @@ export default function Events() {
                 }}
               >
                 {activities?.past?.length === 0 ? (
-                  <Typography variant="h6" color="black">
+                  <Typography
+                    variant="h6"
+                    color="black"
+                  >
                     No Past Activity Found
                   </Typography>
                 ) : (
