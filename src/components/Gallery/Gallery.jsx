@@ -94,7 +94,10 @@ export default function Gallery(props) {
                 }}
                 key={index}
               >
-                <Paper elevation={3}>
+                <Paper
+                  elevation={3}
+                  sx={{ cursor: "pointer" }}
+                >
                   <CommonCard
                     image={`${API_URL + item.image}`}
                     heading="Heading"
