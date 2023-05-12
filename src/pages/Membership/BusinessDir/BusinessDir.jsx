@@ -1,69 +1,59 @@
-import { Box, Container, Grid, Paper } from '@mui/material';
-import ProfileCard from './ProfileCard';
-import useStyles from './Styles';
-import { styled } from '@mui/material/styles';
+import { Box, Container, Grid, Paper } from "@mui/material";
+import ProfileCard from "./ProfileCard";
+import useStyles from "./Styles";
+import { styled } from "@mui/material/styles";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getMembers } from "../../../actions/member";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
 }));
 
-const BusinessDir = () => {
+export default function BusinessDir() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  // Define an empty array to hold the members data
+  const Members = useSelector((state) => state.clubMembers.memberDirectory);
+  
+  useEffect(() => {
+    dispatch(getMembers());
+  }, []);
 
   return (
     <>
-      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
-        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Business Directory'} />
+      <Box
+        sx={{
+          backgroundImage: "url('/assets/img/bggg.png')",
+          backgroundAttachment: "fixed",
+          pb: "2rem",
+        }}
+      >
+        <CustomizedBreadcrumbs
+          label={"Membership"}
+          subLabel={"Member Directory"}
+        />
         <Container className={classes.profileContainer}>
           <Grid container spacing={2}>
-            {busiMan.map((member, index) => (
-              <Grid item xs={4}>
+            {Members?.map((member, index) => (
+              <Grid item xs={4} key={index}>
                 <ProfileCard
-                  name={member.name}
-                  designation={member.designation}
-                  club={member.club}
+                  fullName={member.fullName}
+                  title={member.title}
+                  clubName={member.clubName}
                   description={member.description}
-                  key={index} />
+                />
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
     </>
-  )
+  );
 }
-
-export default BusinessDir;
-
-
-const busiMan = [
-  {
-    name: 'John Doe',
-    designation: 'Club Secretary',
-    club: 'PUNE SUPREME',
-    description: 'My name is Jesse Couch, and I am an award winning, intensely ',
-  },
-  {
-    name: 'Full_Name1',
-    designation: 'Club Treasurer',
-    club: 'Club_Name',
-    description: 'about the lion',
-  },
-  {
-    name: 'Full_Name2',
-    designation: 'Club Treasurer',
-    club: 'Club_Name',
-    description: 'about the lion',
-  },
-  {
-    name: 'Full_Name3',
-    designation: 'Club Treasurer',
-    club: 'Club_Name',
-    description: 'about the lion',
-  },
-]
