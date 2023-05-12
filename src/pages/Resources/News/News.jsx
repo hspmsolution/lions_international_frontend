@@ -8,7 +8,7 @@ import { topNews } from "../../../actions/news";
 import useStyles from "./Styles";
 import { Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Card from "../../../components/CommonCard/Card";
+import CommonCard from "../../../components/CommonCard/CommonCard";
 import { API_URL } from "../../../api";
 
 export default function News() {
@@ -79,7 +79,7 @@ export default function News() {
                   key={index}
                 >
                   <Paper elevation={3}>
-                    <Card
+                    <CommonCard
                       images={`${API_URL + item?.image}`}
                       srcSet={`${API_URL + item?.image}`}
                       alt={item.newsTitle}

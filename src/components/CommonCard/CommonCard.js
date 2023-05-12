@@ -6,7 +6,7 @@ import useStyles from "./CardStyle";
 
 
 
-export default function Card(props) {
+export default function CommonCard(props) {
     const classes = useStyles();
 
     const Item = styled(Paper)(({ theme }) => ({
