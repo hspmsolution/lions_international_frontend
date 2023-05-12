@@ -24,11 +24,11 @@ export default function App() {
   const [isLoaded, setIsLoading] = useState(true);
 
   // Static Pre-Loader
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 3000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
 
   // Dynamin Pre-Loader01
   // useEffect(() => {
@@ -39,13 +39,13 @@ export default function App() {
   // }, []);
 
   // Dynamin Pre-Loader01
-  window.addEventListener("load", () => {
-    if (document.readyState === "complete") {
-      // window.onload has completed
-      console.log("Page Has Loaded");
-      setIsLoading(false);
-    }
-  });
+  // window.addEventListener("load", () => {
+  //   if (document.readyState === "complete") {
+  //     // window.onload has completed
+  //     console.log("Page Has Loaded");
+  //     setIsLoading(false);
+  //   }
+  // });
 
   return (
     <ThemeProvider>

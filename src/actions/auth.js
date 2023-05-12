@@ -67,3 +67,39 @@ export const resetPass = (formData, navigate) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const signInReq = (formData, navigate) => async (dispatch) => {
+  try {
+    const { data, status } = await api.signIn(formData);
+    dispatch({ type: AUTH, payload: data });
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+    const decoded = decodeJWT(data.token);
+    if (decoded.detailsRequired) {
+      setTimeout(() => {
+        dispatch({
+          type: CLIENT_MSG,
+          message: {
+            info: "Reset Your Password",
+            status: 200,
+          },
+        });
+      }, 0);
+
+      navigate("/password");
+    } else {
+      navigate("/");
+    }
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
