@@ -100,9 +100,9 @@ export default function Gallery(props) {
                 >
                   <CommonCard
                     image={`${API_URL + item.image}`}
-                    heading={item.title}
-                    description={item.description}
-                    date={item.date}
+                    heading="Heading"
+                    description="Description"
+                    date="02/03/2023"
                   />
                 </Paper>
               </Grid>
