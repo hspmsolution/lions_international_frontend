@@ -48,3 +48,5 @@ export const slider=()=>API.get("assets/slider");
 export const registerActivity=(formData)=>API.post("activity/register",formData);
 export const gallery=()=>API.get("assets/gallery");
 export const topNews=()=>API.get("news/topNews");
+export const memberDirectory=()=>API.get("member/memberDirectory");
+export const buisnessDirectory=()=>API.get("member/buisnessDirectory");

@@ -44,13 +44,11 @@ export default function Activities() {
               padding: "2rem 2rem 4rem",
             }}
           >
-            <Typography variant="h4" className={classes.activeH}>
-              Past Activities
-            </Typography>
+            
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
                 <ImageSlider>
-                  {activities?.past?.map((item, index) => (
+                  {activities?.recent?.slice(0, 5).map((item, index) => (
                     <Slide>
                       <ActivityCard key={index} item={item} />
                     </Slide>
@@ -71,13 +69,11 @@ export default function Activities() {
               padding: "2rem 2rem 4rem",
             }}
           >
-            <Typography variant="h4" className={classes.activeH}>
-              Upcoming Activities
-            </Typography>
+          
             <List sx={{ py: "var(--ListDivider-gap)" }}>
               <div className="imageSlider imageSliderX">
                 <ImageSlider>
-                  {activities?.upcoming?.map((item, index) => (
+                  {activities?.recent?.slice(5, 10).map((item, index) => (
                     <Slide>
                       <ActivityCard key={index} item={item} />
                     </Slide>

@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { API_URL } from '../../../api';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import './Gallery.css';
+// import './Gallery.css';
 import { useSelector} from 'react-redux';
 
 
