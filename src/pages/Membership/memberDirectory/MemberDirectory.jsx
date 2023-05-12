@@ -12,13 +12,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const BusinessDir = () => {
+const MemberDirectory = () => {
   const classes = useStyles();
 
   return (
     <>
       <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
-        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Business Directory'} />
+        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Member Directory'} />
         <Container className={classes.profileContainer}>
           <Grid container spacing={2}>
             {busiMan.map((member, index) => (
@@ -38,7 +38,7 @@ const BusinessDir = () => {
   )
 }
 
-export default BusinessDir;
+export default MemberDirectory;
 
 
 const busiMan = [

@@ -147,3 +147,21 @@
 
 
 }
+
+@media screen and (max-width: 1000px) {
+    .about-card img {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about-card img {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about-card img {
+        width: 180px;
+    }
+}

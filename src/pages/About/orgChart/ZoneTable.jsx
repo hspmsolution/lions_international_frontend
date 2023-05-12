@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Typography } from "@mui/material";
 
 function createData(name) {
     return { name };
@@ -22,7 +23,12 @@ export default function ZoneTable({ zone }) {
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>{zone.name}</TableCell>
+                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>
+                                {zone.name}
+                                <Typography variant="h5">
+                                    Zone Chairperson{zone.chairPerson}
+                                </Typography>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
