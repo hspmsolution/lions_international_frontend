@@ -12,7 +12,7 @@ import ActivityCard from "../../../components/ActivityCard/ActivityCard";
 import { Carousel } from "react-carousel-minimal";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
-import { API_URL } from "../../../api";
+
 export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -95,7 +95,7 @@ export default function Activities() {
             rowSpacing={3}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            {activities.recent?.slice(0,4).map((item, index) => {
+            {activityData.map((item, index) => {
               return (
                 <>
                   <Grid
@@ -106,13 +106,13 @@ export default function Activities() {
                   >
                     <Item>
                       <img
-                        src={`${API_URL+ item?.image_path}`}
+                        src={item.image}
                         className={classes.activityImage}
                         alt=""
                       />
                       <h3>{item.heading}</h3>
                       <p>{item.description}</p>
-                      <p className={classes.activityDate}>{item?.date?.slice(0,10)}</p>
+                      <p className={classes.activityDate}>{item.date}</p>
                     </Item>
                   </Grid>
                 </>
