@@ -1,6 +1,5 @@
-import  React,{useEffect} from "react";
 import MUIDataTable from "mui-datatables";
-import { useSelector,useDispatch } from "react-redux";
+import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
@@ -9,7 +8,7 @@ import { Container } from "@mui/material";
 import { Box } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import useStyles from './Styles';
-import {getMembers} from "../../../actions/member";
+
 const muiCache = createCache({
   key: "mui-datatables",
   prepend: true
@@ -48,26 +47,27 @@ export default function MemberDir() {
       console.dir(state);
     }
   };
-  const Members = () => {
-    const dispatch = useDispatch();
-    const membersD = useSelector((state) => state.clubMembers.memberDirectory);
-  
-  
-    useEffect(() => {
-      dispatch(getMembers());
-    }, []);
-  
-    const data = membersD.map((member, index) => [
-      index + 1,
-      member.title,
-      member.fullName,
-      member.clubName,
-      member.Occupation
-    ]);
-  
-    return data;
-  };
 
+  const data = [
+    [1, "Lion Member", "Gabby George", "himym", "Business Analyst"],
+    [
+      2,
+      "Past District Governor",
+      "Aiden Lloyd",
+      "PUNE SUPREME",
+      "CEO of Tony's Burger Palace"
+    ],
+    [3, "Club Administrator", "Jaden Collins", "PUNE SUPREME", "CA"],
+    [4, "Club Director", "Franky Rees", "VADGAON", "Business Analyst"],
+    [5, "Club Treasurer", "Aaren Rose", "Toledo", "Business Analyst"],
+    [6, "Lion Member", "Joe Jones", "POONA SARASBAUG", "Computer Programmer"],
+    [7, "Club Director", "Johnny Jones", "St. Petersburg", "Business Analyst"],
+    [8, "Lion Member", "Jimmy Johns", "Baltimore", "Business Analyst"],
+    [9, "Lion Member", "Jacky Jackson", "Baltimore", "Business Consultant"],
+    [10, "Club Director	", "Jack Jackson", "El Paso", "Business Analyst"],
+    [11, "Lion Member", "Jo Jo", "Washington DC", "Software Developer"],
+    [12, "Lion Member", "Donna Marie", "Annapolis", "Business Manager"]
+  ];
 
   return (
     <div className="memberTable">
@@ -78,7 +78,7 @@ export default function MemberDir() {
             <ThemeProvider theme={createTheme()}>
               <MUIDataTable
                 // title={"Member Directory"}
-                data={Members()}
+                data={data}
                 columns={columns}
                 options={options}
               />
