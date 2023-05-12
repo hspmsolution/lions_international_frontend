@@ -97,9 +97,9 @@ export default function Gallery(props) {
                 <Paper elevation={3}>
                   <Card
                     image={`${API_URL + item.image}`}
-                    heading="Heading"
-                    description="Description"
-                    date="02/03/2023"
+                    heading={item.title}
+                    description={item.description}
+                    date={item.date}
                   />
                 </Paper>
               </Grid>

@@ -27,13 +27,13 @@ export default function ProfileCard(props) {
   
   // Define an empty array to hold the members data
   const Members = useSelector((state) => state.clubMembers.memberDirectory);
- 
+
+
   useEffect(() => {
     dispatch(getMembers());
   }, []);
-  const { fullName, title, clubName, phone, description, profilePicture } =
-    props;
-    
+  const { fullName, title, clubName, phone, description,profilePicture } =props;
+    console.log(Members.profilePicture);
   const classes = useStyles();
   const socialIcos = [
     <FontAwesomeIcon icon={faPhone} />,
@@ -57,7 +57,8 @@ export default function ProfileCard(props) {
           <Avatar
             className={classes.avatar}
             alt={fullName}
-            src={`${API_URL}${profilePicture}`}
+
+            src={profilePicture ? `${API_URL}$Members?.{profilePicture}` : ""}
           
             sx={{ width: "120px", height: "120px", top: "45%" }}
           >

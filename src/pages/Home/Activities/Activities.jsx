@@ -12,7 +12,7 @@ import ActivityCard from "../../../components/ActivityCard/ActivityCard";
 import { Carousel } from "react-carousel-minimal";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
-
+import { API_URL } from "../../../api";
 export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -95,45 +95,7 @@ export default function Activities() {
             rowSpacing={3}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            
-            <List sx={{ py: "var(--ListDivider-gap)" }}>
-              <div className="imageSlider imageSliderX">
-                <ImageSlider>
-                  {activities?.recent?.slice(0, 5).map((item, index) => (
-                    <Slide>
-                      <ActivityCard key={index} item={item} />
-                    </Slide>
-                  ))}
-                </ImageSlider>
-              </div>
-            </List>
-          </Box>
-          <Box
-            variant="outlined"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              gap: 1,
-              minWidth: "50%",
-              borderRadius: "sm",
-              padding: "2rem 2rem 4rem",
-            }}
-          >
-          
-            <List sx={{ py: "var(--ListDivider-gap)" }}>
-              <div className="imageSlider imageSliderX">
-                <ImageSlider>
-                  {activities?.recent?.slice(5, 10).map((item, index) => (
-                    <Slide>
-                      <ActivityCard key={index} item={item} />
-                    </Slide>
-                  ))}
-                </ImageSlider>
-              </div>
-            </List>
-          </Box>
-            {activityData.map((item, index) => {
+            {activities.recent?.slice(0,4).map((item, index) => {
               return (
                 <>
                   <Grid
@@ -144,13 +106,13 @@ export default function Activities() {
                   >
                     <Item>
                       <img
-                        src={item.image}
+                        src={`${API_URL+ item?.image_path}`}
                         className={classes.activityImage}
                         alt=""
                       />
                       <h3>{item.heading}</h3>
                       <p>{item.description}</p>
-                      <p className={classes.activityDate}>{item.date}</p>
+                      <p className={classes.activityDate}>{item?.date?.slice(0,10)}</p>
                     </Item>
                   </Grid>
                 </>
