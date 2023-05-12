@@ -9,7 +9,7 @@ export default makeStyles(() => ({
         transform: 'translateX(-50%)',
         left: '50%',
     },
-    activityImage: {
+    newsImage: {
         width: '100%',
         height: '200px !important',
         objectFit: 'cover',

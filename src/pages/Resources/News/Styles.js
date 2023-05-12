@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
-    activityTitle: {
+    newsTitle: {
         textAlign: 'center',
     },
     dateChip: {
@@ -12,7 +12,12 @@ export default makeStyles(() => ({
     activityImage: {
         width: '100%',
         height: '200px !important',
-        objectFit: 'contain',
+        objectFit: 'cover',
         position: 'absolute',
+    },
+    newsPagination: {
+        '& ul': {
+            gap: '10px'
+        }
     }
 }))

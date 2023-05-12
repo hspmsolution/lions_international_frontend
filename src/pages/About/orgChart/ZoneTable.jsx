@@ -22,7 +22,7 @@ export default function ZoneTable({ zone }) {
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff'  }}>{zone.name}</TableCell>
+                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>{zone.name}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -44,7 +44,7 @@ export default function ZoneTable({ zone }) {
                                         </TableCell>
                                         <TableCell align="right">{club.id}</TableCell>
                                     </TableRow>
-                                ))} 
+                                ))}
                             </TableBody>
                         </Table>
                     </TableBody>

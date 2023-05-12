@@ -18,7 +18,14 @@ import { events } from "../../actions/client";
 import { API_URL } from "../../api";
 import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 
-function ResponsiveDialog({ type, title, date, bgImage, description, activityId }) {
+function ResponsiveDialog({
+  type,
+  title,
+  date,
+  bgImage,
+  description,
+  activityId,
+}) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -48,7 +55,7 @@ function ResponsiveDialog({ type, title, date, bgImage, description, activityId 
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-      // sx={{ display: 'flex', justifyContent: 'center' }}
+        // sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
@@ -81,7 +88,9 @@ function ResponsiveDialog({ type, title, date, bgImage, description, activityId 
                   <Typography variant="subtitle1" sx={{ mr: "1rem" }}>
                     Event Date :{" "}
                   </Typography>
-                  <Typography variant="subtitle1">{date?.slice(0,10)}</Typography>
+                  <Typography variant="subtitle1">
+                    {date?.slice(0, 10)}
+                  </Typography>
                 </th>
               </tr>
               <tr>
@@ -125,7 +134,7 @@ function BasicCard({ title, bgImage, type, date, description, activityId }) {
         <Box sx={{ width: "100%", height: "16rem", mb: "1rem" }}>
           <img
             src={API_URL + bgImage}
-            style={{ height: "100%", width: "100%", objectFit: 'contain' }}
+            style={{ height: "100%", width: "100%", objectFit: "contain" }}
           />
         </Box>
         <ResponsiveDialog
@@ -152,9 +161,18 @@ export default function Events() {
 
   return (
     <>
-      <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
-        <CustomizedBreadcrumbs label={'Activities'} />
-        <Container className={classes.activityContainer} sx={{ margin: "3rem auto" }}>
+      <Box
+        sx={{
+          backgroundImage: "url('/assets/img/bggg.png')",
+          backgroundAttachment: "fixed",
+          pb: "2rem",
+        }}
+      >
+        <CustomizedBreadcrumbs label={"Activities"} />
+        <Container
+          className={classes.activityContainer}
+          sx={{ margin: "3rem auto" }}
+        >
           <Typography
             variant="h4"
             sx={{ textAlign: "center", marginBottom: "2rem" }}
@@ -172,18 +190,24 @@ export default function Events() {
                   gap: 2,
                 }}
               >
-                {activities?.upcoming?.map((filter, index) => (
-                  <Box key={index}>
-                    <BasicCard
-                      title={filter.activityTitle}
-                      bgImage={filter.image_path}
-                      date={filter.date}
-                      type="upcoming"
-                      description={filter.description}
-                      activityId={filter.activityId}
-                    />
-                  </Box>
-                ))}
+                {activities?.upcoming?.length === 0 ? (
+                  <Typography variant="h6" color="black">
+                    No Upcoming Activity Found
+                  </Typography>
+                ) : (
+                  activities?.upcoming?.map((filter, index) => (
+                    <Box key={index}>
+                      <BasicCard
+                        title={filter.activityTitle}
+                        bgImage={filter.image_path}
+                        date={filter.date}
+                        type="upcoming"
+                        description={filter.description}
+                        activityId={filter.activityId}
+                      />
+                    </Box>
+                  ))
+                )}
               </Box>
             </Grid>
           </Grid>
@@ -206,18 +230,24 @@ export default function Events() {
                   gap: 2,
                 }}
               >
-                {activities?.past?.map((filter, index) => (
-                  <Box key={index}>
-                    <BasicCard
-                      title={filter.activityTitle}
-                      bgImage={filter.image_path}
-                      date={filter.date}
-                      type="past"
-                      description={filter.description}
-                      activityId={filter.activityId}
-                    />
-                  </Box>
-                ))}
+                {activities?.past?.length === 0 ? (
+                  <Typography variant="h6" color="black">
+                    No Past Activity Found
+                  </Typography>
+                ) : (
+                  activities?.past?.map((filter, index) => (
+                    <Box key={index}>
+                      <BasicCard
+                        title={filter.activityTitle}
+                        bgImage={filter.image_path}
+                        date={filter.date}
+                        type="past"
+                        description={filter.description}
+                        activityId={filter.activityId}
+                      />
+                    </Box>
+                  ))
+                )}
               </Box>
             </Grid>
           </Grid>

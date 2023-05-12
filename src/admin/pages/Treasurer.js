@@ -44,6 +44,14 @@ export default function Treasurer() {
         <PopupMenu type="expense" />
         <PopupMenu type="deposite" />
       </Grid>
+      <Paper
+        elevation={3}
+        sx={{ marginLeft: "auto", padding: "10px", width: "20%" }}
+      >
+        <Typography>Total Amount Balance</Typography>
+        {statement.reduce((sum, state) => sum + parseInt(state.amount), 0)}
+      </Paper>
+
       <TableContainer style={{ marginTop: "16px" }}>
         <Table>
           <TableHead>
@@ -81,13 +89,6 @@ export default function Treasurer() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Paper
-        elevation={3}
-        sx={{ marginLeft: "51em", padding: "10px", width: "30%" }}
-      >
-        <Typography>Total Amount</Typography>
-        {statement.reduce((sum, state) => sum + parseInt(state.amount), 0)}
-      </Paper>
     </Box>
   );
 }

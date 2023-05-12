@@ -33,9 +33,9 @@ export const newsReporting = (formData) => async (dispatch) => {
       console.log(error);
     }
   };
-  export const topNews=()=>async(dispatch)=>{
+  export const topNews=(newPage)=>async(dispatch)=>{
     try {
-      const { data } = await api.topNews();
+      const { data } = await api.topNews(newPage);
       dispatch({ type: TOP_NEWS, payload: data });
     } catch (error) {
       console.log(error);

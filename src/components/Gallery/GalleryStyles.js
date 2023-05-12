@@ -27,6 +27,9 @@ export default makeStyles((theme) => ({
         padding:'0.2rem 0.6rem',
         borderRadius:'1rem',
         color:'red',
+    },
+    itemButton:{
+        width:"100%"
     }
 
 }))
