@@ -31,21 +31,21 @@ export default function App() {
   // }, []);
 
   // Dynamin Pre-Loader01
-  useEffect(() => {
-    window.onload = () => {
-      console.log("Page Has Loaded");
-      setIsLoading(false);
-    };
-  }, []);
-
-  // Dynamin Pre-Loader01
-  // window.addEventListener("load", () => {
-  //   if (document.readyState === "complete") {
-  //     // window.onload has completed
+  // useEffect(() => {
+  //   window.onload = () => {
   //     console.log("Page Has Loaded");
   //     setIsLoading(false);
-  //   }
-  // });
+  //   };
+  // }, []);
+
+  // Dynamin Pre-Loader01
+  window.addEventListener("load", () => {
+    if (document.readyState === "complete") {
+      // window.onload has completed
+      console.log("Page Has Loaded");
+      setIsLoading(false);
+    }
+  });
 
   return (
     <ThemeProvider>
