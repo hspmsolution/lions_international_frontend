@@ -26,10 +26,9 @@ import DGTeam from "./pages/About/dgTeam/DGTeam";
 import District from "./pages/About/district/District";
 import OrgChart from "./pages/About/orgChart/OrgChart";
 import Activities from "./pages/Activities/Activities";
-import OrganizationData from "./pages/Membership/organizationData/OrganizationData";
-import MemberDirectory from "./pages/Membership/memberDirectory/MemberDirectory";
-import MiniDirectory from "./pages/Membership/miniDirectory/MiniDirectory";
-import MemberData from "./pages/Membership/memberData/MemberData";
+import MemberDir from "./pages/Membership/MemberDir/MemberDir";
+import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
+import MemberData from "./pages/Membership/MemberData/MemberData";
 import NewsResource from "./pages/Resources/News/News";
 import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
@@ -77,17 +76,13 @@ export default function Router() {
           { path: "/about/organizationchart", element: <OrgChart /> },
           { path: "/activities", element: <Activities /> },
           {
-            path: "/membership/organizationdata",
-            element: isAdmin ? <OrganizationData /> : <Navigate to="/loginReq" replace />,
-          },
-          {
             path: "/membership/memberdirectory",
-            element: isAdmin ? <MemberDirectory /> : <Navigate to="/loginReq" replace />,
+            element: isAdmin ? <MemberDir /> : <Navigate to="/loginReq" replace />,
           },
           {
-            path: "/membership/minidirectory",
+            path: "/membership/businessdirectory",
             element: isAdmin ? (
-              <MiniDirectory />
+              <BusinessDir />
             ) : (
               <Navigate to="/loginReq" replace />
             ),
@@ -163,8 +158,6 @@ export default function Router() {
         : []),
     ]);
   }, [isAdmin, role]);
-  
-  window.scroll(0, 0)
 
   return useRoutes(routes);
 }
