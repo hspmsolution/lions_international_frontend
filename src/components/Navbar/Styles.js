@@ -18,7 +18,6 @@ export default makeStyles((theme) => ({
         borderRadius: '0%'
     },
     drawerButton: {
-        color: '#4b4b4b',
         '& div': {
             display: 'flex'
         }
