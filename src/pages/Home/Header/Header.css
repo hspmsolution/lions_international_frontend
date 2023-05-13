@@ -5,7 +5,7 @@
     position: absolute;
     top: 35%;
     width: 100%;
-    z-index: 999;
+    z-index: 998;
 }
 
 .head-dist-h .logoImg {
@@ -29,10 +29,6 @@
 .head-dist-h > a > img {
     height: 100%;
 
-}
-
-.imgSlide {
-    position: relative;
 }
 
 .head-dist-h > div {
