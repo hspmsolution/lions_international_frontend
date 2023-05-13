@@ -36,3 +36,10 @@ function Slider() {
 }
 
 export default Slider;
+
+// const images = [
+//     saibaba_baner_3_center,
+//     lions_international_baner_1_resize,
+//     godavari_baner_4_center,
+//     shaniwarwada_baner_2_center
+// ];
