@@ -23,19 +23,22 @@ export default function App() {
 
   const [isLoaded, setIsLoading] = useState(true);
 
+  // Static Pre-Loader
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   }, []);
 
+  // Dynamin Pre-Loader01
   // useEffect(() => {
   //   window.onload = () => {
   //     console.log("Page Has Loaded");
-  //      setIsLoading(false);
+  //     setIsLoading(false);
   //   };
   // }, []);
 
+  // Dynamin Pre-Loader01
   // window.addEventListener("load", () => {
   //   if (document.readyState === "complete") {
   //     // window.onload has completed

@@ -72,6 +72,7 @@ a {
 
 .main-nav li:hover {
     opacity: 1;
+    
 }
 
 .main-nav li span {
@@ -230,6 +231,17 @@ ul.list-links li {
         width: 100%;
         text-align: center;
     }
+
+    .footer-logo{
+        order: 1;
+    }
+    .footer-nav01{
+        order: 2;
+    }
+    .footer-nav02{
+        order: 3;
+    }
+    
 
 }
 

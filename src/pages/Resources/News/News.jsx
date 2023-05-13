@@ -5,7 +5,11 @@ import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import NewsCard from "../../../components/NewsCard/NewsCard";
 import { useDispatch, useSelector } from "react-redux";
 import { topNews } from "../../../actions/news";
-import useStyles from './Styles';
+import useStyles from "./Styles";
+import { Paper } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import CommonCard from "../../../components/CommonCard/CommonCard";
+import { API_URL } from "../../../api";
 
 export default function News() {
   const classes = useStyles();
@@ -41,12 +45,55 @@ export default function News() {
           backgroundAttachment: "fixed",
         }}
       >
-        <CustomizedBreadcrumbs label={"Resources"} subLabel={"News"} />
-        <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: 'center' }} >
-          {newsData.map((item, index) => (
-            <NewsCard item={item} key={index} />
-          ))}
+        <CustomizedBreadcrumbs
+          label={"Resources"}
+          subLabel={"News"}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            padding: "1rem",
+          }}
+        >
+          <Grid
+            container
+            spacing={5}
+            sx={{
+              display: "flex",
+            }}
+          >
+            {newsData.map((item, index) => (
+              <>
+                {/* <NewsCard
+                item={item}
+                key={index}
+              /> */}
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={4}
+                  key={index}
+                >
+                  <Paper elevation={3}>
+                    <CommonCard
+                      images={`${API_URL + item?.image}`}
+                      srcSet={`${API_URL + item?.image}`}
+                      alt={item.newsTitle}
+                      heading={item.newsTitle}
+                      description={item.description}
+                      date={item?.date?.slice(0, 10)}
+                    />
+                  </Paper>
+                </Grid>
+              </>
+            ))}
+          </Grid>
         </Box>
+
         <Box
           sx={{
             display: "flex",

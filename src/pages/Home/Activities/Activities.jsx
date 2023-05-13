@@ -12,7 +12,7 @@ import ActivityCard from "../../../components/ActivityCard/ActivityCard";
 import { Carousel } from "react-carousel-minimal";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
-
+import { API_URL } from "../../../api";
 export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -28,24 +28,28 @@ export default function Activities() {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://cdn.britannica.com/s:800x450,c:crop/35/204435-138-2F2B745A/Time-lapse-hyper-lapse-Isle-Skye-Scotland.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://static2.tripoto.com/media/filter/tst/img/735873/TripDocument/1537686560_1537686557954.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
     {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Palace_of_Fine_Arts_%2816794p%29.jpg/1200px-Palace_of_Fine_Arts_%2816794p%29.jpg",
       description: "Description",
+      heading: "Heading",
       date: "02/04/2023",
     },
   ];
@@ -91,18 +95,24 @@ export default function Activities() {
             rowSpacing={3}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           >
-            {activityData.map((item, index) => {
+            {activities.recent?.slice(0,4).map((item, index) => {
               return (
                 <>
-                  <Grid item xs={12} sm={6}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    position={"relative"}
+                  >
                     <Item>
                       <img
-                        src={item.image}
+                        src={`${API_URL+ item?.image_path}`}
                         className={classes.activityImage}
                         alt=""
                       />
-                      <p>{item.date}</p>
+                      <h3>{item.heading}</h3>
                       <p>{item.description}</p>
+                      <p className={classes.activityDate}>{item?.date?.slice(0,10)}</p>
                     </Item>
                   </Grid>
                 </>

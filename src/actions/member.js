@@ -1,5 +1,5 @@
 import {
-    CLIENT_MSG,MEMBER_PROFILE,AUTH,CLUB_MEMBERS
+    CLIENT_MSG,MEMBER_PROFILE,AUTH,CLUB_MEMBERS,MEMBER_DIRECTORY,BUSINESS_DIRECTORY
   } from "../constants/actionTypes";
   import * as api from "../api";
 
@@ -48,3 +48,28 @@ export const updateMember = (formData,navigate) => async (dispatch) => {
       console.log(error);
     }
   };
+  export const getMembers = () => async (dispatch) => {
+    try {
+
+      const { data, status } = await api.memberDirectory();
+      dispatch({type:MEMBER_DIRECTORY,payload:data})
+     console.log(data);
+     
+    }  catch (error) {
+      console.log(error);
+    }
+
+};
+
+// export const getBuisnessMembers = () => async (dispatch) => {
+//   try {
+
+//     const { data, status } = await api.buisnessDirectory();
+//     dispatch({type:BUSINESS_DIRECTORY,payload:data});
+//     console.log(data);
+   
+//   }  catch (error) {
+//     console.log(error);
+//   }
+
+// };
