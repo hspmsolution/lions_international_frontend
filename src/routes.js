@@ -28,7 +28,7 @@ import OrgChart from "./pages/About/orgChart/OrgChart";
 import Activities from "./pages/Activities/Activities";
 import MemberDir from "./pages/Membership/MemberDir/MemberDir";
 import BusinessDir from "./pages/Membership/BusinessDir/BusinessDir";
-import MemberData from "./pages/Membership/memberData/MemberData";
+import MemberData from "./pages/Membership/MemberData/MemberData";
 import NewsResource from "./pages/Resources/News/News";
 import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
