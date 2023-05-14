@@ -6,14 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
-function createData(name) {
-    return { name };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159),
-];
+import { Typography } from "@mui/material";
 
 export default function ZoneTable({ zone }) {
     return (
@@ -22,7 +15,12 @@ export default function ZoneTable({ zone }) {
                 <Table aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>{zone.name}</TableCell>
+                            <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>
+                                {zone.name}
+                                <Typography variant="h5">
+                                    Zone Chairperson{zone.chairPerson}
+                                </Typography>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

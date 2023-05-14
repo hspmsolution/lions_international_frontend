@@ -15,11 +15,11 @@ const muiCache = createCache({
   prepend: true
 });
 
-export default function MemberDir() {
+export default function OrganizationData() {
   const responsive = "simple";
   const tableBodyMaxHeight = "";
   const searchBtn = true;
-  const downloadBtn = false;
+  const downloadBtn = true;
   const printBtn = false;
   const viewColumnBtn = false;
   const filterBtn = true;
@@ -55,7 +55,7 @@ export default function MemberDir() {
   
     useEffect(() => {
       dispatch(getMembers());
-    }, []);
+    }, [dispatch]);
   
     const data = membersD.map((member, index) => [
       index + 1,
@@ -72,8 +72,8 @@ export default function MemberDir() {
   return (
     <div className="memberTable">
       <Box sx={{ background: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed' }}>
-        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Member Directory'} />
-        <Container sx={{ py: '5rem' }} className={classes.muiTableContainer}>
+        <CustomizedBreadcrumbs label={'Membership'} subLabel={'Organization Data'} />
+        <Container sx={{ pb: '5rem' }} className={classes.muiTableContainer}>
           <CacheProvider value={muiCache}>
             <ThemeProvider theme={createTheme()}>
               <MUIDataTable

@@ -35,7 +35,6 @@ export default function MemberData() {
   const dispatch = useDispatch();
   const clubs = useSelector((state) => state.client.allClubs);
   const alltitles = useSelector((state) => state.client.titles);
-
   const [selectAllClubs, setSelectAllClubs] = useState(false);
   const [selectAllTitles, setSelectAllTitles] = useState(false);
 
@@ -60,7 +59,7 @@ export default function MemberData() {
   useEffect(() => {
     dispatch(allClubs());
     dispatch(titles());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

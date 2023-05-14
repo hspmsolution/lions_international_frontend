@@ -44,3 +44,15 @@
   bottom: 0;
   right: 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .imgSlider>article>div:nth-child(2) {
+    top: 35% !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .imgSlider>article>div:nth-child(2) {
+    top: 23% !important;
+  }
+}

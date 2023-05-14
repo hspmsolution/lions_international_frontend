@@ -1,21 +1,12 @@
-import { Box, Container, Grid, Paper } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import ProfileCard from "./ProfileCard";
 import useStyles from "./Styles";
-import { styled } from "@mui/material/styles";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMembers } from "../../../actions/member";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
-export default function BusinessDir() {
+export default function MemberDirectory() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -24,7 +15,7 @@ export default function BusinessDir() {
   
   useEffect(() => {
     dispatch(getMembers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
