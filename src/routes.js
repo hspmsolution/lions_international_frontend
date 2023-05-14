@@ -29,7 +29,7 @@ import Activities from "./pages/Activities/Activities";
 import OrganizationData from "./pages/Membership/organizationData/OrganizationData";
 import MemberDirectory from "./pages/Membership/memberDirectory/MemberDirectory";
 import MiniDirectory from "./pages/Membership/miniDirectory/MiniDirectory";
-import MemberData from "./pages/Membership/memberData/MemberData";
+import MemberData from "./pages/Membership/MemberData/MemberData";
 import NewsResource from "./pages/Resources/News/News";
 import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
