@@ -55,7 +55,7 @@ export default function MemberDir() {
   
     useEffect(() => {
       dispatch(getMembers());
-    }, []);
+    }, [dispatch]);
   
     const data = membersD.map((member, index) => [
       index + 1,

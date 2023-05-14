@@ -7,14 +7,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-function createData(name) {
-    return { name };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159),
-];
-
 export default function ZoneTable({ zone }) {
     return (
         <>

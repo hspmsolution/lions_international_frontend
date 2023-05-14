@@ -31,7 +31,7 @@ export default function ProfileCard(props) {
 
   useEffect(() => {
     dispatch(getMembers());
-  }, []);
+  }, [dispatch]);
   const { fullName, title, clubName, phone, description,profilePicture } =props;
     console.log(Members.profilePicture);
   const classes = useStyles();

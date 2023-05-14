@@ -10,13 +10,11 @@ function Slider() {
   return (
     <div className="imgSlider">
       <div className="head-dist-h">
-        <Link to="/">
-          <img
-            className="logoImg"
-            src={"/assets/img/logo2.png"}
-            alt="Lions Club"
-          />
-        </Link>
+        <img
+          className="logoImg"
+          src={"/assets/img/logo2.png"}
+          alt="Lions Club"
+        />
         <div>
           <div className="head-lions-i">LIONS CLUB INTERNATIONAL</div>
           <div className="head-dist-num">DISTRICT 317-F</div>

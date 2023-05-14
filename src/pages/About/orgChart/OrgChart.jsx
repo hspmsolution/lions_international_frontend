@@ -19,7 +19,7 @@ export default function OrgChart() {
   };
   React.useEffect(() => {
     dispatch(districtData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

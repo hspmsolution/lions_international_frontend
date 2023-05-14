@@ -60,7 +60,7 @@ export default function MemberData() {
   useEffect(() => {
     dispatch(allClubs());
     dispatch(titles());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
