@@ -22,19 +22,20 @@
   color: #fff !important;
 }
 
-.epKbGN {
+.imgSlider>article>div:nth-child(2) {
   top: 50% !important;
-}
-
-.imgSlide {
-  height: -webkit-fill-available;
+  z-index: 999;
 }
 
 .imgSlide > img {
   object-fit: cover;
 }
 
-.imgSlide:before{
+.slideOverlay {
+  position: relative;
+}
+
+.slideOverlay:before {
   background: rgba(0, 0, 0, .5);
   position: absolute;
   content: "";

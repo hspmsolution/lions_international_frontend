@@ -1,18 +1,18 @@
 import * as React from "react";
+import List from "@mui/material/List";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { Box, Button, Container, Paper } from "@mui/material";
+import ActivityCard from "../../../components/ActivityCard/ActivityCard";
+import { events } from "../../../actions/client";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import List from "@mui/material/List";
-import { Box, Button, Container, Paper } from "@mui/material";
 import ImageSlider, { Slide } from "react-auto-image-slider";
-import useStyles from "./Styles";
-// import "./Activities.css";
-import { events } from "../../../actions/client";
-import ActivityCard from "../../../components/ActivityCard/ActivityCard";
 import { Carousel } from "react-carousel-minimal";
 import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
 import { API_URL } from "../../../api";
+import useStyles from "./Styles";
+
 export default function Activities() {
   const classes = useStyles();
   const dispatch = useDispatch();

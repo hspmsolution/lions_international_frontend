@@ -25,8 +25,10 @@ function Slider() {
       <ImageSlider effectDelay={500} autoPlayDelay={2000}>
         {images?.map((path, index) => (
           <Slide key={index}>
-            <div className="imgSlide">
-              <img alt={`img${index}`} src={`${API_URL}${path?.image}`} />
+            <div className="slideOverlay">
+              <div className="imgSlide">
+                <img alt={`img${index}`} src={`${API_URL}${path?.image}`} />
+              </div>
             </div>
           </Slide>
         ))}
