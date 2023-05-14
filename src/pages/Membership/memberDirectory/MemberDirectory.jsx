@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMembers } from "../../../actions/member";
 
-export default function BusinessDir() {
+export default function MemberDirectory() {
   const classes = useStyles();
   const dispatch = useDispatch();
 

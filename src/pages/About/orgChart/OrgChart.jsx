@@ -47,7 +47,7 @@ export default function OrgChart() {
                   {region.name}
                 </Typography>
                 <Typography variant="h5" sx={{ color: "text.secondary" }}>
-                  {region.chairPerson}
+                  Region Chairperson{region.chairPerson}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ display: "flex", flexWrap: 'wrap', gap: "3rem", justifyContent: 'center' }}>

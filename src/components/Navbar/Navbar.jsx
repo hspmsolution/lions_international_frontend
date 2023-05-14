@@ -15,7 +15,8 @@ import Button from '@mui/material/Button';
 import { Avatar } from '@mui/material';
 import useStyles from './Styles';
 import PopupMenu from './PopupMenu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 240;
 
@@ -28,24 +29,28 @@ const myNav = [
   { title: "Activities" },
   {
     title: "Membership",
-    menuItems: ['Member Directory', 'Business Directory', 'Download Member Data']
+    menuItems: ['Organization Data', 'Member Directory', 'Mini Directory', 'Download Member Data']
   },
   {
     title: "Resources",
     menuItems: ['News', 'Gallery', 'Global Priorities', 'Download Resources']
   },
-  { title: "Login" },
-  { title: "My LCI" },
 ];
 
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const classes = useStyles();
+  const navigate = useNavigate();
+  const isAdmin = useSelector((state) => state.auth.admin);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  const memberLogin = () => {
+    {isAdmin ? navigate('/dashboard/profile') : navigate('/login')}
+  }
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -80,7 +85,7 @@ function Navbar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 'auto', display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -111,6 +116,12 @@ function Navbar(props) {
               </Button>
             ))}
           </Box>
+          <Button className={classes.drawerButton} onClick={memberLogin}>
+            {isAdmin ? "My Profile" : "Login"}
+          </Button>
+          <Button className={classes.drawerButton}>
+            My LCI
+          </Button>
         </Toolbar>
       </AppBar>
       <Box component="nav">

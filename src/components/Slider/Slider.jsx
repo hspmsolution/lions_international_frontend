@@ -2,7 +2,6 @@ import ImageSlider, { Slide } from "react-auto-image-slider";
 import { useSelector } from "react-redux";
 import { API_URL } from "../../api";
 import "./slider.css";
-import { Link } from "react-router-dom";
 
 function Slider() {
   const images = useSelector((state) => state.client.sliderImages);
@@ -36,10 +35,3 @@ function Slider() {
 }
 
 export default Slider;
-
-// const images = [
-//     saibaba_baner_3_center,
-//     lions_international_baner_1_resize,
-//     godavari_baner_4_center,
-//     shaniwarwada_baner_2_center
-// ];
