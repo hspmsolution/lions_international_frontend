@@ -35,6 +35,7 @@ import GalleryR from "./pages/Resources/Gallery/Gallery";
 import Priorities from "./pages/Resources/Priorities/Priorities";
 import LoginReq from "./pages/Membership/LoginRequired/LoginReq";
 import Download from "./pages/Resources/Download/Download";
+import ContactUS from "./pages/contact/Contact";
 
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
@@ -44,7 +45,12 @@ export default function Router() {
     setRoutes([
       { path: "/login", element: <Login /> },
       { path: "/password", element: <Password /> },
-      {path:"/loginReq",element:<LoginReq/>},
+      { path: "/loginReq", element: <LoginReq /> },
+
+      {
+        path: "/contact-us",
+        element: <ContactUS />,
+      },
 
       {
         path: "/404",
@@ -52,7 +58,12 @@ export default function Router() {
       },
       {
         path: "*",
-        element: <Navigate to="/404" replace />,
+        element: (
+          <Navigate
+            to="/404"
+            replace
+          />
+        ),
       },
       ...(isAdmin
         ? [
@@ -78,18 +89,35 @@ export default function Router() {
           { path: "/activities", element: <Activities /> },
           {
             path: "/membership/organizationdata",
-            element: isAdmin ? <OrganizationData /> : <Navigate to="/loginReq" replace />,
+            element: isAdmin ? (
+              <OrganizationData />
+            ) : (
+              <Navigate
+                to="/loginReq"
+                replace
+              />
+            ),
           },
           {
             path: "/membership/memberdirectory",
-            element: isAdmin ? <MemberDirectory /> : <Navigate to="/loginReq" replace />,
+            element: isAdmin ? (
+              <MemberDirectory />
+            ) : (
+              <Navigate
+                to="/loginReq"
+                replace
+              />
+            ),
           },
           {
             path: "/membership/minidirectory",
             element: isAdmin ? (
               <MiniDirectory />
             ) : (
-              <Navigate to="/loginReq" replace />
+              <Navigate
+                to="/loginReq"
+                replace
+              />
             ),
           },
           {
@@ -97,7 +125,10 @@ export default function Router() {
             element: isAdmin ? (
               <MemberData />
             ) : (
-              <Navigate to="/loginReq" replace />
+              <Navigate
+                to="/loginReq"
+                replace
+              />
             ),
           },
           { path: "/resources/news", element: <NewsResource /> },
@@ -164,7 +195,7 @@ export default function Router() {
     ]);
   }, [isAdmin, role]);
 
-  window.scroll(0, 0)
+  window.scroll(0, 0);
 
   return useRoutes(routes);
 }

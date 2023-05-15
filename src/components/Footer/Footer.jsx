@@ -30,13 +30,40 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
+// const quickLinks = [
+//   "Events",
+//   "Activity",
+//   "Gallery",
+//   "Contact Us",
+//   "Privacy Policies",
+//   "Terms & Conditions",
+// ];
+
 const quickLinks = [
-  "Events",
-  "Activity",
-  "Gallery",
-  "Contact Us",
-  "Privacy Policies",
-  "Terms & Conditions",
+  {
+    linkName: "Events",
+    path: "/activities",
+  },
+  {
+    linkName: "Activity",
+    path: "/activities",
+  },
+  {
+    linkName: "Gallery",
+    path: "/resources/gallery",
+  },
+  {
+    linkName: "Contact Us",
+    path: "/contact-us",
+  },
+  {
+    linkName: "Privacy Policies",
+    path: "/",
+  },
+  {
+    linkName: "Terms & Conditions",
+    path: "/",
+  },
 ];
 // const contact = ["123-456-7890", "example@gmail.com", "Address"];
 const contact = [
@@ -107,12 +134,22 @@ function Footer() {
                 <ListItem
                   disablePadding
                   key={i}
+                  onClick={() => {
+                    navigate(item.path);
+                  }}
                 >
                   <ListItemButton
-                    sx={{ py: "5px" }}
+                    sx={{
+                      py: "5px",
+                      borderRadius: "1rem",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.7)",
+                        color: "black",
+                      },
+                    }}
                     disablePadding
                   >
-                    <ListItemText primary={item} />
+                    <ListItemText primary={item.linkName} />
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -149,7 +186,9 @@ function Footer() {
                   key={i}
                 >
                   <ListItemButton>
-                    <ListItemIcon sx={{minWidth:'30px',color:'white'}}>{item.icon}</ListItemIcon>
+                    <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
+                      {item.icon}
+                    </ListItemIcon>
                     <ListItemText primary={item.value} />
                   </ListItemButton>
                 </ListItem>
