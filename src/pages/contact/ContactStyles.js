@@ -9,7 +9,8 @@ import {makeStyles} from "@material-ui/core";
       maxWidth:"600px",
       boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
       padding: "2rem",
-      borderRadius:"1rem"
+      borderRadius:"1rem",
+      margin:'auto',
     },
     textField: {
       marginBottom: "1rem",
@@ -22,7 +23,8 @@ import {makeStyles} from "@material-ui/core";
     box:{
       display:'flex',
       justifyContent:'center',
-      padding:'1rem'
+      padding:'2rem',
+      backgroundColor:'white'
     },
     heading:{
       paddingBottom:'1rem'
