@@ -1,9 +1,7 @@
-.imgSlider > .hOQiSy {
-  width: 100% !important;
-}
-
 .imgSlider > article {
-  width:100% !important
+  width:100% !important;
+  height: auto;
+  max-height: 100vh;
 }
 .imgSlider > svg {
   color: #fff !important;
