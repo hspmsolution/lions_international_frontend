@@ -148,7 +148,7 @@ function Team() {
               />
             </div>
             <div className="caption">
-              <h5>Akash A Suvarna, PMJF</h5>
+              <h5>Akash A Suvarna,PMJF</h5>
               <p>Second Vice District Governor</p>
             </div>
           </Grid>

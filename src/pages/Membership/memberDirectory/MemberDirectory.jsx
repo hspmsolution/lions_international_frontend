@@ -33,7 +33,7 @@ export default function MemberDirectory() {
         <Container className={classes.profileContainer}>
           <Grid container spacing={2}>
             {Members?.map((member, index) => (
-              <Grid item xs={4} key={index}>
+              <Grid item xs={12} md={4} lg={4} key={index}>
                 <ProfileCard
                   fullName={member.fullName}
                   title={member.title}

@@ -23,12 +23,12 @@ function DGTeam() {
             >
               <Avatar
                 alt="Remy Sharp"
-                src={"/assets/img/7.jpg"}
+                src={"/assets/dist_img/01_BSN.jpeg"}
                 sx={{ width: 200, height: 200, display: "flex" }}
                 className="about-image"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
-                Ln. CA Abhay Shastri
+              B S Nagaraj, PMJF
               </Typography>
               Dear Members and Sevayatris,
               <br />
@@ -66,12 +66,13 @@ function DGTeam() {
             >
               <Avatar
                 alt="Remy Sharp"
-                src={"/assets/img/1st voice.jpeg"}
+                src={"/assets/dist_img/03_C M Narayana Swamy.jpeg"}
                 sx={{ width: 200, height: 200, display: "flex" }}
                 className="about-image"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
-                Ln. Hemant Naik
+              C M Narayana Swamy, MJF
+
               </Typography>
               <Typography variant="h5" gutterBottom>
                 1st Vice District Governor
@@ -112,12 +113,12 @@ function DGTeam() {
             >
               <Avatar
                 alt="Remy Sharp"
-                src={"/assets/img/5.jpg"}
+                src={"/assets/dist_img/04_Akash Suvarna.JPG"}
                 sx={{ width: 200, height: 200, display: "flex" }}
                 className="about-image"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
-                Ln. Rajesh Kothavade
+              Akash A Suvarna, PMJF
               </Typography>
               <Typography variant="h5" gutterBottom>
                 2nd Vice District Governor
