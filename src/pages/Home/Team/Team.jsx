@@ -29,7 +29,7 @@ const teamData = [
     designation: 'Cabinet Secretary',
   },
   {
-    src: '/assets/dist_img/06_RKH.jpeg',
+    src: '/assets/dist_img/06_RKH-crop.jpeg',
     name: 'Radhakrishna Hegde, MJF',
     designation: 'Cabinet Treasurer',
   },
