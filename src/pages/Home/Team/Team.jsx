@@ -1,70 +1,6 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import "./Team.css";
-
-const teamData = [
-  {
-    src: '/assets/dist_img/01_BSN.jpeg',
-    name: 'B S Nagaraj, PMJF',
-    designation: 'District Governor',
-  },
-  {
-    src: '/assets/dist_img/02_BSR.JPG',
-    name: 'B S Rajashekaraiah, PMJF',
-    designation: 'Immediate Past District Governor',
-  },
-  {
-    src: '/assets/dist_img/03_C M Narayana Swamy.jpeg',
-    name: 'C M Narayana Swamy, MJF',
-    designation: 'First Vice District Governor',
-  },
-  {
-    src: '/assets/dist_img/04_Akash Suvarna.JPG',
-    name: 'Akash A Suvarna, PMJF',
-    designation: 'Second Vice District Governor',
-  },
-  {
-    src: '/assets/dist_img/05_V K Rajesh.jpeg',
-    name: 'Rajesh V K, MJF',
-    designation: 'Cabinet Secretary',
-  },
-  {
-    src: '/assets/dist_img/06_RKH.jpeg',
-    name: 'Radhakrishna Hegde, MJF',
-    designation: 'Cabinet Treasurer',
-  },
-  {
-    src: '/assets/dist_img/07_R Vijaya.jpeg',
-    name: 'R Vijaya',
-    designation: 'GLT Coordinator',
-  },
-  {
-    src: '/assets/dist_img/08_Anil Kumar B.jpg',
-    name: 'Adv. Anil Kumar B, PMJF',
-    designation: 'GMT Coordinator',
-  },
-  {
-    src: '/assets/dist_img/09_Ramanamurthy.jpeg',
-    name: 'Ramanamurthy B V, MJF',
-    designation: 'GST Coordinator',
-  },
-  {
-    src: '/assets/dist_img/10_Sasha.jpeg',
-    name: 'Sasha Kulothungan, MJF',
-    designation: 'GET Coordinator',
-  },
-  {
-    src: '/assets/dist_img/11_VenkataNarasimhulu.jpg',
-    name: 'D N Venkatanarasimhulu, PMJF',
-    designation: 'LCIF Coordinator',
-  },
-  {
-    src: '/assets/dist_img/12_Shobha Srinivas.jpeg',
-    name: 'Shobha Srinivas',
-    designation: 'Family & Women Membership',
-  },
-]
-
 function Team() {
   return (
     <Box
@@ -75,27 +11,20 @@ function Team() {
       }}
     >
       <Container>
-        <Typography variant="h2" className="team-h">
+        <Typography
+          variant="h2"
+          className="team-h"
+        >
           Our District Team
         </Typography>
-        <Grid container className="main">
-          {teamData.map((member, index) => {
-            return (
-            <Grid item className="profile-card" key={index}>
-              <div className="img">
-                <img
-                  alt=""
-                  src={member.src}
-                />
-              </div>
-              <div className="caption">
-                <h5>{member.name}</h5>
-                <p>{member.designation}</p>
-              </div>
-            </Grid>
-            )
-          })}
-          {/* <Grid item className="profile-card">
+        <Grid
+          container
+          className="main"
+        >
+          <Grid
+            item
+            className="profile-card"
+          >
             <div className="img">
               <img
                 alt=""
@@ -148,7 +77,7 @@ function Team() {
               />
             </div>
             <div className="caption">
-              <h5>Akash A Suvarna, PMJF</h5>
+              <h5>Akash A Suvarna,PMJF</h5>
               <p>Second Vice District Governor</p>
             </div>
           </Grid>
@@ -272,7 +201,7 @@ function Team() {
               <h5>Shobha Srinivas</h5>
               <p>Family & Women Membership</p>
             </div>
-          </Grid> */}
+          </Grid>
         </Grid>
         {/* <div className="main">
           <div className="profile-card">
