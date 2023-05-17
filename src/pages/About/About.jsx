@@ -46,18 +46,17 @@ const About = () => {
                   Greetings from District 317F!
                 </b>
                 <br />
+                <br />A Progressive Melvin Jones Fellow, District Governor{" "}
+                <strong>B S Nagaraj</strong>
+                was born in the year <strong>1954</strong> in a philanthropic
+                family. He completed his education in <strong>Hubli</strong>{" "}
+                with graduation in Economics and began his career as a{" "}
+                <strong>Marketing Executive</strong>.
                 <br />
-                A Progressive Melvin Jones Fellow, District Governor B S Nagaraj
-                was born in the year 1954 in a philanthropic family. He
-                completed his education in Hubli with graduation in Economics
-                and began his career as a Marketing Executive.
                 <br />
-                <br />
-                <br />
-                <br />
-                In 1980, he quit his job and became a First-Generation
-                Entrepreneur by starting his own company - Shriraj Engineers
-                Pvt. Limited, mainly dealing in Industrial Pumps, Valves, etc.
+                In 1980, he quit his job and became a <strong>First-Generation
+                Entrepreneur</strong> by starting his own company - <strong>Shriraj Engineers
+                Pvt</strong>. Limited, mainly dealing in Industrial Pumps, Valves, etc.
                 His company is an authorized distributor and service center for
                 a renowned organization in the Pump Industry – KSB Limited. He
                 has been awarded ‘The Best Dealer’ by KSB during the years 1985,
