@@ -89,7 +89,7 @@ function Team() {
                 />
               </div>
               <div className="caption">
-                <h5>{member.name}</h5>
+                <h3>{member.name}</h3>
                 <p>{member.designation}</p>
               </div>
             </Grid>

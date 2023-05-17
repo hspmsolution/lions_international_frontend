@@ -46,7 +46,7 @@ export default makeStyles((theme) => ({
       padding: "0 !important",
     },
   },
-  fullname:{
-    wordWrap:'wrap'
-  }
+  fullname: {
+    color: "#1184e8",
+  },
 }));

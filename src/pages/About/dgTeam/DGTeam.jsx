@@ -24,12 +24,14 @@ function DGTeam() {
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/01_BSN.jpeg"}
-                sx={{ width: 200, height: 200, display: "flex" }}
+                sx={{ width: "300px", height: "220px", display: "flex" }}
                 className="about-image"
+                variant="rounded"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
               B S Nagaraj, PMJF
               </Typography>
+              <Typography variant="h5">District Governor</Typography>
               Dear Members and Sevayatris,
               <br />
               <br />
@@ -67,8 +69,9 @@ function DGTeam() {
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/03_C M Narayana Swamy.jpeg"}
-                sx={{ width: 200, height: 200, display: "flex" }}
+                sx={{ width: "300px", height: "220px", display: "flex" }}
                 className="about-image"
+                variant="rounded"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
               C M Narayana Swamy, MJF
@@ -114,8 +117,9 @@ function DGTeam() {
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/04_Akash Suvarna.JPG"}
-                sx={{ width: 200, height: 200, display: "flex" }}
+                sx={{ width: "300px", height: "220px", display: "flex" }}
                 className="about-image"
+                variant="rounded"
               />
               <Typography variant="h4" gutterBottom className="itemTitle">
               Akash A Suvarna, PMJF

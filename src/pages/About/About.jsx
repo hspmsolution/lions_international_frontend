@@ -25,8 +25,9 @@ const About = () => {
               <Avatar
                 src={"/assets/dist_img/01_BSN.jpeg"}
                 alt="our district governer"
-                sx={{ mt: "1rem", width: "200px", height: "200px" }}
+                sx={{ mt: "1rem", width: "300px", height: "220px" }}
                 className="about-image"
+                variant="rounded"
               />
               <Typography
                 variant="h4"

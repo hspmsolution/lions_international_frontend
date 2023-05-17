@@ -65,9 +65,9 @@ export default function ProfileCard(props) {
 
           <Typography
             variant="h5"
-            color="text.secondary"
+            // color="text.secondary"
             component="div"
-            className={classes.fullame}
+            className={classes.fullname}
           >
             {fullName}
           </Typography>
