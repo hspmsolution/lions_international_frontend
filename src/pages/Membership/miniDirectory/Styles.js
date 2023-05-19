@@ -1,8 +1,8 @@
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from "@mui/styles";
 
 export default makeStyles((theme) => ({
   businessPdfIframe: {
-    height: '80vh',
-    width: '100%',
-  }
+    height: "100vh",
+    width: "100%",
+  },
 }));
