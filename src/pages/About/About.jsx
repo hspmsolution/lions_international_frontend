@@ -47,22 +47,23 @@ const About = () => {
                 </b>
                 <br />
                 <br />A Progressive Melvin Jones Fellow, District Governor{" "}
-                <strong>B S Nagaraj</strong>
+                <strong>B S Nagaraj </strong>
                 was born in the year <strong>1954</strong> in a philanthropic
                 family. He completed his education in <strong>Hubli</strong>{" "}
                 with graduation in Economics and began his career as a{" "}
                 <strong>Marketing Executive</strong>.
                 <br />
                 <br />
-                In 1980, he quit his job and became a <strong>First-Generation
-                Entrepreneur</strong> by starting his own company - <strong>Shriraj Engineers
-                Pvt</strong>. Limited, mainly dealing in Industrial Pumps, Valves, etc.
-                His company is an authorized distributor and service center for
-                a renowned organization in the Pump Industry – KSB Limited. He
-                has been awarded ‘The Best Dealer’ by KSB during the years 1985,
-                2004, 2005 and 2006. In 2017, he was awarded a Silver Plaque for
-                successfully completing 25 years of fruitful association with
-                KSB Limited. <br />
+                In 1980, he quit his job and became a{" "}
+                <strong>First-Generation Entrepreneur</strong> by starting his
+                own company - <strong>Shriraj Engineers Pvt</strong>. Limited,
+                mainly dealing in Industrial Pumps, Valves, etc. His company is
+                an authorized distributor and service center for a renowned
+                organization in the Pump Industry – KSB Limited. He has been
+                awarded ‘<strong>The Best Dealer</strong>’ by KSB during the years 1985, 2004,
+                2005 and 2006. In 2017, he was awarded a <strong>Silver Plaque</strong> for
+                successfully completing <strong>25 years</strong> of fruitful association with
+                <strong> KSB Limited</strong>. <br />
                 <br />
                 His journey in Lionism began in 1978, when he joined the Lions
                 Club of Belgaum Tilakwadi, then District 324 D2 and now 317 B.

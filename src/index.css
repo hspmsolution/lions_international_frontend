@@ -1,3 +1,39 @@
 * {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #c3e2f2;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #2b4b71;
+  transition: 0.5s;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  /* background: #2b4b71; */
+  background: #ff6a00;
+  transition: 0.5s;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  height: 5px;
 }
