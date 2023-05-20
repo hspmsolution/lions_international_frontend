@@ -10,8 +10,8 @@ export default function MiniDirectory() {
     <div>
       <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
         <CustomizedBreadcrumbs label={"Membership"} subLabel={"Mini Directory"} />
-        <Container>
-          <iframe src='/assets/test.pdf' title='Mini Directory' className={classes.businessPdfIframe} />
+        <Container >
+          <iframe src='/assets/MiniDirectory2023-24.pdf' title='Mini Directory' className={classes.businessPdfIframe} />
         </Container>
       </Box>
     </div>

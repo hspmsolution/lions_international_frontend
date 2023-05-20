@@ -1,41 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
 .dgTeam {
-    margin-bottom: 3rem;
-    text-align: center;
-    font-size: 40px;
-    font-weight: bolder;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
 }
 
-.gov>.item,
-.vcGov1>.item,
-.vcGov2>.item {
-    font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-    max-width: 1080px;
-    margin: auto;
+.gov > .item,
+.vcGov1 > .item,
+.vcGov2 > .item {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  max-width: 1080px;
+  margin: auto;
 }
 
 .gov > .item > .MuiAvatar-root > img,
 .vcGov1 > .item > .MuiAvatar-root > img,
 .vcGov2 > .item > .MuiAvatar-root > img {
-    object-position: top;
+  object-position: top;
 }
 
 .itemTitle {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 26px;
-    margin: 8px auto;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 26px;
+  margin: 12px 8px auto;
+  color:rgb(9, 16, 149);
 }
 
-.about-image{
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
-
+.about-image {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
