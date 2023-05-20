@@ -38,7 +38,8 @@ export default function MemberDirectory() {
                   fullName={member.fullName}
                   title={member.title}
                   clubName={member.clubName}
-                  description={member.description}
+                  phone={member.phone}
+                  image={member.profilePicture}
                 />
               </Grid>
             ))}

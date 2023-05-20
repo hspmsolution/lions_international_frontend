@@ -18,22 +18,10 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getMembers } from "../../../actions/member";
 
 export default function ProfileCard(props) {
-  const dispatch = useDispatch();
 
-  // Define an empty array to hold the members data
-  const Members = useSelector((state) => state.clubMembers.memberDirectory);
-
-  useEffect(() => {
-    dispatch(getMembers());
-  }, [dispatch]);
-  const { fullName, title, clubName, phone, description, profilePicture } =
-    props;
-  console.log(Members.profilePicture);
+  const { fullName, title, clubName, phone, image } = props;
   const classes = useStyles();
   const socialIcos = [
     <FontAwesomeIcon icon={faPhone} />,
@@ -57,10 +45,10 @@ export default function ProfileCard(props) {
           <Avatar
             className={classes.avatar}
             alt={fullName}
-            src={profilePicture ? `${API_URL}$Members?.{profilePicture}` : ""}
+            src={`${API_URL+image}`}
             sx={{ width: "120px", height: "120px", top: "45%" }}
           >
-            {"user"?.result?.fullName?.charAt(0)}
+            {fullName?.charAt(0)}
           </Avatar>
 
           <Typography
@@ -83,22 +71,13 @@ export default function ProfileCard(props) {
             width: "100%",
           }}
         >
-          <Paper
-            elevation={0}
-            sx={{ width: "100%" }}
-          >
-            <List
-              sx={{ p: 0 }}
-              className="contentList"
-            >
+          <Paper elevation={0} sx={{ width: "100%" }}>
+            <List sx={{ p: 0 }} className="contentList">
               <ListItem sx={{ py: 0 }}>
                 <ListItemIcon>
                   <PersonOutlineIcon />
                 </ListItemIcon>
-                <ListItemText
-                  id="switch-list-label-darkMode"
-                  primary={title}
-                />
+                <ListItemText id="switch-list-label-darkMode" primary={title} />
               </ListItem>
               <ListItem sx={{ py: 0 }}>
                 <ListItemIcon>
@@ -113,16 +92,13 @@ export default function ProfileCard(props) {
                 <ListItemText
                   sx={{ textAlign: "justify" }}
                   id="switch-list-label-setting"
-                  primary={description}
+                  primary={phone}
                 />
               </ListItem>
               <ListItem sx={{ justifyContent: "center", py: 0 }}>
                 <Box className={classes.socialIcons}>
                   {socialIcos.map((item, index) => (
-                    <Link
-                      href={`tel:${phone}`}
-                      key={index}
-                    >
+                    <Link href={`tel:${phone}`} key={index}>
                       {item}
                     </Link>
                   ))}

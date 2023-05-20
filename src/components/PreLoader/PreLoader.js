@@ -1,5 +1,4 @@
 import React from "react";
-import { HashLoader } from "react-spinners";
 import "./PreLoader.css";
 
 export const PreLoader = () => {
