@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Grid, Box } from "@material-ui/core";
+import { TextField, Button, Typography, Grid, Box } from "@mui/material";
 import useStyles from "./ContactStyles";
 import { Paper } from "@mui/material";
 import { Link as RouterLink } from 'react-router-dom';
