@@ -48,11 +48,6 @@ export default function Router() {
       { path: "/loginReq", element: <LoginReq /> },
 
       {
-        path: "/contact-us",
-        element: <ContactUS />,
-      },
-
-      {
         path: "/404",
         element: <Page404 />,
       },
@@ -67,15 +62,15 @@ export default function Router() {
       },
       ...(isAdmin
         ? [
-            {
-              path: "/dashboard",
-              element: <DashboardLayout />,
-              children: [
-                { path: "edit-profile", element: <EditProfile /> },
-                { path: "profile", element: <Profile /> },
-              ],
-            },
-          ]
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [
+              { path: "edit-profile", element: <EditProfile /> },
+              { path: "profile", element: <Profile /> },
+            ],
+          },
+        ]
         : []),
       {
         path: "/",
@@ -135,62 +130,66 @@ export default function Router() {
           { path: "/resources/gallery", element: <GalleryR /> },
           { path: "/resources/globalpriorities", element: <Priorities /> },
           { path: "/resources/downloadresources", element: <Download /> },
+          {
+            path: "/contact-us",
+            element: <ContactUS />,
+          },
         ],
       },
 
       ...(role?.includes("Club Treasurer") ||
-      role?.includes("Club Secretary") ||
-      role?.includes("Club President")
+        role?.includes("Club Secretary") ||
+        role?.includes("Club President")
         ? [
-            {
-              path: "/dashboard",
-              element: <DashboardLayout />,
-              children: [
-                { path: "app", element: <DashboardAppPage /> },
-                { path: "activity", element: <NewActivity /> },
-                { path: "news", element: <NewsReporting /> },
-                { path: "admin", element: <AdminReport /> },
-                { path: "pastactivity", element: <PastActivity /> },
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [
+              { path: "app", element: <DashboardAppPage /> },
+              { path: "activity", element: <NewActivity /> },
+              { path: "news", element: <NewsReporting /> },
+              { path: "admin", element: <AdminReport /> },
+              { path: "pastactivity", element: <PastActivity /> },
 
-                role.includes("Club Treasurer") && {
-                  path: "manage-expense",
-                  element: <Treasurer />,
-                },
-              ],
-            },
-          ]
+              role.includes("Club Treasurer") && {
+                path: "manage-expense",
+                element: <Treasurer />,
+              },
+            ],
+          },
+        ]
         : []),
 
       ...(role?.includes("lion member") || isAdmin
         ? [
-            {
-              path: "/dashboard",
-              element: <DashboardLayout />,
-              children: [
-                { path: "app", element: <DashboardAppPage /> },
-                { path: "pastactivity", element: <PastActivity /> },
-                { path: "news", element: <News /> },
-              ],
-            },
-          ]
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [
+              { path: "app", element: <DashboardAppPage /> },
+              { path: "pastactivity", element: <PastActivity /> },
+              { path: "news", element: <News /> },
+            ],
+          },
+        ]
         : []),
       ...(role?.includes("Region Chairperson")
         ? [
-            {
-              path: "/dashboard",
-              element: <DashboardLayout />,
-              children: [{ path: "region", element: <RegionalView /> }],
-            },
-          ]
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [{ path: "region", element: <RegionalView /> }],
+          },
+        ]
         : []),
       ...(role?.includes("Zone Chairperson")
         ? [
-            {
-              path: "/dashboard",
-              element: <DashboardLayout />,
-              children: [{ path: "zone", element: <ZonalView /> }],
-            },
-          ]
+          {
+            path: "/dashboard",
+            element: <DashboardLayout />,
+            children: [{ path: "zone", element: <ZonalView /> }],
+          },
+        ]
         : []),
     ]);
   }, [isAdmin, role]);
