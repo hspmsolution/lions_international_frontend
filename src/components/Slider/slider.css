@@ -1,16 +1,23 @@
-.imgSlider > .hOQiSy {
+.imgSlider {
+  position: relative;
+  padding-top: 75%;
+}
+
+.imgSlider>.hOQiSy {
   width: 100% !important;
 }
 
-.imgSlider > article {
-  width:100% !important
+.imgSlider>article {
+  width: 100% !important;
+  position: absolute;
+  top: 0;
 }
-.imgSlider > svg {
+
+.imgSlider>svg {
   color: #fff !important;
 }
 
-.imgSlider > article > .epKbGN >
-.hCJOJS {
+.imgSlider>article>.epKbGN>.hCJOJS {
   line-height: 0 !important;
   background: #8e8e8e91 !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
@@ -18,7 +25,7 @@
   -webkit-backdrop-filter: blur(6px) !important;
 }
 
-.hCJOJS > svg {
+.hCJOJS>svg {
   color: #fff !important;
 }
 
@@ -27,8 +34,15 @@
   z-index: 999;
 }
 
-.imgSlide > img {
+.imgSlide {
+  position: relative;
+  padding-top: 75%;
+}
+
+.imgSlide>img {
   object-fit: cover;
+  position: absolute;
+  top: 0;
 }
 
 .slideOverlay {
