@@ -36,6 +36,8 @@ import Priorities from "./pages/Resources/Priorities/Priorities";
 import LoginReq from "./pages/Membership/LoginRequired/LoginReq";
 import Download from "./pages/Resources/Download/Download";
 import ContactUS from "./pages/contact/Contact";
+import Privacy from "./pages/PrivacyPolicy/Privacy";
+import Terms from "./pages/Terms/Terms";
 
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
@@ -83,7 +85,7 @@ export default function Router() {
           { path: "/about/organizationchart", element: <OrgChart /> },
           { path: "/activities", element: <Activities /> },
           {
-            path: "/membership/organizationdata",
+            path: "/organizationdata",
             element: isAdmin ? (
               <OrganizationData />
             ) : (
@@ -134,6 +136,8 @@ export default function Router() {
             path: "/contact-us",
             element: <ContactUS />,
           },
+          { path: "/privacypolicy", element: <Privacy /> },
+          { path: "/termsandconditions", element: <Terms /> },
         ],
       },
 
