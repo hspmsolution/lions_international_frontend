@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Container,
-  Divider,
   List,
   ListItem,
   ListItemButton,
@@ -25,7 +24,6 @@ import { Link } from "react-router-dom";
 import PhoneIcon from "@mui/icons-material/Phone";
 import {
   faCube,
-  faPhone,
   faEnvelope,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
@@ -41,10 +39,6 @@ import {
 
 const quickLinks = [
   {
-    linkName: "Events",
-    path: "/activities",
-  },
-  {
     linkName: "Activity",
     path: "/activities",
   },
@@ -58,11 +52,11 @@ const quickLinks = [
   },
   {
     linkName: "Privacy Policies",
-    path: "/",
+    path: "/privacypolicy",
   },
   {
     linkName: "Terms & Conditions",
-    path: "/",
+    path: "/termsandconditions",
   },
 ];
 // const contact = ["123-456-7890", "example@gmail.com", "Address"];

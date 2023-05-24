@@ -6,9 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function ZoneTable({ zone }) {
+    const navigate = useNavigate();
+
     return (
         <>
             <TableContainer component={Paper} sx={{ display: 'flex', minWidth: 250, maxWidth: 350, backgroundColor: '#F4F6F8' }}>
@@ -38,7 +41,7 @@ export default function ZoneTable({ zone }) {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            {club.name}
+                                            <Link onClick={() => navigate('/organizationdata') } style={{ color: '#000' }}>{club.name}</Link>
                                         </TableCell>
                                         <TableCell align="right">{club.id}</TableCell>
                                     </TableRow>
