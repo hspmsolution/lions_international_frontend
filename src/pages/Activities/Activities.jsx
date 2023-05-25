@@ -53,7 +53,7 @@ function ResponsiveDialog({
     setOpen(false);
     setShowRegister(false);
   };
-
+  const classes = useStyles();
   return (
     <div>
       <Button
@@ -67,32 +67,30 @@ function ResponsiveDialog({
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        sx={{ MaxWidth: "600px", margin: "auto" }}
+        maxWidth={"none"}
+        sx={{ margin: "auto" }}
+        className={classes.dialog}
       >
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
             ? "Past Activities by Club"
             : "Upcoming Activities by Club"}
         </DialogTitle>
-        {/* <Paper
-          variant="outlined"
-          sx={{ padding: "0 0.5rem", margin: "auto" }}
-        >
-          <img
-            src={API_URL + bgImage}
-            alt="helping"
-            style={{ MaxWidth: '100%',  }}
-          />
-        </Paper> */}
+
         <DialogContent>
           <Paper
             variant="outlined"
-            sx={{padding: "0.5rem", margin: "auto" ,height:'350px',width:'100%'}}
+            sx={{
+              padding: "0.5rem",
+              margin: "auto",
+              width: "100%",
+            }}
+            className={classes.dialogPaper}
           >
             <img
               src={API_URL + bgImage}
               alt="helping"
-              style={{ width: "100%" ,height:'100%'}}
+              style={{ width: "900px", height: "100%" }}
             />
           </Paper>
           <TableContainer component={Paper}>
