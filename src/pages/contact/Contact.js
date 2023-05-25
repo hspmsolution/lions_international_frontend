@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Grid, Box } from "@mui/material";
 import useStyles from "./ContactStyles";
 import { Paper } from "@mui/material";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 const ContactForm = () => {
   const classes = useStyles();
   const [firstName, setFirstName] = useState("");
@@ -24,28 +25,6 @@ const ContactForm = () => {
     // TODO: Handle form submission
   };
 
-  const contacts = [
-    {
-      name: "B S Nagaraj",
-      designation: "DG",
-      phone: "9844033835",
-    },
-    {
-      name: "V K Rajesh",
-      designation: "DCS",
-      phone: "9972245375",
-    },
-    {
-      name: "R K Hegde",
-      designation: "DCT",
-      phone: "9448012200",
-    },
-    {
-      name: "Email",
-      email: "lions317f2324@gmail.com",
-    },
-  ];
-
   function createData(name, designation, phone) {
     return { name, designation, phone };
   }
@@ -58,7 +37,12 @@ const ContactForm = () => {
 
   return (
     <>
-      <Box sx={{ paddingTop: '6rem', backgroundImage: "url('/assets/img/bggg.png')" }}>
+      <Box
+        sx={{
+          paddingTop: "6rem",
+          backgroundImage: "url('/assets/img/bggg.png')",
+        }}
+      >
         <Box className={classes.box}>
           <Grid
             container
@@ -68,48 +52,51 @@ const ContactForm = () => {
               item
               xs={12}
               md={4}
-              lg={4}
-              sx={{ margin: 'auto' }}
+              lg={3}
+              sx={{ margin: "auto" }}
             >
-              <Paper
-                elevation={3}
-                sx={{ padding: "1rem", maxWidth: "600px", margin: "auto" }}
+              <Typography
+                variant="h6"
+                align="center"
+                className={classes.heading}
               >
-                <Typography
-                  variant="h6"
-                  align="center"
-                  className={classes.heading}
-                >
-                  Contact Details of District
-                </Typography>
-                <TableContainer component={Paper}>
-                  <Table aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Designation</TableCell>
-                        <TableCell align="right">Phone No.</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {rows.map((row) => (
-                        <TableRow key={row.name}>
-                          <TableCell align="left">{row.name}</TableCell>
-                          <TableCell align="center">{row.designation}</TableCell>
-                          <TableCell align="right">{row.phone}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                    <TableRow
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell colSpan={12}>
-                        Email: lions317f2324@gmail.com
-                      </TableCell>
-                    </TableRow>
-                  </Table>
-                </TableContainer>
-              </Paper>
+                Contact Details of District
+              </Typography>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+              >
+                {rows.map((item, index) => (
+                  <Card sx={{ MaxWidth: 350, borderLeft: "4px solid #37F90D" }}>
+                    <CardContent>
+                      <Typography
+                        variant="h5"
+                        component="div"
+                      >
+                        Name : {item.name}
+                      </Typography>
+                      <Typography color="text.secondary">
+                        Designation: {item.designation}
+                      </Typography>
+                      <Typography color="text.secondary">
+                        Phone: {item.phone}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))}
+              </Box>
+              <Card
+                sx={{
+                  MaxWidth: 350,
+                  borderLeft: "4px solid #37F90D",
+                  marginTop: "2rem",
+                }}
+              >
+                <CardContent>
+                  <Typography>
+                    <strong>Email: lions317f2324@gmail.com</strong>
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
             <Grid
               item

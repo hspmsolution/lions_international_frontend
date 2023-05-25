@@ -24,7 +24,7 @@ import {makeStyles} from "@mui/styles";
     box:{
       display:'flex',
       justifyContent:'center',
-      padding:'2rem',
+      padding:'2rem 3rem',
     },
     heading:{
       paddingBottom:'1rem'

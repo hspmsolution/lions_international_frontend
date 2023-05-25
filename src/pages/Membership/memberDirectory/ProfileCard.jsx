@@ -14,39 +14,53 @@ import {
 } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import GroupsIcon from "@mui/icons-material/Groups";
+import PhoneIcon from "@mui/icons-material/Phone";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProfileCard(props) {
-
   const { fullName, title, clubName, phone, image } = props;
   const classes = useStyles();
   const socialIcos = [
-    <FontAwesomeIcon icon={faPhone} />,
-    <FontAwesomeIcon icon={faWhatsapp} />,
+    {
+      icon: <FontAwesomeIcon icon={faPhone} />,
+      link: `tel:989898989`,
+    },
+    {
+      icon: <FontAwesomeIcon icon={faWhatsapp} />,
+
+      link: `https://wa.me/989898989`,
+    },
   ];
 
   return (
-    <Card sx={{ minHeight: 360, maxWidth: 300, margin: "auto" }}>
+    <Card sx={{ minHeight: 360, maxWidth: 300, margin: " 1rem auto" }} >
       <CardContent className={classes.cardContent}>
         <div className={classes.avatarBg}></div>
         <div className={classes.cardHeaders}>
           <Box
-            sx={{ position: "absolute", height: "23%", width: "100%", top: 0 }}
+            sx={{
+              position: "absolute",
+              height: "30%",
+              width: "100%",
+              top: 0,
+              backgroundImage:
+                "linear-gradient(360deg, hsla(176, 82%, 82%, 1) 0%, hsla(202, 100%, 54%, 1) 100%)",
+            }}
           >
-            <img
+            {/* <img
               src="https://images.pexels.com/photos/1025469/pexels-photo-1025469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="avatar background"
               style={{ height: "100%", width: "100%" }}
-            />
+            /> */}
           </Box>
           <Avatar
             className={classes.avatar}
             alt={fullName}
-            src={`${API_URL+image}`}
-            sx={{ width: "120px", height: "120px", top: "45%" }}
+            src={`${API_URL + image}`}
+            sx={{ width: "150px", height: "150px", top: "35%" }}
           >
             {fullName?.charAt(0)}
           </Avatar>
@@ -57,7 +71,7 @@ export default function ProfileCard(props) {
             component="div"
             className={classes.fullname}
           >
-            {fullName}
+            Full Name
           </Typography>
         </div>
         <Box
@@ -71,35 +85,52 @@ export default function ProfileCard(props) {
             width: "100%",
           }}
         >
-          <Paper elevation={0} sx={{ width: "100%" }}>
-            <List sx={{ p: 0 }} className="contentList">
+          <Paper
+            elevation={0}
+            sx={{ width: "100%" }}
+          >
+            <List
+            
+              sx={{ padding: '0' }}
+              className="contentList"
+            >
               <ListItem sx={{ py: 0 }}>
-                <ListItemIcon>
-                  <PersonOutlineIcon />
+                <ListItemIcon sx={{ minWidth: "35px" }}>
+                  <PersonOutlineIcon sx={{ color: "#15AAFF" }} />
                 </ListItemIcon>
-                <ListItemText id="switch-list-label-darkMode" primary={title} />
+                <ListItemText
+                  id="switch-list-label-darkMode"
+                  primary={"Designation"}
+                />
               </ListItem>
               <ListItem sx={{ py: 0 }}>
-                <ListItemIcon>
-                  <GroupsIcon />
+                <ListItemIcon sx={{ minWidth: "35px" }}>
+                  <GroupsIcon sx={{ color: "#15AAFF" }} />
                 </ListItemIcon>
                 <ListItemText
                   id="switch-list-label-language"
-                  primary={clubName}
+                  primary={"Club Name"}
                 />
               </ListItem>
-              <ListItem sx={{ minHeight: 80, py: 0 }}>
+              <ListItem sx={{ py: 0 }}>
+                <ListItemIcon sx={{ minWidth: "35px" }}>
+                  <PhoneIcon sx={{ color: "#15AAFF" }} />
+                </ListItemIcon>
                 <ListItemText
                   sx={{ textAlign: "justify" }}
                   id="switch-list-label-setting"
-                  primary={phone}
+                  primary={"989898989"}
                 />
               </ListItem>
-              <ListItem sx={{ justifyContent: "center", py: 0 }}>
+
+              <ListItem disablePadding sx={{ justifyContent: "center", pt: "1.5rem",pb:'0rem' }}>
                 <Box className={classes.socialIcons}>
                   {socialIcos.map((item, index) => (
-                    <Link href={`tel:${phone}`} key={index}>
-                      {item}
+                    <Link
+                      to={item.link}
+                      key={index}
+                    >
+                      {item.icon}
                     </Link>
                   ))}
                 </Box>
