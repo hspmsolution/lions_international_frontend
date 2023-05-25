@@ -18,6 +18,7 @@ import {
   faInstagram,
   faLinkedin,
   faTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -75,10 +76,23 @@ const contact = [
   },
 ];
 const socialIcos = [
-  <FontAwesomeIcon icon={faFacebookF} />,
-  <FontAwesomeIcon icon={faTwitter} />,
-  <FontAwesomeIcon icon={faInstagram} />,
-  <FontAwesomeIcon icon={faLinkedin} />,
+  {
+    icon: <FontAwesomeIcon icon={faFacebookF} />,
+    link: "https://www.facebook.com/LionsClubsDistrict317F/",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faTwitter} />,
+    link: "https://twitter.com/lcbpd",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faInstagram} />,
+    link: "https://www.instagram.com/lions_district_317f/?r=nametag",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faYoutube} />,
+    link: "https://www.youtube.com/channel/UCPS2Iv4WWFni-BcLSMXOT5g",
+  },
+  
 ];
 // const footItems = [{
 // }]
@@ -212,7 +226,7 @@ function Footer() {
                 </Typography>*/}
           <Box className={classes.socialIcons}>
             {socialIcos.map((item, index) => (
-              <Link key={index}>{item}</Link>
+              <Link to={item.link} target="_blank" key={index}>{item.icon}</Link>
             ))}
           </Box>
         </Container>
