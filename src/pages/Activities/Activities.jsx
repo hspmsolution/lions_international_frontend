@@ -20,6 +20,13 @@ import CustomizedBreadcrumbs from "../../components/Breadcrumb/Breadcrumb";
 import CommonCard from "../.././components/CommonCard/CommonCard";
 import ImageSlider, { Slide } from "react-auto-image-slider";
 
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+
 function ResponsiveDialog({
   type,
   title,
@@ -46,7 +53,7 @@ function ResponsiveDialog({
     setOpen(false);
     setShowRegister(false);
   };
-
+  const classes = useStyles();
   return (
     <div>
       <Button
@@ -60,68 +67,86 @@ function ResponsiveDialog({
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        // sx={{ display: 'flex', justifyContent: 'center' }}
+        maxWidth={"none"}
+        sx={{ margin: "auto" }}
+        className={classes.dialog}
       >
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
             ? "Past Activities by Club"
             : "Upcoming Activities by Club"}
         </DialogTitle>
-        <Paper
-          variant="outlined"
-          sx={{ width: "30vw", padding: "0rem", margin: "auto" }}
-        >
-          <img
-            src={API_URL + bgImage}
-            alt="helping"
-            style={{ width: "100%" }}
-          />
-        </Paper>
+
         <DialogContent>
-          <table>
-            <tbody>
-              <tr>
-                <th style={{ display: "flex" }}>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ mr: "1rem" }}
-                  >
-                    Event Name :{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">{title}</Typography>
-                </th>
-              </tr>
-              <tr>
-                <th style={{ display: "flex" }}>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ mr: "1rem" }}
-                  >
-                    Event Date :{" "}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    {date?.slice(0, 10)}
-                  </Typography>
-                </th>
-              </tr>
-              <tr>
-                <th style={{ display: "flex" }}>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ mr: "1rem" }}
-                  >
-                    Event Details :{" "}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    sx={{ width: "24rem", textAlign: "justify" }}
-                  >
-                    {description}
-                  </Typography>
-                </th>
-              </tr>
-            </tbody>
-          </table>
+          <Paper
+            variant="outlined"
+            sx={{
+              padding: "0.5rem",
+              margin: "auto",
+              width: "100%",
+            }}
+            className={classes.dialogPaper}
+          >
+            <img
+              src={API_URL + bgImage}
+              alt="helping"
+              style={{ width: "900px", height: "100%" }}
+            />
+          </Paper>
+          <TableContainer component={Paper}>
+            <Table aria-label="simple table">
+              <TableBody>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity Title:</strong>
+                  </TableCell>
+                  <TableCell>{title}</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity Date:</strong>
+                  </TableCell>
+                  <TableCell>{date?.slice(0, 10)}</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity Type:</strong>
+                  </TableCell>
+                  <TableCell>{type}</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity Category:</strong>
+                  </TableCell>
+                  <TableCell>Catergory</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity Place:</strong>
+                  </TableCell>
+                  <TableCell>Place</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong> Activity Description:</strong>
+                  </TableCell>
+                  <TableCell>{description}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </DialogContent>
         <DialogActions>
           <Button

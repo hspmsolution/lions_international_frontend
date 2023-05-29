@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Container,
-  Divider,
   List,
   ListItem,
   ListItemButton,
@@ -19,13 +18,13 @@ import {
   faInstagram,
   faLinkedin,
   faTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import PhoneIcon from "@mui/icons-material/Phone";
 import {
   faCube,
-  faPhone,
   faEnvelope,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
@@ -41,10 +40,6 @@ import {
 
 const quickLinks = [
   {
-    linkName: "Events",
-    path: "/activities",
-  },
-  {
     linkName: "Activity",
     path: "/activities",
   },
@@ -58,11 +53,11 @@ const quickLinks = [
   },
   {
     linkName: "Privacy Policies",
-    path: "/",
+    path: "/privacypolicy",
   },
   {
     linkName: "Terms & Conditions",
-    path: "/",
+    path: "/termsandconditions",
   },
 ];
 // const contact = ["123-456-7890", "example@gmail.com", "Address"];
@@ -81,10 +76,23 @@ const contact = [
   },
 ];
 const socialIcos = [
-  <FontAwesomeIcon icon={faFacebookF} />,
-  <FontAwesomeIcon icon={faTwitter} />,
-  <FontAwesomeIcon icon={faInstagram} />,
-  <FontAwesomeIcon icon={faLinkedin} />,
+  {
+    icon: <FontAwesomeIcon icon={faFacebookF} />,
+    link: "https://www.facebook.com/LionsClubsDistrict317F/",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faTwitter} />,
+    link: "https://twitter.com/lcbpd",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faInstagram} />,
+    link: "https://www.instagram.com/lions_district_317f/?r=nametag",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faYoutube} />,
+    link: "https://www.youtube.com/channel/UCPS2Iv4WWFni-BcLSMXOT5g",
+  },
+  
 ];
 // const footItems = [{
 // }]
@@ -218,7 +226,7 @@ function Footer() {
                 </Typography>*/}
           <Box className={classes.socialIcons}>
             {socialIcos.map((item, index) => (
-              <Link key={index}>{item}</Link>
+              <Link to={item.link} target="_blank" key={index}>{item.icon}</Link>
             ))}
           </Box>
         </Container>

@@ -11,6 +11,7 @@ import {makeStyles} from "@mui/styles";
       padding: "2rem",
       borderRadius:"1rem",
       margin:'auto',
+      backgroundColor:'white'
     },
     textField: {
       marginBottom: "1rem",
@@ -23,8 +24,7 @@ import {makeStyles} from "@mui/styles";
     box:{
       display:'flex',
       justifyContent:'center',
-      padding:'2rem',
-      backgroundColor:'white'
+      padding:'2rem 3rem',
     },
     heading:{
       paddingBottom:'1rem'

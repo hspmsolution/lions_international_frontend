@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Box, Container, Pagination } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
-import NewsCard from "../../../components/NewsCard/NewsCard";
 import { useDispatch, useSelector } from "react-redux";
 import { topNews } from "../../../actions/news";
 import useStyles from "./Styles";
@@ -35,7 +34,9 @@ export default function News() {
 
   useEffect(() => {
     dispatch(topNews(page));
-  }, []);
+  }, [dispatch, page]);
+
+  
 
   return (
     <>
@@ -80,12 +81,14 @@ export default function News() {
                 >
                   <Paper elevation={3}>
                     <CommonCard
+                      type='news'
                       images={`${API_URL + item?.image}`}
                       srcSet={`${API_URL + item?.image}`}
                       alt={item.newsTitle}
                       heading={item.newsTitle}
                       description={item.description}
                       date={item?.date?.slice(0, 10)}
+                      newsPaperLink={item.newsPaperLink}
                     />
                   </Paper>
                 </Grid>

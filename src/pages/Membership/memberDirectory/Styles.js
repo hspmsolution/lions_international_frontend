@@ -12,26 +12,30 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     justifyItems: "center",
     padding: "0",
+    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'
+    
   },
   cardHeaders: {
     display: "grid",
     alignItems: "center",
     justifyItems: "center",
-    gap: "3.5em",
+    gap: "3.9em",
   },
   avatar: {
-    width: "100px",
-    height: "100px",
+    width: "150px",
+    height: "150px",
   },
   socialIcons: {
     textAlign: "center",
     "& a": {
       color: "#3d4750",
       margin: "10px",
-      padding: "5px",
+      padding: "8px 10px",
       backgroundColor: "#cdcdcd",
       borderRadius: "5px",
+      fontSize: "1.3rem",
     },
+    "& a:hover": { backgroundColor: "#15AAFF", color: "white" },
   },
   avatarBg: {
     height: "50%",
@@ -47,6 +51,6 @@ export default makeStyles((theme) => ({
     },
   },
   fullname: {
-    color: "#1184e8",
+    color: "#15AAFF",
   },
 }));

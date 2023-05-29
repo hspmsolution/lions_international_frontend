@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Grid, Box } from "@mui/material";
 import useStyles from "./ContactStyles";
 import { Paper } from "@mui/material";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 const ContactForm = () => {
   const classes = useStyles();
   const [firstName, setFirstName] = useState("");
@@ -24,28 +25,6 @@ const ContactForm = () => {
     // TODO: Handle form submission
   };
 
-  const contacts = [
-    {
-      name: "B S Nagaraj",
-      designation: "DG",
-      phone: "9844033835",
-    },
-    {
-      name: "V K Rajesh",
-      designation: "DCS",
-      phone: "9972245375",
-    },
-    {
-      name: "R K Hegde",
-      designation: "DCT",
-      phone: "9448012200",
-    },
-    {
-      name: "Email",
-      email: "lions317f2324@gmail.com",
-    },
-  ];
-
   function createData(name, designation, phone) {
     return { name, designation, phone };
   }
@@ -58,31 +37,23 @@ const ContactForm = () => {
 
   return (
     <>
-      <Box sx={{ padding: "1rem",backgroundColor:'white' }}>
-        <Button
-          to="/"
-          size="large"
-          variant="contained"
-          component={RouterLink}
-          color="primary"
-        >
-          Go to Home
-        </Button>
-      </Box>
-      <Box className={classes.box}>
-        <Grid
-          container
-          spacing={2}
-        >
+      <Box
+        sx={{
+          paddingTop: "6rem",
+          backgroundImage: "url('/assets/img/bggg.png')",
+        }}
+      >
+        <Box className={classes.box}>
           <Grid
-            item
-            xs={12}
-            md={4}
-            lg={4}
+            container
+            spacing={2}
           >
-            <Paper
-              elevation={3}
-              sx={{ padding: "1rem", maxWidth: "600px", margin: "auto" }}
+            <Grid
+              item
+              xs={12}
+              md={4}
+              lg={3}
+              sx={{ margin: "auto" }}
             >
               <Typography
                 variant="h6"
@@ -91,157 +62,162 @@ const ContactForm = () => {
               >
                 Contact Details of District
               </Typography>
-
-              <TableContainer component={Paper}>
-                <Table aria-label="simple table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
-                      <TableCell align="right">Designation</TableCell>
-                      <TableCell align="right">Phone No.</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {rows.map((row) => (
-                      <TableRow key={row.name}>
-                        <TableCell align="left">{row.name}</TableCell>
-                        <TableCell align="center">{row.designation}</TableCell>
-                        <TableCell align="right">{row.phone}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                  <TableRow
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell colSpan={12}>
-                      Email: lions317f2324@gmail.com
-                    </TableCell>
-                  </TableRow>
-                </Table>
-              </TableContainer>
-            </Paper>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            md={8}
-            lg={8}
-          >
-            <form
-              onSubmit={handleSubmit}
-              className={classes.formContainer}
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+              >
+                {rows.map((item, index) => (
+                  <Card sx={{ MaxWidth: 350, borderLeft: "4px solid #37F90D" }}>
+                    <CardContent>
+                      <Typography
+                        variant="h5"
+                        component="div"
+                      >
+                        Name : {item.name}
+                      </Typography>
+                      <Typography color="text.secondary">
+                        Designation: {item.designation}
+                      </Typography>
+                      <Typography color="text.secondary">
+                        Phone: {item.phone}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))}
+              </Box>
+              <Card
+                sx={{
+                  MaxWidth: 350,
+                  borderLeft: "4px solid #37F90D",
+                  marginTop: "2rem",
+                }}
+              >
+                <CardContent>
+                  <Typography>
+                    <strong>Email: lions317f2324@gmail.com</strong>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={8}
+              lg={8}
             >
-              <Typography
-                variant="h5"
-                className={classes.heading}
+              <form
+                onSubmit={handleSubmit}
+                className={classes.formContainer}
               >
-                Contact Us
-              </Typography>
-              <Grid
-                container
-                spacing={3}
-              >
+                <Typography
+                  variant="h5"
+                  className={classes.heading}
+                >
+                  Contact Us
+                </Typography>
                 <Grid
-                  item
-                  xs={12}
-                  lg={6}
+                  container
+                  spacing={3}
                 >
-                  <TextField
-                    label="First Name"
-                    variant="outlined"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className={classes.textField}
-                    required
-                  />
+                  <Grid
+                    item
+                    xs={12}
+                    lg={6}
+                  >
+                    <TextField
+                      label="First Name"
+                      variant="outlined"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className={classes.textField}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={6}
+                  >
+                    <TextField
+                      label="Last Name"
+                      variant="outlined"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className={classes.textField}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={6}
+                  >
+                    <TextField
+                      label="Email"
+                      variant="outlined"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className={classes.textField}
+                      type="email"
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={6}
+                  >
+                    <TextField
+                      label="Phone Number"
+                      variant="outlined"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className={classes.textField}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={12}
+                  >
+                    <TextField
+                      label="Subject"
+                      variant="outlined"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      className={classes.textField}
+                      required
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={12}
+                  >
+                    <TextField
+                      label="Message"
+                      variant="outlined"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className={classes.textField}
+                      multiline
+                      required
+                      rows={4}
+                    />
+                  </Grid>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    className={classes.button}
+                  >
+                    Submit
+                  </Button>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  lg={6}
-                >
-                  <TextField
-                    label="Last Name"
-                    variant="outlined"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className={classes.textField}
-                    required
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  lg={6}
-                >
-                  <TextField
-                    label="Email"
-                    variant="outlined"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={classes.textField}
-                    type="email"
-                    required
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  lg={6}
-                >
-                  <TextField
-                    label="Phone Number"
-                    variant="outlined"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className={classes.textField}
-                    required
-                  />
-                </Grid>
-
-                <Grid
-                  item
-                  xs={12}
-                  lg={12}
-                >
-                  <TextField
-                    label="Subject"
-                    variant="outlined"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className={classes.textField}
-                    required
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  lg={12}
-                >
-                  <TextField
-                    label="Message"
-                    variant="outlined"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className={classes.textField}
-                    multiline
-                    required
-                    rows={4}
-                  />
-                </Grid>
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.button}
-                >
-                  Submit
-                </Button>
-              </Grid>
-            </form>
+              </form>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Box>
     </>
   );
