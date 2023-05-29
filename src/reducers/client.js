@@ -11,6 +11,7 @@ import {
   SELECT_TITLES,
   SELECT_ALL_TITLES,
   DISTRICT_DATA,
+  RESOURCE_DATA
 } from "../constants/actionTypes";
 
 const clientReducer = (
@@ -20,6 +21,7 @@ const clientReducer = (
     topClubs: [],
     sliderImages: [{ image: "" }],
     galleryImages: [{ image: "" }],
+    resourceData:[{path:""}],
     allClubs: [],
     titles: [],
     districtData: [],
@@ -99,6 +101,8 @@ const clientReducer = (
           isChecked: isChoose,
         })),
       };
+    case RESOURCE_DATA:
+      return { ...state, resourceData: action.payload };
 
     default:
       return state;
