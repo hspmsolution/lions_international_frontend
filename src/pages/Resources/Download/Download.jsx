@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React, { useEffect } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import CustomizedBreadcrumbs from "../../../components/Breadcrumb/Breadcrumb";
 import ResourcesTable from './ResourcesTable';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import { useDispatch, useSelector } from "react-redux";
 import Grid from '@mui/material/Grid';
-
+import {downloadResources} from "../../../actions/client";
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -14,20 +15,16 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-function createData(name, src) {
-    return { name, src };
-}
-
-const rows = [
-    createData('file1'),
-    createData('file2'),
-    createData('file3'),
-    createData('file4'),
-    createData('file5'),
-];
 
 export default function Download() {
-    return (
+    const files = useSelector((state) => state.client.resourceData);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(downloadResources());
+      }, []);
+      const districtFiles = files.filter((row) => row.category === 'district');
+        const internationalFiles = files.filter((row) => row.category === 'international');
+return (
         <>
             <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '4rem' }}>
                 <CustomizedBreadcrumbs label={'Resources'} subLabel={'Downloads'} />
@@ -38,7 +35,7 @@ export default function Download() {
                                 <Item>
                                     <Box>
                                         <Typography variant='h4' sx={{ textAlign: 'center', mb: '1rem' }}>District Resources</Typography>
-                                        <ResourcesTable rows={rows} />
+                                        <ResourcesTable rows={districtFiles} />
                                     </Box>
                                 </Item>
                             </Grid>
@@ -46,7 +43,7 @@ export default function Download() {
                                 <Item>
                                     <Box>
                                         <Typography variant='h4' sx={{ textAlign: 'center', mb: '1rem' }}>International Resources</Typography>
-                                        <ResourcesTable rows={rows} />
+                                        <ResourcesTable rows={internationalFiles} />
                                     </Box>
                                 </Item>
                             </Grid>

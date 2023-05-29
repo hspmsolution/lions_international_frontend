@@ -10,6 +10,7 @@ import {
   SLIDER_IMAGES,
   GALLARY_IMAGES,
   DISTRICT_DATA,
+  RESOURCE_DATA
 } from "../constants/actionTypes";
 
 export const activityStats = () => async (dispatch) => {
@@ -109,6 +110,16 @@ export const downloadMemberData =
     try {
       const { data } = await api.districtData();
       dispatch({ type: DISTRICT_DATA, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  export const downloadResources = () => async (dispatch) => {
+    try {
+      const { data } = await api.downloadResources();
+      console.log(data);
+      dispatch({ type: RESOURCE_DATA, payload: data });
     } catch (error) {
       console.log(error);
     }

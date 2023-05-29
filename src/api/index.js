@@ -54,3 +54,4 @@ export const allClubs=()=>API.get('clubs/allclubs');
 export const titles=()=>API.get('clubs/titles');
 export const downloadMemberData=(selectedData)=>API.post('clubs/download-member-data',selectedData);
 export const districtData=()=>API.get('clubs/districtdata');
+export const downloadResources=()=>API.get('assets/downloadResources');
