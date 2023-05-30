@@ -67,6 +67,74 @@
 
 @media only screen and (max-width: 480px) {
   .imgSlider>article>div:nth-child(2) {
-    top: 23% !important;
+    top: 20% !important;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .imgSlider>article>div:nth-child(2) {
+    top: 20% !important;
+  }
+}
+
+
+/* Header Styling */
+
+.head-dist-h {
+  text-align: center;
+  color: #000000;
+  background-color: #36363692;
+  position: absolute;
+  top: 10%;
+  width: 300px;
+  z-index: 998;
+}
+
+.head-lions-i, .head-dist-num {
+  color: #fff;
+  font-weight: 700;
+}
+
+.head-lions-i {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.head-dist-num {
+  font-size: 1.5rem;
+  font-weight: 550;
+}
+
+@media screen and (max-width: 1024px) {
+  .head-dist-h {
+    top: 15%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .head-dist-h {
+      top: 20%;
+  }
+  .head-lions-i, .head-dist-num {
+      font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .head-dist-h {
+      top: 35%;
+      width: 200px;
+  }
+  .head-lions-i, .head-dist-num {
+      font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .head-dist-h {
+      top: 45%;
+  }
+  .head-lions-i, .head-dist-num {
+      font-size: 1rem;
   }
 }

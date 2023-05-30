@@ -10,15 +10,8 @@ function Slider() {
     <div style={{ maxHeight: '100vh' }}>
       <div className="imgSlider">
         <div className="head-dist-h">
-          <img
-            className="logoImg"
-            src={"/assets/img/logo2.png"}
-            alt="Lions Club"
-          />
-          <div>
-            <div className="head-lions-i">LIONS CLUB INTERNATIONAL</div>
-            <div className="head-dist-num">DISTRICT 317-F</div>
-          </div>
+          <div className="head-lions-i">LIONS CLUB INTERNATIONAL</div>
+          <div className="head-dist-num">DISTRICT 317-F</div>
         </div>
         <ImageSlider effectDelay={500} autoPlayDelay={2000}>
           {images?.map((path, index) => (
