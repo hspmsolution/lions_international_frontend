@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Header from "./Header/Header.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Slider from "../../components/Slider/Slider.jsx";
 import About from "./About/About.jsx";
@@ -34,7 +33,6 @@ function Home() {
       {/* {scrollPosition > 650 ? (
         <Navbar />
       ) : null} */}
-      <Header />
       <Slider />
       <About />
       <Counters />
