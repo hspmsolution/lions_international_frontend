@@ -3,10 +3,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCirclePlay, faCirclePause } from "@fortawesome/free-regular-svg-icons";
 import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "@mui/material";
+import { useState } from "react";
 
 library.add(faHeadphones, faCirclePlay, faCirclePause);
 
 function About() {
+    const [playing, setPlaying] = useState({
+        audio: new Audio('/assets/SampleAudio.mp3'),
+        isPlaying: false,
+    });
+
+
+    const setPlayTheme = () => {
+        setPlaying((prevState) => ({
+            ...prevState,
+            isPlaying: !prevState.isPlaying,
+        }));
+
+        {!playing.isPlaying ?
+            playing.audio.play()
+            : playing.audio.pause()
+        }
+    };
+
+
     return (
         <div className="about-cnr">
             <div className="about-card">
@@ -23,12 +44,8 @@ function About() {
                     </p>
                     <div id="audio">
                         <h4>Listen To Our Theme Song <FontAwesomeIcon icon={faHeadphones} /></h4>
-                        <a href="/"><FontAwesomeIcon icon={faCirclePlay}
-                            className="playIcon" />
-                        </a>
-                        <a href="/"><FontAwesomeIcon icon={faCirclePause}
-                            className="pauseIcon" />
-                        </a>
+                        <Link onClick={setPlayTheme}><FontAwesomeIcon icon={faCirclePlay} className="playIcon" /></Link>
+                        <Link onClick={setPlayTheme}><FontAwesomeIcon icon={faCirclePause} className="pauseIcon" /></Link>
                     </div>
                 </div>
             </div>
