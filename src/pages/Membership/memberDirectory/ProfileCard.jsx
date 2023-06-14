@@ -36,7 +36,7 @@ export default function ProfileCard(props) {
   ];
 
   return (
-    <Card sx={{ minHeight: 360, maxWidth: 300, margin: " 1rem auto" }} >
+    <Card sx={{ minHeight: 360, maxWidth: 300, margin: " 1rem auto" }}>
       <CardContent className={classes.cardContent}>
         <div className={classes.avatarBg}></div>
         <div className={classes.cardHeaders}>
@@ -71,7 +71,7 @@ export default function ProfileCard(props) {
             component="div"
             className={classes.fullname}
           >
-            Full Name
+            {fullName}
           </Typography>
         </div>
         <Box
@@ -90,8 +90,7 @@ export default function ProfileCard(props) {
             sx={{ width: "100%" }}
           >
             <List
-            
-              sx={{ padding: '0' }}
+              sx={{ padding: "0" }}
               className="contentList"
             >
               <ListItem sx={{ py: 0 }}>
@@ -123,7 +122,10 @@ export default function ProfileCard(props) {
                 />
               </ListItem>
 
-              <ListItem disablePadding sx={{ justifyContent: "center", pt: "1.5rem",pb:'0rem' }}>
+              <ListItem
+                disablePadding
+                sx={{ justifyContent: "center", pt: "1.5rem", pb: "0rem" }}
+              >
                 <Box className={classes.socialIcons}>
                   {socialIcos.map((item, index) => (
                     <Link
