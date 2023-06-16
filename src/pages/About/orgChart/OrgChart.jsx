@@ -27,32 +27,50 @@ export default function OrgChart() {
         sx={{
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
-        }}
-      >
+        }}>
         <CustomizedBreadcrumbs label={"Organization Chart"} />
         <Container sx={{ pb: "3rem" }}>
           {data.map((region, index) => (
             <Accordion
               expanded={expanded === index}
               onChange={handleChange(index)}
-              key={index}
-            >
+              key={index}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
-                sx={{ display: { sm: 'block', md: 'flex' } }}
-              >
-                <Typography variant="h4" sx={{ width: "33%", flexShrink: 0 }}>
+                sx={{ display: { sm: "block", md: "flex" } }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    width: "40%",
+                    flexShrink: 0,
+                    fontSize: { xs: "0.8rem", md: "1.25rem" },
+                  }}>
                   {region.name}
                 </Typography>
-                <Typography variant="h5" sx={{ color: "text.secondary" }}>
-                  Region Chairperson{region.chairPerson}
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "text.secondary",
+                    fontSize: { xs: "0.7rem", md: "1rem" },
+                    fontWeight: "bold",
+                  }}>
+                  Region Chairperson: {region.chairPerson}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails sx={{ display: "flex", flexWrap: 'wrap', gap: "3rem", justifyContent: 'center' }}>
+              <AccordionDetails
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "3rem",
+                  justifyContent: "center",
+                }}>
                 {region.zones?.map((zone, i) => (
-                  <ZoneTable zone={zone} key={i} />
+                  <ZoneTable
+                    zone={zone}
+                    key={i}
+                  />
                 ))}
               </AccordionDetails>
             </Accordion>

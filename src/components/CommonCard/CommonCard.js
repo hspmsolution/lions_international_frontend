@@ -1,10 +1,8 @@
-import React from 'react'
+import React from "react";
 import { Box, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import useStyles from "./CardStyle";
-import LinkIcon from '@mui/icons-material/Link';
-
-
+import LinkIcon from "@mui/icons-material/Link";
 
 export default function CommonCard(props) {
   const classes = useStyles();
@@ -21,27 +19,30 @@ export default function CommonCard(props) {
 
   return (
     <>
-      <Box
-        position={"relative"}
-        sx={{ flexGrow: 1 }}
-      >
-        <Item>
+      <Box sx={{ flexGrow: 1 }}>
+        <Item sx={{ position: "relative" }}>
           <img
             src={props.image}
             srcSet={props.srcSet}
             alt={props.alt}
             className={classes.activityImage}
-
           />
           <h3>{props.heading}</h3>
           <p>{props.description}</p>
           <p className={classes.activityDate}>{props.date}</p>
-          {props.type==='news'? 
-            <a href={`${props.newsPaperLink}`} rel="noreferrer" target='_blank' style={{ color: '#000' }} ><LinkIcon /></a>
-            : ''
-          }
+          {props.type === "news" ? (
+            <a
+              href={`${props.newsPaperLink}`}
+              rel="noreferrer"
+              target="_blank"
+              style={{ color: "#000" }}>
+              <LinkIcon />
+            </a>
+          ) : (
+            ""
+          )}
         </Item>
       </Box>
     </>
-  )
+  );
 }

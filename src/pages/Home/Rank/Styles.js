@@ -20,7 +20,7 @@ export default makeStyles((theme) => ({
     },
     clubRankH: {
         fontSize: '42px',
-        fontFamily: "'Aboreto', cursive",
+        fontFamily: 'sans-serif',
         fontWeight: 'bolder',
         paddingTop: '2rem',
         textAlign: 'center',

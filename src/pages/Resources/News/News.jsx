@@ -36,16 +36,13 @@ export default function News() {
     dispatch(topNews(page));
   }, [dispatch, page]);
 
-  
-
   return (
     <>
       <Box
         sx={{
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
-        }}
-      >
+        }}>
         <CustomizedBreadcrumbs
           label={"Resources"}
           subLabel={"News"}
@@ -56,15 +53,13 @@ export default function News() {
             flexWrap: "wrap",
             justifyContent: "center",
             padding: "1rem",
-          }}
-        >
+          }}>
           <Grid
             container
             spacing={5}
             sx={{
               display: "flex",
-            }}
-          >
+            }}>
             {newsData.map((item, index) => (
               <>
                 {/* <NewsCard
@@ -77,11 +72,10 @@ export default function News() {
                   sm={6}
                   md={4}
                   lg={4}
-                  key={index}
-                >
+                  key={index}>
                   <Paper elevation={3}>
                     <CommonCard
-                      type='news'
+                      type="news"
                       images={`${API_URL + item?.image}`}
                       srcSet={`${API_URL + item?.image}`}
                       alt={item.newsTitle}
@@ -101,9 +95,8 @@ export default function News() {
           sx={{
             display: "flex",
             justifyContent: "center",
-            p: "2rem",
-          }}
-        >
+            p: "2rem 1rem",
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}

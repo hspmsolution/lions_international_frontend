@@ -16,7 +16,6 @@ import "./Footer.css";
 import {
   faFacebookF,
   faInstagram,
-  faLinkedin,
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
@@ -28,15 +27,6 @@ import {
   faEnvelope,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-
-// const quickLinks = [
-//   "Events",
-//   "Activity",
-//   "Gallery",
-//   "Contact Us",
-//   "Privacy Policies",
-//   "Terms & Conditions",
-// ];
 
 const quickLinks = [
   {
@@ -60,7 +50,6 @@ const quickLinks = [
     path: "/termsandconditions",
   },
 ];
-// const contact = ["123-456-7890", "example@gmail.com", "Address"];
 const contact = [
   {
     icon: <PhoneIcon />,
@@ -92,10 +81,7 @@ const socialIcos = [
     icon: <FontAwesomeIcon icon={faYoutube} />,
     link: "https://www.youtube.com/channel/UCPS2Iv4WWFni-BcLSMXOT5g",
   },
-  
 ];
-// const footItems = [{
-// }]
 
 function Footer() {
   const classes = useStyles();
@@ -109,15 +95,13 @@ function Footer() {
         display: "flex",
         flexDirection: "column",
       }}
-      className="footer-background"
-    >
+      className="footer-background">
       <Box
         sx={{
           backgroundColor: "rgba(4,27,59,0.5)",
           color: "#fff",
         }}
-        className={classes.footer}
-      >
+        className={classes.footer}>
         <Box
           sx={{
             display: "flex",
@@ -125,16 +109,13 @@ function Footer() {
             justifyContent: { xs: "center", sm: "space-evenly" },
             alignItems: "flex-start",
             width: "100%",
-          }}
-        >
+          }}>
           <nav
             aria-label="secondary mailbox folders"
-            className="footer-nav01"
-          >
+            className="footer-nav01">
             <Typography
               variant="h6"
-              sx={{ pt: "2rem", pl: "0.8rem", align: "center" }}
-            >
+              sx={{ pt: "2rem", pl: "0.8rem", align: "center" }}>
               Quick Links
             </Typography>
             <List disablePadding>
@@ -144,8 +125,7 @@ function Footer() {
                   key={i}
                   onClick={() => {
                     navigate(item.path);
-                  }}
-                >
+                  }}>
                   <ListItemButton
                     sx={{
                       py: "5px",
@@ -155,44 +135,40 @@ function Footer() {
                         color: "black",
                       },
                     }}
-                    disablePadding
-                  >
+                    disablePadding>
                     <ListItemText primary={item.linkName} />
                   </ListItemButton>
                 </ListItem>
               ))}
             </List>
           </nav>
-
-          <Avatar
-            alt="Remy Sharp"
-            src={"/assets/img/logo2.png"}
-            sx={{
-              width: { xs: "130px", lg: "180px" },
-              height: { xs: "130px", lg: "180px" },
-              borderRadius: "0",
-              margin: "1rem 2rem",
-              display: { xs: "block", sm: "block" },
-            }}
-            className="footer-logo"
-          />
-
+          <Box sx={{ width: { xs: "100%", md: "auto" } }}>
+            <Avatar
+              alt="Remy Sharp"
+              src={"/assets/img/logo2.png"}
+              sx={{
+                width: { xs: "130px", lg: "180px" },
+                height: { xs: "130px", lg: "180px" },
+                borderRadius: "0",
+                margin: "1rem auto",
+                display: { xs: "block", sm: "block" },
+              }}
+              className="footer-logo"
+            />
+          </Box>
           <nav
             aria-label="secondary mailbox folders"
-            className="footer-nav02"
-          >
+            className="footer-nav02">
             <Typography
               variant="h6"
-              sx={{ pt: "2rem", pl: "0.8rem" }}
-            >
+              sx={{ pt: "2rem", pl: "0.8rem" }}>
               Contact
             </Typography>
             <List disablePadding>
               {contact.map((item, i) => (
                 <ListItem
                   disablePadding
-                  key={i}
-                >
+                  key={i}>
                   <ListItemButton>
                     <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
                       {item.icon}
@@ -205,28 +181,26 @@ function Footer() {
           </nav>
         </Box>
       </Box>
-      {/* <Divider sx = {{width: "100%"}}/> */}
 
       <Box
         sx={{
           backgroundColor: "rgba(4,27,59,0.5)",
           color: "#fff",
-        }}
-      >
+        }}>
         <Container
           sx={{
             display: { xs: "block", sm: "flex" },
             justifyContent: "space-evenly",
             padding: "10px",
-          }}
-        >
-          {/* <Typography variant = "h5"
-                            gutterBottom>
-                    Get connected with us on social networks:
-                </Typography>*/}
+          }}>
           <Box className={classes.socialIcons}>
             {socialIcos.map((item, index) => (
-              <Link to={item.link} target="_blank" key={index}>{item.icon}</Link>
+              <Link
+                to={item.link}
+                target="_blank"
+                key={index}>
+                {item.icon}
+              </Link>
             ))}
           </Box>
         </Container>

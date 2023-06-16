@@ -63,6 +63,21 @@ const useStyles = makeStyles({
     width: "1.5em",
     height: "1.2em",
   },
+  tableRow: {
+    marginLeft: "auto",
+    "@media (max-width:600px)": {
+      marginLeft: "0",
+    },
+  },
+  profileImg: {
+    "@media (max-width:600px)": {
+      height: "150px",
+      width: "150px",
+      position: "relative",
+      margin: "1rem auto",
+      bottom: "-25px",
+    },
+  },
 });
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -72,6 +87,9 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    "@media (max-width:600px)": {
+      fontSize: 11,
+    },
   },
 }));
 
@@ -109,8 +127,7 @@ export default function UserData() {
     <>
       <Paper
         elevation={3}
-        sx={{ width: "100%", height: "10%", borderRadius: "5px" }}
-      >
+        sx={{ width: "100%", height: "10%", borderRadius: "5px" }}>
         <div className={classes.cardHeaders}>
           <Avatar
             sx={{
@@ -118,8 +135,9 @@ export default function UserData() {
               height: "200px",
               position: "absolute",
               bottom: "-96px",
-              margin: "0 5em",
+              margin: { xs: "1rem auto", md: "0 5em" },
             }}
+            className={classes.profileImg}
             src={
               memberData?.picture
                 ? API_URL + memberData.picture
@@ -139,19 +157,19 @@ export default function UserData() {
               justifyItems: "center",
               justifyContent: "flex-end",
               padding: "10px",
-            }}
-          >
+            }}>
             <Button
               sx={{ fontSize: "1.25rem" }}
               onClick={() => {
                 navigate("/dashboard/edit-profile");
-              }}
-            >
+              }}>
               <Edit />
               Edit Profile
             </Button>
           </Box>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <Table
+            sx={{ minWidth: { xs: "auto", md: "700" } }}
+            aria-label="customized table">
             <TableBody>
               {rows.map((row) => (
                 <StyledTableRow key={row.name}>
@@ -160,22 +178,23 @@ export default function UserData() {
                     scope="row"
                     display="flex"
                     alignItems="center"
-                    justifyContent="flex-start"
-                  >
+                    justifyContent="flex-start">
                     <div
+                      className={classes.tableRow}
                       style={{
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "flex-start",
-                        marginLeft: "auto",
+                        // marginLeft: "auto",
                         width: " 23% ",
-                      }}
-                    >
+                      }}>
                       {row.icon}
                       <span style={{ marginLeft: "5px" }}>{row.name}</span>
                     </div>
                   </StyledTableCell>
-                  <StyledTableCell width="50%" align="left">
+                  <StyledTableCell
+                    width="50%"
+                    align="left">
                     {row.calories}
                   </StyledTableCell>
                 </StyledTableRow>

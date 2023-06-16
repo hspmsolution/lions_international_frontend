@@ -14,22 +14,39 @@ function DGTeam() {
   return (
     <>
       <div className="aboutGov">
-        <CustomizedBreadcrumbs label={"About"} subLabel={"DG Team"} />
-        <Grid container spacing={5} sx={{ justifyContent: "center" }}>
-          <Grid item xs={10} className="gov">
+        <CustomizedBreadcrumbs
+          label={"About"}
+          subLabel={"DG Team"}
+        />
+        <Grid
+          container
+          spacing={5}
+          sx={{ justifyContent: "center" }}>
+          <Grid
+            item
+            xs={10}
+            className="gov">
             <Item
               sx={{ padding: { xs: "1rem", sm: "3rem" } }}
-              className="item aboutGovContainer"
-            >
+              className="item aboutGovContainer">
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/01_BSN.jpeg"}
-                sx={{ width: "300px", height: "220px", display: "flex" }}
+                sx={{
+                  maxWidth: "300px",
+                  maxHeight: "220px",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                }}
                 className="about-image"
                 variant="rounded"
               />
-              <Typography variant="h4" gutterBottom className="itemTitle">
-              B S Nagaraj, PMJF
+              <Typography
+                variant="h4"
+                gutterBottom
+                className="itemTitle">
+                B S Nagaraj, PMJF
               </Typography>
               <Typography variant="h5">District Governor</Typography>
               Dear Members and Sevayatris,
@@ -61,23 +78,36 @@ function DGTeam() {
               Diversity”! Ln CA Abhay Shastri, District Governor
             </Item>
           </Grid>
-          <Grid item xs={10} md={5} className="vcGov1">
+          <Grid
+            item
+            xs={10}
+            md={5}
+            className="vcGov1">
             <Item
               sx={{ padding: { xs: "1rem", sm: "3rem" } }}
-              className="item aboutGovContainer"
-            >
+              className="item aboutGovContainer">
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/03_C M Narayana Swamy.jpeg"}
-                sx={{ width: "300px", height: "220px", display: "flex" }}
+                sx={{
+                  maxWidth: "300px",
+                  maxHeight: "220px",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                }}
                 className="about-image"
                 variant="rounded"
               />
-              <Typography variant="h4" gutterBottom className="itemTitle">
-              C M Narayana Swamy, MJF
-
+              <Typography
+                variant="h4"
+                gutterBottom
+                className="itemTitle">
+                C M Narayana Swamy, MJF
               </Typography>
-              <Typography variant="h5" gutterBottom>
+              <Typography
+                variant="h5"
+                gutterBottom>
                 1st Vice District Governor
               </Typography>
               Dear Lion Friends,
@@ -109,22 +139,36 @@ function DGTeam() {
               Regards, MJF Ln Hemant Naik. FVDG.Dist 3234 D2.
             </Item>
           </Grid>
-          <Grid item xs={10} md={5} className="vcGov2">
+          <Grid
+            item
+            xs={10}
+            md={5}
+            className="vcGov2">
             <Item
               sx={{ padding: { xs: "1rem", sm: "3rem" } }}
-              className="item aboutGovContainer"
-            >
+              className="item aboutGovContainer">
               <Avatar
                 alt="Remy Sharp"
                 src={"/assets/dist_img/04_Akash Suvarna.JPG"}
-                sx={{ width: "300px", height: "220px", display: "flex" }}
+                sx={{
+                  maxWidth: "300px",
+                  maxHeight: "220px",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                }}
                 className="about-image"
                 variant="rounded"
               />
-              <Typography variant="h4" gutterBottom className="itemTitle">
-              Akash A Suvarna, PMJF
+              <Typography
+                variant="h4"
+                gutterBottom
+                className="itemTitle">
+                Akash A Suvarna, PMJF
               </Typography>
-              <Typography variant="h5" gutterBottom>
+              <Typography
+                variant="h5"
+                gutterBottom>
                 2nd Vice District Governor
               </Typography>
               Dear Ever Serving Leaders,

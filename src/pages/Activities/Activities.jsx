@@ -296,10 +296,10 @@ export default function Events() {
             >
               <Box
                 sx={{
-                  p: 2,
+                  // p: 2,
                   display: "grid",
                   gridTemplateColumns: { md: "4fr 4fr 4fr" },
-                  gap: 2,
+                  gap:'2rem',
                 }}
               >
                 {activities?.past?.length === 0 ? (

@@ -20,19 +20,23 @@ const About = () => {
                 alignItems: "center",
                 textAlign: "center",
                 margin: "2rem 0",
-              }}
-            >
+              }}>
               <Avatar
                 src={"/assets/dist_img/01_BSN.jpeg"}
                 alt="our district governer"
-                sx={{ mt: "1rem", width: "300px", height: "220px" }}
+                sx={{
+                  mt: "1rem",
+                  maxWidth: "300px",
+                  maxHeight: "220px",
+                  width: "100%",
+                  height: "100%",
+                }}
                 className="about-image"
                 variant="rounded"
               />
               <Typography
                 variant="h4"
-                className="itemTitle"
-              >
+                className="itemTitle">
                 B S Nagaraj, PMJF
               </Typography>
               <Typography variant="h5">District Governor</Typography>
@@ -60,9 +64,10 @@ const About = () => {
                 mainly dealing in Industrial Pumps, Valves, etc. His company is
                 an authorized distributor and service center for a renowned
                 organization in the Pump Industry – KSB Limited. He has been
-                awarded ‘<strong>The Best Dealer</strong>’ by KSB during the years 1985, 2004,
-                2005 and 2006. In 2017, he was awarded a <strong>Silver Plaque</strong> for
-                successfully completing <strong>25 years</strong> of fruitful association with
+                awarded ‘<strong>The Best Dealer</strong>’ by KSB during the
+                years 1985, 2004, 2005 and 2006. In 2017, he was awarded a{" "}
+                <strong>Silver Plaque</strong> for successfully completing{" "}
+                <strong>25 years</strong> of fruitful association with
                 <strong> KSB Limited</strong>. <br />
                 <br />
                 His journey in Lionism began in 1978, when he joined the Lions

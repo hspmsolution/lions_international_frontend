@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
 
   activityDate: {
     position: "absolute",
-    top: "6%",
+    top: "4%",
     right: "4%",
     backgroundColor: "white",
     padding: "0.2rem 0.6rem",

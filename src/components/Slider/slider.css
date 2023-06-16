@@ -3,21 +3,21 @@
   padding-top: 75%;
 }
 
-.imgSlider>.hOQiSy {
+.imgSlider > .hOQiSy {
   width: 100% !important;
 }
 
-.imgSlider>article {
+.imgSlider > article {
   width: 100% !important;
   position: absolute;
   top: 0;
 }
 
-.imgSlider>svg {
+.imgSlider > svg {
   color: #fff !important;
 }
 
-.imgSlider>article>.epKbGN>.hCJOJS {
+.imgSlider > article > .epKbGN > .hCJOJS {
   line-height: 0 !important;
   background: #8e8e8e91 !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
@@ -25,11 +25,11 @@
   -webkit-backdrop-filter: blur(6px) !important;
 }
 
-.hCJOJS>svg {
+.hCJOJS > svg {
   color: #fff !important;
 }
 
-.imgSlider>article>div:nth-child(2) {
+.imgSlider > article > div:nth-child(2) {
   top: 50% !important;
   z-index: 999;
 }
@@ -39,7 +39,7 @@
   padding-top: 75%;
 }
 
-.imgSlide>img {
+.imgSlide > img {
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@
 }
 
 .slideOverlay:before {
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
   content: "";
   top: 0;
@@ -58,25 +58,31 @@
   bottom: 0;
   right: 0;
 }
+.sc-dmyDGi,
+.gtrAwG,
+.sc-eDLJxc,
+.gQPiQM {
+  display: none !important;
+  color: transparent !important;
+}
 
 @media only screen and (max-width: 768px) {
-  .imgSlider>article>div:nth-child(2) {
+  .imgSlider > article > div:nth-child(2) {
     top: 35% !important;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .imgSlider>article>div:nth-child(2) {
+  .imgSlider > article > div:nth-child(2) {
     top: 20% !important;
   }
 }
 
 @media only screen and (max-width: 280px) {
-  .imgSlider>article>div:nth-child(2) {
+  .imgSlider > article > div:nth-child(2) {
     top: 20% !important;
   }
 }
-
 
 /* Header Styling */
 
@@ -90,7 +96,8 @@
   z-index: 998;
 }
 
-.head-lions-i, .head-dist-num {
+.head-lions-i,
+.head-dist-num {
   color: #fff;
   font-weight: 700;
 }
@@ -113,28 +120,31 @@
 
 @media screen and (max-width: 768px) {
   .head-dist-h {
-      top: 20%;
+    top: 20%;
   }
-  .head-lions-i, .head-dist-num {
-      font-size: 1.5rem;
+  .head-lions-i,
+  .head-dist-num {
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .head-dist-h {
-      top: 35%;
-      width: 200px;
+    top: 35%;
+    width: 200px;
   }
-  .head-lions-i, .head-dist-num {
-      font-size: 1rem;
+  .head-lions-i,
+  .head-dist-num {
+    font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 280px) {
   .head-dist-h {
-      top: 45%;
+    top: 45%;
   }
-  .head-lions-i, .head-dist-num {
-      font-size: 1rem;
+  .head-lions-i,
+  .head-dist-num {
+    font-size: 1rem;
   }
 }
