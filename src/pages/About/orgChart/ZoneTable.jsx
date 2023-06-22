@@ -8,9 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import useStyles from "./Styles";
 
 export default function ZoneTable({ zone }) {
     const navigate = useNavigate();
+    const classes = useStyles();
 
     return (
         <>
@@ -41,7 +43,7 @@ export default function ZoneTable({ zone }) {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            <Link onClick={() => navigate('/organizationdata') } style={{ color: '#000' }}>{club.name}</Link>
+                                            <Link onClick={() => navigate('/organizationdata') } className={classes.clubName}>{club.name}</Link>
                                         </TableCell>
                                         <TableCell align="right">{club.id}</TableCell>
                                     </TableRow>
