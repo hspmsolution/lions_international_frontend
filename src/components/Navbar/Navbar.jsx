@@ -35,7 +35,6 @@ const myNav = [
   {
     title: "Membership",
     menuItems: [
-      "Organization Data",
       "Member Directory",
       "Mini Directory",
       "Download Member Data",
@@ -59,9 +58,7 @@ function Navbar(props) {
   };
 
   const memberLogin = () => {
-    {
-      isAdmin ? navigate("/dashboard/profile") : navigate("/login");
-    }
+    isAdmin ? navigate("/dashboard/profile") : navigate("/login");
   };
 
   const drawer = (
@@ -84,7 +81,7 @@ function Navbar(props) {
           >
             <Button
               key={index}
-              sx={{ color: "#565656" }}
+              sx={{ color: "#565656", padding: '10px' }}
               className={classes.drawerButton}
             >
               <PopupMenu
@@ -122,7 +119,7 @@ function Navbar(props) {
             component="div"
             sx={{
               flexGrow: 1,
-              display: { xs: "none", sm: "flex" },
+              display: 'flex',
               gap: "1rem",
             }}
           >
@@ -130,14 +127,14 @@ function Navbar(props) {
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo.png"
-                sx={{ width: 80, height: 80, padding: "5px" }}
+                sx={{ width: { xs: 65, sm: 80 }, height: { xs: 65, sm: 80 }, padding: "5px" }}
               />
             </Link>
             <Link to={"/"}>
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo2.png"
-                sx={{ width: 80, height: 80, padding: "5px" }}
+                sx={{ width: { xs: 65, sm: 80 }, height: { xs: 65, sm: 80 }, padding: "5px" }}
                 className={classes.clubLogo}
               />
             </Link>
@@ -196,10 +193,6 @@ function Navbar(props) {
 }
 
 Navbar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
