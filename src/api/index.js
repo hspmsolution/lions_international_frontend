@@ -4,7 +4,7 @@ const ROOT_URL = window.location.href;
 export let API_URL;
 
 if (ROOT_URL.includes(".up.railway.app")) {
-  API_URL = "https://lionsinternationalbackend-staging.up.railway.app/api";
+  API_URL = "https://lionsinternationalbackend-production.up.railway.app/api";
 
 } else if (ROOT_URL.includes("lionsdistrict317f.org")) {
   API_URL = "https://lionsdistrict317f.org/api";
