@@ -7,13 +7,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { API_URL } from "../../../api";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import { Link } from "@mui/material";
+import useStyles from "../../About/orgChart/Styles";
 
 export default function ResourcesTable({ rows }) {
   const handleClick = (path) => {
     window.open(`${API_URL}${path}`, "_blank");
   };
 
-
+  const classes = useStyles();
 
   return (
     <TableContainer component={Paper}>
@@ -34,9 +36,11 @@ export default function ResourcesTable({ rows }) {
                 {row.title}
               </TableCell>
               <TableCell align="right">
+              <Link className={classes.clubName}>
                 <PictureAsPdfIcon
                   onClick={() => handleClick(row.path)}
                 />
+              </Link>
               </TableCell>
             </TableRow>
           ))}

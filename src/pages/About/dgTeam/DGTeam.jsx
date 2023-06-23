@@ -113,30 +113,40 @@ function DGTeam() {
               Dear Lion Friends,
               <br />
               <br />
-              At the out set let me Congratulate you for being Elected /
-              Appointed or given responsibility of various Position/ Portfolio
-              in our District / club , I am sure every Lion member will be
-              excited to contribute towards our moto " We Serve " through time ,
-              talent & treasure under the able Leadership of Our District
-              Governor MJF CA Ln Abhay ji Shastri. Yes we all are aware about
-              today's Scinario of covid 19 World Wide , in this circumstances it
-              is expected from us to contribute towards society as a Members of
-              World's largest Volunteer Organization through International &
-              District Program to serve the needy , It is said "where there is
-              need there is Lion". I personally feel that it's an opportunity to
-              make an impact as an Organization , Club, & individual to be a
-              great contributor in this situation of World Pandemic . I am sure
-              we all will make an effort & help fellow citizens to uplift them
-              from this situation so that our image as best Organization in the
-              humanitarian service will be enhanced . Also it will help in more
-              people joining our Organization to serve needy in the best of
-              there capacity & ability . I also like to appeal you all to follow
-              the guide lines given by respective Government during this
-              pandemic & even in future to play our role as Good Citizens & to
-              set an great example for the society. Let's sow the seeds of
-              services for human welfare as Lion Members for the betterment of
-              our society we live in. All the best & do well in your life.
-              Regards, MJF Ln Hemant Naik. FVDG.Dist 3234 D2.
+              Lion C.M. Narayana Swamy, a Melvin Jones
+              Fellow, hails from an agricultural family in Kolar
+              district. Son of late Chikka Muniswamy and late
+              Smt. Muniyamma, he had primary schooling in his
+              native place and attended high school and college
+              at Kolar. Later on he joined Bangalore University to
+              do his Masters degree. After his post-graduation he joined LIC of India.
+              After 32 years of service he retired from LIC as Development Officer.
+              Lion C.M. Narayana Swamy Joined as a Member of Lions Club of
+              Hebbal in 2000. He served all the positions at the club level including
+              the post of president. Since 2008-09 Narayanaswamy has been
+              serving the district in various positions creditably. He became Zone
+              Chairperson for 2008-09. He has bagged the Best Zone Chairperson
+              award. He served as Region Chairperson for 2009-10.
+              During 2013-14 he was District Co-ordinator for Administration for
+              which he bagged Excellent Co-operation Award. During 2014-15 he
+              served as Additional District Cabinet Secretary for which he was
+              awarded District Governor's Special Recognition Award and
+              International President's leadership medal. He served as District
+              Cabinet Treasurer in 2015-16. During the same year he was honoured
+              with International President's Medal. He had been PRO for two terms.
+              He served as District Cabinet Secretary for two terms (2017-18 and
+              2019-20). He was honoured with Lion of the Year award. Other
+              positions he occupied include LDSF Secretary in 2018-19, District
+              Directory Editor in 2020-21, DC for convention and Protocol (2020-21)
+              and District Coordinator for Diabetes (2021 -22). Narayanaswamy is a
+              recipient of International President's Certificate eight times and the
+              Best Multiple DCTand DCS awards.
+              In the recent election held in April 2023, he was elected as First Vice
+              District Governor.
+              Apart from his involvement in Lionism, he is a member of ISKCON and
+              Country Club. Lion C.M. Narayanaswamy is happily married to Smt.
+              B.H. Girija and the couple is blessed with son Bhargav N now serving
+              with Kotak Mahindra.
             </Item>
           </Grid>
           <Grid
@@ -174,30 +184,39 @@ function DGTeam() {
               Dear Ever Serving Leaders,
               <br />
               <br />
-              At the out set let me Congratulate you for being Elected /
-              Appointed or given responsibility of various Position/ Portfolio
-              in our District / club , I am sure every Lion member will be
-              excited to contribute towards our moto " We Serve " through time ,
-              talent & treasure under the able Leadership of Our District
-              Governor MJF CA Ln Abhay ji Shastri. Yes we all are aware about
-              today's Scinario of covid 19 World Wide , in this circumstances it
-              is expected from us to contribute towards society as a Members of
-              World's largest Volunteer Organization through International &
-              District Program to serve the needy , It is said "where there is
-              need there is Lion". I personally feel that it's an opportunity to
-              make an impact as an Organization , Club, & individual to be a
-              great contributor in this situation of World Pandemic . I am sure
-              we all will make an effort & help fellow citizens to uplift them
-              from this situation so that our image as best Organization in the
-              humanitarian service will be enhanced . Also it will help in more
-              people joining our Organization to serve needy in the best of
-              there capacity & ability . I also like to appeal you all to follow
-              the guide lines given by respective Government during this
-              pandemic & even in future to play our role as Good Citizens & to
-              set an great example for the society. Let's sow the seeds of
-              services for human welfare as Lion Members for the betterment of
-              our society we live in. All the best & do well in your life.
-              Regards, MJF Ln Hemant Naik. FVDG.Dist 3234 D2.
+              LION AKASH A SUVARNA, a Progressive
+              Melvin Jones Fellow born into a dedicated
+              Lions Family of Late PDG Lion Anand N.
+              Suvarna and Lioness Devaki Anand Suvarna in
+              January 1966. A Civil Engineer from the
+              prestigious R.V. College of Engineering and is
+              involved in the Real Estate business of Apartments, Land
+              Development and Warehousing Logistics.
+              He was the CHARTER MEMBER of LEO CLUB OF BANGALORE
+              JAYAMAHAL in 1980. He has served as member of the LEO
+              Council and LEO District and served in the LEO Movement.
+              In 1998, he became the CHARTER PRESIDENT of LIONS CLUB OF
+              BANGALORE METRO. Today LCB Metro has crossed the Silver
+              Jubilee Milestone of 25 YEARS of Service.
+              He is the Chairman of the Metro Lions Services Trust, which in
+              2021, obtained a CSR Fund of Rs.7.5 Lakhs for Dialysis Machine,
+              installed in Doddaballapura Lions Dialysis Centre. CSR Fund of
+              Rs.10.85 Lakhs was received for Treatment of Cancer patients. He
+              initiated an eye cornea transplant to a 14 year old visually
+              impaired boy.
+              In the District he has served in various positions and as District
+              Chairperson, District Cabinet Secretary. He was recognised with
+              numerous awards from the District, Multiple and International.
+              As District Chairperson for Blood Donation, he has collected
+              6,400+ units of blood. As District Coordinator for Vision, he was
+              instrumental in achieving 50,000+ Eye Screening and a record of
+              1,00,000+ eye screening in the year 2022-23.
+              In April 2023 Annual District Convention, he was UNANIMOUSLY
+              elected as the Second Vice District Governor.
+              He is married to Ashwini Elder son Dr. Abhinav is a Doctor and is
+              pursuing his MS in Orthopedics at KIMS and Younger son Ayush
+              is in his final semester of Computer Science Engineering in PES
+              Institute of Technology.
             </Item>
           </Grid>
         </Grid>
