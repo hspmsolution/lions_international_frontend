@@ -62,10 +62,6 @@ export default function News() {
             }}>
             {newsData.map((item, index) => (
               <>
-                {/* <NewsCard
-                item={item}
-                key={index}
-              /> */}
                 <Grid
                   item
                   xs={12}

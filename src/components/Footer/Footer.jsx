@@ -53,15 +53,11 @@ const quickLinks = [
 const contact = [
   {
     icon: <PhoneIcon />,
-    value: "123456789",
+    value: "080 43941907",
   },
   {
     icon: <FontAwesomeIcon icon={faEnvelope} />,
-    value: "example@gmail.com",
-  },
-  {
-    icon: <FontAwesomeIcon icon={faLocationDot} />,
-    value: "Address",
+    value: "lions317f2324@gmail.com",
   },
 ];
 const socialIcos = [
@@ -177,6 +173,12 @@ function Footer() {
                   </ListItemButton>
                 </ListItem>
               ))}
+              <ListItem sx={{ maxWidth: '315px' }}>
+                <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
+                  <FontAwesomeIcon icon={faLocationDot} />
+                </ListItemIcon>
+                <ListItemText primary={`# 19/1, 2nd Floor, 1st Main, 7th Cross,Above Bank of Baroda, Ganganagara, Bangalore - 560 032`} />
+              </ListItem>
             </List>
           </nav>
         </Box>
@@ -207,7 +209,7 @@ function Footer() {
         <Container sx={{ textAlign: "center", mb: "1.5rem" }}>
           <Typography variant="subtitle2">
             Copyright 2023 © All rights reserved. | Designed & Developed by{" "}
-            <a href="https://lions-superadmin.up.railway.app/">
+            <a href="https://lions-superadmin.up.railway.app/" target="_blank">
               <FontAwesomeIcon icon={faCube} /> <b>HSPM Solutions LLP.</b>
             </a>
           </Typography>
