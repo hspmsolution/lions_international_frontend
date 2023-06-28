@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,7 @@ function EventCounter({ event }) {
         <div className="event-icon">{event.icon}</div>
         <div className="event-count">
           <div>{event.name}</div>
-          <CountUp start={event.start} end={event.end} duration={5}>
+          <CountUp enableScrollSpy={true} scrollSpyDelay={0} start={event.start} end={event.end} duration={5}>
             {({ countUpRef }) => (
               <div>
                 <span ref={countUpRef} style={{  fontSize: ""  }} />
@@ -77,11 +77,11 @@ function Counters() {
 
   useEffect(() => {
     dispatch(activityStats());
-  }, []);
+  }, [dispatch]);
 
     return (
         <div className="counters">
-            <div className='col-lg-12 '>
+            <div>
                 <div ref={countersRef} className='row text-center'>
                     <Grid container spacing={2} className='counterGrid'>
                         {events.map((event, index) => (
@@ -96,4 +96,4 @@ function Counters() {
     );
 }
 
-export default Counters;
+export default memo(Counters);

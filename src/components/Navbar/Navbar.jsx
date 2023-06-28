@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import { Avatar } from "@mui/material";
 import useStyles from "./Styles";
 import PopupMenu from "./PopupMenu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const drawerWidth = 240;
@@ -50,15 +50,10 @@ function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const classes = useStyles();
-  const navigate = useNavigate();
   const isAdmin = useSelector((state) => state.auth.admin);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
-  };
-
-  const memberLogin = () => {
-    isAdmin ? navigate("/dashboard/profile") : navigate("/login");
   };
 
   const drawer = (
@@ -154,12 +149,13 @@ function Navbar(props) {
             ))}
           </Box>
           <Button
+            target="_blank"
             className={classes.drawerButton}
-            onClick={memberLogin}
+            href={`${(isAdmin ? "/dashboard/profile" : "/login")}`}
           >
             {isAdmin ? "My Profile" : "Login"}
           </Button>
-          <Button className={classes.drawerButton}>My LCI</Button>
+          <Button href="https://account.lionsclubs.org/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dlci-home-app%26redirect_uri%3Dhttps%253A%252F%252Fmyapps.lionsclubs.org%252Fauth-callback%26response_type%3Did_token%2520token%26scope%3Dopenid%2520profile%2520lci-userapi%2520lci-mobileapi%2520lci-reporting%26state%3Daf66166248ad43ef83b1b03061f580d7%26nonce%3Da0c87692e26641f39278bf8b66824998" className={classes.drawerButton} target="_blank">My LCI</Button>
         </Toolbar>
       </AppBar>
       <Box component="nav">

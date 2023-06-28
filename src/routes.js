@@ -86,15 +86,7 @@ export default function Router() {
           { path: "/activities", element: <Activities /> },
           {
             path: "/organizationdata",
-            element: isAdmin ? (
-              <OrganizationData />
-            ) : (
-              <Navigate
-                to="/loginReq"
-                replace
-              />
-            ),
-          },
+            element: <OrganizationData />  },
           {
             path: "/membership/memberdirectory",
             element: isAdmin ? (
