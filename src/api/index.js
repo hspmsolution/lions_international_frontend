@@ -2,16 +2,24 @@ import axios from "axios";
 
 const ROOT_URL = window.location.href;
 export let API_URL;
+export let superadmin_url;
 
 if (ROOT_URL.includes(".up.railway.app")) {
   API_URL = "https://lionsinternationalbackend-production.up.railway.app/api";
+  superadmin_url = "https://lions-superadmin.up.railway.app/";
 
 } else if (ROOT_URL.includes("lionsdistrict317f.org")) {
   API_URL = "https://lionsdistrict317f.org/api";
+  superadmin_url= "https://lionsdistrict317f.org/superadmin"
 
+} else if (ROOT_URL.includes("lions317b.org")) {
+  API_URL = "https://lions317b.org/api";
+  superadmin_url = "https://lions317b.org/superadmin"
+  
 } else {
   // Default to local development URL
   API_URL = "http://localhost:5000/api";
+  superadmin_url = "http://localhost:5000/superadmin"
   
 }
 
