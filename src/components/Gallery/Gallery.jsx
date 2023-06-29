@@ -18,55 +18,9 @@ export default function Gallery(props) {
 
   return (
     <>
-      {/* <Box>
-        <Grid
-          container
-          spacing={1}
-        >
-          {images.map((item, index) => (
-            <>
-              <Grid
-                xs={12}
-                lg={6}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "1rem",
-                }}
-              >
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsOpen(true);
-                    setPhotoIndex(index);
-                  }}
-                  className="itemButton"
-                  key={index}
-                >
-                  <Paper elevation={3}>
-                    <Box sx={{ height: "300px" }}>
-                      <img
-                        src={`${API_URL + item.image}`}
-                        loading="lazy"
-                      />
-                    </Box>
-                    <Box sx={{ padding: "1rem" }}>
-                      <Typography variant={2}>Heading</Typography>
-                      <br></br>
-                      <Typography variant={5}>Description</Typography>
-                    </Box>
-                  </Paper>
-                </button>
-              </Grid>
-            </>
-          ))}
-        </Grid>
-      </Box> */}
       <Box
         sx={{
           flexGrow: 1,
-          // background: "#112E57",
           padding: "1rem",
           textAlign: "center",
         }}
