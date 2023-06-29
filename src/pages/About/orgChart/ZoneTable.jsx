@@ -23,7 +23,7 @@ export default function ZoneTable({ zone }) {
                             <TableCell sx={{ textAlign: 'center', backgroundColor: '#3b557e', color: '#fff' }}>
                                 {zone.name}
                                 <Typography variant="h5">
-                                    Zone Chairperson{zone.chairPerson}
+                                    {zone.zone_chairPerson}
                                 </Typography>
                             </TableCell>
                         </TableRow>
