@@ -105,7 +105,7 @@ export default function DashboardAppPage() {
               color: "#05B0E9",
             }}
           >
-            Activty Points{" "}
+            Activity Stars{" "}
           </Typography>
           <Typography
             variant="h4"
