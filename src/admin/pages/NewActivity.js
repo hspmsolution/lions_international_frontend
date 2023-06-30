@@ -6,6 +6,12 @@ import TextField from "@mui/material/TextField";
 import { CLIENT_MSG } from "../../constants/actionTypes";
 import { Box, MenuItem, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useTheme } from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 import {
   addActivity,
@@ -150,7 +156,11 @@ export default function NewActivity() {
       event.target.value = "";
       return;
     }
-    if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg") {
+    if (
+      file.type !== "image/jpeg" &&
+      file.type !== "image/png" &&
+      file.type !== "image/jpg"
+    ) {
       dispatch({
         type: CLIENT_MSG,
         message: { info: "file type not supported", status: 400 },
@@ -158,7 +168,7 @@ export default function NewActivity() {
       event.target.value = "";
       return;
     }
-    
+
     const img = {
       preview: URL.createObjectURL(event.target.files[0]),
       data: event.target.files[0],
@@ -166,17 +176,75 @@ export default function NewActivity() {
     setActivity({ ...activity, image: img });
   };
 
+  // Select
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
+
+  const names = [
+    "Cabinet 01",
+    "Cabinet 02",
+    "Cabinet 03",
+    "Cabinet 04",
+    "Cabinet 05",
+  ];
+
+  function getStyles(name, personName, theme) {
+    return {
+      fontWeight:
+        personName.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
+
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChangeSelect = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
+
   return (
     <form onSubmit={submitDetails}>
-      <Box bgcolor="white" p={3} borderRadius={4}>
-        <Typography variant="h5" gutterBottom className={classes.heading}>
+      <Box
+        bgcolor="white"
+        p={3}
+        borderRadius={4}>
+        <Typography
+          variant="h5"
+          gutterBottom
+          className={classes.heading}>
           Basic Activity Information
         </Typography>
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Name </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid
+            item
+            xs={6}
+            sm={6}>
             <TextField
               required
               type="text"
@@ -193,12 +261,22 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
-            <Typography>Cabinet Officer Name</Typography>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
+            <Typography>Cabinet Officer Attended</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
+          <Grid
+            item
+            xs={12}
+            sm={6}>
+            {/* <TextField
               required
               type="text"
               id="cabinetOfficers"
@@ -209,15 +287,62 @@ export default function NewActivity() {
               onChange={handleChange}
               variant="standard"
               className={classes.label}
-            />
+            /> */}
+            <FormControl sx={{ m: 1, width: "100%" }}>
+              <InputLabel id="demo-multiple-chip-label">
+                Select Cabinet Officer
+              </InputLabel>
+              <Select
+                labelId="demo-multiple-chip-label"
+                id="demo-multiple-chip"
+                multiple
+                value={personName}
+                onChange={handleChangeSelect}
+                input={
+                  <OutlinedInput
+                    id="select-multiple-chip"
+                    label="Select Cabinet Officer"
+                  />
+                }
+                renderValue={(selected) => (
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                    {selected.map((value) => (
+                      <Chip
+                        key={value}
+                        label={value}
+                      />
+                    ))}
+                  </Box>
+                )}
+                MenuProps={MenuProps}>
+                {names.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getStyles(name, personName, theme)}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Date</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="date"
@@ -236,11 +361,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Type</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               id="activityType"
               value={activity.activityType}
@@ -252,10 +387,11 @@ export default function NewActivity() {
                 dispatch(getSubtype(e.target.value));
                 handleChange(e);
               }}
-              className={classes.label}
-            >
+              className={classes.label}>
               {type.map((getType, index) => (
-                <MenuItem key={index} value={getType.type}>
+                <MenuItem
+                  key={index}
+                  value={getType.type}>
                   {getType.type}
                 </MenuItem>
               ))}
@@ -263,11 +399,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Subtype</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               id="activitySubType"
               select
@@ -279,10 +425,11 @@ export default function NewActivity() {
                 dispatch(getCategory(e.target.value));
                 handleChange(e);
               }}
-              className={classes.label}
-            >
+              className={classes.label}>
               {subType.map((type, index) => (
-                <MenuItem key={index} value={type.subtype}>
+                <MenuItem
+                  key={index}
+                  value={type.subtype}>
                   {type.subtype}
                 </MenuItem>
               ))}
@@ -290,11 +437,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Category</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               id="activityCategory"
               select
@@ -306,10 +463,11 @@ export default function NewActivity() {
                 handleChange(e);
                 dispatch(getPlaceHolder(e.target.value));
               }}
-              className={classes.label}
-            >
+              className={classes.label}>
               {category.map((cat, index) => (
-                <MenuItem key={index} value={cat.category}>
+                <MenuItem
+                  key={index}
+                  value={cat.category}>
                   {cat.category}
                 </MenuItem>
               ))}
@@ -321,16 +479,25 @@ export default function NewActivity() {
           variant="h5"
           gutterBottom
           style={{ marginTop: "16px" }}
-          className={classes.heading}
-        >
+          className={classes.heading}>
           Detailed Activity Information
         </Typography>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Place</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="place"
@@ -346,11 +513,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>People Served</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="placeholder"
@@ -367,11 +544,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity City</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="city"
@@ -387,11 +574,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Amount Spent</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="amount"
@@ -406,11 +603,21 @@ export default function NewActivity() {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Lion Hours</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               required
               id="lionHours"
@@ -426,11 +633,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Media Coverage</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               id="mediaCoverage"
               select
@@ -439,10 +656,11 @@ export default function NewActivity() {
               value={activity.mediaCoverage}
               fullWidth
               name="mediaCoverage"
-              onChange={handleChange}
-            >
+              onChange={handleChange}>
               {media?.map((option) => (
-                <MenuItem key={option.id} value={option.name}>
+                <MenuItem
+                  key={option.id}
+                  value={option.name}>
                   {option.name}
                 </MenuItem>
               ))}
@@ -450,11 +668,21 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Activity Description</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               id="description"
               name="description"
@@ -467,11 +695,21 @@ export default function NewActivity() {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6} sm={6} className={classes.title}>
+        <Grid
+          container
+          spacing={3}
+          className={classes.grid}>
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            className={classes.title}>
             <Typography>Upload Images</Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid
+            item
+            xs={12}
+            sm={6}>
             <TextField
               ref={fileUploadRef}
               type="file"
@@ -492,20 +730,36 @@ export default function NewActivity() {
               onClick={() => fileUploadRef.current.click()}
             />
             {activity.image.preview && (
-              <img src={activity.image.preview} width="100" height="100" />
+              <img
+                src={activity.image.preview}
+                width="100"
+                height="100"
+              />
             )}
           </Grid>
         </Grid>
 
-        <Grid container justifyContent="center">
-          <Grid item xs={2}>
-            <Button type="submit" variant="contained" className={classes.btn}>
+        <Grid
+          container
+          justifyContent="center">
+          <Grid
+            item
+            xs={2}>
+            <Button
+              type="submit"
+              variant="contained"
+              className={classes.btn}>
               Submit
             </Button>
           </Grid>
-          <Grid item xs={2}>
+          <Grid
+            item
+            xs={2}>
             <Box marginLeft={1}>
-              <Button type="button" variant="outlined" className={classes.btn}>
+              <Button
+                type="button"
+                variant="outlined"
+                className={classes.btn}>
                 Cancel
               </Button>
             </Box>
