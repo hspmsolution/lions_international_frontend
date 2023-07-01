@@ -23,7 +23,7 @@ function District() {
                   WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 317F
                 </Typography>
               </Box>
-              Dear Members and Sevayatris, Greetings from District D3234D2!
+              Dear Members and Sevayatris, Greetings from District 317F!
               <br />
               <br />
               Hearty welcome to this website, welcome from 6600 plus members,
