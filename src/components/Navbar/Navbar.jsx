@@ -149,7 +149,7 @@ function Navbar(props) {
             ))}
           </Box>
           <Button
-            target="_blank"
+            // target="_blank"
             className={classes.drawerButton}
             href={`${(isAdmin ? "/dashboard/profile" : "/login")}`}
           >
