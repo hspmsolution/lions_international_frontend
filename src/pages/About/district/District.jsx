@@ -20,7 +20,7 @@ function District() {
                   variant="h3"
                   gutterBottom
                   className="itemTitle">
-                  WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 3234-D2
+                  WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 317F
                 </Typography>
               </Box>
               Dear Members and Sevayatris, Greetings from District D3234D2!
