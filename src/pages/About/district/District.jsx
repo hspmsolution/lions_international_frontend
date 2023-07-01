@@ -69,9 +69,9 @@ function District() {
                 gutterBottom>
                 District Governor,
                 <br />
-                2020-2021
+                2023-2024
                 <br />
-                Lion CA Abhay Shastri
+                B S Nagaraj, PMJF
                 <br />
                 "SOW SERVICE SEEDS"
               </Typography>
