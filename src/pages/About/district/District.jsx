@@ -20,10 +20,10 @@ function District() {
                   variant="h3"
                   gutterBottom
                   className="itemTitle">
-                  WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 3234-D2
+                  WELCOME TO OUR WEBSITE OF VIBRANT LIONS CLUBS DISTRICT 317F
                 </Typography>
               </Box>
-              Dear Members and Sevayatris, Greetings from District D3234D2!
+              Dear Members and Sevayatris, Greetings from District 317F!
               <br />
               <br />
               Hearty welcome to this website, welcome from 6600 plus members,
@@ -69,9 +69,9 @@ function District() {
                 gutterBottom>
                 District Governor,
                 <br />
-                2020-2021
+                2023-2024
                 <br />
-                Lion CA Abhay Shastri
+                B S Nagaraj, PMJF
                 <br />
                 "SOW SERVICE SEEDS"
               </Typography>
