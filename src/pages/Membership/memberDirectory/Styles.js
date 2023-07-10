@@ -53,4 +53,9 @@ export default makeStyles((theme) => ({
   fullname: {
     color: "#15AAFF",
   },
+  newsPagination: {
+    '& ul': {
+        gap: '10px'
+    }
+}
 }));

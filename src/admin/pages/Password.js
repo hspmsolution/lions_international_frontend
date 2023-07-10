@@ -83,8 +83,11 @@ export default function Password() {
                 pt: 3,
               }}
             >
-              <Typography align="center" color="textSecondary" variant="body1">
+              <Typography align="center" color="textSecondary" variant="h3">
                 Reset Password
+              </Typography>
+              <Typography align="center" color="textSecondary" variant="body3">
+                Password should contain uppercase,lowercase,digit and symbol
               </Typography>
             </Box>
 

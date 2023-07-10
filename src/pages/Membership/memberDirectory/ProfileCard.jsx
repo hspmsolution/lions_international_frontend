@@ -99,7 +99,7 @@ export default function ProfileCard(props) {
                 </ListItemIcon>
                 <ListItemText
                   id="switch-list-label-darkMode"
-                  primary={"Designation"}
+                  primary={`Designation : ${title}`}
                 />
               </ListItem>
               <ListItem sx={{ py: 0 }}>
@@ -108,7 +108,7 @@ export default function ProfileCard(props) {
                 </ListItemIcon>
                 <ListItemText
                   id="switch-list-label-language"
-                  primary={"Club Name"}
+                  primary={`Club Name : ${clubName}`}
                 />
               </ListItem>
               <ListItem sx={{ py: 0 }}>
@@ -118,7 +118,7 @@ export default function ProfileCard(props) {
                 <ListItemText
                   sx={{ textAlign: "justify" }}
                   id="switch-list-label-setting"
-                  primary={"989898989"}
+                  primary={phone}
                 />
               </ListItem>
 
