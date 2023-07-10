@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -9,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+import {Box,Pagination} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import useStyles from "./Styles";
@@ -28,7 +29,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 function ResponsiveDialog({
-  type,
+  activityType,
   title,
   date,
   bgImage,
@@ -36,7 +37,9 @@ function ResponsiveDialog({
   activityId,
   category,
   place,
-  clubId
+  clubId,
+  type
+
 }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -99,6 +102,14 @@ function ResponsiveDialog({
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableBody>
+              <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Activity ID:</strong>
+                  </TableCell>
+                  <TableCell>{activityId}</TableCell>
+                </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
@@ -121,7 +132,7 @@ function ResponsiveDialog({
                   <TableCell>
                     <strong>Activity Type:</strong>
                   </TableCell>
-                  <TableCell>{type}</TableCell>
+                  <TableCell>{activityType}</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -173,9 +184,9 @@ function ResponsiveDialog({
   );
 }
 
-function BasicCard({ title, bgImage, date,type, description, activityId,category,place ,clubId}) {
+function BasicCard({ title, bgImage, date,activityType, description, activityId,category,place ,clubId,type}) {
   const classes = useStyles();
-
+ console.log(activityType)
   return (
     <Card sx={{ minWidth: 275, maxWidth: 520, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
@@ -198,7 +209,7 @@ function BasicCard({ title, bgImage, date,type, description, activityId,category
         </Box>
 
         <ResponsiveDialog
-          type={type}
+          activityType={activityType}
           title={title}
           date={date}
           bgImage={bgImage}
@@ -207,6 +218,7 @@ function BasicCard({ title, bgImage, date,type, description, activityId,category
           category={category}
           place={place}
           clubId={clubId}
+          type={type}
         />
       </CardContent>
     </Card>
@@ -215,11 +227,29 @@ function BasicCard({ title, bgImage, date,type, description, activityId,category
 
 export default function Events() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const activities = useSelector((state) => state.client.events);
   const classes = useStyles();
 
+  const totalPages = useSelector(
+    (state) => state.client.events?.pagination?.totalPages|| 1
+  );
+  const currentPage = useSelector(
+    (state) => state.client.events?.pagination?.page || 1
+  );
+
+  const queryParams = new URLSearchParams(location.search);
+  const page = parseInt(queryParams.get("page")) || currentPage;
+
+  const handleChangePage = (event, newPage) => {
+    queryParams.set("page", newPage);
+    navigate(`${location.pathname}?${queryParams.toString()}`);
+    dispatch(events(newPage));
+  };
+
   React.useEffect(() => {
-    dispatch(events());
+    dispatch(events(page));
   }, []);
 
   return (
@@ -273,12 +303,13 @@ export default function Events() {
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
                         date={filter.date}
-                        type={filter.activityType}
+                        activityType={filter.activityType}
                         description={filter.description}
                         activityId={filter.activityId}
                         category={filter.activityCategory}
                         place={filter.place}
                         clubId={filter.clubId}
+                        type="upcoming"
                       />
                     </Box>
                   ))
@@ -325,12 +356,13 @@ export default function Events() {
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
                         date={filter.date}
-                        type={filter.activityType}
+                        activityType={filter.activityType}
                         description={filter.description}
                         activityId={filter.activityId}
                         category={filter.activityCategory}
                         place={filter.place}
                         clubId={filter.clubId}
+                        type="past"
                       />
                     </Box>
                   ))
@@ -339,6 +371,23 @@ export default function Events() {
             </Grid>
           </Grid>
         </Container>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            p: "2rem 1rem",
+          }}>
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handleChangePage}
+            showFirstButton
+            showLastButton
+            variant="outlined"
+            color="primary"
+            className={classes.newsPagination}
+          />
+        </Box>
       </Box>
     </>
   );

@@ -12,6 +12,11 @@ export default makeStyles(() => ({
     height: "350px",
     width: "350px",
   },
+  newsPagination: {
+    "& ul": {
+      gap: "10px",
+    },
+  },
 
   "@media only screen and (min-width: 900px)": {
     dialog: {

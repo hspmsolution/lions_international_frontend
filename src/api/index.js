@@ -56,7 +56,7 @@ export const getRegion=()=>API.get("clubs/region");
 export const expense=(formData)=>API.post("expenses",formData);
 export const clubStatement=()=>API.get("expenses/statement");
 export const activityStats=()=>API.get("activity/stats");
-export const events=()=>API.get("activity/events");
+export const events=(newPage)=>API.get(`activity/events?page=${newPage}`);
 export const topClubs=()=>API.get("adminreporting/topclubs");
 export const slider=()=>API.get("assets/slider");
 export const registerActivity=(formData)=>API.post("activity/register",formData);

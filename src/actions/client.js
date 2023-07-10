@@ -22,9 +22,9 @@ export const activityStats = () => async (dispatch) => {
   }
 };
 
-export const events = () => async (dispatch) => {
+export const events = (newPage) => async (dispatch) => {
   try {
-    const { data, status } = await api.events();
+    const { data, status } = await api.events(newPage);
     dispatch({ type: EVENTS, payload: data });
   } catch (error) {
     console.log(error);
