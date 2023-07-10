@@ -61,7 +61,7 @@ export const topClubs=()=>API.get("adminreporting/topclubs");
 export const slider=()=>API.get("assets/slider");
 export const registerActivity=(formData)=>API.post("activity/register",formData);
 export const gallery=()=>API.get("assets/gallery");
-export const memberDirectory=()=>API.get("member/memberDirectory");
+export const memberDirectory=(page,searchQuery)=>API.get(`member/memberDirectory?page=${page}&search=${searchQuery}`);
 export const buisnessDirectory=()=>API.get("member/buisnessDirectory");
 export const topNews=(newPage)=>API.get(`news/topNews?page=${newPage}`);
 export const allClubs=()=>API.get('clubs/allclubs');

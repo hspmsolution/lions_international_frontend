@@ -187,7 +187,6 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="middleName"
                 value={user.middleName}
                 name="middleName"
@@ -249,7 +248,6 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="spouseName"
                 value={user.spouseName}
                 name="spouseName"
@@ -278,7 +276,6 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="address1"
                 value={user.address1}
                 name="address1"
@@ -290,7 +287,6 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="address2"
                 value={user.address2}
                 name="address2"
@@ -308,14 +304,12 @@ export default function Profile() {
                 value={user.city}
                 label="Enter City"
                 fullWidth
-                required
                 variant="standard"
                 onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="state"
                 name="state"
                 value={user.state}
@@ -327,7 +321,6 @@ export default function Profile() {
             </Grid>
             <Grid item xs={12} sm={4}>
               <TextField
-                required
                 id="postalCode"
                 name="postalCode"
                 type="number"
@@ -375,8 +368,8 @@ export default function Profile() {
               onChange={handleFileRead}
               onClick={() => fileUploadRef.current.click()}
             />
-            {imageData.preview && (
-              <img src={imageData.preview} width="100" height="100" />
+            {(imageData.preview || user?.profilePicture) && (
+              <img src={imageData.preview || API_URL+user?.profilePicture} width="100" height="100" />
             )}
           </Grid>
 

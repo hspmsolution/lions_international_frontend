@@ -48,10 +48,10 @@ export const updateMember = (formData,navigate) => async (dispatch) => {
       console.log(error);
     }
   };
-  export const getMembers = () => async (dispatch) => {
+  export const getMembers = (page=1,searchQuery="") => async (dispatch) => {
     try {
 
-      const { data, status } = await api.memberDirectory();
+      const { data, status } = await api.memberDirectory(page,searchQuery);
       dispatch({type:MEMBER_DIRECTORY,payload:data})
      console.log(data);
      

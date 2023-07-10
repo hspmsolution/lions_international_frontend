@@ -34,6 +34,9 @@ function ResponsiveDialog({
   bgImage,
   description,
   activityId,
+  category,
+  place,
+  clubId
 }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -126,7 +129,7 @@ function ResponsiveDialog({
                   <TableCell>
                     <strong>Activity Category:</strong>
                   </TableCell>
-                  <TableCell>Catergory</TableCell>
+                  <TableCell>{category}</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -134,7 +137,7 @@ function ResponsiveDialog({
                   <TableCell>
                     <strong>Activity Place:</strong>
                   </TableCell>
-                  <TableCell>Place</TableCell>
+                  <TableCell>{place}</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -170,7 +173,7 @@ function ResponsiveDialog({
   );
 }
 
-function BasicCard({ title, bgImage, type, date, description, activityId }) {
+function BasicCard({ title, bgImage, date,type, description, activityId,category,place ,clubId}) {
   const classes = useStyles();
 
   return (
@@ -201,6 +204,9 @@ function BasicCard({ title, bgImage, type, date, description, activityId }) {
           bgImage={bgImage}
           description={description}
           activityId={activityId}
+          category={category}
+          place={place}
+          clubId={clubId}
         />
       </CardContent>
     </Card>
@@ -267,9 +273,12 @@ export default function Events() {
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
                         date={filter.date}
-                        type="upcoming"
+                        type={filter.activityType}
                         description={filter.description}
                         activityId={filter.activityId}
+                        category={filter.activityCategory}
+                        place={filter.place}
+                        clubId={filter.clubId}
                       />
                     </Box>
                   ))
@@ -316,9 +325,12 @@ export default function Events() {
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
                         date={filter.date}
-                        type="past"
+                        type={filter.activityType}
                         description={filter.description}
                         activityId={filter.activityId}
+                        category={filter.activityCategory}
+                        place={filter.place}
+                        clubId={filter.clubId}
                       />
                     </Box>
                   ))

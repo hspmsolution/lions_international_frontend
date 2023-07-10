@@ -81,7 +81,8 @@ export default function Router() {
           { path: "", element: <Home /> },
           { path: "/about/governor", element: <About /> },
           { path: "/about/dgteam", element: <DGTeam /> },
-          { path: "/about/aboutdistrict317F", element: <District /> },
+          // { path: "/about/aboutdistrict317F", element: <District /> },
+          { path: "/about/aboutdistrict317F", element: <Page404 /> },
           { path: "/about/organizationchart", element: <OrgChart /> },
           { path: "/activities", element: <Activities /> },
           {
