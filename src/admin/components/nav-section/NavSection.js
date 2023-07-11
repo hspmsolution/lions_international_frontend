@@ -28,7 +28,7 @@ export default function NavSection({ ...other }) {
   const role = useSelector((state) => state.auth.role);
   const [navConfig, setNavConfig] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     const config = [
       {
         title: "dashboard",
@@ -93,10 +93,7 @@ export default function NavSection({ ...other }) {
     ].filter(Boolean);
 
     setNavConfig(config);
-
-  },[role])
-  
-
+  }, [role]);
 
   const handleClick = (title) => {
     setNavConfig((prevState) =>
@@ -108,7 +105,9 @@ export default function NavSection({ ...other }) {
 
   return (
     <Box {...other}>
-      <List disablePadding sx={{ p: 1 }}>
+      <List
+        disablePadding
+        sx={{ p: 1, color: "white" }}>
         {navConfig.map((item) => (
           <>
             <NavItem
@@ -119,9 +118,14 @@ export default function NavSection({ ...other }) {
               }}
             />
             {item.subItems && item.isClick && (
-              <List disablePadding sx={{ pl: 3 }}>
+              <List
+                disablePadding
+                sx={{ pl: 3 }}>
                 {item.subItems.map((subItem) => (
-                  <NavItem key={subItem.title} item={subItem} />
+                  <NavItem
+                    key={subItem.title}
+                    item={subItem}
+                  />
                 ))}
               </List>
             )}
@@ -154,11 +158,13 @@ function NavItem({ item, onClick }) {
             fontWeight: "fontWeightBold",
           },
         }
-      }
-    >
+      }>
       <StyledNavItemIcon>{icon && icon}</StyledNavItemIcon>
 
-      <ListItemText disableTypography primary={title} />
+      <ListItemText
+        disableTypography
+        primary={title}
+      />
       {subItems && (isClick ? <CloseIcon /> : <AddIcon />)}
       {info && info}
     </StyledNavItem>

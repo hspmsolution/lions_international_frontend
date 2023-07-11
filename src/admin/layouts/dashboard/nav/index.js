@@ -62,13 +62,14 @@ export default function Nav({ openNav, onCloseNav }) {
           display: "flex",
           flexDirection: "column",
         },
-      }}
-    >
+        backgroundColor: "white",
+      }}>
       <Box sx={{ px: 2.5, py: 3, display: "inline-flex" }}>
         <Logo />
       </Box>
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
+      <Box
+        sx={{ mb: 5, mx: 2.5, backgroundColor: "white", borderRadius: "1rem" }}>
         <Link underline="none">
           <StyledAccount>
             <Avatar
@@ -81,7 +82,9 @@ export default function Nav({ openNav, onCloseNav }) {
             />
 
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "#05B0E9" }}>
                 {memberData?.firstName + " " + memberData?.lastName}
               </Typography>
 
@@ -109,8 +112,7 @@ export default function Nav({ openNav, onCloseNav }) {
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV_WIDTH },
-      }}
-    >
+      }}>
       {isDesktop ? (
         <Drawer
           open
@@ -122,8 +124,7 @@ export default function Nav({ openNav, onCloseNav }) {
               borderRightStyle: "dashed",
               color: "#b4880b",
             },
-          }}
-        >
+          }}>
           {renderContent}
         </Drawer>
       ) : (
@@ -135,8 +136,7 @@ export default function Nav({ openNav, onCloseNav }) {
           }}
           PaperProps={{
             sx: { width: NAV_WIDTH },
-          }}
-        >
+          }}>
           {renderContent}
         </Drawer>
       )}

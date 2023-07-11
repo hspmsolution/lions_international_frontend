@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Container, Grid, Pagination } from "@mui/material";
+import { Box, Container, Grid, Pagination, Button } from "@mui/material";
 import ProfileCard from "./ProfileCard";
 import useStyles from "./Styles";
 import SearchIcon from "@mui/icons-material/Search";
@@ -32,16 +32,15 @@ export default function MemberDirectory() {
   const handleChangePage = (event, page) => {
     queryParams.set("page", page);
     navigate(`${location.pathname}?${queryParams.toString()}`);
-    dispatch(getMembers(page,searchQuery));
+    dispatch(getMembers(page, searchQuery));
   };
 
   const handleSearch = (searchQuery) => {
-    dispatch(getMembers(page,searchQuery));
+    dispatch(getMembers(page, searchQuery));
   };
 
-
   useEffect(() => {
-    dispatch(getMembers(page,searchQuery));
+    dispatch(getMembers(page, searchQuery));
   }, [dispatch]);
 
   return (
@@ -51,8 +50,7 @@ export default function MemberDirectory() {
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
           pb: "2rem",
-        }}
-      >
+        }}>
         <CustomizedBreadcrumbs
           label={"Membership"}
           subLabel={"Member Directory"}
@@ -70,17 +68,29 @@ export default function MemberDirectory() {
             size="small"
             value={searchQuery}
           />
-          <IconButton
+          <Button
+          variant="contained"
             onClick={() => {
               handleSearch(searchQuery);
             }}
             aria-label="search"
-          >
-            <SearchIcon style={{ fill: "blue" }} />
-          </IconButton>
-          <Grid container spacing={2}>
+            sx={{
+              
+              margin: "0 0.5rem",
+            }}>
+            Search
+            {/* <SearchIcon style={{ fill: "blue" }} /> */}
+          </Button>
+          <Grid
+            container
+            spacing={2}>
             {Members?.map((member, index) => (
-              <Grid item xs={12} md={4} lg={4} key={index}>
+              <Grid
+                item
+                xs={12}
+                md={4}
+                lg={4}
+                key={index}>
                 <ProfileCard
                   fullName={member.fullName}
                   title={member.title}
@@ -97,8 +107,7 @@ export default function MemberDirectory() {
             display: "flex",
             justifyContent: "center",
             p: "2rem 1rem",
-          }}
-        >
+          }}>
           <Pagination
             count={totalPages}
             page={currentPage}
