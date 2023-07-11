@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { signIn } from '../../actions/auth';
-import { ADMIN } from '../../constants/actionTypes';
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { signIn } from "../../actions/auth";
+import { ADMIN } from "../../constants/actionTypes";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,16 +17,20 @@ const Login = () => {
   const [disabled, setDisabled] = useState(false);
   const formik = useFormik({
     initialValues: {
-      memberId: '',
-      password: '',
+      memberId: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      memberId: Yup.number().integer('Must be an integer').required('Member Id is required'),
-      password: Yup.string().max(255).required('Password is required'),
+      memberId: Yup.number()
+        .integer("Must be an integer")
+        .required("Member Id is required"),
+      password: Yup.string()
+        .max(255)
+        .required("Password must be of alphanumeric Hspm@123 min. 8"),
     }),
     onSubmit: (data) => {
       setTimeout(() => {
-       dispatch(signIn(data, navigate));
+        dispatch(signIn(data, navigate));
       }, 500);
 
       setDisabled(true);
@@ -35,7 +39,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch({ type: ADMIN });
-   if(isAdmin)navigate('/dashboard/app')
+    if (isAdmin) navigate("/dashboard/app");
   }, []);
 
   useEffect(() => {
@@ -50,15 +54,16 @@ const Login = () => {
       <Box
         component="main"
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           flexGrow: 1,
-          minHeight: '100%',
-        }}
-      >
+          minHeight: "100%",
+        }}>
         <Container maxWidth="sm">
           <Link to="/">
-            <Button component="a" startIcon={<ArrowBackIcon fontSize="small" />}>
+            <Button
+              component="a"
+              startIcon={<ArrowBackIcon fontSize="small" />}>
               Home
             </Button>
           </Link>
@@ -67,9 +72,11 @@ const Login = () => {
               sx={{
                 pb: 1,
                 pt: 3,
-              }}
-            >
-              <Typography align="center" color="textSecondary" variant="body1">
+              }}>
+              <Typography
+                align="center"
+                color="textSecondary"
+                variant="body1">
                 login with Member Id
               </Typography>
             </Box>
@@ -100,7 +107,13 @@ const Login = () => {
               variant="outlined"
             />
             <Box sx={{ py: 2 }}>
-              <Button color="primary" disabled={disabled} fullWidth size="large" type="submit" variant="contained">
+              <Button
+                color="primary"
+                disabled={disabled}
+                fullWidth
+                size="large"
+                type="submit"
+                variant="contained">
                 Login In Now
               </Button>
             </Box>
