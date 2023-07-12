@@ -68,7 +68,7 @@ const PastActivity = () => {
               <TableCell align="right">Amount</TableCell>
               <TableCell align="right">Hours</TableCell>
               <TableCell align="center">Media Coverage</TableCell>
-              {/* <TableCell align="center">Action</TableCell> */}
+              <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -83,14 +83,14 @@ const PastActivity = () => {
                 <TableCell align="right">{row.amount}</TableCell>
                 <TableCell align="right">{row.lionHours}</TableCell>
                 <TableCell align="center">{row.mediaCoverage}</TableCell>
-                {/* <TableCell align="center">
+                <TableCell align="center">
                   <IconButton aria-label="edit" color="primary">
                     <Edit />
                   </IconButton>
                   <IconButton aria-label="delete" color="error">
                     <Delete />
                   </IconButton>
-                </TableCell> */}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
