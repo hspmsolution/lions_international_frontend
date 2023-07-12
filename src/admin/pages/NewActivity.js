@@ -193,6 +193,15 @@ export default function NewActivity() {
     },
   };
 
+  const names = [
+    "Club Director",
+    "Club Treasurer ",
+    "Lion Member",
+    "Club Secretary",
+    "Club President",
+    "Zone Chairperson ",
+    "Region Chairperson",
+  ];
 
   function getStyles(name, personName, theme) {
     return {

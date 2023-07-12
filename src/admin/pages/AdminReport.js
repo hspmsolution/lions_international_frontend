@@ -8,6 +8,7 @@ import {
   Divider,
   Typography,
   Icon,
+  Box,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import StepOneForm from "../Forms/StepOneForm";
@@ -50,8 +51,8 @@ const useStyles = makeStyles({
     "& .MuiStepIcon-root": {
       color: "#0077C0",
     },
-    padding: '10px 30px 10px 30px',
-    borderRadius: '4px',
+    padding: "10px 30px 10px 30px",
+    borderRadius: "4px",
   },
   inactiveStep: {
     color: "#F2F2F2",
@@ -59,8 +60,8 @@ const useStyles = makeStyles({
     "& .MuiStepIcon-root": {
       color: "#49A5FF",
     },
-    padding: '10px 30px 10px 30px',
-    borderRadius: '4px',
+    padding: "10px 30px 10px 30px",
+    borderRadius: "4px",
   },
   totalPoints: {
     marginRight: "8px",
@@ -114,7 +115,7 @@ export default function FormWizard() {
   // Submit form
   const handleSubmit = () => {
     const selectedReports = reports.filter((report) => report.selected);
-    if (selectedReports.length===0) {
+    if (selectedReports.length === 0) {
       dispatch({
         type: CLIENT_MSG,
         message: {
@@ -134,46 +135,66 @@ export default function FormWizard() {
 
   return (
     <>
-      <Typography variant="h6" style={{ fontWeight: "bold", fontSize: "24px" }}>
-        {" "}
-        Admin Reporting{" "}
-      </Typography>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          padding: "2rem",
+          borderRadius: "0.5rem",
+        }}>
+        <Typography
+          variant="h6"
+          style={{ fontWeight: "bold", fontSize: "24px" }}>
+          {" "}
+          Admin Reporting{" "}
+        </Typography>
 
-      <div className={classes.header}>
-        <Typography variant="h6" className={classes.totalPoints}>
-          Total Admin Points {adminPoints.adminstars}
-          <Icon className={classes.starIcon}>
-            <Star color="primary" />
-          </Icon>
-        </Typography>
-        <Typography variant="h6" style={{ margin: "0 8px" }}>
-          |
-        </Typography>
-        <Typography variant="h6" className={classes.totalPoints}>
-          Total Activity Points {adminPoints.activityStar}
-          <Icon className={classes.starIcon}>
-            <Star color="primary" />
-          </Icon>
-        </Typography>
-      </div>
-      <SelectMonth />
+        <div className={classes.header}>
+          <Typography
+            variant="h6"
+            className={classes.totalPoints}>
+            Total Admin Points {adminPoints.adminstars}
+            <Icon className={classes.starIcon}>
+              <Star color="primary" />
+            </Icon>
+          </Typography>
+          <Typography
+            variant="h6"
+            style={{ margin: "0 8px" }}>
+            |
+          </Typography>
+          <Typography
+            variant="h6"
+            className={classes.totalPoints}>
+            Total Activity Points {adminPoints.activityStar}
+            <Icon className={classes.starIcon}>
+              <Star color="primary" />
+            </Icon>
+          </Typography>
+        </div>
+        <Box sx={{ maxWidth: "500px", margin: "1rem  auto 0" }}>
+          <SelectMonth />
+        </Box>
+      </Box>
 
       <div className={classes.root}>
-        <Stepper className={classes.stepBtn} activeStep={activeStep}>
+        <Stepper
+          className={classes.stepBtn}
+          activeStep={activeStep}>
           {steps.map((step, index) => (
             <Step
               key={step}
               className={
                 activeStep === index ? classes.activeStep : classes.inactiveStep
-              }
-            >
+              }>
               <StepLabel>{step}</StepLabel>
             </Step>
           ))}
         </Stepper>
 
         {/* Step content */}
-        <Paper elevation={3} style={{ padding: "20px" }}>
+        <Paper
+          elevation={3}
+          style={{ padding: "20px" }}>
           {getStepForm()}
 
           {/* Buttons */}
@@ -182,13 +203,11 @@ export default function FormWizard() {
               marginTop: "20px",
               display: "flex",
               justifyContent: "flex-end",
-            }}
-          >
+            }}>
             <Button
               disabled={activeStep === 0}
               onClick={handleBack}
-              style={{ marginRight: "10px" }}
-            >
+              style={{ marginRight: "10px" }}>
               Back
             </Button>
 
@@ -196,12 +215,14 @@ export default function FormWizard() {
               <Button
                 onClick={handleSubmit}
                 variant="contained"
-                color="primary"
-              >
+                color="primary">
                 Submit
               </Button>
             ) : (
-              <Button onClick={handleNext} variant="contained" color="primary">
+              <Button
+                onClick={handleNext}
+                variant="contained"
+                color="primary">
                 Next
               </Button>
             )}
@@ -211,4 +232,3 @@ export default function FormWizard() {
     </>
   );
 }
-
