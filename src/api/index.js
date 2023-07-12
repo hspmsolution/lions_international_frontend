@@ -37,6 +37,7 @@ export const resetPass=(formData)=>API.post("auth/resetpass",formData);
 export const addActivity = (formData) =>
   API.post("activity/addactivity", formData);
 export const getActivity = () => API.get("activity/type");
+export const getClubDirector = () => API.get("activity/clubdirectors");
 export const getSubtype = (type) => API.get(`activity/subtype?type=${type}`);
 export const getCategory = (subtype) =>
   API.get(`activity/category?subtype=${subtype}`);

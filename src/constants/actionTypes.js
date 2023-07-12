@@ -6,6 +6,7 @@ export const AUTH='AUTH';
 export const LOGOUT='LOGOUT';
 export const CLIENT_MSG='CLIENT_MSG';
 export const ADMIN='ADMIN';
+export const CLUB_DIRECTORS='CLUB_DIRECTORS';
 export const ACTIVITY_TYPE='ACTIVITY_TYPE';
 export const ACTIVITY_SUBTYPE='ACTIVITY_SUBTYPE';
 export const ACTIVITY_CATEGORY='ACTIVITY_CATEGORY';

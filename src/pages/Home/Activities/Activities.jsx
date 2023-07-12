@@ -45,7 +45,7 @@ export default function Activities() {
             container
             rowSpacing={3}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            {activities.recent?.slice(0, 4).map((item, index) => {
+            {activities.past?.slice(0, 4).map((item, index) => {
               return (
                 <>
                   <Grid
