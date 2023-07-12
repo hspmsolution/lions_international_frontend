@@ -19,6 +19,7 @@ import {
   getCategory,
   getPlaceHolder,
   getSubtype,
+  getClubDirector
 } from "../../actions/activity";
 import { ACTIVITY_PLACEHOLDER } from "../../constants/actionTypes";
 
@@ -86,8 +87,11 @@ const activityDetail = {
 };
 export default function NewActivity() {
   const classes = useStyles();
+  const theme = useTheme();
   const fileUploadRef = useRef();
   const [activity, setActivity] = useState(activityDetail);
+  const [personName, setPersonName] = React.useState([]);
+  const club_directors =  useSelector((state) => state.activity.club_directors);
   const type = useSelector((state) => state.activity.type);
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
@@ -96,6 +100,7 @@ export default function NewActivity() {
 
   useEffect(() => {
     dispatch(getActivity());
+    dispatch(getClubDirector());
     // eslint-disable-next-line
   }, []);
 
@@ -126,7 +131,7 @@ export default function NewActivity() {
     formData.append("activityTitle", activity.activityTitle);
     formData.append("city", activity.city);
     formData.append("date", activity.date);
-    formData.append("cabinetOfficers", activity.cabinetOfficers);
+    formData.append("cabinetOfficers", personName);
     formData.append("description", activity.description);
     formData.append("lionHours", activity.lionHours);
     formData.append("mediaCoverage", activity.mediaCoverage);
@@ -136,9 +141,9 @@ export default function NewActivity() {
     formData.append("placeHolderValue", activity.placeHolderValue);
     formData.append("place", activity.place);
     formData.append("image", activity.image.data);
-
     dispatch(addActivity(formData));
     setActivity(activityDetail);
+    setPersonName([]);
   };
 
   // Function to handle file read
@@ -188,13 +193,6 @@ export default function NewActivity() {
     },
   };
 
-  const names = [
-    "Cabinet 01",
-    "Cabinet 02",
-    "Cabinet 03",
-    "Cabinet 04",
-    "Cabinet 05",
-  ];
 
   function getStyles(name, personName, theme) {
     return {
@@ -204,9 +202,6 @@ export default function NewActivity() {
           : theme.typography.fontWeightMedium,
     };
   }
-
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
 
   const handleChangeSelect = (event) => {
     const {
@@ -315,12 +310,12 @@ export default function NewActivity() {
                   </Box>
                 )}
                 MenuProps={MenuProps}>
-                {names.map((name) => (
+                {club_directors.map((name) => (
                   <MenuItem
-                    key={name}
-                    value={name}
+                    key={name.fullName}
+                    value={name.fullName}
                     style={getStyles(name, personName, theme)}>
-                    {name}
+                    {name.fullName}
                   </MenuItem>
                 ))}
               </Select>
