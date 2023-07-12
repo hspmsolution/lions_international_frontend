@@ -7,18 +7,18 @@ import { useDispatch } from "react-redux";
 import { getAdminReports } from "../../actions/adminReports";
 
 const monthNames = [
-  "July 2023",
-  "August 2023",
-  "September 2023",
-  "October 2023",
-  "November 2023",
-  "December 2023",
-  "January 2024",
-  "February 2024",
-  "March 2024",
-  "April 2024",
-  "May 2024",
-  "June 2024",
+  "January ",
+  "February ",
+  "March ",
+  "April ",
+  "May ",
+  "June ",
+  "July ",
+  "August ",
+  "September ",
+  "October ",
+  "November ",
+  "December ",
 ];
 
 const today = new Date();
@@ -39,16 +39,21 @@ export default function SelectMonth() {
         onChange={(e) => {
           dispatch(getAdminReports(e.target.value));
         }}>
-        {/* <MenuItem value={curMonth}>{monthNames[curMonth - 1]}</MenuItem>
-        <MenuItem value={prevMonth}>{monthNames[prevMonth - 1]}</MenuItem> */}
+        <MenuItem value={curMonth}>{monthNames[curMonth - 1]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 2]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 3]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 4]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 5]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 6]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 7]}</MenuItem>
 
-        {monthNames.map((item, index) => (
+        {/* {monthNames.map((item, index) => (
           <MenuItem
             key={index}
             value={item}>
             {item}
           </MenuItem>
-        ))}
+        ))} */}
       </TextField>
     </Grid>
   );

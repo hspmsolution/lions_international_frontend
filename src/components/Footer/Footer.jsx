@@ -107,38 +107,43 @@ function Footer() {
             alignItems: "flex-start",
             width: "100%",
           }}>
-          <nav
-            aria-label="secondary mailbox folders"
-            className="footer-nav01">
-            <Typography
-              variant="h6"
-              sx={{ pt: "2rem", pl: "0.8rem", align: "center" }}>
-              Quick Links
-            </Typography>
-            <List disablePadding>
-              {quickLinks.map((item, i) => (
-                <ListItem
-                  disablePadding
-                  key={i}
-                  onClick={() => {
-                    navigate(item.path);
-                  }}>
-                  <ListItemButton
-                    sx={{
-                      py: "5px",
-                      borderRadius: "1rem",
-                      "&:hover": {
-                        backgroundColor: "rgba(255, 255, 255, 0.7)",
-                        color: "black",
-                      },
-                    }}
-                    disablePadding>
-                    <ListItemText primary={item.linkName} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </nav>
+          <Box sx={{ width: "330px" }}>
+            <nav
+              aria-label="secondary mailbox folders"
+              className="footer-nav01">
+              <Typography
+                variant="h6"
+                sx={{ pt: "2rem", pl: "0.8rem", align: "center" }}>
+                Quick Links
+              </Typography>
+              <List
+                disablePadding
+                width={"fit-content"}>
+                {quickLinks.map((item, i) => (
+                  <ListItem
+                    disablePadding
+                    key={i}
+                    onClick={() => {
+                      navigate(item.path);
+                    }}>
+                    <ListItemButton
+                      sx={{
+                        py: "5px",
+                        borderRadius: "1rem",
+                        "&:hover": {
+                          backgroundColor: "rgba(255, 255, 255, 0.7)",
+                          color: "black",
+                        },
+                      }}
+                      disablePadding>
+                      <ListItemText primary={item.linkName} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </nav>
+          </Box>
+
           <Box sx={{ width: { xs: "100%", md: "auto" } }}>
             <Avatar
               alt="Remy Sharp"
@@ -153,35 +158,39 @@ function Footer() {
               className="footer-logo"
             />
           </Box>
-          <nav
-            aria-label="secondary mailbox folders"
-            className="footer-nav02">
-            <Typography
-              variant="h6"
-              sx={{ pt: "2rem", pl: "0.8rem" }}>
-              Contact
-            </Typography>
-            <List disablePadding>
-              {contact.map((item, i) => (
-                <ListItem
-                  disablePadding
-                  key={i}>
-                  <ListItemButton>
-                    <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
-                      {item.icon}
-                    </ListItemIcon>
-                    <ListItemText primary={item.value} />
-                  </ListItemButton>
+          <Box sx={{ width: "330px" }}>
+            <nav
+              aria-label="secondary mailbox folders"
+              className="footer-nav02">
+              <Typography
+                variant="h6"
+                sx={{ pt: "2rem", pl: "0.8rem" }}>
+                Contact
+              </Typography>
+              <List disablePadding>
+                {contact.map((item, i) => (
+                  <ListItem
+                    disablePadding
+                    key={i}>
+                    <ListItemButton>
+                      <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
+                        {item.icon}
+                      </ListItemIcon>
+                      <ListItemText primary={item.value} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+                <ListItem sx={{ maxWidth: "315px" }}>
+                  <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
+                    <FontAwesomeIcon icon={faLocationDot} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={`# 19/1, 2nd Floor, 1st Main, 7th Cross,Above Bank of Baroda, Ganganagara, Bangalore - 560 032`}
+                  />
                 </ListItem>
-              ))}
-              <ListItem sx={{ maxWidth: '315px' }}>
-                <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
-                  <FontAwesomeIcon icon={faLocationDot} />
-                </ListItemIcon>
-                <ListItemText primary={`# 19/1, 2nd Floor, 1st Main, 7th Cross,Above Bank of Baroda, Ganganagara, Bangalore - 560 032`} />
-              </ListItem>
-            </List>
-          </nav>
+              </List>
+            </nav>
+          </Box>
         </Box>
       </Box>
 

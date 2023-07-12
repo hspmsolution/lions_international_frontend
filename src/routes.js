@@ -138,7 +138,8 @@ export default function Router() {
 
       ...(role?.includes("Club Treasurer") ||
       role?.includes("Club Secretary") ||
-      role?.includes("Club President")
+      role?.includes("Club President") ||
+      role?.includes("Club Administrator")
         ? [
             {
               path: "/dashboard",
