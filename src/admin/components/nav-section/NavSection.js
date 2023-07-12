@@ -90,6 +90,12 @@ export default function NavSection({ ...other }) {
         icon: icon("ic_region"),
         isClick: false,
       },
+      {
+        title: "All Admin Reporting",
+        path: "/dashboard/alladminreport",
+        icon: icon("ic_activity"),
+        isClick: false,
+      },
     ].filter(Boolean);
 
     setNavConfig(config);

@@ -189,11 +189,13 @@ export default function NewActivity() {
   };
 
   const names = [
-    "Cabinet 01",
-    "Cabinet 02",
-    "Cabinet 03",
-    "Cabinet 04",
-    "Cabinet 05",
+    "Club Director",
+    "Club Treasurer ",
+    "Lion Member",
+    "Club Secretary",
+    "Club President",
+    "Zone Chairperson ",
+    "Region Chairperson",
   ];
 
   function getStyles(name, personName, theme) {

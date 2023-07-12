@@ -46,7 +46,8 @@ export default function DashboardLayout() {
         url("https://lionsdistrict317f.org/api/static/assets/1689132773664-adminbg.jpg")`,
         backgroundAttachment: "fixed",
         backgroundSize: "cover",
-      }}>
+      }}
+      >
       <Header onOpenNav={() => setOpen(true)} />
 
       <Nav
