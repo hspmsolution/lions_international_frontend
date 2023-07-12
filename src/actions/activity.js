@@ -5,8 +5,25 @@ import {
   ACTIVITY_TYPE,
   ACTIVITY_PLACEHOLDER,
   REPORTED_ACTIVITY,
+  CLUB_DIRECTORS
 } from "../constants/actionTypes";
 import * as api from "../api";
+
+export const getClubDirector = () => async (dispatch) => {
+  try {
+    const { data } = await api.getClubDirector();
+    dispatch({ type: CLUB_DIRECTORS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
 
 export const getActivity = () => async (dispatch) => {
   try {

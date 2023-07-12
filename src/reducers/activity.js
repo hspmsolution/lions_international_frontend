@@ -1,8 +1,9 @@
-import {  ACTIVITY_CATEGORY,ACTIVITY_SUBTYPE,ACTIVITY_TYPE,ACTIVITY_PLACEHOLDER,REPORTED_ACTIVITY} from '../constants/actionTypes';
+import {  ACTIVITY_CATEGORY,ACTIVITY_SUBTYPE,ACTIVITY_TYPE,ACTIVITY_PLACEHOLDER,REPORTED_ACTIVITY,CLUB_DIRECTORS} from '../constants/actionTypes';
 
-const activityReducer = (state = { type:[],subType:[],category:[],reportedActivity:[],placeHolder:'' }, action) => {
+const activityReducer = (state = { type:[],subType:[],category:[],reportedActivity:[],placeHolder:'',club_directors:[] }, action) => {
   switch (action.type) {
- 
+    case CLUB_DIRECTORS:
+        return {...state,club_directors:action.payload}
     case ACTIVITY_TYPE :
         return {...state,type:action.payload}
     
