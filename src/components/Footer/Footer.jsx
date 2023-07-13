@@ -118,7 +118,7 @@ function Footer() {
               </Typography>
               <List
                 disablePadding
-                width={"fit-content"}>
+                sx={{ width: "fit-content" }}>
                 {quickLinks.map((item, i) => (
                   <ListItem
                     disablePadding
