@@ -43,7 +43,7 @@ export default function ZoneTable({ zone }) {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            <Link onClick={() => navigate('/organizationdata') } className={classes.clubName}>{club.name}</Link>
+                                            <Link onClick={() => navigate(`/organizationdata?clubid=${club.id}`) } className={classes.clubName}>{club.name}</Link>
                                         </TableCell>
                                         <TableCell align="right">{club.id}</TableCell>
                                     </TableRow>
