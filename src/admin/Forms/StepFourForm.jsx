@@ -48,11 +48,11 @@ const StepFourForm = () => {
 
           <TableBody>
             {reports.map(
-              ({ id, title, multiple, selected, count }, index) =>
-                index + 1 > 30 &&
-                index + 1 <= 40 && (
+              ({ id, title, multiple, selected, count,srNo}, index) =>
+                index + 1 > 105 &&
+                index + 1 <= 140 && (
                   <TableRow key={id}>
-                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{srNo}</TableCell>
                     <TableCell>{title}</TableCell>
 
                     <TableCell>

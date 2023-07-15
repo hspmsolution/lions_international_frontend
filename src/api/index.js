@@ -11,7 +11,7 @@ if (ROOT_URL.includes(".up.railway.app")) {
   API_URL = "https://lionsdistrict317f.org/api";
   superadmin_url = "https://lionsdistrict317f.org/superadmin";
 } else if (ROOT_URL.includes("lions317f.org")) {
-  API_URL = "https://lionsdistrict317f.org/api";
+  API_URL = "https://lions317f.org/api";
   superadmin_url = "https://lions317f.org/superadmin";
 } else if (ROOT_URL.includes("lions317b.org")) {
   API_URL = "https://lions317b.org/api";

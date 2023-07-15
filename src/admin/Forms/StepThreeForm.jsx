@@ -50,11 +50,11 @@ const StepThreeForm = () => {
 
           <TableBody>
             {reports.map(
-              ({ id, title, multiple, selected, count }, index) =>
-                index + 1 > 20 &&
-                index + 1 <= 30 && (
+              ({ id, title, multiple, selected, count,srNo }, index) =>
+                index + 1 > 70 &&
+                index + 1 <= 105 && (
                   <TableRow key={id}>
-                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{srNo}</TableCell>
                     <TableCell>{title}</TableCell>
 
                     <TableCell>
