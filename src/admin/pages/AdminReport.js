@@ -172,6 +172,7 @@ export default function FormWizard() {
           </Typography>
         </div>
         <Box sx={{ maxWidth: "500px", margin: "1rem  auto 0" }}>
+          {/* Select Month */}
           <SelectMonth />
         </Box>
       </Box>

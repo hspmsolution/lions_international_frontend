@@ -56,15 +56,39 @@ export default function NavSection({ ...other }) {
           },
         ].filter(Boolean),
       },
+      // Admin Rerport
+      // (role?.includes("Club Treasurer") ||
+      //   role?.includes("Club Secretary") ||
+      //   role?.includes("Club President")) && {
+      //   title: "Admin Reporting",
+      //   path: "/dashboard/admin",
+      //   icon: icon("ic_admin"),
+      //   isClick: false,
+      // },
 
       (role?.includes("Club Treasurer") ||
         role?.includes("Club Secretary") ||
+        role?.includes("Club Administrator") ||
         role?.includes("Club President")) && {
-        title: "Admin Reporting",
-        path: "/dashboard/admin",
-        icon: icon("ic_admin"),
+        title: "Admin Reports",
+        path: null,
+        icon: icon("ic_activity"),
         isClick: false,
+        subItems: [
+          {
+            title: "Add Admin Report",
+            path: "/dashboard/admin",
+            icon: icon("ic_admin"),
+          },
+          {
+            title: "All Admin Report",
+            path: "/dashboard/alladminreport",
+            icon: icon("ic_admin"),
+          },
+        ].filter(Boolean),
       },
+
+      // ///////
 
       {
         title: "News Reporting",
@@ -90,12 +114,13 @@ export default function NavSection({ ...other }) {
         icon: icon("ic_region"),
         isClick: false,
       },
-      {
-        title: "All Admin Reporting",
-        path: "/dashboard/alladminreport",
-        icon: icon("ic_activity"),
-        isClick: false,
-      },
+      // {
+      //   title: "All Admin Reporting",
+      //   path: "/dashboard/alladminreport",
+      //   icon: icon("ic_activity"),
+      //   isClick: false,
+      // },
+      //
     ].filter(Boolean);
 
     setNavConfig(config);

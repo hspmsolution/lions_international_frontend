@@ -10,6 +10,8 @@ import {
   Icon,
   Box,
 } from "@mui/material";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import {
   Table,
   TableBody,
@@ -21,8 +23,22 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 function AllAdminReport() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <Box
@@ -62,34 +78,38 @@ function AllAdminReport() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* <TableRow key={row.id}>
-                    <TableCell
-                      component="th"
-                      scope="row">
-                      {index + 1}
-                    </TableCell>
-                    <TableCell>{row.clubName}</TableCell>
-                    <TableCell>{row.clubId}</TableCell>
-                    <TableCell>
-                      {row?.latestActivity &&
-                        new Date(row?.latestActivity).toLocaleString()}
-                    </TableCell>
-                    <TableCell>
-                      {row?.currentAdminReport === 1 ? "yes" : "no"}
-                    </TableCell>
-                    <TableCell>
-                      <Button
-                        variant="outlined"
-                        onClick={handleClickOpen}>
-                        View Activity
-                      </Button>
-                    </TableCell>
-                  </TableRow> */}
+                <TableRow>
+                  <TableCell>1</TableCell>
+                  <TableCell>Club Name</TableCell>
+                  <TableCell>Club ID</TableCell>
+                  <TableCell>
+                    <IconButton
+                      onClick={handleClickOpen}
+                      color="success">
+                      <CheckBoxIcon />
+                    </IconButton>
+                  </TableCell>
+                  <TableCell>
+                    <IconButton color="error">
+                      <DisabledByDefaultIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
 
           {/* Dialog */}
+
+          <Dialog
+            open={open}
+            onClose={handleClose}>
+            <DialogTitle>Optional sizes</DialogTitle>
+            <DialogContent></DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>Close</Button>
+            </DialogActions>
+          </Dialog>
         </Box>
       </Box>
     </>
