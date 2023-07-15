@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import NewActivity from "./admin/pages/NewActivity";
 import NewsReporting from "./admin/pages/NewsReporting";
 import DashboardAppPage from "./admin/pages/DashboardAppPage";
-import AdminReport from "./admin/pages/AdminReport";
 import PastActivity from "./admin/pages/PastActivity";
 import Login from "./admin/pages/login";
 import EditProfile from "./admin/pages/EditProfile";
@@ -18,6 +17,7 @@ import Treasurer from "./admin/pages/Treasurer";
 import News from "./admin/pages/News";
 import ZonalView from "./admin/pages/ZonalView";
 import RegionalView from "./admin/pages/RegionalView";
+import AdminReport from "./admin/pages/AdminReport";
 import AllAdminReport from "./admin/pages/AllAdminReport";
 
 import Home from "./pages/Home/Home";
