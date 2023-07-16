@@ -49,10 +49,10 @@ const StepOneForm = () => {
 
           <TableBody>
             {reports.map(
-              ({ id, title, multiple, selected, count }, index) =>
-                index + 1 <= 10 && (
+              ({ id, title, multiple, selected, count,srNo }, index) =>
+                index + 1 <= 35 && (
                   <TableRow key={id}>
-                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>{srNo}</TableCell>
                     <TableCell>{title}</TableCell>
 
                     <TableCell>

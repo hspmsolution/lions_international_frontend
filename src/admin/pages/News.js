@@ -85,7 +85,7 @@ const News = () => {
                   </a>
                 </StyledTableCell>
 
-                <StyledTableCell>{row.date.slice(0, 10)}</StyledTableCell>
+                <StyledTableCell>{row.date?.slice(0, 10)}</StyledTableCell>
                 {/* <StyledTableCell>
                   <IconButton aria-label="edit" color="primary">
                     <Edit />
