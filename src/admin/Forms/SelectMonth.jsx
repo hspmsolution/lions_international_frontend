@@ -7,18 +7,18 @@ import { useDispatch } from "react-redux";
 import { getAdminReports } from "../../actions/adminReports";
 
 const monthNames = [
-  "January ",
-  "February ",
-  "March ",
-  "April ",
-  "May ",
-  "June ",
-  "July ",
-  "August ",
-  "September ",
-  "October ",
-  "November ",
-  "December ",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const today = new Date();
@@ -28,32 +28,32 @@ const prevMonth = curMonth === 1 ? 12 : curMonth - 1;
 export default function SelectMonth() {
   const dispatch = useDispatch();
   return (
-    <Grid
-      item
-      xs={6}>
+    <Grid item xs={6}>
       <TextField
         id="Month"
         select
         fullWidth
-        label=" Select Month "
+        label="Select Month "
         onChange={(e) => {
-          dispatch(getAdminReports(e.target.value));
-        }}>
-        <MenuItem value={curMonth}>{monthNames[curMonth - 1]}</MenuItem>
+          const selectedIndexes = monthNames
+          .map((month, index) => (month === e.target.value ? index + 1 : -1))
+          .filter(index => index !== -1);
+          dispatch(getAdminReports(selectedIndexes));
+        }}
+      >
+        {/* <MenuItem value={curMonth}>{monthNames[curMonth - 1]}</MenuItem>
         <MenuItem value={prevMonth}>{monthNames[prevMonth - 2]}</MenuItem>
         <MenuItem value={prevMonth}>{monthNames[prevMonth - 3]}</MenuItem>
         <MenuItem value={prevMonth}>{monthNames[prevMonth - 4]}</MenuItem>
         <MenuItem value={prevMonth}>{monthNames[prevMonth - 5]}</MenuItem>
         <MenuItem value={prevMonth}>{monthNames[prevMonth - 6]}</MenuItem>
-        <MenuItem value={prevMonth}>{monthNames[prevMonth - 7]}</MenuItem>
+        <MenuItem value={prevMonth}>{monthNames[prevMonth - 7]}</MenuItem> */}
 
-        {/* {monthNames.map((item, index) => (
-          <MenuItem
-            key={index}
-            value={item}>
+        {monthNames.map((item, index) => (
+          <MenuItem key={index} value={item}>
             {item}
           </MenuItem>
-        ))} */}
+        ))}
       </TextField>
     </Grid>
   );

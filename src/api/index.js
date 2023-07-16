@@ -46,6 +46,7 @@ export const getAdminReports = (month) =>
   API.get(`adminreporting/reports?month=${month}`);
 export const getPoints = () => API.get("adminreporting/points");
 export const addReport = (data) => API.post("adminreporting/addreport", data);
+export const clubsReporting=()=>API.get("adminreporting/clubsreporting");
 export const updateMember = (formData) =>
   API.post("member/updateprofile", formData);
 export const memberProfile = () => API.get("member/profile");
