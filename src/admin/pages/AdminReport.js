@@ -195,7 +195,7 @@ export default function FormWizard() {
         {/* Step content */}
         <Paper
           elevation={3}
-          style={{ padding: "20px" }}>
+          style={{ padding: "20px", marginTop: "1rem" }}>
           {getStepForm()}
 
           {/* Buttons */}

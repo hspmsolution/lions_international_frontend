@@ -18,10 +18,14 @@ import { UPDATE_REPORT } from "../../constants/actionTypes";
 const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: theme.spacing(2),
-    maxHeight: 400,
+    marginTop: "16px",
+    maxWidth: "max-content",
   },
   checkbox: {
     padding: 0,
+  },
+  tbCont: {
+    marginTop: "1rem",
   },
 }));
 
@@ -31,17 +35,24 @@ const StepOneForm = () => {
   const reports = useSelector((state) => state.adminReporting.adminReports);
 
   return (
-    <div>
-      <Typography variant="h5" gutterBottom>
+    <div className={classes.tbCont}>
+      <Typography
+        variant="h5"
+        gutterBottom>
         Step One
       </Typography>
 
-      <TableContainer component={Paper} className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
+      <TableContainer
+        component={Paper}
+        className={classes.container}>
+        <Table
+          stickyHeader
+          aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell>Sr no</TableCell>
               <TableCell>Title</TableCell>
+              <TableCell>Points</TableCell>
               <TableCell>Count</TableCell>
               <TableCell>Checkbox</TableCell>
             </TableRow>
@@ -49,11 +60,12 @@ const StepOneForm = () => {
 
           <TableBody>
             {reports.map(
-              ({ id, title, multiple, selected, count,srNo }, index) =>
+              ({ id, title, multiple, selected, count, srNo, stars }, index) =>
                 index + 1 <= 35 && (
                   <TableRow key={id}>
                     <TableCell>{srNo}</TableCell>
                     <TableCell>{title}</TableCell>
+                    <TableCell>{stars}</TableCell>
 
                     <TableCell>
                       <TextField
