@@ -1,4 +1,4 @@
-import { ADMIN_REPORTS,CLIENT_MSG ,ADMIN_POINTS} from "../constants/actionTypes";
+import { ADMIN_REPORTS,CLIENT_MSG ,ADMIN_POINTS,CLUBS_REPORTING} from "../constants/actionTypes";
 import * as api from "../api";
 
 export const getAdminReports = (month) => async (dispatch) => {
@@ -41,6 +41,15 @@ export const getAdminReports = (month) => async (dispatch) => {
           status: error.response.status,
         },
       });
+      console.log(error);
+    }
+  };
+
+  export const clubsReporting = () => async (dispatch) => {
+    try {
+      const { data } = await api.clubsReporting();
+      dispatch({ type: CLUBS_REPORTING, payload: data });
+    } catch (error) {
       console.log(error);
     }
   };

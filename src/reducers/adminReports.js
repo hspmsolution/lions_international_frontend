@@ -3,10 +3,11 @@ import {
   ADMIN_FORM,
   ADMIN_POINTS,
   UPDATE_REPORT,
+  CLUBS_REPORTING
 } from "../constants/actionTypes";
 
 const adminReportReducer = (
-  state = { adminReports: [], adminPoints: [] },
+  state = { adminReports: [], adminPoints: [] ,clubReporting:[]},
   action
 ) => {
   switch (action.type) {
@@ -37,6 +38,9 @@ const adminReportReducer = (
 
     case ADMIN_POINTS:
       return { ...state, adminPoints: action.payload };
+    
+    case CLUBS_REPORTING:
+      return {...state,clubReporting:action.payload}
     default:
       return state;
   }
