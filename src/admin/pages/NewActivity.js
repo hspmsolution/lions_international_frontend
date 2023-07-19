@@ -19,7 +19,7 @@ import {
   getCategory,
   getPlaceHolder,
   getSubtype,
-  getClubDirector
+  getClubDirector,
 } from "../../actions/activity";
 import { ACTIVITY_PLACEHOLDER } from "../../constants/actionTypes";
 
@@ -91,7 +91,7 @@ export default function NewActivity() {
   const fileUploadRef = useRef();
   const [activity, setActivity] = useState(activityDetail);
   const [personName, setPersonName] = React.useState([]);
-  const club_directors =  useSelector((state) => state.activity.club_directors);
+  const club_directors = useSelector((state) => state.activity.club_directors);
   const type = useSelector((state) => state.activity.type);
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
@@ -722,6 +722,24 @@ export default function NewActivity() {
               label="Upload Photo less than 500kb"
               fullWidth
               required
+              margin="normal"
+              className={classes.label}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              inputProps={{
+                accept: "image/jpeg,image/png",
+              }}
+              onChange={handleFileRead}
+              onClick={() => fileUploadRef.current.click()}
+            />{" "}
+            <TextField
+              ref={fileUploadRef}
+              type="file"
+              id="image-upload"
+              name="image1"
+              label="Upload Photo less than 500kb"
+              fullWidth
               margin="normal"
               className={classes.label}
               InputLabelProps={{

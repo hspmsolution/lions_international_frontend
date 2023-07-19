@@ -44,6 +44,7 @@ export default function NavSection({ ...other }) {
         subItems: [
           (role?.includes("Club Treasurer") ||
             role?.includes("Club Secretary") ||
+            role?.includes("Club Administrator") ||
             role?.includes("Club President")) && {
             title: "Report New Activity",
             path: "/dashboard/activity",
@@ -78,11 +79,6 @@ export default function NavSection({ ...other }) {
           {
             title: "Add Admin Report",
             path: "/dashboard/admin",
-            icon: icon("ic_admin"),
-          },
-          {
-            title: "All Admin Report",
-            path: "/dashboard/alladminreport",
             icon: icon("ic_admin"),
           },
         ].filter(Boolean),

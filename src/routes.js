@@ -149,7 +149,7 @@ export default function Router() {
                 { path: "news", element: <NewsReporting /> },
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
-                { path: "alladminreport", element: <AllAdminReport /> },
+                // { path: "alladminreport", element: <AllAdminReport /> },
 
                 role.includes("Club Treasurer") && {
                   path: "manage-expense",
@@ -169,7 +169,7 @@ export default function Router() {
                 { path: "app", element: <DashboardAppPage /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 { path: "news", element: <News /> },
-                { path: "alladminreport", element: <AllAdminReport /> },
+                // { path: "alladminreport", element: <AllAdminReport /> },
               ],
             },
           ]

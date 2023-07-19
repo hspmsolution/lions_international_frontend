@@ -34,11 +34,7 @@ const myNav = [
   { title: "Activities" },
   {
     title: "Membership",
-    menuItems: [
-      "Member Directory",
-      "Mini Directory",
-      "Download Member Data",
-    ],
+    menuItems: ["Member Directory", "Mini Directory", "Download Member Data"],
   },
   {
     title: "Resources",
@@ -59,8 +55,7 @@ function Navbar(props) {
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center" }}
-    >
+      sx={{ textAlign: "center" }}>
       <Avatar
         alt="Remy Sharp"
         src={"/assets/img/logo2.png"}
@@ -72,13 +67,11 @@ function Navbar(props) {
         {myNav.map((item, index) => (
           <ListItem
             key={index}
-            disablePadding
-          >
+            disablePadding>
             <Button
               key={index}
-              sx={{ color: "#565656", padding: '10px' }}
-              className={classes.drawerButton}
-            >
+              sx={{ color: "#565656", padding: "10px" }}
+              className={classes.drawerButton}>
               <PopupMenu
                 title={item.title}
                 menuItems={item.menuItems}
@@ -98,38 +91,43 @@ function Navbar(props) {
       <CssBaseline />
       <AppBar
         component="nav"
-        className={classes.mainNav}
-      >
+        className={classes.mainNav}>
         <Toolbar>
           <IconButton
             color="#7c7c7c"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: "auto", display: { sm: "none" } }}
-          >
+            sx={{ mr: "auto", display: { sm: "none" } }}>
             <MenuIcon />
           </IconButton>
           <Typography
             component="div"
             sx={{
               flexGrow: 1,
-              display: 'flex',
+              display: "flex",
               gap: "1rem",
-            }}
-          >
+            }}>
             <Link to={"/"}>
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo.png"
-                sx={{ width: { xs: 65, sm: 80 }, height: { xs: 65, sm: 80 }, padding: "5px" }}
+                sx={{
+                  width: { xs: 65, sm: 80 },
+                  height: { xs: 65, sm: 80 },
+                  padding: "5px",
+                }}
               />
             </Link>
             <Link to={"/"}>
               <Avatar
                 alt="Remy Sharp"
                 src="/assets/img/logo2.png"
-                sx={{ width: { xs: 65, sm: 80 }, height: { xs: 65, sm: 80 }, padding: "5px" }}
+                sx={{
+                  width: { xs: 65, sm: 80 },
+                  height: { xs: 65, sm: 80 },
+                  padding: "5px",
+                }}
                 className={classes.clubLogo}
               />
             </Link>
@@ -139,8 +137,7 @@ function Navbar(props) {
               <Button
                 key={index}
                 sx={{ color: "#fff" }}
-                className={classes.drawerButton}
-              >
+                className={classes.drawerButton}>
                 <PopupMenu
                   title={item.title}
                   menuItems={item.menuItems}
@@ -149,13 +146,16 @@ function Navbar(props) {
             ))}
           </Box>
           <Button
-            // target="_blank"
             className={classes.drawerButton}
-            href={`${(isAdmin ? "/dashboard/profile" : "/login")}`}
-          >
+            href={`${isAdmin ? "/dashboard/profile" : "/login"}`}>
             {isAdmin ? "My Profile" : "Login"}
           </Button>
-          <Button href="https://account.lionsclubs.org/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dlci-home-app%26redirect_uri%3Dhttps%253A%252F%252Fmyapps.lionsclubs.org%252Fauth-callback%26response_type%3Did_token%2520token%26scope%3Dopenid%2520profile%2520lci-userapi%2520lci-mobileapi%2520lci-reporting%26state%3Daf66166248ad43ef83b1b03061f580d7%26nonce%3Da0c87692e26641f39278bf8b66824998" className={classes.drawerButton} target="_blank">My LCI</Button>
+          <Button
+            href="https://account.lionsclubs.org/account/login?returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dlci-home-app%26redirect_uri%3Dhttps%253A%252F%252Fmyapps.lionsclubs.org%252Fauth-callback%26response_type%3Did_token%2520token%26scope%3Dopenid%2520profile%2520lci-userapi%2520lci-mobileapi%2520lci-reporting%26state%3Daf66166248ad43ef83b1b03061f580d7%26nonce%3Da0c87692e26641f39278bf8b66824998"
+            className={classes.drawerButton}
+            target="_blank">
+            My LCI
+          </Button>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -173,15 +173,13 @@ function Navbar(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-          }}
-        >
+          }}>
           {drawer}
         </Drawer>
       </Box>
       <Box
         component="main"
-        sx={{ p: 0 }}
-      >
+        sx={{ p: 0 }}>
         <Toolbar />
       </Box>
     </Box>

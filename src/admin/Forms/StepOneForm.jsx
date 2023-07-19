@@ -13,6 +13,10 @@ import {
   Checkbox,
   TextField,
 } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import { UPDATE_REPORT } from "../../constants/actionTypes";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,48 +64,86 @@ const StepOneForm = () => {
 
           <TableBody>
             {reports.map(
-              ({ id, title, multiple, selected, count, srNo, adminstars }, index) =>
+              (
+                { id, title, multiple, selected, count, srNo, adminstars },
+                index
+              ) =>
                 index + 1 <= 35 && (
                   <TableRow key={id}>
-                    <TableCell>{srNo}</TableCell>
+                    <TableCell sx={{ fontWeight: "bold" }}>{srNo}</TableCell>
                     <TableCell>{title}</TableCell>
                     <TableCell>{adminstars}</TableCell>
 
-                    <TableCell>
-                      <TextField
-                        disabled={multiple === 0}
-                        type="number"
-                        value={count}
-                        name="counter"
-                        onChange={(event) => {
-                          event.target.value >= 0 &&
+                    <TableCell sx={{ width: "20px" }}>
+                      {multiple === 0 ? (
+                        ""
+                      ) : (
+                        <FormControl sx={{ width: "100px" }}>
+                          <InputLabel id="demo-simple-select-label">
+                            Count
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={count}
+                            label="Count"
+                            name="counter"
+                            onChange={(event) => {
+                              event.target.value >= 0 &&
+                                dispatch({
+                                  type: UPDATE_REPORT,
+                                  payload: {
+                                    name: event.target.name,
+                                    count: event.target.value,
+                                    id,
+                                  },
+                                });
+                            }}>
+                            <MenuItem value={count}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                          </Select>
+                        </FormControl>
+
+                        //
+                        // <TextField
+                        //   disabled={multiple === 0}
+                        //   type="number"
+                        //   value={count}
+                        //   name="counter"
+                        //   onChange={(event) => {
+                        //     event.target.value >= 0 &&
+                        //       dispatch({
+                        //         type: UPDATE_REPORT,
+                        //         payload: {
+                        //           name: event.target.name,
+                        //           count: event.target.value,
+                        //           id,
+                        //         },
+                        //       });
+                        //   }}
+                        // />
+                      )}
+                    </TableCell>
+
+                    <TableCell className={classes.checkbox}>
+                      {adminstars === 0 ? (
+                        ""
+                      ) : (
+                        <Checkbox
+                          checked={selected}
+                          name="checkbox"
+                          onChange={(event) => {
                             dispatch({
                               type: UPDATE_REPORT,
                               payload: {
                                 name: event.target.name,
-                                count: event.target.value,
+                                selected: event.target.checked,
                                 id,
                               },
                             });
-                        }}
-                      />
-                    </TableCell>
-
-                    <TableCell className={classes.checkbox}>
-                      <Checkbox
-                        checked={selected}
-                        name="checkbox"
-                        onChange={(event) => {
-                          dispatch({
-                            type: UPDATE_REPORT,
-                            payload: {
-                              name: event.target.name,
-                              selected: event.target.checked,
-                              id,
-                            },
-                          });
-                        }}
-                      />
+                          }}
+                        />
+                      )}
                     </TableCell>
                   </TableRow>
                 )

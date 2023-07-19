@@ -81,7 +81,11 @@ export default function NewsReporting() {
       event.target.value = "";
       return;
     }
-    if (file.type !== "image/jpeg" && file.type !== "image/png" && file.type !== "image/jpg") {
+    if (
+      file.type !== "image/jpeg" &&
+      file.type !== "image/png" &&
+      file.type !== "image/jpg"
+    ) {
       dispatch({
         type: CLIENT_MSG,
         message: { info: "file type not supported", status: 400 },
@@ -89,7 +93,7 @@ export default function NewsReporting() {
       event.target.value = "";
       return;
     }
-    
+
     const img = {
       preview: URL.createObjectURL(event.target.files[0]),
       data: event.target.files[0],
@@ -113,15 +117,32 @@ export default function NewsReporting() {
   return (
     <>
       <form onSubmit={submitDetails}>
-        <Box bgcolor="white" p={3} borderRadius={4}>
-          <Typography variant="h6" gutterBottom className={classes.heading}>
+        <Box
+          bgcolor="white"
+          p={3}
+          margin={"2rem 0"}
+          borderRadius={4}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            className={classes.heading}>
             News Information
           </Typography>
-          <Grid container spacing={3} className={classes.grid}>
-            <Grid item xs={6} sm={6} className={classes.title}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.grid}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              className={classes.title}>
               <Typography>Title Of News</Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid
+              item
+              xs={12}
+              sm={6}>
               <TextField
                 required
                 id="newsTitle"
@@ -138,11 +159,21 @@ export default function NewsReporting() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
-            <Grid item xs={6} sm={6} className={classes.title}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.grid}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              className={classes.title}>
               <Typography>Date Of News</Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid
+              item
+              xs={12}
+              sm={6}>
               <TextField
                 required
                 id="date"
@@ -161,13 +192,22 @@ export default function NewsReporting() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
-            <Grid item xs={6} sm={6} className={classes.title}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.grid}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              className={classes.title}>
               <Typography>News Paper Link</Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid
+              item
+              xs={12}
+              sm={6}>
               <TextField
-                required
                 id="newsPaperLink"
                 name="newsPaperLink"
                 value={newsData.newsPaperLink}
@@ -181,11 +221,21 @@ export default function NewsReporting() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
-            <Grid item xs={6} sm={6} className={classes.title}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.grid}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              className={classes.title}>
               <Typography>Description of News</Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid
+              item
+              xs={12}
+              sm={6}>
               <TextField
                 id="description"
                 name="description"
@@ -201,11 +251,21 @@ export default function NewsReporting() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={3} className={classes.grid}>
-            <Grid item xs={6} sm={6} className={classes.title}>
+          <Grid
+            container
+            spacing={3}
+            className={classes.grid}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              className={classes.title}>
               <Typography>Phographs of News</Typography>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid
+              item
+              xs={12}
+              sm={6}>
               <TextField
                 ref={fileUploadRef}
                 type="file"
@@ -225,27 +285,43 @@ export default function NewsReporting() {
                 onClick={() => fileUploadRef.current.click()}
               />
               {newsData.image.preview && (
-                <img src={newsData.image.preview} width="100" height="100" />
+                <img
+                  src={newsData.image.preview}
+                  width="100"
+                  height="100"
+                />
               )}
             </Grid>
           </Grid>
-          <Grid container justifyContent="center">
-          <Grid item xs={2}>
-            <Button type="submit" variant="contained" className={classes.btn}>
-              Submit
-            </Button>
-          </Grid>
-          <Grid item xs={2}>
-            <Box marginLeft={1}>
-              <Button type="button" variant="outlined" className={classes.btn}>
-                Cancel
+          <Grid
+            container
+            justifyContent="center">
+            <Grid
+              item
+              xs={2}>
+              <Button
+                type="submit"
+                variant="contained"
+                className={classes.btn}>
+                Submit
               </Button>
-            </Box>
+            </Grid>
+            <Grid
+              item
+              xs={2}>
+              <Box marginLeft={1}>
+                <Button
+                  type="button"
+                  variant="outlined"
+                  className={classes.btn}>
+                  Cancel
+                </Button>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
         </Box>
       </form>
-   
+
       <News></News>
     </>
   );
