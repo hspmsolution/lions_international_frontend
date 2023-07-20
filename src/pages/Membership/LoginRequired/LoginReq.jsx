@@ -9,6 +9,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { signInReq } from "../../../actions/auth";
 import { ADMIN } from "../../../constants/actionTypes";
 import { makeStyles } from "@mui/styles";
+import { InputAdornment, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   label: {
@@ -53,7 +55,7 @@ const Login = () => {
         .required("Member Id is required"),
       password: Yup.string()
         .max(255)
-        .required("Password must be of alphanumeric Hspm@123 min. 8"),
+        .required("Password must be of alphanumeric Example@123 min. 8"),
     }),
     onSubmit: (data) => {
       setTimeout(() => {
@@ -72,6 +74,15 @@ const Login = () => {
   useEffect(() => {
     if (message) setDisabled(false);
   }, [message]);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <Box
@@ -150,9 +161,22 @@ const Login = () => {
               name="password"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={formik.values.password}
               variant="standard"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <Box sx={{ py: 2 }}>
               <Button

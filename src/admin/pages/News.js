@@ -47,8 +47,13 @@ const News = () => {
   }, []);
 
   return (
-    <Box bgcolor="white" p={3} borderRadius={4}>
-      <Typography variant="h6" gutterBottom>
+    <Box
+      bgcolor="white"
+      p={3}
+      borderRadius={4}>
+      <Typography
+        variant="h6"
+        gutterBottom>
         Reported News
       </Typography>
       <TableContainer component={Paper}>
@@ -60,13 +65,15 @@ const News = () => {
               <StyledTableCell>Description</StyledTableCell>
               <StyledTableCell>Paper Link</StyledTableCell>
               <StyledTableCell>Date</StyledTableCell>
-              {/* <StyledTableCell>Action</StyledTableCell> */}
+              <StyledTableCell>Action</StyledTableCell>
             </StyledTableRow>
           </TableHead>
           <TableBody>
             {reportedNews?.map((row, index) => (
               <StyledTableRow key={row.id}>
-                <StyledTableCell component="th" scope="row">
+                <StyledTableCell
+                  component="th"
+                  scope="row">
                   {index + 1}
                 </StyledTableCell>
                 <StyledTableCell>{row.newsTitle}</StyledTableCell>
@@ -79,21 +86,24 @@ const News = () => {
                     style={{
                       color: "inherit",
                       cursor: "pointer",
-                    }}
-                  >
+                    }}>
                     {row.newsPaperLink}
                   </a>
                 </StyledTableCell>
 
                 <StyledTableCell>{row.date?.slice(0, 10)}</StyledTableCell>
-                {/* <StyledTableCell>
-                  <IconButton aria-label="edit" color="primary">
+                <StyledTableCell>
+                  {/* <IconButton
+                    aria-label="edit"
+                    color="primary">
                     <Edit />
-                  </IconButton>
-                  <IconButton aria-label="delete" color="error">
+                  </IconButton> */}
+                  <IconButton
+                    aria-label="delete"
+                    color="error">
                     <Delete />
                   </IconButton>
-                </StyledTableCell> */}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

@@ -10,10 +10,12 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { InputAdornment, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { makeStyles } from "@mui/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { resetPass} from "../../actions/auth";
+import { resetPass } from "../../actions/auth";
 
 const useStyles = makeStyles({
   root: {
@@ -47,11 +49,11 @@ export default function Password() {
     validationSchema: Yup.object({
       password: Yup.string().max(255).required("Password is required"),
       confirmPassword: Yup.string()
-        .max(255)
+        .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm Password is required"),
     }),
     onSubmit: (data) => {
-      dispatch(resetPass(data,navigate));
+      dispatch(resetPass(data, navigate));
       setDisabled(true);
     },
   });
@@ -59,6 +61,15 @@ export default function Password() {
   useEffect(() => {
     if (message) setDisabled(false);
   }, [message]);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <>
       <Helmet>
@@ -73,20 +84,27 @@ export default function Password() {
           display: "flex",
           flexGrow: 1,
           minHeight: "100%",
-        }}
-      >
-        <Paper maxWidth="sm" elevation={3} className={classes.insideBox}>
+        }}>
+        <Paper
+          maxWidth="sm"
+          elevation={3}
+          className={classes.insideBox}>
           <form onSubmit={formik.handleSubmit}>
             <Box
               sx={{
                 pb: 1,
                 pt: 3,
-              }}
-            >
-              <Typography align="center" color="textSecondary" variant="h3">
+              }}>
+              <Typography
+                align="center"
+                color="textSecondary"
+                variant="h3">
                 Reset Password
               </Typography>
-              <Typography align="center" color="textSecondary" variant="body3">
+              <Typography
+                align="center"
+                color="textSecondary"
+                variant="body3">
                 Password should contain uppercase,lowercase,digit and symbol
               </Typography>
             </Box>
@@ -100,9 +118,22 @@ export default function Password() {
               name="password"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={formik.values.password}
               variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end">
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
               error={Boolean(
@@ -128,8 +159,7 @@ export default function Password() {
                 fullWidth
                 size="large"
                 type="submit"
-                variant="contained"
-              >
+                variant="contained">
                 Update Password
               </Button>
             </Box>

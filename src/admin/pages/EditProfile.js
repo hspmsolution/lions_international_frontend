@@ -260,7 +260,7 @@ export default function Profile() {
 
             <Grid item xs={12} sm={4}>
               <TextField
-                required
+                // required
                 id="dob"
                 value={user.dob}
                 name="dob"
