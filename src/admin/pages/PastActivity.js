@@ -269,6 +269,15 @@ const PastActivity = () => {
     );
   };
 
+  // Delete Dialog
+  const [openDel, setOpenDel] = React.useState(false);
+  const handleClickOpenDel = () => {
+    setOpenDel(true);
+  };
+
+  const handleCloseDel = () => {
+    setOpenDel(false);
+  };
   return (
     <>
       <Box
@@ -332,7 +341,8 @@ const PastActivity = () => {
                     </IconButton>
                     <IconButton
                       aria-label="delete"
-                      color="error">
+                      color="error"
+                      onClick={handleClickOpenDel}>
                       <Delete />
                     </IconButton>
                   </TableCell>
@@ -903,6 +913,29 @@ const PastActivity = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Delete Dialog */}
+      <Dialog
+        open={openDel}
+        onClose={handleCloseDel}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete? This action cannot be reversed.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDel}>Cancel</Button>
+          <Button
+            onClick={handleCloseDel}
+            autoFocus
+            color="error">
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </>
