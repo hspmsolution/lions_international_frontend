@@ -46,5 +46,5 @@ export default function ResourcesTable({ rows }) {
         </TableBody> */}
       </Table>
     </TableContainer>
-  );
+  ); 
 }
