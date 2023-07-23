@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,7 +20,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { UPDATE_REPORT } from "../../constants/actionTypes";
+import { UPDATE_REPORT, CLIENT_MSG,ADMIN_PDF} from "../../constants/actionTypes";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -35,21 +35,40 @@ const useStyles = makeStyles((theme) => ({
 const StepFourForm = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const fileUploadRef = useRef();
   const reports = useSelector((state) => state.adminReporting.adminReports);
+
+  // Function to handle file read
+  const handleFileRead = async (event) => {
+    const file = event.target.files[0];
+    // Check file size 2mb
+    if (file.size > 2000000) {
+      dispatch({
+        type: CLIENT_MSG,
+        message: {
+          info: "Please choose a file smaller than 2MB",
+          status: 400,
+        },
+      });
+      event.target.value = "";
+      return;
+    }
+    dispatch({type:ADMIN_PDF,payload:file})
+    // const img = {
+    //   preview: URL.createObjectURL(event.target.files[0]),
+    //   data: event.target.files[0],
+    // };
+    // setActivity({ ...activity, image: img });
+  };
+
   return (
     <div>
-      <Typography
-        variant="h5"
-        gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Step Four
       </Typography>
 
-      <TableContainer
-        component={Paper}
-        className={classes.container}>
-        <Table
-          stickyHeader
-          aria-label="sticky table">
+      <TableContainer component={Paper} className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell>Sr no</TableCell>
@@ -63,7 +82,16 @@ const StepFourForm = () => {
           <TableBody>
             {reports.map(
               (
-                { id, title, multiple, selected, count, srNo, adminstars },
+                {
+                  id,
+                  title,
+                  multiple,
+                  maxMultiply,
+                  selected,
+                  count,
+                  srNo,
+                  adminstars,
+                },
                 index
               ) =>
                 index + 1 > 105 &&
@@ -96,9 +124,13 @@ const StepFourForm = () => {
                                     id,
                                   },
                                 });
-                            }}>
-                            <MenuItem value={count}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
+                            }}
+                          >
+                            {[...Array(maxMultiply).keys()].map((value) => (
+                              <MenuItem key={value} value={value + 1}>
+                                {value + 1}
+                              </MenuItem>
+                            ))}
                           </Select>
                         </FormControl>
                       )}
@@ -131,20 +163,23 @@ const StepFourForm = () => {
         </Table>
       </TableContainer>
       <Box sx={{ marginTop: "2rem", textAlign: "center" }}>
-        <Typography
-          fontSize={"small"}
-          color={"primary"}
-          margin={"0.5rem 0"}>
-          Upload PDF File upto 1MB
-        </Typography>
-        <Button
-          variant="contained"
-          component="label">
-          <input
-            multiple
-            type="file"
-          />
-        </Button>
+        <TextField
+          ref={fileUploadRef}
+          type="file"
+          id="image-upload"
+          name="pdf"
+          label="Upload PDF upto 2MB"
+          margin="normal"
+          className={classes.label}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputProps={{
+            accept: ".pdf,application/pdf",
+          }}
+          onChange={handleFileRead}
+          onClick={() => fileUploadRef.current.click()}
+        />
       </Box>
     </div>
   );

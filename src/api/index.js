@@ -42,6 +42,7 @@ export const getCategory = (subtype) =>
 export const getPlaceHolder = (Category) =>
   API.get(`activity/placeholder?category=${Category}`);
 export const getReportedActivity = () => API.get("activity/reportedactivity");
+export const deleteActivity = (activityId) => API.delete(`activity/deleteactivity?activityId=${activityId}`)
 export const getAdminReports = (month) =>
   API.get(`adminreporting/reports?month=${month}`);
 export const getPoints = () => API.get("adminreporting/points");
@@ -51,6 +52,7 @@ export const updateMember = (formData) =>
   API.post("member/updateprofile", formData);
 export const memberProfile = () => API.get("member/profile");
 export const getReportedNews = () => API.get("news/reportedNews");
+export const deleteReportedNews = (id) => API.delete(`news/deletenews?id=${id}`);
 export const newsReporting = (formData) =>
   API.post("news/newsReporting", formData);
 export const getClubMembers = () => API.get("member/clubmembers");

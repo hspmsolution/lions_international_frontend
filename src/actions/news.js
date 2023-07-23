@@ -1,6 +1,6 @@
 import {
     CLIENT_MSG,
-    REPORTED_NEWS,TOP_NEWS
+    REPORTED_NEWS,TOP_NEWS,DELETE_NEWS
   } from "../constants/actionTypes";
   import * as api from "../api";
 
@@ -41,3 +41,24 @@ export const newsReporting = (formData) => async (dispatch) => {
       console.log(error);
     }
   }
+
+
+  export const deleteReportedNews = (id) => async (dispatch) => {
+    try {
+      const { data ,status } = await api.deleteReportedNews(id);
+      dispatch({ type: DELETE_NEWS, payload: id});
+      dispatch({
+        type: CLIENT_MSG,
+        message: { info: data.successMessage, status },
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: CLIENT_MSG,
+        message: {
+          info: error.response.data?.message,
+          status: error.response.status,
+        },
+      });
+    }
+  };

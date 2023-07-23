@@ -5,7 +5,8 @@ import {
   ACTIVITY_TYPE,
   ACTIVITY_PLACEHOLDER,
   REPORTED_ACTIVITY,
-  CLUB_DIRECTORS
+  CLUB_DIRECTORS,
+  DELETE_ACTIVITY
 } from "../constants/actionTypes";
 import * as api from "../api";
 
@@ -88,6 +89,26 @@ export const getReportedActivity = () => async (dispatch) => {
     dispatch({ type: REPORTED_ACTIVITY, payload: data });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const deleteActivity = (activityId) => async (dispatch) => {
+  try {
+    const { data ,status } = await api.deleteActivity(activityId);
+    dispatch({ type: DELETE_ACTIVITY, payload: activityId});
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
   }
 };
 
