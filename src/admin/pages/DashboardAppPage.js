@@ -21,8 +21,9 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
   },
   paper: {
-    margin: "20px",
-    width: "200px",
+    margin: "1rem auto",
+    // width: "200px",
+    // width: { xs: "100%", sm: "200px", md: "200px", lg: "200px" },
     borderRadius: "50px 0",
   },
   box: {
@@ -50,21 +51,33 @@ export default function DashboardAppPage() {
       <Helmet>
         <title> Lions||Dashboard </title>
       </Helmet>
-      <Typography
-        variant="h4"
-        sx={{ mb: 5 }}>
-        Dashboard
-      </Typography>
+      <Box>
+        <Typography
+          variant="h4"
+          sx={{
+            mb: 5,
+            color: "#05B0E9",
+            textAlign: "center",
+            backgroundColor: "white",
+            width: "fit-content",
+            padding: "1rem 1.3rem",
+            margin: "auto",
+            borderRadius: "0.5rem",
+          }}>
+          Dashboard
+        </Typography>
+      </Box>
 
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-around",
-          // backgroundColor: "red",
+          flexDirection: { xs: "column", sm: "row", md: "row" },
         }}>
         <Paper
           elevation={3}
-          className={classes.paper}>
+          className={classes.paper}
+          sx={{ width: { xs: "80%", sm: "200px", md: "200px", lg: "200px" } }}>
           <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
             <AdminPanelSettings
               sx={{ width: "2em", height: "2em", color: "#05B0E9" }}
@@ -95,7 +108,8 @@ export default function DashboardAppPage() {
         </Paper>
         <Paper
           elevation={3}
-          className={classes.paper}>
+          className={classes.paper}
+          sx={{ width: { xs: "80%", sm: "200px", md: "200px", lg: "200px" } }}>
           <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
             {" "}
             <LocalActivity
@@ -127,7 +141,8 @@ export default function DashboardAppPage() {
         </Paper>
         <Paper
           elevation={3}
-          className={classes.paper}>
+          className={classes.paper}
+          sx={{ width: { xs: "80%", sm: "200px", md: "200px", lg: "200px" } }}>
           <Icon sx={{ width: "100%", height: "3em", paddingTop: "10px" }}>
             <Newspaper sx={{ width: "2em", height: "2em", color: "#05B0E9" }} />
           </Icon>
