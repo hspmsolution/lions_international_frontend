@@ -111,17 +111,17 @@ export default function Router() {
               />
             ),
           },
-          {
-            path: "/membership/downloadmemberdata",
-            element: isAdmin ? (
-              <MemberData />
-            ) : (
-              <Navigate
-                to="/loginReq"
-                replace
-              />
-            ),
-          },
+          // {
+          //   path: "/membership/downloadmemberdata",
+          //   element: isAdmin ? (
+          //     <MemberData />
+          //   ) : (
+          //     <Navigate
+          //       to="/loginReq"
+          //       replace
+          //     />
+          //   ),
+          // },
           { path: "/resources/news", element: <NewsResource /> },
           { path: "/resources/gallery", element: <GalleryR /> },
           { path: "/resources/globalpriorities", element: <Priorities /> },

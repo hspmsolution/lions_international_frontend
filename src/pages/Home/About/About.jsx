@@ -42,11 +42,11 @@ function About() {
                         through the web pages is made extremely simple with distinct information
                         about our organization and its administrative functioning and reporting.
                     </p>
-                    <div id="audio">
+                    {/* <div id="audio">
                         <h4>Listen To Our Theme Song <FontAwesomeIcon icon={faHeadphones} /></h4>
                         <Link onClick={setPlayTheme}><FontAwesomeIcon icon={faCirclePlay} className="playIcon" /></Link>
                         <Link onClick={setPlayTheme}><FontAwesomeIcon icon={faCirclePause} className="pauseIcon" /></Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

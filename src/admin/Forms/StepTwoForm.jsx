@@ -36,18 +36,12 @@ const StepTwoForm = () => {
 
   return (
     <div>
-      <Typography
-        variant="h5"
-        gutterBottom>
+      <Typography variant="h5" gutterBottom>
         Step Two
       </Typography>
 
-      <TableContainer
-        component={Paper}
-        className={classes.container}>
-        <Table
-          stickyHeader
-          aria-label="sticky table">
+      <TableContainer component={Paper} className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell>Sr no</TableCell>
@@ -61,7 +55,16 @@ const StepTwoForm = () => {
           <TableBody>
             {reports.map(
               (
-                { id, title, multiple, selected, count, srNo, adminstars },
+                {
+                  id,
+                  title,
+                  multiple,
+                  maxMultiply,
+                  selected,
+                  count,
+                  srNo,
+                  adminstars,
+                },
                 index
               ) =>
                 index + 1 > 35 &&
@@ -95,9 +98,13 @@ const StepTwoForm = () => {
                                     id,
                                   },
                                 });
-                            }}>
-                            <MenuItem value={count}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
+                            }}
+                          >
+                            {[...Array(maxMultiply).keys()].map((value) => (
+                              <MenuItem key={value} value={value + 1}>
+                                {value + 1}
+                              </MenuItem>
+                            ))}
                           </Select>
                         </FormControl>
                       )}
