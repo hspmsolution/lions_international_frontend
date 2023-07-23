@@ -23,7 +23,7 @@ import { tableCellClasses } from "@mui/material/TableCell";
 
 import { Edit, Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { getReportedNews } from "../../actions/news";
+import { getReportedNews, deleteReportedNews } from "../../actions/news";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -53,22 +53,21 @@ const News = () => {
   }, []);
 
   // Delete Dialog
+
   const [openDel, setOpenDel] = React.useState(false);
-  const handleClickOpenDel = () => {
+  const [selectId, setSelectId] = useState(0);
+  const handleClickOpenDel = (id) => {
     setOpenDel(true);
+    setSelectId(id);
   };
 
   const handleCloseDel = () => {
     setOpenDel(false);
+    setSelectId(0);
   };
   return (
-    <Box
-      bgcolor="white"
-      p={3}
-      borderRadius={4}>
-      <Typography
-        variant="h6"
-        gutterBottom>
+    <Box bgcolor="white" p={3} borderRadius={4}>
+      <Typography variant="h6" gutterBottom>
         Reported News
       </Typography>
       <TableContainer component={Paper}>
@@ -86,9 +85,7 @@ const News = () => {
           <TableBody>
             {reportedNews?.map((row, index) => (
               <StyledTableRow key={row.id}>
-                <StyledTableCell
-                  component="th"
-                  scope="row">
+                <StyledTableCell component="th" scope="row">
                   {index + 1}
                 </StyledTableCell>
                 <StyledTableCell>{row.newsTitle}</StyledTableCell>
@@ -101,7 +98,8 @@ const News = () => {
                     style={{
                       color: "inherit",
                       cursor: "pointer",
-                    }}>
+                    }}
+                  >
                     {row.newsPaperLink}
                   </a>
                 </StyledTableCell>
@@ -116,7 +114,10 @@ const News = () => {
                   <IconButton
                     aria-label="delete"
                     color="error"
-                    onClick={handleClickOpenDel}>
+                    onClick={() => {
+                      handleClickOpenDel(row.newsId);
+                    }}
+                  >
                     <Delete />
                   </IconButton>
                 </StyledTableCell>
@@ -131,7 +132,8 @@ const News = () => {
         open={openDel}
         onClose={handleCloseDel}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
+        aria-describedby="alert-dialog-description"
+      >
         <DialogTitle id="alert-dialog-title">Delete</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -141,9 +143,13 @@ const News = () => {
         <DialogActions>
           <Button onClick={handleCloseDel}>Cancel</Button>
           <Button
-            onClick={handleCloseDel}
+            onClick={() => {
+              dispatch(deleteReportedNews(selectId));
+              handleCloseDel();
+            }}
             autoFocus
-            color="error">
+            color="error"
+          >
             Delete
           </Button>
         </DialogActions>
