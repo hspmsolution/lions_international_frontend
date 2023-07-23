@@ -26,25 +26,24 @@ export default function ResourcesTable({ rows }) {
             <TableCell align="right">Download</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody sx={{ height: "350px", overflowY: "scroll" }}>
+        {/* <TableBody sx={{ height: "350px", overflowY: "scroll" }}>
           {rows?.map((row) => (
             <TableRow
               key={row.title}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+              <TableCell
+                component="th"
+                scope="row">
                 {row.title}
               </TableCell>
               <TableCell align="right">
-              <Link className={classes.clubName}>
-                <PictureAsPdfIcon
-                  onClick={() => handleClick(row.path)}
-                />
-              </Link>
+                <Link className={classes.clubName}>
+                  <PictureAsPdfIcon onClick={() => handleClick(row.path)} />
+                </Link>
               </TableCell>
             </TableRow>
           ))}
-        </TableBody>
+        </TableBody> */}
       </Table>
     </TableContainer>
   );
