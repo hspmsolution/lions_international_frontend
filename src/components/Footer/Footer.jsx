@@ -107,7 +107,9 @@ function Footer() {
             alignItems: "flex-start",
             width: "100%",
           }}>
-          <Box sx={{ width: "330px" }}>
+          <Box
+            sx={{ width: "330px" }}
+            className="footer-nav01">
             <nav
               aria-label="secondary mailbox folders"
               className="footer-nav01">
@@ -144,7 +146,9 @@ function Footer() {
             </nav>
           </Box>
 
-          <Box sx={{ width: { xs: "100%", md: "auto" } }}>
+          <Box
+            sx={{ width: { xs: "100%", md: "auto" } }}
+            className="footer-logo">
             <Avatar
               alt="Remy Sharp"
               src={"/assets/img/logo2.png"}
@@ -158,7 +162,9 @@ function Footer() {
               className="footer-logo"
             />
           </Box>
-          <Box sx={{ width: "330px" }}>
+          <Box
+            sx={{ width: "330px" }}
+            className="footer-nav02">
             <nav
               aria-label="secondary mailbox folders"
               className="footer-nav02">
@@ -176,7 +182,10 @@ function Footer() {
                       <ListItemIcon sx={{ minWidth: "30px", color: "white" }}>
                         {item.icon}
                       </ListItemIcon>
-                      <ListItemText primary={item.value} />
+                      <ListItemText
+                        primary={item.value}
+                        sx={{ padding: "0 auto" }}
+                      />
                     </ListItemButton>
                   </ListItem>
                 ))}

@@ -90,11 +90,20 @@ export default function RegionalView() {
         p={3}
         borderRadius={4}
         marginTop={10}>
-        <Typography
-          variant="h4"
-          className={classes.title}>
-          Regional View{" "}
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            variant="h4"
+            className={classes.title}>
+            Regional View{" "}
+          </Typography>
+
+          <Button
+            
+            variant="outlined">
+            Download All Activities
+          </Button>
+        </Box>
+
         <Typography
           variant="h5"
           className={classes.title}>

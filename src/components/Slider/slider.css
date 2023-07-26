@@ -47,7 +47,12 @@
 
 .imgSlide:before {
   background: #000;
-  background: linear-gradient(0deg, rgb(0 0 0 / 84%) 0, rgb(0 0 0 / 74%) 10%, rgba(0, 0, 0, 0) 63%);
+  background: linear-gradient(
+    0deg,
+    rgb(0 0 0 / 84%) 0,
+    rgb(0 0 0 / 74%) 10%,
+    rgba(0, 0, 0, 0) 63%
+  );
   position: absolute;
   top: 0;
   right: 0;
@@ -86,13 +91,20 @@
 
 @media only screen and (max-width: 480px) {
   .imgSlider > article > div:nth-child(2) {
-    top: 20% !important;
+    top: 30% !important;
+  }
+  .faTUqF {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    font-weight: bold !important;
+    line-height: 0.6rem !important;
+    
   }
 }
 
 @media only screen and (max-width: 280px) {
   .imgSlider > article > div:nth-child(2) {
-    top: 20% !important;
+    top: 30% !important;
   }
 }
 
@@ -172,10 +184,13 @@
   .head-dist-num {
     font-size: 1.3rem;
   }
+  .imgSlide {
+    margin-top: 5rem;
+  }
 }
 @media screen and (max-width: 480px) {
   .head-dist-h {
-    bottom: 0% !important;
+    bottom: -27% !important;
   }
 
   .head-lions-i,
@@ -186,7 +201,7 @@
 
 @media screen and (max-width: 280px) {
   .head-dist-h {
-    bottom: 0% !important;
+    bottom: -30% !important;
   }
 
   .head-lions-i,
