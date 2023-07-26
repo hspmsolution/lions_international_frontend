@@ -38,18 +38,26 @@ export default function Treasurer() {
     dispatch(clubStatement());
   }, []);
   return (
-    <Box bgcolor={"white"} p={3} borderRadius={4}>
-      <Grid xs={6} sm={3} spacing={3} className={classes.Grid}>
+    <Box
+      bgcolor={"white"}
+      p={3}
+      borderRadius={4}>
+      <Grid
+        xs={6}
+        sm={3}
+        spacing={3}
+        className={classes.Grid}>
         <PopupMenu type="withdraw" />
         <PopupMenu type="expense" />
         <PopupMenu type="deposite" />
       </Grid>
       <Paper
         elevation={3}
-        sx={{ marginLeft: "auto", padding: "10px", width: "20%" }}
-      >
+        sx={{ padding: "1rem", margin: "1rem auto", width: "fit-content" }}>
         <Typography>Total Amount Balance</Typography>
-        {statement.reduce((sum, state) => sum + parseInt(state.amount), 0)}
+        <Typography textAlign={"center"}>
+          {statement.reduce((sum, state) => sum + parseInt(state.amount), 0)}
+        </Typography>
       </Paper>
 
       <TableContainer style={{ marginTop: "16px" }}>
@@ -68,7 +76,10 @@ export default function Treasurer() {
           <TableBody>
             {statement.map((row, index) => (
               <TableRow key={row.id}>
-                <TableCell align="center" component="th" scope="row">
+                <TableCell
+                  align="center"
+                  component="th"
+                  scope="row">
                   {index + 1}
                 </TableCell>
                 <TableCell align="left">{row.purpose}</TableCell>

@@ -48,8 +48,7 @@ export default function ProfileCard(props) {
               top: 0,
               backgroundImage:
                 "linear-gradient(360deg, hsla(176, 82%, 82%, 1) 0%, hsla(202, 100%, 54%, 1) 100%)",
-            }}
-          >
+            }}>
             {/* <img
               src="https://images.pexels.com/photos/1025469/pexels-photo-1025469.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="avatar background"
@@ -60,8 +59,7 @@ export default function ProfileCard(props) {
             className={classes.avatar}
             alt={fullName}
             src={`${API_URL + image}`}
-            sx={{ width: "150px", height: "150px", top: "35%" }}
-          >
+            sx={{ width: "150px", height: "150px", top: "35%" }}>
             {fullName?.charAt(0)}
           </Avatar>
 
@@ -69,8 +67,7 @@ export default function ProfileCard(props) {
             variant="h5"
             // color="text.secondary"
             component="div"
-            className={classes.fullname}
-          >
+            className={classes.fullname}>
             {fullName}
           </Typography>
         </div>
@@ -83,16 +80,13 @@ export default function ProfileCard(props) {
               // width: 270,
             },
             width: "100%",
-          }}
-        >
+          }}>
           <Paper
             elevation={0}
-            sx={{ width: "100%" }}
-          >
+            sx={{ width: "100%" }}>
             <List
               sx={{ padding: "0" }}
-              className="contentList"
-            >
+              className="contentList">
               <ListItem sx={{ py: 0 }}>
                 <ListItemIcon sx={{ minWidth: "35px" }}>
                   <PersonOutlineIcon sx={{ color: "#15AAFF" }} />
@@ -124,14 +118,13 @@ export default function ProfileCard(props) {
 
               <ListItem
                 disablePadding
-                sx={{ justifyContent: "center", pt: "1.5rem", pb: "0rem" }}
-              >
+                sx={{ justifyContent: "center", pt: "1.5rem", pb: "0rem" }}>
                 <Box className={classes.socialIcons}>
                   {socialIcos.map((item, index) => (
                     <Link
                       to={item.link}
                       key={index}
-                    >
+                      target="_blank">
                       {item.icon}
                     </Link>
                   ))}

@@ -19,7 +19,11 @@ import SelectMonth from "../Forms/SelectMonth";
 import { Star } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { addReport, getPoints } from "../../actions/adminReports";
-import { ADMIN_REPORTS, CLIENT_MSG,ADMIN_PDF } from "../../constants/actionTypes";
+import {
+  ADMIN_REPORTS,
+  CLIENT_MSG,
+  ADMIN_PDF,
+} from "../../constants/actionTypes";
 
 const useStyles = makeStyles({
   root: {
@@ -37,10 +41,10 @@ const useStyles = makeStyles({
       display: "none",
     },
     "& .MuiStepIcon-root": {
-      fontSize: "1.5rem",
+      fontSize: "2rem",
     },
     "& .MuiStepLabel-label": {
-      fontSize: "1.2rem",
+      fontSize: "2rem",
       fontWeight: "500",
       color: "white",
     },
@@ -77,7 +81,7 @@ const useStyles = makeStyles({
   },
 });
 
-const steps = ["Step 1", "Step 2", "Step 3", "Step 4"];
+const steps = ["01", "02", "03", "04"];
 
 export default function FormWizard() {
   const classes = useStyles();
@@ -85,7 +89,9 @@ export default function FormWizard() {
   const adminPoints = useSelector((state) => state.adminReporting.adminPoints);
   const reports = useSelector((state) => state.adminReporting.adminReports);
   const reportPdf = useSelector((state) => state.adminReporting.reportsPdf);
-  const selectedMonth =  useSelector((state) => state.adminReporting.selectedMonth);
+  const selectedMonth = useSelector(
+    (state) => state.adminReporting.selectedMonth
+  );
   const [activeStep, setActiveStep] = useState(0);
 
   // Go to next step
@@ -128,7 +134,7 @@ export default function FormWizard() {
       return;
     }
 
-    if (reportPdf==="") {
+    if (reportPdf === "") {
       dispatch({
         type: CLIENT_MSG,
         message: {
@@ -140,14 +146,14 @@ export default function FormWizard() {
     }
 
     const formData = new FormData();
-    formData.append('pdf', reportPdf);
-    formData.append('data',JSON.stringify(selectedReports));
-    formData.append('month',JSON.stringify(selectedMonth));
+    formData.append("pdf", reportPdf);
+    formData.append("data", JSON.stringify(selectedReports));
+    formData.append("month", JSON.stringify(selectedMonth));
     dispatch(addReport(formData));
 
     // reset the value of form
     dispatch({ type: ADMIN_REPORTS, payload: reports });
-    dispatch({type:ADMIN_PDF,payload:""})
+    dispatch({ type: ADMIN_PDF, payload: "" });
 
     setActiveStep(0);
   };
@@ -206,11 +212,12 @@ export default function FormWizard() {
           activeStep={activeStep}>
           {steps.map((step, index) => (
             <Step
-              key={step}
-              className={
-                activeStep === index ? classes.activeStep : classes.inactiveStep
-              }>
-              <StepLabel>{step}</StepLabel>
+              key={index}
+              // className={
+              //   activeStep === index ? classes.activeStep : classes.inactiveStep
+              // }
+            >
+              <StepLabel></StepLabel>
             </Step>
           ))}
         </Stepper>

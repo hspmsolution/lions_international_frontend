@@ -85,7 +85,7 @@ function Team() {
         backgroundAttachment: "fixed",
         pb: "2rem",
       }}>
-      <Container sx={{padding:'0'}}>
+      <Container sx={{ padding: "0" }}>
         <Typography
           variant="h2"
           className="team-h">
@@ -104,6 +104,7 @@ function Team() {
                   <img
                     alt=""
                     src={member.src}
+                    loading="lazy"
                   />
                 </div>
                 <div className="caption">

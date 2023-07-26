@@ -10,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import {Box,Pagination} from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import useStyles from "./Styles";
@@ -38,8 +38,7 @@ function ResponsiveDialog({
   category,
   place,
   clubId,
-  type
-
+  type,
 }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -64,8 +63,7 @@ function ResponsiveDialog({
     <div>
       <Button
         variant="outlined"
-        onClick={handleClickOpen}
-      >
+        onClick={handleClickOpen}>
         Open Activity Details
       </Button>
       <Dialog
@@ -75,8 +73,7 @@ function ResponsiveDialog({
         aria-labelledby="responsive-dialog-title"
         maxWidth={"none"}
         sx={{ margin: "auto" }}
-        className={classes.dialog}
-      >
+        className={classes.dialog}>
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
             ? "Past Activities by Club"
@@ -91,8 +88,7 @@ function ResponsiveDialog({
               margin: "auto",
               width: "100%",
             }}
-            className={classes.dialogPaper}
-          >
+            className={classes.dialogPaper}>
             <img
               src={API_URL + bgImage}
               alt="helping"
@@ -102,57 +98,50 @@ function ResponsiveDialog({
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableBody>
-              <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity ID:</strong>
                   </TableCell>
                   <TableCell>{activityId}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity Title:</strong>
                   </TableCell>
                   <TableCell>{title}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity Date:</strong>
                   </TableCell>
                   <TableCell>{date?.slice(0, 10)}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity Type:</strong>
                   </TableCell>
                   <TableCell>{activityType}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity Category:</strong>
                   </TableCell>
                   <TableCell>{category}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong>Activity Place:</strong>
                   </TableCell>
                   <TableCell>{place}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
                   <TableCell>
                     <strong> Activity Description:</strong>
                   </TableCell>
@@ -165,15 +154,13 @@ function ResponsiveDialog({
         <DialogActions>
           <Button
             autoFocus
-            onClick={handleClose}
-          >
+            onClick={handleClose}>
             Close
           </Button>
           {type === "upcoming" && (
             <Button
               onClick={handleClick}
-              autoFocus
-            >
+              autoFocus>
               Register
             </Button>
           )}
@@ -184,9 +171,20 @@ function ResponsiveDialog({
   );
 }
 
-function BasicCard({ title, bgImage, date,activityType, description, activityId,category,place ,clubId,type}) {
+function BasicCard({
+  title,
+  bgImage,
+  date,
+  activityType,
+  description,
+  activityId,
+  category,
+  place,
+  clubId,
+  type,
+}) {
   const classes = useStyles();
- console.log(activityType)
+  console.log(activityType);
   return (
     <Card sx={{ minWidth: 275, maxWidth: 520, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
@@ -195,8 +193,7 @@ function BasicCard({ title, bgImage, date,activityType, description, activityId,
             width: "100%",
             height: "16rem",
             mb: { xs: "1.5rem", lg: "4rem" },
-          }}
-        >
+          }}>
           {/* <img
             src={API_URL + bgImage}
             style={{ height: "100%", width: "100%", objectFit: "contain" }}
@@ -233,7 +230,7 @@ export default function Events() {
   const classes = useStyles();
 
   const totalPages = useSelector(
-    (state) => state.client.events?.pagination?.totalPages|| 1
+    (state) => state.client.events?.pagination?.totalPages || 1
   );
   const currentPage = useSelector(
     (state) => state.client.events?.pagination?.page || 1
@@ -259,41 +256,40 @@ export default function Events() {
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
           pb: "2rem",
-        }}
-      >
+        }}>
         <CustomizedBreadcrumbs label={"Activities"} />
         <Container
           className={classes.activityContainer}
-          sx={{ margin: "3rem auto" }}
-        >
+          sx={{ margin: "3rem auto" }}>
           <Typography
             variant="h4"
-            sx={{ textAlign: "center", marginBottom: "2rem" }}
-          >
+            sx={{ textAlign: "center", marginBottom: "2rem" }}>
             Upcoming Activities
           </Typography>
 
           <Grid
             container
-            spacing={2}
-          >
+            spacing={2}>
             <Grid
               item
-              xs={12}
-            >
+              xs={12}>
               <Box
                 sx={{
                   p: 2,
                   display: "grid",
                   gridTemplateColumns: { md: "4fr 4fr 4fr" },
                   gap: 2,
-                }}
-              >
+                }}>
                 {activities?.upcoming?.length === 0 ? (
                   <Typography
                     variant="h6"
-                    color="black"
-                  >
+                    color="white"
+                    sx={{
+                      backgroundColor: "	#50C878",
+                      textAlign: "center",
+                      borderRadius: "0.5rem",
+                      padding: "0.5rem 0",
+                    }}>
                     No Upcoming Activity Found
                   </Typography>
                 ) : (
@@ -321,32 +317,27 @@ export default function Events() {
         <Container sx={{ margin: "3rem auto" }}>
           <Typography
             variant="h4"
-            sx={{ textAlign: "center", marginBottom: "2rem" }}
-          >
+            sx={{ textAlign: "center", marginBottom: "2rem" }}>
             Past Activities
           </Typography>
 
           <Grid
             container
-            spacing={2}
-          >
+            spacing={2}>
             <Grid
               item
-              xs={12}
-            >
+              xs={12}>
               <Box
                 sx={{
                   // p: 2,
                   display: "grid",
                   gridTemplateColumns: { md: "4fr 4fr 4fr" },
-                  gap:'2rem',
-                }}
-              >
+                  gap: "2rem",
+                }}>
                 {activities?.past?.length === 0 ? (
                   <Typography
                     variant="h6"
-                    color="black"
-                  >
+                    color="black">
                     No Past Activity Found
                   </Typography>
                 ) : (

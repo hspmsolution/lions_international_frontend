@@ -29,4 +29,7 @@ export default makeStyles((theme) => ({
     borderRadius: "1rem",
     color: "red",
   },
+  description: {
+    minHeight: "1.5rem",
+  },
 }));

@@ -233,7 +233,7 @@ ul.list-links li {
     }
 
     .footer-logo{
-        order: 1;
+        order: 1 !important;
     }
     .footer-nav01{
         order: 2;

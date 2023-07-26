@@ -11,13 +11,15 @@ import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   heading: {
-    width: "25%",
+    width: "fit-content",
     borderBottom: "2px solid #B4880B",
     color: "#003895",
+    "@media (max-width: 600px)": { width: "100%", textAlign: "center" },
   },
   grid: {
     marginTop: "0px",
     width: "80%",
+    "@media (max-width: 600px)": { width: "100%" },
   },
   title: {
     display: "flex",
@@ -28,6 +30,11 @@ const useStyles = makeStyles({
     alignItems: "flex-end",
     color: "#003895",
     fontSize: "0.6em",
+    "@media (max-width: 600px)": {
+      alignContent: "flex-start",
+      justifyContent: "flex-start",
+      alignItems: "flex-start",
+    },
   },
   label: {
     "& .css-1fi1ijh-MuiFormLabel-root-MuiInputLabel-root": {
@@ -35,7 +42,7 @@ const useStyles = makeStyles({
     },
   },
   btn: {
-    marginTop: "15px",
+    margin: "1rem",
     "& .css-12vebo6-MuiButtonBase-root-MuiButton-root": {
       borderRadius: "0px 8px 0px 8px",
 
@@ -134,15 +141,15 @@ export default function NewsReporting() {
             className={classes.grid}>
             <Grid
               item
-              xs={6}
-              sm={6}
+              xs={12}
+              lg={6}
               className={classes.title}>
               <Typography>Title Of News</Typography>
             </Grid>
             <Grid
               item
               xs={12}
-              sm={6}>
+              lg={6}>
               <TextField
                 required
                 id="newsTitle"
@@ -165,15 +172,15 @@ export default function NewsReporting() {
             className={classes.grid}>
             <Grid
               item
-              xs={6}
-              sm={6}
+              xs={12}
+              lg={6}
               className={classes.title}>
               <Typography>Date Of News</Typography>
             </Grid>
             <Grid
               item
               xs={12}
-              sm={6}>
+              lg={6}>
               <TextField
                 required
                 id="date"
@@ -198,15 +205,15 @@ export default function NewsReporting() {
             className={classes.grid}>
             <Grid
               item
-              xs={6}
-              sm={6}
+              xs={12}
+              lg={6}
               className={classes.title}>
               <Typography>News Paper Link</Typography>
             </Grid>
             <Grid
               item
               xs={12}
-              sm={6}>
+              lg={6}>
               <TextField
                 id="newsPaperLink"
                 name="newsPaperLink"
@@ -227,15 +234,15 @@ export default function NewsReporting() {
             className={classes.grid}>
             <Grid
               item
-              xs={6}
-              sm={6}
+              xs={12}
+              lg={6}
               className={classes.title}>
               <Typography>Description of News</Typography>
             </Grid>
             <Grid
               item
               xs={12}
-              sm={6}>
+              lg={6}>
               <TextField
                 id="description"
                 name="description"
@@ -257,15 +264,15 @@ export default function NewsReporting() {
             className={classes.grid}>
             <Grid
               item
-              xs={6}
-              sm={6}
+              xs={12}
+              lg={6}
               className={classes.title}>
               <Typography>Phographs of News</Typography>
             </Grid>
             <Grid
               item
               xs={12}
-              sm={6}>
+              lg={6}>
               <TextField
                 ref={fileUploadRef}
                 type="file"
@@ -289,16 +296,16 @@ export default function NewsReporting() {
                   src={newsData.image.preview}
                   width="100"
                   height="100"
+                  alt="news"
                 />
               )}
             </Grid>
           </Grid>
           <Grid
             container
-            justifyContent="center">
-            <Grid
-              item
-              xs={2}>
+            justifyContent="center"
+            gap={4}>
+            <Grid item>
               <Button
                 type="submit"
                 variant="contained"
@@ -306,10 +313,8 @@ export default function NewsReporting() {
                 Submit
               </Button>
             </Grid>
-            <Grid
-              item
-              xs={2}>
-              <Box marginLeft={1}>
+            <Grid item>
+              <Box>
                 <Button
                   type="button"
                   variant="outlined"

@@ -3,7 +3,6 @@
 
 .about-cnr {
   margin-top: 0;
-  /* background-color: #232a34; */
   background: rgb(0, 0, 0);
   background: linear-gradient(
     180deg,
@@ -22,7 +21,6 @@
   position: relative;
   width: 100%;
   min-height: 1px;
-  /*padding: auto;*/
   display: flex;
   align-items: center;
   font-family: sans-serif;
@@ -110,9 +108,27 @@
   transform: scale(3);
 }
 
+@media only screen and (max-width: 1024px) {
+  .about-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .about-cnr {
+    padding: 2rem;
+  }
+
+  .about-card h1 {
+    font-size: 30px;
+    white-space: normal;
+  }
+}
 @media screen and (max-width: 600px) {
   .about-cnr {
-    padding: 0.8rem !important;
+    padding: 2rem 0.8rem 0.8rem !important;
+    margin-top: 4rem;
   }
 
   .about-dist {
@@ -134,24 +150,5 @@
   }
   #audio h4 {
     margin: 0.5rem 0;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .about-cnr {
-    padding: 2rem;
-  }
-
-  .about-card h1 {
-    font-size: 30px;
-    white-space: normal;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .about-card {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }

@@ -123,7 +123,7 @@ const Login = () => {
             border: "1px solid rgba( 255, 255, 255, 0.18 )",
             maxWidth: "758px",
             margin: "auto",
-            padding: "77px 99px 87px",
+            padding: { xs: "3rem 0.5rem", sm: "3rem 3rem", lg: "3rem 5rem" },
             color: "#fff",
           }}>
           <Container maxWidth="sm">
