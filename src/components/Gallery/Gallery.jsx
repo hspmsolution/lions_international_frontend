@@ -9,6 +9,7 @@ import { API_URL } from "../../api";
 import CommonCard from "../CommonCard/CommonCard";
 import useStyles from "./GalleryStyles";
 import { Paper } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export default function Gallery(props) {
   const classes = useStyles();
@@ -16,6 +17,13 @@ export default function Gallery(props) {
   const [photoIndex, setPhotoIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
   return (
     <>
       <Box
@@ -23,8 +31,7 @@ export default function Gallery(props) {
           flexGrow: 1,
           padding: "1rem",
           textAlign: "center",
-        }}
-      >
+        }}>
         <Grid
           container
           spacing={5}
@@ -32,8 +39,7 @@ export default function Gallery(props) {
             display: "flex",
             justifyContent: "center",
             alignContent: "center",
-          }}
-        >
+          }}>
           {images.map((item, index) => (
             <>
               <Grid
@@ -46,18 +52,29 @@ export default function Gallery(props) {
                   setIsOpen(true);
                   setPhotoIndex(index);
                 }}
-                key={index}
-              >
+                key={index}>
                 <Paper
                   elevation={3}
-                  sx={{ cursor: "pointer" }}
-                >
-                  <CommonCard
+                  sx={{ cursor: "pointer" }}>
+                  {/* <CommonCard
                     image={`${API_URL + item.image}`}
                     heading={item.title}
                     description={item.description}
                     date={item.date}
-                  />
+                  /> */}
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Item sx={{ position: "relative" }}>
+                      <img
+                        src={`${API_URL + item.image}`}
+                        srcSet={`${API_URL + item.image}`}
+                        alt="gallery"
+                        className={classes.activityImage}
+                      />
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                      <p className={classes.activityDate}>{item.date}</p>
+                    </Item>
+                  </Box>
                 </Paper>
               </Grid>
             </>

@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import { API_URL } from "../../../api";
 import useStyles from "./Styles";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function Activities() {
   const classes = useStyles();
@@ -53,11 +56,46 @@ export default function Activities() {
                     xs={12}
                     sm={6}>
                     <Item sx={{ position: "relative" }}>
-                      <img
+                      {/* <img
                         src={`${API_URL + item?.image_path}`}
                         className={classes.activityImage}
                         alt=""
-                      />
+                      /> */}
+                      <div className="slider02">
+                        <Slider
+                          autoplay={true}
+                          infinite={true}
+                          dots={true}
+                          speed={500}
+                          slidesToShow={1}
+                          slidesToScroll={1}
+                          arrows={false}>
+
+                            {/* Map Images Here */}
+                          <div>
+                            <img
+                              src="https://images3.alphacoders.com/102/102727.jpg"
+                              className={classes.activityImage}
+                              alt=""
+                            />
+                          </div>{" "}
+                          <div>
+                            <img
+                              src="https://images3.alphacoders.com/139/13965.jpg"
+                              className={classes.activityImage}
+                              alt=""
+                            />
+                          </div>{" "}
+                          <div>
+                            <img
+                              src="https://images3.alphacoders.com/914/91469.jpg"
+                              className={classes.activityImage}
+                              alt=""
+                            />
+                          </div>{" "}
+                        </Slider>
+                      </div>
+
                       <h3>{item.heading}</h3>
                       <p className={classes.description}>{item.description}</p>
                       <p className={classes.activityDate}>

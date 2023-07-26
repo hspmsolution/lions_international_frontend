@@ -3,6 +3,9 @@ import { Box, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import useStyles from "./CardStyle";
 import LinkIcon from "@mui/icons-material/Link";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function CommonCard(props) {
   const classes = useStyles();
@@ -21,12 +24,45 @@ export default function CommonCard(props) {
     <>
       <Box sx={{ flexGrow: 1 }}>
         <Item sx={{ position: "relative" }}>
-          <img
+          {/* <img
             src={props.image}
             srcSet={props.srcSet}
             alt={props.alt}
             className={classes.activityImage}
-          />
+          /> */}{" "}
+          <div className="slider02">
+            <Slider
+              autoplay={true}
+              infinite={true}
+              dots={true}
+              speed={500}
+              slidesToShow={1}
+              slidesToScroll={1}
+              arrows={false}>
+              {/* Map Images Here */}
+              <div>
+                <img
+                  src="https://images3.alphacoders.com/102/102727.jpg"
+                  className={classes.activityImage}
+                  alt=""
+                />
+              </div>{" "}
+              <div>
+                <img
+                  src="https://images3.alphacoders.com/139/13965.jpg"
+                  className={classes.activityImage}
+                  alt=""
+                />
+              </div>{" "}
+              <div>
+                <img
+                  src="https://images3.alphacoders.com/914/91469.jpg"
+                  className={classes.activityImage}
+                  alt=""
+                />
+              </div>{" "}
+            </Slider>
+          </div>
           <h3>{props.heading}</h3>
           <p>{props.description}</p>
           <p className={classes.activityDate}>{props.date}</p>

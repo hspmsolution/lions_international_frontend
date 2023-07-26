@@ -27,6 +27,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 function ResponsiveDialog({
   activityType,
@@ -89,11 +92,44 @@ function ResponsiveDialog({
               width: "100%",
             }}
             className={classes.dialogPaper}>
-            <img
+            {/* <img
               src={API_URL + bgImage}
               alt="helping"
               style={{ width: "900px", height: "100%" }}
-            />
+            /> */}
+            <div className="slider02">
+              <Slider
+                autoplay={false}
+                infinite={true}
+                dots={true}
+                speed={500}
+                slidesToShow={1}
+                slidesToScroll={1}
+                arrows={false}>
+                {/* Map Images Here */}
+                <div>
+                  <img
+                    src="https://images3.alphacoders.com/102/102727.jpg"
+                    style={{ width: "900px", maxHeight: "100%" }}
+                    alt=""
+                  />
+                </div>{" "}
+                <div>
+                  <img
+                    src="https://images3.alphacoders.com/139/13965.jpg"
+                    style={{ width: "900px", maxHeight: "100%" }}
+                    alt=""
+                  />
+                </div>{" "}
+                <div>
+                  <img
+                    src="https://images3.alphacoders.com/914/91469.jpg"
+                    style={{ width: "900px", maxHeight: "100%" }}
+                    alt=""
+                  />
+                </div>{" "}
+              </Slider>
+            </div>
           </Paper>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
@@ -186,7 +222,7 @@ function BasicCard({
   const classes = useStyles();
   console.log(activityType);
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 520, margin: "auto" }}>
+    <Card sx={{ minWidth: 275, maxWidth: 350, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
         <Box
           sx={{

@@ -70,6 +70,22 @@
   font-size: 50px !important;
 }
 
+/* Slider 02 */
+
+.slider02 {
+}
+.slider02 .slick-active {
+  padding: 0 !important;
+}
+
+.slider02 .slick-slide:not(.slick-active) {
+  margin: 0 !important;
+}
+
+.slider02 .slick-dots {
+  bottom: 15px !important;
+}
+
 @media screen and (max-width: 600px) {
   .carouselContainer {
     padding: 1.7rem;
