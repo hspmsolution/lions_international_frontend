@@ -56,11 +56,6 @@ export default function Activities() {
                     xs={12}
                     sm={6}>
                     <Item sx={{ position: "relative" }}>
-                      {/* <img
-                        src={`${API_URL + item?.image_path}`}
-                        className={classes.activityImage}
-                        alt=""
-                      /> */}
                       <div className="slider02">
                         <Slider
                           autoplay={true}
@@ -70,29 +65,20 @@ export default function Activities() {
                           slidesToShow={1}
                           slidesToScroll={1}
                           arrows={false}>
-
-                            {/* Map Images Here */}
                           <div>
                             <img
-                              src="https://images3.alphacoders.com/102/102727.jpg"
+                              src={`${API_URL + item?.image_path}`}
                               className={classes.activityImage}
-                              alt=""
+                              alt="slider"
                             />
-                          </div>{" "}
+                          </div>
                           <div>
                             <img
-                              src="https://images3.alphacoders.com/139/13965.jpg"
+                              src={`${API_URL + item?.image_path2}`}
                               className={classes.activityImage}
-                              alt=""
+                              alt="slider"
                             />
-                          </div>{" "}
-                          <div>
-                            <img
-                              src="https://images3.alphacoders.com/914/91469.jpg"
-                              className={classes.activityImage}
-                              alt=""
-                            />
-                          </div>{" "}
+                          </div>
                         </Slider>
                       </div>
 

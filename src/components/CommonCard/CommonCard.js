@@ -39,28 +39,20 @@ export default function CommonCard(props) {
               slidesToShow={1}
               slidesToScroll={1}
               arrows={false}>
-              {/* Map Images Here */}
               <div>
                 <img
-                  src="https://images3.alphacoders.com/102/102727.jpg"
+                  src={props.image}
                   className={classes.activityImage}
-                  alt=""
+                  alt="slider"
                 />
-              </div>{" "}
+              </div>
               <div>
                 <img
-                  src="https://images3.alphacoders.com/139/13965.jpg"
+                  src={props.image2}
                   className={classes.activityImage}
-                  alt=""
+                  alt="slider"
                 />
-              </div>{" "}
-              <div>
-                <img
-                  src="https://images3.alphacoders.com/914/91469.jpg"
-                  className={classes.activityImage}
-                  alt=""
-                />
-              </div>{" "}
+              </div>
             </Slider>
           </div>
           <h3>{props.heading}</h3>

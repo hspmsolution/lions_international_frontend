@@ -36,6 +36,7 @@ function ResponsiveDialog({
   title,
   date,
   bgImage,
+  bgImage2,
   description,
   activityId,
   category,
@@ -99,35 +100,27 @@ function ResponsiveDialog({
             /> */}
             <div className="slider02">
               <Slider
-                autoplay={false}
+                autoplay={true}
                 infinite={true}
                 dots={true}
                 speed={500}
                 slidesToShow={1}
                 slidesToScroll={1}
                 arrows={false}>
-                {/* Map Images Here */}
                 <div>
                   <img
-                    src="https://images3.alphacoders.com/102/102727.jpg"
-                    style={{ width: "900px", maxHeight: "100%" }}
-                    alt=""
+                    src={API_URL + bgImage}
+                    alt="slider"
+                    style={{ width: "900px", height: "100%" }}
                   />
-                </div>{" "}
+                </div>
                 <div>
                   <img
-                    src="https://images3.alphacoders.com/139/13965.jpg"
-                    style={{ width: "900px", maxHeight: "100%" }}
-                    alt=""
+                    src={API_URL + bgImage2}
+                    alt="slider"
+                    style={{ width: "900px", height: "100%" }}
                   />
-                </div>{" "}
-                <div>
-                  <img
-                    src="https://images3.alphacoders.com/914/91469.jpg"
-                    style={{ width: "900px", maxHeight: "100%" }}
-                    alt=""
-                  />
-                </div>{" "}
+                </div>
               </Slider>
             </div>
           </Paper>
@@ -210,6 +203,7 @@ function ResponsiveDialog({
 function BasicCard({
   title,
   bgImage,
+  bgImage2,
   date,
   activityType,
   description,
@@ -237,6 +231,7 @@ function BasicCard({
 
           <CommonCard
             image={API_URL + bgImage}
+            image2={API_URL + bgImage2}
             date={date?.slice(0, 10)}
           />
         </Box>
@@ -246,6 +241,7 @@ function BasicCard({
           title={title}
           date={date}
           bgImage={bgImage}
+          bgImage2={bgImage2}
           description={description}
           activityId={activityId}
           category={category}
@@ -334,6 +330,7 @@ export default function Events() {
                       <BasicCard
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
+                        bgImage2={filter.image_path2}
                         date={filter.date}
                         activityType={filter.activityType}
                         description={filter.description}
