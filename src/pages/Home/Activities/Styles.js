@@ -30,6 +30,15 @@ export default makeStyles((theme) => ({
     color: "red",
   },
   description: {
-    minHeight: "1.5rem",
+    height: "55px",
+    lineHeight: "1.3",
+    padding: "0 0.2rem",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    textAlign: "left",
+    whiteSpace: "normal",
+    display: "-webkit-box",
+    "-webkit-line-clamp": 3,
+    "-webkit-box-orient": "vertical",
   },
 }));

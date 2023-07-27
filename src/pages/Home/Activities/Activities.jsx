@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import { API_URL } from "../../../api";
 import useStyles from "./Styles";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function Activities() {
   const classes = useStyles();
@@ -53,11 +56,32 @@ export default function Activities() {
                     xs={12}
                     sm={6}>
                     <Item sx={{ position: "relative" }}>
-                      <img
-                        src={`${API_URL + item?.image_path}`}
-                        className={classes.activityImage}
-                        alt=""
-                      />
+                      <div className="slider02">
+                        <Slider
+                          autoplay={true}
+                          infinite={true}
+                          dots={true}
+                          speed={500}
+                          slidesToShow={1}
+                          slidesToScroll={1}
+                          arrows={false}>
+                          <div>
+                            <img
+                              src={`${API_URL + item?.image_path}`}
+                              className={classes.activityImage}
+                              alt="slider"
+                            />
+                          </div>
+                          <div>
+                            <img
+                              src={`${API_URL + item?.image_path2}`}
+                              className={classes.activityImage}
+                              alt="slider"
+                            />
+                          </div>
+                        </Slider>
+                      </div>
+
                       <h3>{item.heading}</h3>
                       <p className={classes.description}>{item.description}</p>
                       <p className={classes.activityDate}>

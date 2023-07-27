@@ -27,12 +27,16 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 function ResponsiveDialog({
   activityType,
   title,
   date,
   bgImage,
+  bgImage2,
   description,
   activityId,
   category,
@@ -89,11 +93,36 @@ function ResponsiveDialog({
               width: "100%",
             }}
             className={classes.dialogPaper}>
-            <img
+            {/* <img
               src={API_URL + bgImage}
               alt="helping"
               style={{ width: "900px", height: "100%" }}
-            />
+            /> */}
+            <div className="slider02">
+              <Slider
+                autoplay={true}
+                infinite={true}
+                dots={true}
+                speed={500}
+                slidesToShow={1}
+                slidesToScroll={1}
+                arrows={false}>
+                <div>
+                  <img
+                    src={API_URL + bgImage}
+                    alt="slider"
+                    style={{ width: "900px", height: "100%" }}
+                  />
+                </div>
+                <div>
+                  <img
+                    src={API_URL + bgImage2}
+                    alt="slider"
+                    style={{ width: "900px", height: "100%" }}
+                  />
+                </div>
+              </Slider>
+            </div>
           </Paper>
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
@@ -174,6 +203,7 @@ function ResponsiveDialog({
 function BasicCard({
   title,
   bgImage,
+  bgImage2,
   date,
   activityType,
   description,
@@ -186,7 +216,7 @@ function BasicCard({
   const classes = useStyles();
   console.log(activityType);
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 520, margin: "auto" }}>
+    <Card sx={{ minWidth: 275, maxWidth: 350, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
         <Box
           sx={{
@@ -201,6 +231,7 @@ function BasicCard({
 
           <CommonCard
             image={API_URL + bgImage}
+            image2={API_URL + bgImage2}
             date={date?.slice(0, 10)}
           />
         </Box>
@@ -210,6 +241,7 @@ function BasicCard({
           title={title}
           date={date}
           bgImage={bgImage}
+          bgImage2={bgImage2}
           description={description}
           activityId={activityId}
           category={category}
@@ -298,6 +330,7 @@ export default function Events() {
                       <BasicCard
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
+                        bgImage2={filter.image_path2}
                         date={filter.date}
                         activityType={filter.activityType}
                         description={filter.description}
