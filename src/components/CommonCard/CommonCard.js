@@ -6,6 +6,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { API_URL } from "../../api";
 
 export default function CommonCard(props) {
   const classes = useStyles();
@@ -38,21 +39,24 @@ export default function CommonCard(props) {
               speed={500}
               slidesToShow={1}
               slidesToScroll={1}
-              arrows={false}>
+              arrows={false}
+            >
               <div>
                 <img
-                  src={props.image}
+                  src={API_URL + props.image}
                   className={classes.activityImage}
                   alt="slider"
                 />
               </div>
-              <div>
-                <img
-                  src={props.image2}
-                  className={classes.activityImage}
-                  alt="slider"
-                />
-              </div>
+              {props.image2 && (
+                <div>
+                  <img
+                    src={API_URL + props.image2}
+                    className={classes.activityImage}
+                    alt="slider"
+                  />
+                </div>
+              )}
             </Slider>
           </div>
           <h3>{props.heading}</h3>
@@ -63,7 +67,8 @@ export default function CommonCard(props) {
               href={`${props.newsPaperLink}`}
               rel="noreferrer"
               target="_blank"
-              style={{ color: "#000" }}>
+              style={{ color: "#000" }}
+            >
               <LinkIcon />
             </a>
           ) : (

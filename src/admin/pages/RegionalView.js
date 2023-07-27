@@ -22,8 +22,11 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
-import { getRegion } from "../../actions/clubs";
-import { getReportedActivity } from "../../actions/activity";
+import { getRegion, regionActivity } from "../../actions/clubs";
+import {
+  downloadClubActivity,
+  getReportedActivity,
+} from "../../actions/activity";
 
 const useStyles = makeStyles({
   title: {
@@ -60,7 +63,8 @@ export default function RegionalView() {
   // Dialog
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (clubId) => {
+    dispatch(getReportedActivity(clubId));
     setOpen(true);
   };
 
@@ -79,46 +83,36 @@ export default function RegionalView() {
   const filteredRows = reportedActivity.filter((row) =>
     row.activityType.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  useEffect(() => {
-    dispatch(getReportedActivity());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getReportedActivity());
+  // }, []);
 
   return (
     <>
-      <Box
-        bgcolor="white"
-        p={3}
-        borderRadius={4}
-        marginTop={10}>
+      <Box bgcolor="white" p={3} borderRadius={4} marginTop={10}>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            variant="h4"
-            className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             Regional View{" "}
           </Typography>
 
           <Button
-            
-            variant="outlined">
+            onClick={() => {
+              dispatch(regionActivity());
+            }}
+            variant="outlined"
+          >
             Download All Activities
           </Button>
         </Box>
 
-        <Typography
-          variant="h5"
-          className={classes.title}>
+        <Typography variant="h5" className={classes.title}>
           {" "}
           {clubsArray?.[0]?.[1]?.[0].regionName}
         </Typography>
         {clubsArray?.map((zone) => (
-          <Box
-            key={zone}
-            bgcolor="white"
-            p={3}>
+          <Box key={zone} bgcolor="white" p={3}>
             <TableContainer component={Paper}>
-              <Typography
-                variant="h6"
-                gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 {zone[0]}
               </Typography>
               <Table aria-label="news table">
@@ -135,9 +129,7 @@ export default function RegionalView() {
                 <TableBody>
                   {zone[1]?.map((row, index) => (
                     <TableRow key={row.id}>
-                      <TableCell
-                        component="th"
-                        scope="row">
+                      <TableCell component="th" scope="row">
                         {index + 1}
                       </TableCell>
                       <TableCell>{row.clubName}</TableCell>
@@ -152,7 +144,10 @@ export default function RegionalView() {
                       <TableCell>
                         <Button
                           variant="outlined"
-                          onClick={handleClickOpen}>
+                          onClick={() => {
+                            handleClickOpen(row.clubId);
+                          }}
+                        >
                           View Activity
                         </Button>
                       </TableCell>
@@ -166,25 +161,17 @@ export default function RegionalView() {
           </Box>
         ))}
       </Box>{" "}
-      <Dialog
-        maxWidth={"none"}
-        open={open}
-        onClose={handleClose}>
+      <Dialog maxWidth={"none"} open={open} onClose={handleClose}>
         <DialogTitle>Activities</DialogTitle>
         <DialogContent>
           <Box
             // bgcolor={"white"}
             p={3}
-            borderRadius={4}>
+            borderRadius={4}
+          >
             <Typography variant="h6">Past Activities</Typography>
-            <Grid
-              container
-              spacing={2}
-              style={{ marginTop: "16px" }}>
-              <Grid
-                item
-                lg={6}
-                style={{ textAlign: "left" }}>
+            <Grid container spacing={2} style={{ marginTop: "16px" }}>
+              <Grid item lg={6} style={{ textAlign: "left" }}>
                 <TextField
                   id="search"
                   label="Search by Activity Type"
@@ -193,14 +180,13 @@ export default function RegionalView() {
                   onChange={handleSearchInputChange}
                 />
               </Grid>
-              <Grid
-                item
-                lg={6}
-                style={{ textAlign: "right" }}>
-                <IconButton
-                  aria-label="edit"
-                  color="primary">
-                  <CloudDownloadIcon />
+              <Grid item lg={6} style={{ textAlign: "right" }}>
+                <IconButton aria-label="edit" color="primary">
+                  <CloudDownloadIcon
+                    onClick={() => {
+                      dispatch(downloadClubActivity(reportedActivity));
+                    }}
+                  />
                 </IconButton>
               </Grid>
             </Grid>
@@ -220,10 +206,7 @@ export default function RegionalView() {
                 <TableBody>
                   {filteredRows.map((row, index) => (
                     <TableRow key={row.id}>
-                      <TableCell
-                        align="center"
-                        component="th"
-                        scope="row">
+                      <TableCell align="center" component="th" scope="row">
                         {index + 1}
                       </TableCell>
                       <TableCell align="left">{row.activityType}</TableCell>

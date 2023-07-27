@@ -6,9 +6,10 @@ import {
   ACTIVITY_PLACEHOLDER,
   REPORTED_ACTIVITY,
   CLUB_DIRECTORS,
-  DELETE_ACTIVITY
+  DELETE_ACTIVITY,
 } from "../constants/actionTypes";
 import * as api from "../api";
+import * as xlsx from "xlsx";
 
 export const getClubDirector = () => async (dispatch) => {
   try {
@@ -83,9 +84,9 @@ export const getPlaceHolder = (category) => async (dispatch) => {
   }
 };
 
-export const getReportedActivity = () => async (dispatch) => {
+export const getReportedActivity = (clubId) => async (dispatch) => {
   try {
-    const { data } = await api.getReportedActivity();
+    const { data } = await api.getReportedActivity(clubId);
     dispatch({ type: REPORTED_ACTIVITY, payload: data });
   } catch (error) {
     console.log(error);
@@ -94,8 +95,8 @@ export const getReportedActivity = () => async (dispatch) => {
 
 export const deleteActivity = (activityId) => async (dispatch) => {
   try {
-    const { data ,status } = await api.deleteActivity(activityId);
-    dispatch({ type: DELETE_ACTIVITY, payload: activityId});
+    const { data, status } = await api.deleteActivity(activityId);
+    dispatch({ type: DELETE_ACTIVITY, payload: activityId });
     dispatch({
       type: CLIENT_MSG,
       message: { info: data.successMessage, status },
@@ -144,6 +145,31 @@ export const registerActivity = (formData) => async (dispatch) => {
       message: {
         info: error.response.data?.message,
         status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
+
+
+export const downloadClubActivity = (data) => async (dispatch) => {
+  try {
+   
+    const sheet = xlsx.utils.json_to_sheet(data);
+    const book = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(book, sheet, "Sheet1");
+    xlsx.writeFile(book, "club_activities.xlsx");
+
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: "Club Activities Downloaded", status:200 },
+    });
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: "Please try again later",
+        status: 400,
       },
     });
     console.log(error);

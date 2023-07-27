@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { API_URL } from "../../api";
 import {
   Table,
   TableBody,
@@ -247,7 +248,7 @@ const PastActivity = () => {
     "Lion Member",
     "Club Secretary",
     "Club President",
-    "Zone Chairperson ",
+    "Zone Chairperson",
     "Region Chairperson",
   ];
 
@@ -282,20 +283,15 @@ const PastActivity = () => {
   };
   return (
     <>
-      <Box
-        bgcolor={"white"}
-        p={3}
-        borderRadius={4}>
+      <Box bgcolor={"white"} p={3} borderRadius={4}>
         <Typography variant="h6">Past Activities</Typography>
         <Grid
           container
           justifyContent="space-between"
           spacing={3}
-          style={{ marginTop: "16px" }}>
-          <Grid
-            item
-            xs={12}
-            style={{ textAlign: "left" }}>
+          style={{ marginTop: "16px" }}
+        >
+          <Grid item xs={12} style={{ textAlign: "left" }}>
             <TextField
               id="search"
               label="Search by Activity Type"
@@ -316,17 +312,15 @@ const PastActivity = () => {
                 <TableCell align="right">Amount</TableCell>
                 <TableCell align="right">Hours</TableCell>
                 <TableCell align="center">Media Coverage</TableCell>
-                <TableCell align="center">Image</TableCell>
+                <TableCell align="center">Image1</TableCell>
+                <TableCell align="center">Image2</TableCell>
                 <TableCell align="center">Action</TableCell>{" "}
               </TableRow>
             </TableHead>
             <TableBody>
               {filteredRows.map((row, index) => (
                 <TableRow key={row.id}>
-                  <TableCell
-                    align="center"
-                    component="th"
-                    scope="row">
+                  <TableCell align="center" component="th" scope="row">
                     {row.activityId}
                   </TableCell>
                   <TableCell align="left">{row.activityType}</TableCell>
@@ -341,18 +335,36 @@ const PastActivity = () => {
                       width: "150px",
                       height: "150px",
                       padding: "0.5rem",
-                    }}>
+                    }}
+                  >
                     <img
-                      src={`${row.image_path}`}
+                      src={`${API_URL + row.image_path}`}
                       alt="Activity"
-                      srcset={`${row.image_path}`}
+                      srcset={`${API_URL + row.image_path}`}
                     />
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    sx={{
+                      width: "150px",
+                      height: "150px",
+                      padding: "0.5rem",
+                    }}
+                  >
+                    {row.image_path2 && (
+                      <img
+                        src={`${API_URL + row.image_path2}`}
+                        alt="Activity"
+                        srcset={`${API_URL + row.image_path2}`}
+                      />
+                    )}
                   </TableCell>
                   <TableCell align="center">
                     <IconButton
                       aria-label="edit"
                       color="primary"
-                      onClick={handleClickOpen}>
+                      onClick={handleClickOpen}
+                    >
                       <Edit />
                     </IconButton>
                     <IconButton
@@ -360,7 +372,8 @@ const PastActivity = () => {
                       color="error"
                       onClick={() => {
                         handleClickOpenDel(row.activityId);
-                      }}>
+                      }}
+                    >
                       <Delete />
                     </IconButton>
                   </TableCell>
@@ -378,7 +391,8 @@ const PastActivity = () => {
           handleCloseDel();
         }}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
+        aria-describedby="alert-dialog-description"
+      >
         <DialogTitle id="alert-dialog-title">Delete</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -389,7 +403,8 @@ const PastActivity = () => {
           <Button
             onClick={() => {
               handleCloseDel();
-            }}>
+            }}
+          >
             Cancel
           </Button>
           <Button
@@ -398,46 +413,27 @@ const PastActivity = () => {
               dispatch(deleteActivity(activityId));
             }}
             autoFocus
-            color="error">
+            color="error"
+          >
             Delete
           </Button>
         </DialogActions>
       </Dialog>
 
       {/* /Dialog */}
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        maxWidth={"none"}>
+      <Dialog open={open} onClose={handleClose} maxWidth={"none"}>
         <DialogTitle>Edit Past Activities</DialogTitle>
         <DialogContent>
           <form onSubmit={submitDetails}>
-            <Box
-              bgcolor="white"
-              p={3}
-              borderRadius={4}
-              width={"900px"}>
-              <Typography
-                variant="h5"
-                gutterBottom
-                className={classes.heading}>
+            <Box bgcolor="white" p={3} borderRadius={4} width={"900px"}>
+              <Typography variant="h5" gutterBottom className={classes.heading}>
                 Basic Activity Information
               </Typography>
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Name </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}>
+                <Grid item xs={6} sm={6}>
                   <TextField
                     required
                     type="text"
@@ -454,21 +450,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Cabinet Officer Attended</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   {/* <TextField
               required
               type="text"
@@ -499,21 +485,21 @@ const PastActivity = () => {
                       }
                       renderValue={(selected) => (
                         <Box
-                          sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                          sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
+                        >
                           {selected.map((value) => (
-                            <Chip
-                              key={value}
-                              label={value}
-                            />
+                            <Chip key={value} label={value} />
                           ))}
                         </Box>
                       )}
-                      MenuProps={MenuProps}>
+                      MenuProps={MenuProps}
+                    >
                       {club_directors.map((name) => (
                         <MenuItem
                           key={name.fullName}
                           value={name.fullName}
-                          style={getStyles(name, personName, theme)}>
+                          style={getStyles(name, personName, theme)}
+                        >
                           {name.fullName}
                         </MenuItem>
                       ))}
@@ -522,21 +508,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Date</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="date"
@@ -555,21 +531,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Type</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     id="activityType"
                     value={activity.activityType}
@@ -581,11 +547,10 @@ const PastActivity = () => {
                       dispatch(getSubtype(e.target.value));
                       handleChange(e);
                     }}
-                    className={classes.label}>
+                    className={classes.label}
+                  >
                     {type.map((getType, index) => (
-                      <MenuItem
-                        key={index}
-                        value={getType.type}>
+                      <MenuItem key={index} value={getType.type}>
                         {getType.type}
                       </MenuItem>
                     ))}
@@ -593,21 +558,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Subtype</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     id="activitySubType"
                     select
@@ -619,11 +574,10 @@ const PastActivity = () => {
                       dispatch(getCategory(e.target.value));
                       handleChange(e);
                     }}
-                    className={classes.label}>
+                    className={classes.label}
+                  >
                     {subType.map((type, index) => (
-                      <MenuItem
-                        key={index}
-                        value={type.subtype}>
+                      <MenuItem key={index} value={type.subtype}>
                         {type.subtype}
                       </MenuItem>
                     ))}
@@ -631,21 +585,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Category</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     id="activityCategory"
                     select
@@ -657,11 +601,10 @@ const PastActivity = () => {
                       handleChange(e);
                       dispatch(getPlaceHolder(e.target.value));
                     }}
-                    className={classes.label}>
+                    className={classes.label}
+                  >
                     {category.map((cat, index) => (
-                      <MenuItem
-                        key={index}
-                        value={cat.category}>
+                      <MenuItem key={index} value={cat.category}>
                         {cat.category}
                       </MenuItem>
                     ))}
@@ -673,25 +616,16 @@ const PastActivity = () => {
                 variant="h5"
                 gutterBottom
                 style={{ marginTop: "16px" }}
-                className={classes.heading}>
+                className={classes.heading}
+              >
                 Detailed Activity Information
               </Typography>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Place</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="place"
@@ -707,21 +641,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>People Served</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="placeholder"
@@ -738,21 +662,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity City</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="city"
@@ -768,21 +682,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Amount Spent</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="amount"
@@ -797,21 +701,11 @@ const PastActivity = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Lion Hours</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     id="lionHours"
@@ -827,21 +721,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Media Coverage</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     id="mediaCoverage"
                     select
@@ -850,11 +734,10 @@ const PastActivity = () => {
                     value={activity.mediaCoverage}
                     fullWidth
                     name="mediaCoverage"
-                    onChange={handleChange}>
+                    onChange={handleChange}
+                  >
                     {media?.map((option) => (
-                      <MenuItem
-                        key={option.id}
-                        value={option.name}>
+                      <MenuItem key={option.id} value={option.name}>
                         {option.name}
                       </MenuItem>
                     ))}
@@ -862,21 +745,11 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Activity Description</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     id="description"
                     name="description"
@@ -889,21 +762,11 @@ const PastActivity = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid
-                container
-                spacing={3}
-                className={classes.grid}>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  className={classes.title}>
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6} sm={6} className={classes.title}>
                   <Typography>Upload Images</Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     ref={fileUploadRef}
                     type="file"
@@ -934,27 +797,23 @@ const PastActivity = () => {
                 </Grid>
               </Grid>
 
-              <Grid
-                container
-                justifyContent="center">
-                <Grid
-                  item
-                  xs={2}>
+              <Grid container justifyContent="center">
+                <Grid item xs={2}>
                   <Button
                     type="submit"
                     variant="contained"
-                    className={classes.btn}>
+                    className={classes.btn}
+                  >
                     Submit
                   </Button>
                 </Grid>
-                <Grid
-                  item
-                  xs={2}>
+                <Grid item xs={2}>
                   <Box marginLeft={1}>
                     <Button
                       type="button"
                       variant="outlined"
-                      className={classes.btn}>
+                      className={classes.btn}
+                    >
                       Cancel
                     </Button>
                   </Box>
