@@ -41,18 +41,23 @@ export const getCategory = (subtype) =>
   API.get(`activity/category?subtype=${subtype}`);
 export const getPlaceHolder = (Category) =>
   API.get(`activity/placeholder?category=${Category}`);
-export const getReportedActivity = () => API.get("activity/reportedactivity");
-export const deleteActivity = (activityId) => API.delete(`activity/deleteactivity?activityId=${activityId}`)
+export const getReportedActivity = (clubId) =>
+  clubId
+    ? API.get(`activity/reportedactivity?clubId=${clubId}`)
+    : API.get("activity/reportedactivity");
+export const deleteActivity = (activityId) =>
+  API.delete(`activity/deleteactivity?activityId=${activityId}`);
 export const getAdminReports = (month) =>
   API.get(`adminreporting/reports?month=${month}`);
 export const getPoints = () => API.get("adminreporting/points");
 export const addReport = (data) => API.post("adminreporting/addreport", data);
-export const clubsReporting=()=>API.get("adminreporting/clubsreporting");
+export const clubsReporting = () => API.get("adminreporting/clubsreporting");
 export const updateMember = (formData) =>
   API.post("member/updateprofile", formData);
 export const memberProfile = () => API.get("member/profile");
 export const getReportedNews = () => API.get("news/reportedNews");
-export const deleteReportedNews = (id) => API.delete(`news/deletenews?id=${id}`);
+export const deleteReportedNews = (id) =>
+  API.delete(`news/deletenews?id=${id}`);
 export const newsReporting = (formData) =>
   API.post("news/newsReporting", formData);
 export const getClubMembers = () => API.get("member/clubmembers");
@@ -60,6 +65,7 @@ export const getAllmembers = (clubid) =>
   API.get(`member/allmembers?clubid=${clubid}`);
 export const getZone = () => API.get("clubs/zone");
 export const getRegion = () => API.get("clubs/region");
+export const regionActivity = () => API.get("clubs/region/allactivities");
 export const expense = (formData) => API.post("expenses", formData);
 export const clubStatement = () => API.get("expenses/statement");
 export const activityStats = () => API.get("activity/stats");
