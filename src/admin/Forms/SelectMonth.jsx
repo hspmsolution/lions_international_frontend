@@ -26,6 +26,21 @@ const monthNames = [
   "December",
 ];
 
+
+const available_months = [
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+];
+
 const today = new Date();
 const curMonth = today.getMonth() + 1;
 const prevMonth = curMonth === 1 ? 12 : curMonth - 1;
@@ -34,6 +49,7 @@ const currentDate = today.getDate();
 // condition to decide whether user can report
 
 const canReport = (selectedMonth) => {
+ 
   if (selectedMonth === prevMonth) {
     return currentDate <= 5;
   } else if (selectedMonth === curMonth) {
@@ -71,7 +87,7 @@ export default function SelectMonth() {
           }
         }}
       >
-        {monthNames.map((item, index) => (
+        {available_months.map((item, index) => (
           <MenuItem key={index} value={item}>
             {item}
           </MenuItem>
