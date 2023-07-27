@@ -18,7 +18,7 @@ export default function Activities() {
   const activities = useSelector((state) => state.client.events);
   React.useEffect(() => {
     dispatch(events());
-  }, [dispatch]);
+  }, []);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -35,7 +35,8 @@ export default function Activities() {
           background: "#112E57",
           padding: "2rem 1rem",
           textAlign: "center",
-        }}>
+        }}
+      >
         <h1 className={classes.activityHeading}>Activities</h1>
 
         <Paper
@@ -43,18 +44,17 @@ export default function Activities() {
           sx={{
             display: { xs: "block", md: "flex", margin: "auto" },
             width: { xs: "100%", md: "80%" },
-          }}>
+          }}
+        >
           <Grid
             container
             rowSpacing={3}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          >
             {activities.past?.slice(0, 4).map((item, index) => {
               return (
                 <>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}>
+                  <Grid item xs={12} sm={6}>
                     <Item sx={{ position: "relative" }}>
                       <div className="slider02">
                         <Slider
@@ -64,7 +64,8 @@ export default function Activities() {
                           speed={500}
                           slidesToShow={1}
                           slidesToScroll={1}
-                          arrows={false}>
+                          arrows={false}
+                        >
                           <div>
                             <img
                               src={`${API_URL + item?.image_path}`}
@@ -72,13 +73,15 @@ export default function Activities() {
                               alt="slider"
                             />
                           </div>
-                          <div>
-                            <img
-                              src={`${API_URL + item?.image_path2}`}
-                              className={classes.activityImage}
-                              alt="slider"
-                            />
-                          </div>
+                          {item?.image_path2 && (
+                            <div>
+                              <img
+                                src={`${API_URL + item?.image_path2}`}
+                                className={classes.activityImage}
+                                alt="slider"
+                              />
+                            </div>
+                          )}
                         </Slider>
                       </div>
 
@@ -101,7 +104,8 @@ export default function Activities() {
           }}
           variant="outlined"
           size="medium"
-          sx={{ color: "white", borderColor: "white", marginTop: "2rem" }}>
+          sx={{ color: "white", borderColor: "white", marginTop: "2rem" }}
+        >
           Register for upcoming activity
         </Button>
       </Box>

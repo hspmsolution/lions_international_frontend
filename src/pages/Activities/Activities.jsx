@@ -65,9 +65,7 @@ function ResponsiveDialog({
   const classes = useStyles();
   return (
     <div>
-      <Button
-        variant="outlined"
-        onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen}>
         Open Activity Details
       </Button>
       <Dialog
@@ -77,7 +75,8 @@ function ResponsiveDialog({
         aria-labelledby="responsive-dialog-title"
         maxWidth={"none"}
         sx={{ margin: "auto" }}
-        className={classes.dialog}>
+        className={classes.dialog}
+      >
         <DialogTitle id="responsive-dialog-title">
           {type === "past"
             ? "Past Activities by Club"
@@ -92,7 +91,8 @@ function ResponsiveDialog({
               margin: "auto",
               width: "100%",
             }}
-            className={classes.dialogPaper}>
+            className={classes.dialogPaper}
+          >
             {/* <img
               src={API_URL + bgImage}
               alt="helping"
@@ -106,7 +106,8 @@ function ResponsiveDialog({
                 speed={500}
                 slidesToShow={1}
                 slidesToScroll={1}
-                arrows={false}>
+                arrows={false}
+              >
                 <div>
                   <img
                     src={API_URL + bgImage}
@@ -114,13 +115,15 @@ function ResponsiveDialog({
                     style={{ width: "900px", height: "100%" }}
                   />
                 </div>
-                <div>
-                  <img
-                    src={API_URL + bgImage2}
-                    alt="slider"
-                    style={{ width: "900px", height: "100%" }}
-                  />
-                </div>
+                {bgImage2 && (
+                  <div>
+                    <img
+                      src={API_URL + bgImage2}
+                      alt="slider"
+                      style={{ width: "900px", height: "100%" }}
+                    />
+                  </div>
+                )}
               </Slider>
             </div>
           </Paper>
@@ -128,49 +131,56 @@ function ResponsiveDialog({
             <Table aria-label="simple table">
               <TableBody>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity ID:</strong>
                   </TableCell>
                   <TableCell>{activityId}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity Title:</strong>
                   </TableCell>
                   <TableCell>{title}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity Date:</strong>
                   </TableCell>
                   <TableCell>{date?.slice(0, 10)}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity Type:</strong>
                   </TableCell>
                   <TableCell>{activityType}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity Category:</strong>
                   </TableCell>
                   <TableCell>{category}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong>Activity Place:</strong>
                   </TableCell>
                   <TableCell>{place}</TableCell>
                 </TableRow>
                 <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
                   <TableCell>
                     <strong> Activity Description:</strong>
                   </TableCell>
@@ -181,15 +191,11 @@ function ResponsiveDialog({
           </TableContainer>
         </DialogContent>
         <DialogActions>
-          <Button
-            autoFocus
-            onClick={handleClose}>
+          <Button autoFocus onClick={handleClose}>
             Close
           </Button>
           {type === "upcoming" && (
-            <Button
-              onClick={handleClick}
-              autoFocus>
+            <Button onClick={handleClick} autoFocus>
               Register
             </Button>
           )}
@@ -223,15 +229,16 @@ function BasicCard({
             width: "100%",
             height: "16rem",
             mb: { xs: "1.5rem", lg: "4rem" },
-          }}>
+          }}
+        >
           {/* <img
             src={API_URL + bgImage}
             style={{ height: "100%", width: "100%", objectFit: "contain" }}
           /> */}
 
           <CommonCard
-            image={API_URL + bgImage}
-            image2={API_URL + bgImage2}
+            image={bgImage}
+            image2={bgImage2}
             date={date?.slice(0, 10)}
           />
         </Box>
@@ -288,30 +295,30 @@ export default function Events() {
           backgroundImage: "url('/assets/img/bggg.png')",
           backgroundAttachment: "fixed",
           pb: "2rem",
-        }}>
+        }}
+      >
         <CustomizedBreadcrumbs label={"Activities"} />
         <Container
           className={classes.activityContainer}
-          sx={{ margin: "3rem auto" }}>
+          sx={{ margin: "3rem auto" }}
+        >
           <Typography
             variant="h4"
-            sx={{ textAlign: "center", marginBottom: "2rem" }}>
+            sx={{ textAlign: "center", marginBottom: "2rem" }}
+          >
             Upcoming Activities
           </Typography>
 
-          <Grid
-            container
-            spacing={2}>
-            <Grid
-              item
-              xs={12}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
               <Box
                 sx={{
                   p: 2,
                   display: "grid",
                   gridTemplateColumns: { md: "4fr 4fr 4fr" },
                   gap: 2,
-                }}>
+                }}
+              >
                 {activities?.upcoming?.length === 0 ? (
                   <Typography
                     variant="h6"
@@ -321,7 +328,8 @@ export default function Events() {
                       textAlign: "center",
                       borderRadius: "0.5rem",
                       padding: "0.5rem 0",
-                    }}>
+                    }}
+                  >
                     No Upcoming Activity Found
                   </Typography>
                 ) : (
@@ -350,27 +358,23 @@ export default function Events() {
         <Container sx={{ margin: "3rem auto" }}>
           <Typography
             variant="h4"
-            sx={{ textAlign: "center", marginBottom: "2rem" }}>
+            sx={{ textAlign: "center", marginBottom: "2rem" }}
+          >
             Past Activities
           </Typography>
 
-          <Grid
-            container
-            spacing={2}>
-            <Grid
-              item
-              xs={12}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
               <Box
                 sx={{
                   // p: 2,
                   display: "grid",
                   gridTemplateColumns: { md: "4fr 4fr 4fr" },
                   gap: "2rem",
-                }}>
+                }}
+              >
                 {activities?.past?.length === 0 ? (
-                  <Typography
-                    variant="h6"
-                    color="black">
+                  <Typography variant="h6" color="black">
                     No Past Activity Found
                   </Typography>
                 ) : (
@@ -379,6 +383,7 @@ export default function Events() {
                       <BasicCard
                         title={filter.activityTitle}
                         bgImage={filter.image_path}
+                        bgImage2={filter.image_path2}
                         date={filter.date}
                         activityType={filter.activityType}
                         description={filter.description}
@@ -400,7 +405,8 @@ export default function Events() {
             display: "flex",
             justifyContent: "center",
             p: "2rem 1rem",
-          }}>
+          }}
+        >
           <Pagination
             count={totalPages}
             page={currentPage}
