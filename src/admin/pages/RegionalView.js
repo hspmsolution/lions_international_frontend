@@ -19,13 +19,12 @@ import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
-import { getRegion, regionActivity } from "../../actions/clubs";
+import { getRegion  } from "../../actions/clubs";
 import {
   downloadClubActivity,
-  getReportedActivity,
+  getReportedActivity,regionActivity
 } from "../../actions/activity";
 
 const useStyles = makeStyles({
@@ -101,7 +100,7 @@ export default function RegionalView() {
             }}
             variant="outlined"
           >
-            Download All Activities
+            Download All Region Activities
           </Button>
         </Box>
 

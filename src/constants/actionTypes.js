@@ -4,6 +4,7 @@ export const UPDATE ='UPDATE';
 export const DELETE = 'DELETE';
 export const AUTH='AUTH';
 export const LOGOUT='LOGOUT';
+export const IS_LOADING='IS_LOADING';
 export const CLIENT_MSG='CLIENT_MSG';
 export const ADMIN='ADMIN';
 export const CLUB_DIRECTORS='CLUB_DIRECTORS';
