@@ -31,7 +31,12 @@ API.interceptors.request.use((req) => {
   return req;
 });
 export const signIn = (formData) => API.post("auth/login", formData);
-export const resetPass = (formData) => API.post("auth/resetpass", formData);
+export const resetPass = (formData, resetToken) =>
+  resetToken
+    ? API.post(`auth/resetpass?resetToken=${resetToken}`, formData)
+    : API.post("auth/resetpass", formData);
+export const forgetPassword = (formData) =>
+  API.post("auth/forget-password", formData);
 export const addActivity = (formData) =>
   API.post("activity/addactivity", formData);
 export const getActivity = () => API.get("activity/type");
@@ -65,7 +70,8 @@ export const getAllmembers = (clubid) =>
   API.get(`member/allmembers?clubid=${clubid}`);
 export const getZone = () => API.get("clubs/zone");
 export const getRegion = () => API.get("clubs/region");
-export const regionActivity = () => API.get("clubs/region/allactivities");
+export const regionActivity = () => API.get("activity/region/allactivities");
+export const zoneActivity = () => API.get("activity/zone/allactivities");
 export const expense = (formData) => API.post("expenses", formData);
 export const clubStatement = () => API.get("expenses/statement");
 export const activityStats = () => API.get("activity/stats");

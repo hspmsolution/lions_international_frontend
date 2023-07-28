@@ -7,9 +7,10 @@ import * as Yup from "yup";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { signInReq } from "../../../actions/auth";
-import { ADMIN } from "../../../constants/actionTypes";
+import { ADMIN, IS_LOADING } from "../../../constants/actionTypes";
 import { makeStyles } from "@mui/styles";
 import { InputAdornment, IconButton } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const useStyles = makeStyles({
@@ -41,9 +42,9 @@ const Login = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.auth.message?.info);
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const isAdmin = useSelector((state) => state.auth.admin);
-  const [disabled, setDisabled] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       memberId: "",
@@ -62,7 +63,7 @@ const Login = () => {
         dispatch(signInReq(data, navigate));
       }, 500);
 
-      setDisabled(true);
+      dispatch({ type: IS_LOADING, payload: true });
     },
   });
 
@@ -70,10 +71,6 @@ const Login = () => {
     dispatch({ type: ADMIN });
     if (isAdmin) navigate("/");
   }, []);
-
-  useEffect(() => {
-    if (message) setDisabled(false);
-  }, [message]);
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
@@ -96,7 +93,8 @@ const Login = () => {
         color: "#39459b",
         backgroundColor: "rgba(255, 255, 255, 0.3)",
         boxShadow: "inset 0 0 0 1000px rgba(255, 255, 255, 0.1)",
-      }}>
+      }}
+    >
       <Helmet>
         <title> Login </title>
       </Helmet>
@@ -114,29 +112,27 @@ const Login = () => {
           // padding: "77px 99px 87px",
           padding: { xs: "3rem 0.5rem", sm: "3rem 3rem", lg: "3rem 5rem" },
           color: "#fff",
-        }}>
+        }}
+      >
         <Container maxWidth="sm">
           <Link to="/">
             <Button
               component="a"
               sx={{ color: "white" }}
-              startIcon={<ArrowBackIcon fontSize="small" />}>
+              startIcon={<ArrowBackIcon fontSize="small" />}
+            >
               Home
             </Button>
           </Link>
-          <form
-            onSubmit={formik.handleSubmit}
-            className={classes.label}>
+          <form onSubmit={formik.handleSubmit} className={classes.label}>
             <Box
               sx={{
                 pb: 1,
                 pt: 3,
                 color: "white",
-              }}>
-              <Typography
-                align="center"
-                color="white"
-                variant="h6">
+              }}
+            >
+              <Typography align="center" color="white" variant="h6">
                 Login with Member Id
               </Typography>
             </Box>
@@ -172,7 +168,8 @@ const Login = () => {
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
-                      edge="end">
+                      edge="end"
+                    >
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -182,12 +179,13 @@ const Login = () => {
             <Box sx={{ py: 2 }}>
               <Button
                 className={classes.button}
-                disabled={disabled}
+                disabled={isLoading}
                 fullWidth
                 size="large"
                 type="submit"
-                variant="contained">
-                Login In Now
+                variant="contained"
+              >
+                {isLoading ? <CircularProgress /> : "Login In Now"}
               </Button>
             </Box>
           </form>

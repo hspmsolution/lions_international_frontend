@@ -10,7 +10,7 @@ const Notify = () => {
   const status = useSelector((state) => state.auth.message?.status);
 
   useEffect(() => {
-    (status === 404 || status === 400 || status === 500) &&
+    (status === 404 || status === 400 || status === 500 || status === 401) &&
       toast.error(message);
 
     status === 200 && toast.success(message);
