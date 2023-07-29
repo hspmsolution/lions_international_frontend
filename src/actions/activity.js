@@ -151,10 +151,8 @@ export const registerActivity = (formData) => async (dispatch) => {
   }
 };
 
-
 export const downloadClubActivity = (data) => async (dispatch) => {
   try {
-   
     const sheet = xlsx.utils.json_to_sheet(data);
     const book = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(book, sheet, "Sheet1");
@@ -162,7 +160,7 @@ export const downloadClubActivity = (data) => async (dispatch) => {
 
     dispatch({
       type: CLIENT_MSG,
-      message: { info: "Club Activities Downloaded", status:200 },
+      message: { info: "Club Activities Downloaded", status: 200 },
     });
   } catch (error) {
     dispatch({
@@ -170,6 +168,56 @@ export const downloadClubActivity = (data) => async (dispatch) => {
       message: {
         info: "Please try again later",
         status: 400,
+      },
+    });
+    console.log(error);
+  }
+};
+
+export const regionActivity = () => async (dispatch) => {
+  try {
+    const { data, status } = await api.regionActivity();
+    // Write the data to an Excel file
+    const sheet = xlsx.utils.json_to_sheet(data.activitiesData);
+    const book = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(book, sheet, "Sheet1");
+    xlsx.writeFile(book, "region_activities.xlsx");
+
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
+
+export const zoneActivity = () => async (dispatch) => {
+  try {
+    const { data, status } = await api.zoneActivity();
+    // Write the data to an Excel file
+    const sheet = xlsx.utils.json_to_sheet(data.activitiesData);
+    const book = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(book, sheet, "Sheet1");
+    xlsx.writeFile(book, "zone_activities.xlsx");
+
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
       },
     });
     console.log(error);

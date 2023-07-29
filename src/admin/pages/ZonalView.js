@@ -10,9 +10,13 @@ import {
   Typography,
   Paper,
   Box,
+  Button
 } from "@mui/material";
+
 import { makeStyles } from "@mui/styles";
 import { getZone } from "../../actions/clubs";
+import { zoneActivity } from "../../actions/activity";
+
 
 const useStyles = makeStyles({
   title: {
@@ -25,7 +29,6 @@ export default function ZonalView() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const zoneData = useSelector((state) => state.clubs.zone);
-  console.log(zoneData);
 
   useEffect(() => {
     dispatch(getZone());
@@ -42,6 +45,14 @@ export default function ZonalView() {
           {zoneData[0]?.regionName},{zoneData[0]?.zoneName}
         </Typography>
         <TableContainer component={Paper}>
+          <Button
+            onClick={() => {
+              dispatch(zoneActivity());
+            }}
+            variant="outlined"
+          >
+            Download All Zone Activities
+          </Button>
           <Table aria-label="news table">
             <TableHead>
               <TableRow>

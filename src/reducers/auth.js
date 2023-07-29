@@ -5,6 +5,7 @@ import {
   ADMIN,
   MEMBER_PROFILE,
   UPDATE_MEMBER_PROFILE,
+  IS_LOADING
 } from "../constants/actionTypes";
 import decodeJWT from "../utils/jwtDecode";
 
@@ -14,6 +15,7 @@ const authReducer = (
     message: null,
     admin: false,
     role: null,
+    isLoading: false,
     memberProfile: {
       regionName:"",
       zoneName:"",
@@ -76,6 +78,9 @@ const authReducer = (
 
     case CLIENT_MSG:
       return { ...state, message: action.message };
+    
+    case IS_LOADING:
+      return { ...state, isLoading: action.payload };
 
     case MEMBER_PROFILE:
       return { ...state, memberProfile: action.payload };

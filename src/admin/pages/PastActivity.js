@@ -31,7 +31,11 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Edit, Delete, Search } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteActivity, getReportedActivity } from "../../actions/activity";
+import {
+  deleteActivity,
+  downloadClubActivity,
+  getReportedActivity,
+} from "../../actions/activity";
 
 import {
   addActivity,
@@ -285,13 +289,8 @@ const PastActivity = () => {
     <>
       <Box bgcolor={"white"} p={3} borderRadius={4}>
         <Typography variant="h6">Past Activities</Typography>
-        <Grid
-          container
-          justifyContent="space-between"
-          spacing={3}
-          style={{ marginTop: "16px" }}
-        >
-          <Grid item xs={12} style={{ textAlign: "left" }}>
+        <Grid container alignItems="center">
+          <Grid item xs={6}>
             <TextField
               id="search"
               label="Search by Activity Type"
@@ -299,6 +298,16 @@ const PastActivity = () => {
               size="small"
               onChange={handleSearchInputChange}
             />
+          </Grid>
+          <Grid item xs={6} style={{ textAlign: "right" }}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                dispatch(downloadClubActivity(reportedActivity));
+              }}
+            >
+              Download club Activities
+            </Button>
           </Grid>
         </Grid>
         <TableContainer style={{ marginTop: "16px" }}>

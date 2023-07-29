@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   TextField,
@@ -16,6 +16,8 @@ import { makeStyles } from "@mui/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { resetPass } from "../../actions/auth";
+import CircularProgress from "@mui/material/CircularProgress";
+import { IS_LOADING } from "../../constants/actionTypes";
 
 const useStyles = makeStyles({
   root: {
@@ -39,8 +41,12 @@ export default function Password() {
   const classes = useStyles();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.auth.message?.info);
-  const [disabled, setDisabled] = useState(false);
+  const location = useLocation();
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const queryParams = new URLSearchParams(location.search);
+  const resetToken = queryParams.get("token") || null;
+
+
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -53,14 +59,10 @@ export default function Password() {
         .required("Confirm Password is required"),
     }),
     onSubmit: (data) => {
-      dispatch(resetPass(data, navigate));
-      setDisabled(true);
+      dispatch(resetPass(data, navigate,resetToken));
+      dispatch({ type: IS_LOADING, payload: true });
     },
   });
-
-  useEffect(() => {
-    if (message) setDisabled(false);
-  }, [message]);
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
@@ -155,12 +157,12 @@ export default function Password() {
             <Box sx={{ py: 2 }}>
               <Button
                 color="primary"
-                disabled={disabled}
+                disabled={isLoading}
                 fullWidth
                 size="large"
                 type="submit"
                 variant="contained">
-                Update Password
+             {isLoading ? <CircularProgress /> : "Update Password"}
               </Button>
             </Box>
           </form>

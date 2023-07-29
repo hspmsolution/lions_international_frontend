@@ -7,22 +7,23 @@ import * as Yup from "yup";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { Link as MuiLink } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { signIn } from "../../actions/auth";
+import { forgetPassword, signIn } from "../../actions/auth";
 import Dialog from "@mui/material/Dialog";
-import { ADMIN } from "../../constants/actionTypes";
+import { ADMIN, IS_LOADING } from "../../constants/actionTypes";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { InputAdornment, IconButton } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.auth.message?.info);
   const isAdmin = useSelector((state) => state.auth.admin);
-  const [disabled, setDisabled] = useState(false);
+  const isLoading = useSelector((state) => state.auth.isLoading);
+
   const formik = useFormik({
     initialValues: {
       memberId: "",
@@ -40,8 +41,7 @@ const Login = () => {
       setTimeout(() => {
         dispatch(signIn(data, navigate));
       }, 500);
-
-      setDisabled(true);
+      dispatch({ type: IS_LOADING, payload: true });
     },
   });
 
@@ -50,9 +50,6 @@ const Login = () => {
     if (isAdmin) navigate("/dashboard/app");
   }, []);
 
-  useEffect(() => {
-    if (message) setDisabled(false);
-  }, [message]);
 
   // Dialog
   const [open, setOpen] = useState(false);
@@ -86,13 +83,13 @@ const Login = () => {
         .email("Invalid email address")
         .required("Email is required"),
     }),
-    // onSubmit: (data) => {
-    //   setTimeout(() => {
-    //     dispatch(signIn(data, navigate));
-    //   }, 500);
+    onSubmit: (data) => {
+      setTimeout(() => {
+        dispatch(forgetPassword(data, navigate));
+      }, 500);
+      dispatch({ type: IS_LOADING, payload: true });
+    },
 
-    //   setDisabled(true);
-    // },
   });
   return (
     <>
@@ -108,7 +105,8 @@ const Login = () => {
           color: "#39459b",
           backgroundColor: "rgba(255, 255, 255, 0.3)",
           boxShadow: "inset 0 0 0 1000px rgba(255, 255, 255, 0.1)",
-        }}>
+        }}
+      >
         <Helmet>
           <title> Login </title>
         </Helmet>
@@ -125,13 +123,15 @@ const Login = () => {
             margin: "auto",
             padding: { xs: "3rem 0.5rem", sm: "3rem 3rem", lg: "3rem 5rem" },
             color: "#fff",
-          }}>
+          }}
+        >
           <Container maxWidth="sm">
             <Link to="/">
               <Button
                 component="a"
                 sx={{ color: "white" }}
-                startIcon={<ArrowBackIcon fontSize="small" />}>
+                startIcon={<ArrowBackIcon fontSize="small" />}
+              >
                 Home
               </Button>
             </Link>
@@ -140,11 +140,13 @@ const Login = () => {
                 sx={{
                   pb: 1,
                   pt: 3,
-                }}>
+                }}
+              >
                 <Typography
                   align="center"
                   color="textSecondary"
-                  variant="body1">
+                  variant="body1"
+                >
                   login with Member Id
                 </Typography>
               </Box>
@@ -184,7 +186,8 @@ const Login = () => {
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
-                        edge="end">
+                        edge="end"
+                      >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -196,10 +199,9 @@ const Login = () => {
                   color: "primary",
                   textAlign: "right",
                   cursor: "pointer",
-                }}>
-                <MuiLink
-                  underline="hover"
-                  onClick={handleClickOpen}>
+                }}
+              >
+                <MuiLink underline="hover" onClick={handleClickOpen}>
                   Forgot Password
                 </MuiLink>
               </Box>
@@ -207,12 +209,13 @@ const Login = () => {
               <Box sx={{ py: 2 }}>
                 <Button
                   color="primary"
-                  disabled={disabled}
+                  disabled={isLoading}
                   fullWidth
                   size="large"
                   type="submit"
-                  variant="contained">
-                  Login In Now
+                  variant="contained"
+                >
+                  {isLoading ? <CircularProgress /> : "Login In Now"}
                 </Button>
               </Box>
             </form>
@@ -220,10 +223,7 @@ const Login = () => {
 
           {/* Forgot Password Dialog */}
 
-          <Dialog
-            maxWidth={"none"}
-            open={open}
-            onClose={handleClose}>
+          <Dialog maxWidth={"none"} open={open} onClose={handleClose}>
             <DialogTitle>Forgot Password</DialogTitle>
             <DialogContent sx={{ width: "500px" }}>
               <form onSubmit={resetFormik.handleSubmit}>
@@ -265,12 +265,13 @@ const Login = () => {
                 <Box sx={{ py: 2 }}>
                   <Button
                     color="primary"
-                    disabled={disabled}
+                    disabled={isLoading}
                     fullWidth
                     size="large"
                     type="submit"
-                    variant="contained">
-                    Submit
+                    variant="contained"
+                  >
+                    {isLoading ? <CircularProgress /> : "Submit"}
                   </Button>
                 </Box>
               </form>
