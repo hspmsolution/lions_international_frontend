@@ -26,7 +26,7 @@ export default function ResourcesTable({ rows }) {
             <TableCell align="right">Download</TableCell>
           </TableRow>
         </TableHead>
-        {/* <TableBody sx={{ height: "350px", overflowY: "scroll" }}>
+        <TableBody sx={{ height: "350px", overflowY: "scroll" }}>
           {rows?.map((row) => (
             <TableRow
               key={row.title}
@@ -43,7 +43,7 @@ export default function ResourcesTable({ rows }) {
               </TableCell>
             </TableRow>
           ))}
-        </TableBody> */}
+        </TableBody>
       </Table>
     </TableContainer>
   ); 

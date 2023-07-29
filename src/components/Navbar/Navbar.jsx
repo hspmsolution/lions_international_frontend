@@ -38,7 +38,7 @@ const myNav = [
   },
   {
     title: "Resources",
-    menuItems: ["News", "Gallery", "Global Priorities"],
+    menuItems: ["News", "Gallery", "Global Priorities",'Download Resources'],
   },
 ];
 
