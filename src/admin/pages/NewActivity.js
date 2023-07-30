@@ -12,6 +12,7 @@ import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { API_URL } from "../../api";
 
 import {
   addActivity,
@@ -20,6 +21,7 @@ import {
   getPlaceHolder,
   getSubtype,
   getClubDirector,
+  editActivity,
 } from "../../actions/activity";
 import { ACTIVITY_PLACEHOLDER } from "../../constants/actionTypes";
 
@@ -88,27 +90,49 @@ const activityDetail = {
   activityType: "",
   activitySubType: "",
   activityCategory: "",
-  placeHolderValue: "",
+  placeholder: "",
   place: "",
   image1: { preview: "", data: "" },
   image2: { preview: "", data: "" },
 };
-export default function NewActivity() {
+export default function NewActivity({ pastActivityData, isEdit = false }) {
+  console.log(pastActivityData, isEdit);
+
+  if (isEdit) {
+    pastActivityData = {
+      ...pastActivityData,
+      image1: { preview: "", data: "" },
+      image2: { preview: "", data: "" },
+    };
+    pastActivityData.date = pastActivityData.date.split("T")[0];
+  }
+
   const classes = useStyles();
   const theme = useTheme();
   const fileUploadRef = useRef();
-  const [activity, setActivity] = useState(activityDetail);
-  const [personName, setPersonName] = React.useState([]);
+  const [activity, setActivity] = useState(
+    isEdit ? pastActivityData : activityDetail
+  );
+  const [personName, setPersonName] = React.useState(
+    isEdit ? pastActivityData?.cabinetOfficers?.split(",") : []
+  );
   const club_directors = useSelector((state) => state.activity.club_directors);
   const type = useSelector((state) => state.activity.type);
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
-  const placeHolder = useSelector((state) => state.activity.placeHolder);
+  const placeHolderLabel = useSelector((state) => state.activity.placeHolder);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getActivity());
     dispatch(getClubDirector());
+
+    if (isEdit) {
+      // we are selected types in advance for the dropdown
+      dispatch(getSubtype(activity.activityType));
+      dispatch(getCategory(activity.activitySubType));
+      dispatch(getPlaceHolder(activity.activityCategory));
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -119,11 +143,11 @@ export default function NewActivity() {
       if (name === "activityType") {
         newData.activityCategory = "";
         newData.activitySubType = "";
-        newData.placeHolderValue = "";
+        newData.placeholder = "";
         dispatch({ type: ACTIVITY_PLACEHOLDER, payload: "" });
       }
       if (name === "activitySubType") {
-        newData.placeHolderValue = "";
+        newData.placeholder = "";
         newData.activityCategory = "";
         dispatch({ type: ACTIVITY_PLACEHOLDER, payload: "" });
       }
@@ -146,12 +170,17 @@ export default function NewActivity() {
     formData.append("activityType", activity.activityType);
     formData.append("activitySubType", activity.activitySubType);
     formData.append("activityCategory", activity.activityCategory);
-    formData.append("placeHolderValue", activity.placeHolderValue);
+    formData.append("placeholder", activity.placeholder);
     formData.append("place", activity.place);
-    formData.append("image", activity.image1.data);
-    formData.append("image", activity.image2.data);
+    formData.append("image", activity?.image1?.data);
+    formData.append("image", activity?.image2?.data);
 
-    dispatch(addActivity(formData));
+    if (isEdit) {
+      formData.append("activityId", activity.activityId);
+      dispatch(editActivity(formData));
+    } else {
+      dispatch(addActivity(formData));
+    }
     setActivity(activityDetail);
     setPersonName([]);
   };
@@ -234,31 +263,15 @@ export default function NewActivity() {
 
   return (
     <form onSubmit={submitDetails}>
-      <Box
-        bgcolor="white"
-        p={3}
-        borderRadius={4}>
-        <Typography
-          variant="h5"
-          gutterBottom
-          className={classes.heading}>
+      <Box bgcolor="white" p={3} borderRadius={4}>
+        <Typography variant="h5" gutterBottom className={classes.heading}>
           Basic Activity Information
         </Typography>
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Name </Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               type="text"
@@ -275,33 +288,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Cabinet Officer Attended</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
-            {/* <TextField
-              required
-              type="text"
-              id="cabinetOfficers"
-              value={activity.cabinetOfficers}
-              name="cabinetOfficers"
-              label="Enter Cabinet Officer Name"
-              fullWidth
-              onChange={handleChange}
-              variant="standard"
-              className={classes.label}
-            /> */}
+          <Grid item xs={12} lg={6}>
             <FormControl sx={{ width: "100%" }}>
               <InputLabel id="demo-multiple-chip-label">
                 Select Cabinet Officer
@@ -321,19 +312,18 @@ export default function NewActivity() {
                 renderValue={(selected) => (
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                     {selected.map((value) => (
-                      <Chip
-                        key={value}
-                        label={value}
-                      />
+                      <Chip key={value} label={value} />
                     ))}
                   </Box>
                 )}
-                MenuProps={MenuProps}>
+                MenuProps={MenuProps}
+              >
                 {club_directors.map((name) => (
                   <MenuItem
                     key={name.fullName}
                     value={name.fullName}
-                    style={getStyles(name, personName, theme)}>
+                    style={getStyles(name, personName, theme)}
+                  >
                     {name.fullName}
                   </MenuItem>
                 ))}
@@ -342,21 +332,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Date</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="date"
@@ -375,37 +355,27 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Type</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="activityType"
               value={activity.activityType}
               select
               fullWidth
+              required
               name="activityType"
               label=" Select Activity Type "
               onChange={(e) => {
                 dispatch(getSubtype(e.target.value));
                 handleChange(e);
               }}
-              className={classes.label}>
+              className={classes.label}
+            >
               {type.map((getType, index) => (
-                <MenuItem
-                  key={index}
-                  value={getType.type}>
+                <MenuItem key={index} value={getType.type}>
                   {getType.type}
                 </MenuItem>
               ))}
@@ -413,25 +383,16 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Subtype</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="activitySubType"
               select
               fullWidth
+              required
               name="activitySubType"
               label=" Activity Subtype "
               value={activity.activitySubType}
@@ -439,11 +400,10 @@ export default function NewActivity() {
                 dispatch(getCategory(e.target.value));
                 handleChange(e);
               }}
-              className={classes.label}>
+              className={classes.label}
+            >
               {subType.map((type, index) => (
-                <MenuItem
-                  key={index}
-                  value={type.subtype}>
+                <MenuItem key={index} value={type.subtype}>
                   {type.subtype}
                 </MenuItem>
               ))}
@@ -451,25 +411,16 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Category</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="activityCategory"
               select
               fullWidth
+              required
               name="activityCategory"
               label="Activity Category Type "
               value={activity.activityCategory}
@@ -477,11 +428,10 @@ export default function NewActivity() {
                 handleChange(e);
                 dispatch(getPlaceHolder(e.target.value));
               }}
-              className={classes.label}>
+              className={classes.label}
+            >
               {category.map((cat, index) => (
-                <MenuItem
-                  key={index}
-                  value={cat.category}>
+                <MenuItem key={index} value={cat.category}>
                   {cat.category}
                 </MenuItem>
               ))}
@@ -493,25 +443,16 @@ export default function NewActivity() {
           variant="h5"
           gutterBottom
           style={{ marginTop: "2rem" }}
-          className={classes.heading}>
+          className={classes.heading}
+        >
           Detailed Activity Information
         </Typography>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Place</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="place"
@@ -527,30 +468,20 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>People Served</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="placeholder"
-              name="placeHolderValue"
-              label={placeHolder}
+              name="placeholder"
+              label={placeHolderLabel}
               fullWidth
               type="number"
-              disabled={!placeHolder}
-              value={activity.placeHolderValue}
+              disabled={isEdit ? false : !placeHolderLabel}
+              value={activity.placeholder}
               variant="standard"
               onChange={handleChange}
               className={classes.label}
@@ -558,21 +489,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity City</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="city"
@@ -588,21 +509,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Amount Spent</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="amount"
@@ -617,21 +528,11 @@ export default function NewActivity() {
             />
           </Grid>
         </Grid>
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Lion Hours</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               required
               id="lionHours"
@@ -647,21 +548,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Media Coverage</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="mediaCoverage"
               select
@@ -670,11 +561,10 @@ export default function NewActivity() {
               value={activity.mediaCoverage}
               fullWidth
               name="mediaCoverage"
-              onChange={handleChange}>
+              onChange={handleChange}
+            >
               {media?.map((option) => (
-                <MenuItem
-                  key={option.id}
-                  value={option.name}>
+                <MenuItem key={option.id} value={option.name}>
                   {option.name}
                 </MenuItem>
               ))}
@@ -682,21 +572,11 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography>Activity Description</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               id="description"
               name="description"
@@ -709,21 +589,11 @@ export default function NewActivity() {
             />
           </Grid>
         </Grid>
-        <Grid
-          container
-          spacing={3}
-          className={classes.grid}>
-          <Grid
-            item
-            xs={12}
-            lg={6}
-            className={classes.title}>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={12} lg={6} className={classes.title}>
             <Typography sx={{ margin: "auto 0" }}>Upload Images</Typography>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               ref={fileUploadRef}
               type="file"
@@ -731,7 +601,7 @@ export default function NewActivity() {
               name="image1"
               label="Upload Photo less than 500kb"
               fullWidth
-              required
+              required={!isEdit}
               margin="normal"
               className={classes.label}
               InputLabelProps={{
@@ -762,10 +632,14 @@ export default function NewActivity() {
               onClick={() => fileUploadRef.current.click()}
             />
             <Box sx={{ display: "flex", gap: "1rem" }}>
-              {activity.image1.preview && (
+              {(activity.image1?.preview || activity?.image_path) && (
                 <Box>
                   <img
-                    src={activity.image1.preview}
+                    src={
+                      activity.image1?.preview
+                        ? activity?.image1?.preview
+                        : API_URL + activity?.image_path
+                    }
                     width="100"
                     height="100"
                     alt="Preview"
@@ -773,10 +647,14 @@ export default function NewActivity() {
                   <Typography textAlign={"center"}>Image 01</Typography>
                 </Box>
               )}
-              {activity.image2.preview && (
+              {(activity.image2?.preview || activity?.image_path2) && (
                 <Box>
                   <img
-                    src={activity.image2.preview}
+                    src={
+                      activity.image2?.preview
+                        ? activity?.image2?.preview
+                        : API_URL + activity?.image_path2
+                    }
                     width="100"
                     height="100"
                     alt="Preview"
@@ -788,23 +666,14 @@ export default function NewActivity() {
           </Grid>
         </Grid>
 
-        <Grid
-          container
-          justifyContent="center"
-          gap={4}>
+        <Grid container justifyContent="center" gap={4}>
           <Grid item>
-            <Button
-              type="submit"
-              variant="contained"
-              className={classes.btn}>
+            <Button type="submit" variant="contained" className={classes.btn}>
               Submit
             </Button>
           </Grid>
           <Grid item>
-            <Button
-              type="button"
-              variant="outlined"
-              className={classes.btn}>
+            <Button type="button" variant="outlined" className={classes.btn}>
               Cancel
             </Button>
           </Grid>

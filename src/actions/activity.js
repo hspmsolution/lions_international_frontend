@@ -132,6 +132,25 @@ export const addActivity = (formData) => async (dispatch) => {
   }
 };
 
+export const editActivity = (formData) => async (dispatch) => {
+  try {
+    const { data, status } = await api.editActivity(formData);
+    dispatch({
+      type: CLIENT_MSG,
+      message: { info: data.successMessage, status },
+    });
+  } catch (error) {
+    dispatch({
+      type: CLIENT_MSG,
+      message: {
+        info: error.response.data?.message,
+        status: error.response.status,
+      },
+    });
+    console.log(error);
+  }
+};
+
 export const registerActivity = (formData) => async (dispatch) => {
   try {
     const { data, status } = await api.registerActivity(formData);
