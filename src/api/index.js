@@ -39,6 +39,7 @@ export const forgetPassword = (formData) =>
   API.post("auth/forget-password", formData);
 export const addActivity = (formData) =>
   API.post("activity/addactivity", formData);
+export const editActivity = (formData) => API.post("activity/update", formData);
 export const getActivity = () => API.get("activity/type");
 export const getClubDirector = () => API.get("activity/clubdirectors");
 export const getSubtype = (type) => API.get(`activity/subtype?type=${type}`);

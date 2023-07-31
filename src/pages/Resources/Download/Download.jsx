@@ -21,10 +21,13 @@ export default function Download() {
   useEffect(() => {
     dispatch(downloadResources());
   }, []);
-  const districtFiles = files.filter((row) => row.category === "district");
-  const internationalFiles = files.filter(
-    (row) => row.category === "international"
-  );
+  const districtFiles = files
+    .filter((row) => row.category === "district")
+    .filter(Boolean);
+    
+  const internationalFiles = files
+    .filter((row) => row.category === "international")
+    .filter(Boolean);
   return (
     <>
       <Box
