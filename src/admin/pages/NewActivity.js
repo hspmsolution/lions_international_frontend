@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -122,6 +123,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
   const category = useSelector((state) => state.activity.category);
   const placeHolderLabel = useSelector((state) => state.activity.placeHolder);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getActivity());
@@ -177,7 +179,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
 
     if (isEdit) {
       formData.append("activityId", activity.activityId);
-      dispatch(editActivity(formData));
+      dispatch(editActivity(formData,navigate));
     } else {
       dispatch(addActivity(formData));
     }
@@ -397,7 +399,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
               label=" Activity Subtype "
               value={activity.activitySubType}
               onChange={(e) => {
-                dispatch(getCategory(e.target.value));
+                dispatch(getCategory(e.target.value,activity.activityType));
                 handleChange(e);
               }}
               className={classes.label}
@@ -426,7 +428,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
               value={activity.activityCategory}
               onChange={(e) => {
                 handleChange(e);
-                dispatch(getPlaceHolder(e.target.value));
+                dispatch(getPlaceHolder(e.target.value,activity.activityType,activity.activitySubType));
               }}
               className={classes.label}
             >
