@@ -43,10 +43,10 @@ export const editActivity = (formData) => API.post("activity/update", formData);
 export const getActivity = () => API.get("activity/type");
 export const getClubDirector = () => API.get("activity/clubdirectors");
 export const getSubtype = (type) => API.get(`activity/subtype?type=${type}`);
-export const getCategory = (subtype) =>
-  API.get(`activity/category?subtype=${subtype}`);
-export const getPlaceHolder = (Category) =>
-  API.get(`activity/placeholder?category=${Category}`);
+export const getCategory = (subtype,type) =>
+  API.get(`activity/category?subtype=${subtype}&type=${type}`);
+export const getPlaceHolder = (category,type,subType) =>
+  API.get(`activity/placeholder?category=${category} &type=${type}&subtype=${subType}`);
 export const getReportedActivity = (clubId) =>
   clubId
     ? API.get(`activity/reportedactivity?clubId=${clubId}`)

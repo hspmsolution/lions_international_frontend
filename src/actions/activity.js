@@ -59,9 +59,9 @@ export const getSubtype = (type) => async (dispatch) => {
   }
 };
 
-export const getCategory = (subtype) => async (dispatch) => {
+export const getCategory = (subtype,type) => async (dispatch) => {
   try {
-    const { data } = await api.getCategory(subtype);
+    const { data } = await api.getCategory(subtype,type);
     dispatch({ type: ACTIVITY_CATEGORY, payload: data });
   } catch (error) {
     dispatch({
@@ -75,9 +75,9 @@ export const getCategory = (subtype) => async (dispatch) => {
   }
 };
 
-export const getPlaceHolder = (category) => async (dispatch) => {
+export const getPlaceHolder = (category,type,subType) => async (dispatch) => {
   try {
-    const { data } = await api.getPlaceHolder(category);
+    const { data } = await api.getPlaceHolder(category,type,subType);
     dispatch({ type: ACTIVITY_PLACEHOLDER, payload: data.placeholder });
   } catch (error) {
     console.log(error);
@@ -132,13 +132,14 @@ export const addActivity = (formData) => async (dispatch) => {
   }
 };
 
-export const editActivity = (formData) => async (dispatch) => {
+export const editActivity = (formData,navigate) => async (dispatch) => {
   try {
     const { data, status } = await api.editActivity(formData);
     dispatch({
       type: CLIENT_MSG,
       message: { info: data.successMessage, status },
     });
+    navigate("/dashboard/activity");
   } catch (error) {
     dispatch({
       type: CLIENT_MSG,
@@ -148,6 +149,7 @@ export const editActivity = (formData) => async (dispatch) => {
       },
     });
     console.log(error);
+    navigate("/dashboard/activity");
   }
 };
 
