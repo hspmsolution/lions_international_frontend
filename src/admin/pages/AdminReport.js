@@ -18,11 +18,14 @@ import StepFourForm from "../Forms/StepFourForm";
 import SelectMonth from "../Forms/SelectMonth";
 import { Star } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addReport, getPoints } from "../../actions/adminReports";
+import CircularProgress from "@mui/material/CircularProgress";
 import {
   ADMIN_REPORTS,
   CLIENT_MSG,
   ADMIN_PDF,
+  ADMIN_REPORTS_LOADING,
 } from "../../constants/actionTypes";
 
 const useStyles = makeStyles({
@@ -86,9 +89,13 @@ const steps = ["01", "02", "03", "04"];
 export default function FormWizard() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const adminPoints = useSelector((state) => state.adminReporting.adminPoints);
   const reports = useSelector((state) => state.adminReporting.adminReports);
   const reportPdf = useSelector((state) => state.adminReporting.reportsPdf);
+  const isLoading = useSelector(
+    (state) => state.adminReporting.adminReportLoading
+  );
   const selectedMonth = useSelector(
     (state) => state.adminReporting.selectedMonth
   );
@@ -149,13 +156,14 @@ export default function FormWizard() {
     formData.append("pdf", reportPdf);
     formData.append("data", JSON.stringify(selectedReports));
     formData.append("month", JSON.stringify(selectedMonth));
-    dispatch(addReport(formData));
+    dispatch(addReport(formData, navigate));
+    dispatch({ type: ADMIN_REPORTS_LOADING, payload: true });
 
-    // reset the value of form
-    dispatch({ type: ADMIN_REPORTS, payload: reports });
-    dispatch({ type: ADMIN_PDF, payload: "" });
+    // // reset the value of form
+    // dispatch({ type: ADMIN_REPORTS, payload: reports });
+    // dispatch({ type: ADMIN_PDF, payload: "" });
 
-    setActiveStep(0);
+    // setActiveStep(0);
   };
 
   useEffect(() => {
@@ -169,31 +177,27 @@ export default function FormWizard() {
           backgroundColor: "white",
           padding: "2rem",
           borderRadius: "0.5rem",
-        }}>
+        }}
+      >
         <Typography
           variant="h6"
-          style={{ fontWeight: "bold", fontSize: "24px" }}>
+          style={{ fontWeight: "bold", fontSize: "24px" }}
+        >
           {" "}
           Admin Reporting{" "}
         </Typography>
 
         <div className={classes.header}>
-          <Typography
-            variant="h6"
-            className={classes.totalPoints}>
+          <Typography variant="h6" className={classes.totalPoints}>
             Total Admin Points {adminPoints.adminstars}
             <Icon className={classes.starIcon}>
               <Star color="primary" />
             </Icon>
           </Typography>
-          <Typography
-            variant="h6"
-            style={{ margin: "0 8px" }}>
+          <Typography variant="h6" style={{ margin: "0 8px" }}>
             |
           </Typography>
-          <Typography
-            variant="h6"
-            className={classes.totalPoints}>
+          <Typography variant="h6" className={classes.totalPoints}>
             Total Activity Points {adminPoints.activityStar}
             <Icon className={classes.starIcon}>
               <Star color="primary" />
@@ -207,9 +211,7 @@ export default function FormWizard() {
       </Box>
 
       <div className={classes.root}>
-        <Stepper
-          className={classes.stepBtn}
-          activeStep={activeStep}>
+        <Stepper className={classes.stepBtn} activeStep={activeStep}>
           {steps.map((step, index) => (
             <Step
               key={index}
@@ -223,9 +225,7 @@ export default function FormWizard() {
         </Stepper>
 
         {/* Step content */}
-        <Paper
-          elevation={3}
-          style={{ padding: "20px", marginTop: "1rem" }}>
+        <Paper elevation={3} style={{ padding: "20px", marginTop: "1rem" }}>
           {getStepForm()}
 
           {/* Buttons */}
@@ -234,11 +234,14 @@ export default function FormWizard() {
               marginTop: "20px",
               display: "flex",
               justifyContent: "flex-end",
-            }}>
+              padding:"5px"
+            }}
+          >
             <Button
               disabled={activeStep === 0}
               onClick={handleBack}
-              style={{ marginRight: "10px" }}>
+              style={{ marginRight: "10px" }}
+            >
               Back
             </Button>
 
@@ -246,14 +249,13 @@ export default function FormWizard() {
               <Button
                 onClick={handleSubmit}
                 variant="contained"
-                color="primary">
-                Submit
+                color="primary"
+                disabled={isLoading}
+              >
+                {isLoading ? <CircularProgress size={20}/> : "Submit"}
               </Button>
             ) : (
-              <Button
-                onClick={handleNext}
-                variant="contained"
-                color="primary">
+              <Button onClick={handleNext} variant="contained" color="primary">
                 Next
               </Button>
             )}

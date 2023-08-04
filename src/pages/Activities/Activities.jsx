@@ -42,6 +42,7 @@ function ResponsiveDialog({
   category,
   place,
   clubId,
+  clubName,
   type,
 }) {
   const [open, setOpen] = React.useState(false);
@@ -130,6 +131,14 @@ function ResponsiveDialog({
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableBody>
+              <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>
+                    <strong>Club Name:</strong>
+                  </TableCell>
+                  <TableCell>{clubName}</TableCell>
+                </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
@@ -217,6 +226,7 @@ function BasicCard({
   category,
   place,
   clubId,
+  clubName,
   type,
 }) {
   const classes = useStyles();
@@ -254,6 +264,7 @@ function BasicCard({
           category={category}
           place={place}
           clubId={clubId}
+          clubName={clubName}
           type={type}
         />
       </CardContent>
@@ -346,6 +357,7 @@ export default function Events() {
                         category={filter.activityCategory}
                         place={filter.place}
                         clubId={filter.clubId}
+                        clubName={filter.clubName}
                         type="upcoming"
                       />
                     </Box>
@@ -391,6 +403,7 @@ export default function Events() {
                         category={filter.activityCategory}
                         place={filter.place}
                         clubId={filter.clubId}
+                        clubName={filter.clubName}
                         type="past"
                       />
                     </Box>
