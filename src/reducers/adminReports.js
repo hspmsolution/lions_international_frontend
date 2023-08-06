@@ -5,11 +5,12 @@ import {
   UPDATE_REPORT,
   CLUBS_REPORTING,
   ADMIN_PDF,
-  SELECTED_MONTH
+  SELECTED_MONTH,
+  ADMIN_REPORTS_LOADING
 } from "../constants/actionTypes";
 
 const adminReportReducer = (
-  state = { adminReports: [], adminPoints: [] ,clubReporting:[], reportsPdf:"",selectedMonth:""},
+  state = { adminReports: [], adminPoints: [] ,clubReporting:[], reportsPdf:"",selectedMonth:"",adminReportLoading:false},
   action
 ) => {
   switch (action.type) {
@@ -48,7 +49,10 @@ const adminReportReducer = (
       return { ...state, adminPoints: action.payload };
     
     case CLUBS_REPORTING:
-      return {...state,clubReporting:action.payload}
+      return {...state,clubReporting:action.payload};
+
+    case ADMIN_REPORTS_LOADING:
+      return {...state,adminReportLoading:action.payload}
     default:
       return state;
   }

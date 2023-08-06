@@ -39,6 +39,7 @@ import Download from "./pages/Resources/Download/Download";
 import ContactUS from "./pages/contact/Contact";
 import Privacy from "./pages/PrivacyPolicy/Privacy";
 import Terms from "./pages/Terms/Terms";
+import MainDirectory from "./pages/Membership/MainDirectory/MainDirectory";
 
 export default function Router() {
   const isAdmin = useSelector((state) => state.auth.admin);
@@ -88,6 +89,17 @@ export default function Router() {
           {
             path: "/organizationdata",
             element: <OrganizationData />,
+          },
+          {
+            path: "/membership/maindirectory",
+            element: isAdmin ? (
+              <MainDirectory/>
+            ) : (
+              <Navigate
+                to="/loginReq"
+                replace
+              />
+            ),
           },
           {
             path: "/membership/memberdirectory",

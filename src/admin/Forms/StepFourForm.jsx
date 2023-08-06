@@ -41,8 +41,8 @@ const StepFourForm = () => {
   // Function to handle file read
   const handleFileRead = async (event) => {
     const file = event.target.files[0];
-    // Check file size 2mb
-    if (file.size > 2000000) {
+    // Check file size 5mb
+    if (file.size > 5000000) {
       dispatch({
         type: CLIENT_MSG,
         message: {
@@ -168,7 +168,7 @@ const StepFourForm = () => {
           type="file"
           id="image-upload"
           name="pdf"
-          label="Upload PDF upto 2MB"
+          label="Upload PDF upto 5MB"
           margin="normal"
           className={classes.label}
           InputLabelProps={{
