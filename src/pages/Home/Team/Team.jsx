@@ -40,7 +40,7 @@ const teamData = [
     designation: "Cabinet Treasurer",
   },
   {
-    src: "/assets/dist_img/07_R Vijaya.jpeg",
+    src: "/assets/dist_img/07_R Vijaya.jpg",
     name: "R Vijaya",
     sub_design: "   ",
     designation: "GLT Coordinator",
