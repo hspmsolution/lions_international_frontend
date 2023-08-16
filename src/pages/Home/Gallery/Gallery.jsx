@@ -1,4 +1,3 @@
-
 import React from "react";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 import "./Gallery.css";
@@ -9,6 +8,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 const Gallery = () => {
+
+  const images = useSelector((state) => state.client.galleryImages);
+  const slidesToShow = images.length >= 3 ? 3 : images.length;
+  
   const settings = {
     className: "center",
     centerMode: true,
@@ -17,7 +20,7 @@ const Gallery = () => {
     speed: 500,
     focusOnSelect: true,
     slidesToScroll: 1,
-    slidesToShow: 3,
+    slidesToShow: slidesToShow,
     arrows: true,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -32,8 +35,6 @@ const Gallery = () => {
     ],
   };
 
-  
-  const images = useSelector((state) => state.client.galleryImages);
   return (
     <>
       <div className="carouselContainer">
@@ -41,20 +42,12 @@ const Gallery = () => {
         <Slider {...settings}>
           {images.map((item, index) => {
             return (
-              <>
-                <div
-                  key={index}
-                  className="carousel"
-                >
-                  <div className="carouselBody">
-                    <img
-                      src={`${API_URL}${item?.image}`}
-                      alt=""
-                    />
-                    <h4>{item.title}</h4>
-                  </div>
+              <div key={index} className="carousel">
+                <div className="carouselBody">
+                  <img src={`${API_URL}${item?.image}`} alt="" />
+                  <h4>{item.title}</h4>
                 </div>
-              </>
+              </div>
             );
           })}
         </Slider>

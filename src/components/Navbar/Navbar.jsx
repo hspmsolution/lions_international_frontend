@@ -34,7 +34,8 @@ const myNav = [
   { title: "Activities" },
   {
     title: "Membership",
-    menuItems: ["Main Directory","Member Directory", "Mini Directory"],
+    // menuItems: ["Main Directory","Member Directory", "Mini Directory"], //hiding main directory
+    menuItems: ["Member Directory", "Mini Directory"],
   },
   {
     title: "Resources",

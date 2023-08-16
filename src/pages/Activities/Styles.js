@@ -23,7 +23,7 @@ export default makeStyles(() => ({
       width: "600px",
     },
     dialogPaper: {
-      height: "350px",
+      height: "fit-content",
     },
   },
   "@media only screen and (max-width: 900px)": {
@@ -31,7 +31,7 @@ export default makeStyles(() => ({
       maxWidth: "500px ",
     },
     dialogPaper: {
-      height: "250px",
+      height: "fit-content",
     },
   },
 }));

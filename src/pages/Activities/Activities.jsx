@@ -230,7 +230,7 @@ function BasicCard({
   type,
 }) {
   const classes = useStyles();
-  console.log(activityType);
+
   return (
     <Card sx={{ minWidth: 275, maxWidth: 350, margin: "auto" }}>
       <CardContent className={classes.eventCard}>
@@ -241,10 +241,6 @@ function BasicCard({
             mb: { xs: "1.5rem", lg: "4rem" },
           }}
         >
-          {/* <img
-            src={API_URL + bgImage}
-            style={{ height: "100%", width: "100%", objectFit: "contain" }}
-          /> */}
 
           <CommonCard
             image={bgImage}
