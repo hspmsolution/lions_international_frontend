@@ -51,7 +51,9 @@ const currentDate = today.getDate();
 const canReport = (selectedMonth) => {
  
   if (selectedMonth === prevMonth) {
-    return currentDate <= 5;
+
+    // last date to report
+    return currentDate <= 31;
   } else if (selectedMonth === curMonth) {
     return true;
   }

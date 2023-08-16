@@ -4,7 +4,8 @@ import {
   ADMIN_POINTS,
   CLUBS_REPORTING,
   ADMIN_PDF,
-  ADMIN_REPORTS_LOADING
+  ADMIN_REPORTS_LOADING,
+  SELECTED_MONTH
 } from "../constants/actionTypes";
 import * as api from "../api";
 
@@ -20,6 +21,8 @@ export const getAdminReports = (month) => async (dispatch) => {
         status: error.response.status,
       },
     });
+    dispatch({ type: ADMIN_REPORTS, payload: [] });
+    dispatch({ type: SELECTED_MONTH, payload: "" });
     console.log(error);
   }
 };

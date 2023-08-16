@@ -40,9 +40,10 @@
 }
 
 .imgSlide > img {
-  object-fit: cover;
+  object-fit: fill;
   position: absolute;
   top: 0;
+  height:100vh !important;
 }
 
 .imgSlide:before {
