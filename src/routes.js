@@ -150,7 +150,9 @@ export default function Router() {
       ...(role?.includes("Club Treasurer") ||
       role?.includes("Club Secretary") ||
       role?.includes("Club President") ||
-      role?.includes("Club Administrator")
+      role?.includes("Club Administrator") ||
+      role?.includes("Club Vice President") ||
+      role?.includes("Club Advisor")
         ? [
             {
               path: "/dashboard",
@@ -162,7 +164,7 @@ export default function Router() {
                 { path: "admin", element: <AdminReport /> },
                 { path: "pastactivity", element: <PastActivity /> },
                 // { path: "alladminreport", element: <AllAdminReport /> },
-
+                
                 role.includes("Club Treasurer") && {
                   path: "manage-expense",
                   element: <Treasurer />,

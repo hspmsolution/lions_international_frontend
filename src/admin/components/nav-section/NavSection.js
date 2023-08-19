@@ -45,7 +45,9 @@ export default function NavSection({ ...other }) {
           (role?.includes("Club Treasurer") ||
             role?.includes("Club Secretary") ||
             role?.includes("Club Administrator") ||
-            role?.includes("Club President")) && {
+            role?.includes("Club President") ||
+            role?.includes("Club Vice President") ||
+            role?.includes("Club Advisor")) && {
             title: "Report New Activity",
             path: "/dashboard/activity",
             icon: icon("ic_arrow"),
@@ -132,9 +134,7 @@ export default function NavSection({ ...other }) {
 
   return (
     <Box {...other}>
-      <List
-        disablePadding
-        sx={{ p: 1, color: "white" }}>
+      <List disablePadding sx={{ p: 1, color: "white" }}>
         {navConfig.map((item) => (
           <>
             <NavItem
@@ -145,14 +145,9 @@ export default function NavSection({ ...other }) {
               }}
             />
             {item.subItems && item.isClick && (
-              <List
-                disablePadding
-                sx={{ pl: 3 }}>
+              <List disablePadding sx={{ pl: 3 }}>
                 {item.subItems.map((subItem) => (
-                  <NavItem
-                    key={subItem.title}
-                    item={subItem}
-                  />
+                  <NavItem key={subItem.title} item={subItem} />
                 ))}
               </List>
             )}
@@ -185,13 +180,11 @@ function NavItem({ item, onClick }) {
             fontWeight: "fontWeightBold",
           },
         }
-      }>
+      }
+    >
       <StyledNavItemIcon>{icon && icon}</StyledNavItemIcon>
 
-      <ListItemText
-        disableTypography
-        primary={title}
-      />
+      <ListItemText disableTypography primary={title} />
       {subItems && (isClick ? <CloseIcon /> : <AddIcon />)}
       {info && info}
     </StyledNavItem>
