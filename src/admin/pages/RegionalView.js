@@ -14,6 +14,7 @@ import {
   Button,
   Grid,
   TextField,
+  DialogContentText
 } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Dialog from "@mui/material/Dialog";
@@ -21,11 +22,14 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { makeStyles } from "@mui/styles";
-import { getRegion  } from "../../actions/clubs";
+import { getRegion } from "../../actions/clubs";
 import {
   downloadClubActivity,
-  getReportedActivity,regionActivity
+  getReportedActivity,
+  regionActivity,
 } from "../../actions/activity";
+import AllAdminReport from "./AllAdminReport";
+import { clubsReporting } from "../../actions/adminReports";
 
 const useStyles = makeStyles({
   title: {
@@ -61,6 +65,7 @@ export default function RegionalView() {
 
   // Dialog
   const [open, setOpen] = React.useState(false);
+  const [openReporting, setOpenReporting] = React.useState(false);
 
   const handleClickOpen = (clubId) => {
     dispatch(getReportedActivity(clubId));
@@ -82,9 +87,15 @@ export default function RegionalView() {
   const filteredRows = reportedActivity.filter((row) =>
     row.activityType.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  // useEffect(() => {
-  //   dispatch(getReportedActivity());
-  // }, []);
+ 
+  const handleClickReporting = (clubId) => {
+  dispatch(clubsReporting(clubId));
+  setOpenReporting(true);
+  };
+
+  const handleCloseReporting = () => {
+    setOpenReporting(false);
+  };
 
   return (
     <>
@@ -121,7 +132,7 @@ export default function RegionalView() {
                     <TableCell>Club Name</TableCell>
                     <TableCell>Club Id</TableCell>
                     <TableCell>Last Activity Report</TableCell>
-                    <TableCell>Admin Report of Current Month</TableCell>
+                    <TableCell>Admin Reports</TableCell>
                     <TableCell>Action</TableCell>
                   </TableRow>
                 </TableHead>
@@ -138,7 +149,14 @@ export default function RegionalView() {
                           new Date(row?.latestActivity).toLocaleString()}
                       </TableCell>
                       <TableCell>
-                        {row?.currentAdminReport === 1 ? "yes" : "no"}
+                      <Button
+                          variant="outlined"
+                          onClick={() => {
+                            handleClickReporting(row.clubId);
+                          }}
+                        >
+                          View Reporting
+                        </Button>
                       </TableCell>
                       <TableCell>
                         <Button
@@ -230,6 +248,19 @@ export default function RegionalView() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+      {/* Montly reporting dialog */}
+      <Dialog
+        open={openReporting}
+        onClose={handleCloseReporting}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth={"none"}
+      >
+        <AllAdminReport/>
+        <DialogActions>
+          <Button onClick={handleCloseReporting}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </>

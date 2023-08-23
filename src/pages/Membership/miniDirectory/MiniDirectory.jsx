@@ -11,7 +11,7 @@ export default function MiniDirectory() {
       <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
         <CustomizedBreadcrumbs label={"Membership"} subLabel={"Mini Directory"} />
         <Container >
-          <iframe src='https://lionsdistrict317f.org/api/static/assets/1691305260038-minidirectory2023-24.pdf' title='Mini Directory' className={classes.businessPdfIframe} />
+          <iframe src='https://lions317f.org/api/static/assets/1691305260038-minidirectory2023-24.pdf' title='Mini Directory' className={classes.businessPdfIframe} />
         </Container>
       </Box>
     </div>

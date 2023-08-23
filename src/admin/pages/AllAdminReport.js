@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
 import {
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
   Paper,
   Divider,
   Typography,
@@ -19,18 +15,9 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  IconButton,
-  Grid,
-  TextField,
 } from "@mui/material";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-
 import { useDispatch, useSelector } from "react-redux";
-import { clubsReporting } from "../../actions/adminReports";
+
 
 const months = [
   "January 2023",
@@ -49,22 +36,12 @@ const months = [
 
 function AllAdminReport() {
   const [open, setOpen] = React.useState(false);
-  const dispatch = useDispatch();
+
   const clubReporting = useSelector(
     (state) => state.adminReporting.clubReporting
   );
   console.log(clubReporting);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    dispatch(clubsReporting());
-  }, []);
   return (
     <>
       <Box
@@ -101,84 +78,84 @@ function AllAdminReport() {
                     <TableCell>{club.clubName}</TableCell>
                     <TableCell>{club.clubId}</TableCell>
                     <TableCell>
-                      {club.month1 === "0" ? (
+                      {club.month1 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month2 === "0" ? (
+                      {club.month2 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month3 === "0" ? (
+                      {club.month3 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month4 === "0" ? (
+                      {club.month4 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month5 === "0" ? (
+                      {club.month5 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month6 === "0" ? (
+                      {club.month6 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month7 === "0" ? (
+                      {club.month7 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month8 === "0" ? (
+                      {club.month8 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month9 === "0" ? (
+                      {club.month9 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month10 === "0" ? (
+                      {club.month10 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month11 === "0" ? (
+                      {club.month11 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
                       )}
                     </TableCell>
                     <TableCell>
-                      {club.month12 === "0" ? (
+                      {club.month12 == "0" ? (
                         <DisabledByDefaultIcon color="error" />
                       ) : (
                         <CheckBoxIcon color="success" />
@@ -189,18 +166,6 @@ function AllAdminReport() {
               </TableBody>
             </Table>
           </TableContainer>
-
-          {/* Dialog */}
-
-          <Dialog
-            open={open}
-            onClose={handleClose}>
-            <DialogTitle>Optional sizes</DialogTitle>
-            <DialogContent></DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>Close</Button>
-            </DialogActions>
-          </Dialog>
         </Box>
       </Box>
     </>
