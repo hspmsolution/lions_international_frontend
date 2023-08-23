@@ -10,12 +10,16 @@ import {
   Typography,
   Paper,
   Box,
-  Button
+  Button,
+  Dialog,
+  DialogActions,
 } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
 import { getZone } from "../../actions/clubs";
 import { zoneActivity } from "../../actions/activity";
+import AllAdminReport from "./AllAdminReport";
+import { clubsReporting } from "../../actions/adminReports";
 
 
 const useStyles = makeStyles({
@@ -29,6 +33,18 @@ export default function ZonalView() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const zoneData = useSelector((state) => state.clubs.zone);
+  const [openReporting, setOpenReporting] = React.useState(false);
+
+   
+  const handleClickReporting = (clubId) => {
+    dispatch(clubsReporting(clubId));
+    setOpenReporting(true);
+    };
+  
+    const handleCloseReporting = () => {
+      setOpenReporting(false);
+    };
+
 
   useEffect(() => {
     dispatch(getZone());
@@ -60,7 +76,7 @@ export default function ZonalView() {
                 <TableCell>Club Name</TableCell>
                 <TableCell>Club Id</TableCell>
                 <TableCell>Last Activity Report</TableCell>
-                <TableCell>Admin Report of Current Month</TableCell>
+                <TableCell>Admin Reports</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -76,7 +92,14 @@ export default function ZonalView() {
                       new Date(row?.latestActivity).toLocaleString()}
                   </TableCell>
                   <TableCell>
-                    {row?.currentAdminReport === 1 ? "yes" : "no"}
+                  <Button
+                          variant="outlined"
+                          onClick={() => {
+                            handleClickReporting(row.clubId);
+                          }}
+                        >
+                          View Reporting
+                        </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -84,6 +107,20 @@ export default function ZonalView() {
           </Table>
         </TableContainer>
       </Box>
+
+            {/* Montly reporting dialog */}
+            <Dialog
+        open={openReporting}
+        onClose={handleCloseReporting}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        maxWidth={"none"}
+      >
+        <AllAdminReport/>
+        <DialogActions>
+          <Button onClick={handleCloseReporting}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }

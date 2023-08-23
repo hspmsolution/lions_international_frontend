@@ -43,7 +43,7 @@ export default function DashboardLayout() {
           rgba(0, 0, 0, 0.4),
           rgba(0, 0, 0, 0.4)
         ),
-        url("https://lionsdistrict317f.org/api/static/assets/1689132773664-adminbg.jpg")`,
+        url("https://lions317f.org/api/static/assets/1689132773664-adminbg.jpg")`,
         backgroundAttachment: "fixed",
         backgroundSize: "cover",
       }}

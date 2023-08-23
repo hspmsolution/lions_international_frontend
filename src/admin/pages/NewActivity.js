@@ -132,8 +132,8 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
     if (isEdit) {
       // we are selected types in advance for the dropdown
       dispatch(getSubtype(activity.activityType));
-      dispatch(getCategory(activity.activitySubType));
-      dispatch(getPlaceHolder(activity.activityCategory));
+      dispatch(getCategory(activity.activitySubType,activity.activityType));
+      dispatch(getPlaceHolder(activity.activityCategory,activity.activityType,activity.activitySubType));
     }
     // eslint-disable-next-line
   }, []);

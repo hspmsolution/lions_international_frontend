@@ -62,9 +62,9 @@ export const addReport = (formData,navigate) => async (dispatch) => {
   }
 };
 
-export const clubsReporting = () => async (dispatch) => {
+export const clubsReporting = (clubId) => async (dispatch) => {
   try {
-    const { data } = await api.clubsReporting();
+    const { data } = await api.clubsReporting(clubId);
     dispatch({ type: CLUBS_REPORTING, payload: data });
   } catch (error) {
     console.log(error);

@@ -11,7 +11,7 @@ export default function MainDirectory() {
       <Box sx={{ backgroundImage: "url('/assets/img/bggg.png')", backgroundAttachment: 'fixed', pb: '2rem' }}>
         <CustomizedBreadcrumbs label={"Membership"} subLabel={"MainDirectory"} />
         <Container >
-          <iframe src='https://lionsdistrict317f.org/api/static/assets/1691302698949-maindirectory.pdf' title='Main Directory' className={classes.businessPdfIframe} />
+          <iframe src='https://lions317f.org/api/static/assets/1691302698949-maindirectory.pdf' title='Main Directory' className={classes.businessPdfIframe} />
         </Container>
       </Box>
     </div>
