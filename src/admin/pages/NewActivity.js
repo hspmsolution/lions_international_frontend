@@ -12,6 +12,7 @@ import Chip from "@mui/material/Chip";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import CircularProgress from "@mui/material/CircularProgress";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { API_URL } from "../../api";
 
@@ -122,6 +123,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
   const subType = useSelector((state) => state.activity.subType);
   const category = useSelector((state) => state.activity.category);
   const placeHolderLabel = useSelector((state) => state.activity.placeHolder);
+  const isLoading = useSelector((state) => state.activity.isLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -132,8 +134,14 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
     if (isEdit) {
       // we are selected types in advance for the dropdown
       dispatch(getSubtype(activity.activityType));
-      dispatch(getCategory(activity.activitySubType,activity.activityType));
-      dispatch(getPlaceHolder(activity.activityCategory,activity.activityType,activity.activitySubType));
+      dispatch(getCategory(activity.activitySubType, activity.activityType));
+      dispatch(
+        getPlaceHolder(
+          activity.activityCategory,
+          activity.activityType,
+          activity.activitySubType
+        )
+      );
     }
     // eslint-disable-next-line
   }, []);
@@ -155,6 +163,11 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
       }
       return newData;
     });
+  };
+
+  const resetForm = () => {
+    setActivity(activityDetail);
+    setPersonName([]);
   };
 
   const submitDetails = (e) => {
@@ -179,12 +192,10 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
 
     if (isEdit) {
       formData.append("activityId", activity.activityId);
-      dispatch(editActivity(formData,navigate));
+      dispatch(editActivity(formData, navigate));
     } else {
-      dispatch(addActivity(formData));
+      dispatch(addActivity(formData, navigate, resetForm));
     }
-    setActivity(activityDetail);
-    setPersonName([]);
   };
 
   // Function to handle file read
@@ -399,7 +410,7 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
               label=" Activity Subtype "
               value={activity.activitySubType}
               onChange={(e) => {
-                dispatch(getCategory(e.target.value,activity.activityType));
+                dispatch(getCategory(e.target.value, activity.activityType));
                 handleChange(e);
               }}
               className={classes.label}
@@ -428,7 +439,13 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
               value={activity.activityCategory}
               onChange={(e) => {
                 handleChange(e);
-                dispatch(getPlaceHolder(e.target.value,activity.activityType,activity.activitySubType));
+                dispatch(
+                  getPlaceHolder(
+                    e.target.value,
+                    activity.activityType,
+                    activity.activitySubType
+                  )
+                );
               }}
               className={classes.label}
             >
@@ -670,8 +687,8 @@ export default function NewActivity({ pastActivityData, isEdit = false }) {
 
         <Grid container justifyContent="center" gap={4}>
           <Grid item>
-            <Button type="submit" variant="contained" className={classes.btn}>
-              Submit
+            <Button type="submit" variant="contained" className={classes.btn} disabled={isLoading}>
+              {isLoading ? <CircularProgress size={25} /> : "Submit"}
             </Button>
           </Grid>
           <Grid item>

@@ -162,13 +162,16 @@ const StepFourForm = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
       <Box sx={{ marginTop: "2rem", textAlign: "center" }}>
         <TextField
           ref={fileUploadRef}
+          required
+          sx={{width:"50%"}}
           type="file"
           id="image-upload"
           name="pdf"
-          label="Upload PDF upto 5MB"
+          label="COMBINE ALL  ATTACHMENTS IN A SINGLE PDF BEFORE UPLOAD LIMIT 5MB"
           margin="normal"
           className={classes.label}
           InputLabelProps={{

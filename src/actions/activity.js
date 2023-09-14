@@ -7,6 +7,7 @@ import {
   REPORTED_ACTIVITY,
   CLUB_DIRECTORS,
   DELETE_ACTIVITY,
+  ACTIVITY_LOADING
 } from "../constants/actionTypes";
 import * as api from "../api";
 import * as xlsx from "xlsx";
@@ -113,13 +114,17 @@ export const deleteActivity = (activityId) => async (dispatch) => {
   }
 };
 
-export const addActivity = (formData) => async (dispatch) => {
+export const addActivity = (formData,navigate,resetForm) => async (dispatch) => {
   try {
+    dispatch({ type: ACTIVITY_LOADING, payload: true });
     const { data, status } = await api.addActivity(formData);
     dispatch({
       type: CLIENT_MSG,
       message: { info: data.successMessage, status },
     });
+    resetForm();
+    navigate("/dashboard/pastactivity");
+    dispatch({ type: ACTIVITY_LOADING, payload: false });
   } catch (error) {
     dispatch({
       type: CLIENT_MSG,
@@ -128,6 +133,7 @@ export const addActivity = (formData) => async (dispatch) => {
         status: error.response.status,
       },
     });
+    dispatch({ type: ACTIVITY_LOADING, payload: false });
     console.log(error);
   }
 };
