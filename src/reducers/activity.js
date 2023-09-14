@@ -6,6 +6,7 @@ import {
   REPORTED_ACTIVITY,
   CLUB_DIRECTORS,
   DELETE_ACTIVITY,
+  ACTIVITY_LOADING
 } from "../constants/actionTypes";
 
 const activityReducer = (
@@ -16,6 +17,7 @@ const activityReducer = (
     reportedActivity: [],
     placeHolder: "",
     club_directors: [],
+    isLoading: false,
   },
   action
 ) => {
@@ -44,6 +46,9 @@ const activityReducer = (
           (activity) => activity.activityId !== action.payload
         ),
       };
+
+    case ACTIVITY_LOADING:
+      return { ...state, isLoading: action.payload };
 
     default:
       return state;

@@ -13,6 +13,7 @@ export const getAdminReports = (month) => async (dispatch) => {
   try {
     const { data } = await api.getAdminReports(month);
     dispatch({ type: ADMIN_REPORTS, payload: data });
+    dispatch({ type: SELECTED_MONTH, payload: month });
   } catch (error) {
     dispatch({
       type: CLIENT_MSG,

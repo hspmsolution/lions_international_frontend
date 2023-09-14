@@ -26,7 +26,6 @@ const monthNames = [
   "December",
 ];
 
-
 const available_months = [
   "July",
   "August",
@@ -41,25 +40,6 @@ const available_months = [
   "May",
 ];
 
-const today = new Date();
-const curMonth = today.getMonth() + 1;
-const prevMonth = curMonth === 1 ? 12 : curMonth - 1;
-const currentDate = today.getDate();
-
-// condition to decide whether user can report
-
-const canReport = (selectedMonth) => {
- 
-  if (selectedMonth === prevMonth) {
-
-    // last date to report
-    return currentDate <= 31;
-  } else if (selectedMonth === curMonth) {
-    return true;
-  }
-  return false;
-  // return selectedMonth >= curMonth;
-};
 
 export default function SelectMonth() {
   const dispatch = useDispatch();
@@ -74,19 +54,7 @@ export default function SelectMonth() {
           const selectedIndexes = monthNames
             .map((month, index) => (month === e.target.value ? index + 1 : -1))
             .filter((index) => index !== -1);
-          if (canReport(selectedIndexes[0])) {
-            dispatch(getAdminReports(selectedIndexes[0]));
-            dispatch({ type: SELECTED_MONTH, payload: selectedIndexes[0] });
-          } else {
-            dispatch({ type: ADMIN_REPORTS, payload: [] });
-            dispatch({
-              type: CLIENT_MSG,
-              message: {
-                info: "You can only report for current month",
-                status: 400,
-              },
-            });
-          }
+          dispatch(getAdminReports(selectedIndexes[0]));
         }}
       >
         {available_months.map((item, index) => (
