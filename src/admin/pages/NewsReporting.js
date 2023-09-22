@@ -267,7 +267,7 @@ export default function NewsReporting() {
               xs={12}
               lg={6}
               className={classes.title}>
-              <Typography>Phographs of News</Typography>
+              <Typography>Photographs of News</Typography>
             </Grid>
             <Grid
               item

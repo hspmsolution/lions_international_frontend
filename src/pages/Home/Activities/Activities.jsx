@@ -17,7 +17,13 @@ export default function Activities() {
   const navigate = useNavigate();
   const activities = useSelector((state) => state.client.events);
   React.useEffect(() => {
-    dispatch(events());
+    dispatch(events({
+      club:"",
+      type:"",
+      from:"",
+      to:"",
+      page:1
+    }));
   }, []);
 
   const Item = styled(Paper)(({ theme }) => ({

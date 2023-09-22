@@ -111,7 +111,7 @@ export default function OppositeContentTimeline() {
                 },
                 minWidth: "50%",
               }}>
-              {clubs?.slice(0, clubs.length / 2).map((ranking, index) => (
+              {clubs?.topClubs?.slice(0,clubs?.topClubs?.length / 2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
@@ -137,7 +137,7 @@ export default function OppositeContentTimeline() {
                 },
                 minWidth: "50%",
               }}>
-              {clubs?.slice(clubs.length / 2).map((ranking, index) => (
+              {clubs?.topClubs?.slice(clubs?.topClubs?.length / 2).map((ranking, index) => (
                 <>
                   <TimelineItem>
                     <TimelineOppositeContent color="textSecondary">
