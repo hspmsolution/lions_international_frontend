@@ -6,8 +6,19 @@ import {
   REPORTED_ACTIVITY,
   CLUB_DIRECTORS,
   DELETE_ACTIVITY,
-  ACTIVITY_LOADING
+  ACTIVITY_LOADING,
+  ACTIVITY_FILTER,
+  RESET_FILTER
 } from "../constants/actionTypes";
+
+
+const filters = {
+  club:"",
+  type:"",
+  from:"",
+  to:"",
+  page:1
+}
 
 const activityReducer = (
   state = {
@@ -18,6 +29,7 @@ const activityReducer = (
     placeHolder: "",
     club_directors: [],
     isLoading: false,
+    activityFilter:filters
   },
   action
 ) => {
@@ -49,7 +61,13 @@ const activityReducer = (
 
     case ACTIVITY_LOADING:
       return { ...state, isLoading: action.payload };
-
+      
+    case ACTIVITY_FILTER:
+      const {name,value} = action.payload;
+      return { ...state, activityFilter:{...state.activityFilter,[name]: value} };
+    
+    case RESET_FILTER:
+      return { ...state, activityFilter:filters };
     default:
       return state;
   }

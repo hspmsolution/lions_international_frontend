@@ -76,7 +76,7 @@ export const zoneActivity = () => API.get("activity/zone/allactivities");
 export const expense = (formData) => API.post("expenses", formData);
 export const clubStatement = () => API.get("expenses/statement");
 export const activityStats = () => API.get("activity/stats");
-export const events = (newPage) => API.get(`activity/events?page=${newPage}`);
+
 export const topClubs = () => API.get("adminreporting/topclubs");
 export const slider = () => API.get("assets/slider");
 export const registerActivity = (formData) =>
@@ -92,3 +92,22 @@ export const downloadMemberData = (selectedData) =>
   API.post("clubs/download-member-data", selectedData);
 export const districtData = () => API.get("clubs/districtdata");
 export const downloadResources = () => API.get("assets/downloadResources");
+
+export const getClubs = () => API.get("clubs/list");
+
+export const events = (filters) => {
+  const { page, club, type, from, to } = filters;
+
+  let apiUrl = "activity/events?";
+  if (page) apiUrl += `page=${page}&`;
+  if (club?.clubId) apiUrl += `clubId=${club.clubId}&`;
+  if (type?.type) apiUrl += `type=${type.type}&`;
+  if (from) apiUrl += `from=${from}&`;
+  if (to) apiUrl += `to=${to}&`;
+
+  if (apiUrl.endsWith("&")) {
+    apiUrl = apiUrl.slice(0, -1);
+  }
+
+  return API.get(apiUrl);
+};
